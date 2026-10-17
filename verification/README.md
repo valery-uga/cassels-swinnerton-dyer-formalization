@@ -11,7 +11,7 @@ python3 verification/check.py
 python3 verification/check.py --run
 ```
 
-The first Python command checks source hashes and the 25 manuscript labels. It
+The first Python command checks source hashes, the exact v3 TeX and PDF, statement numbering and line references, and accounting for all 27 active numbered statements (25 included and two excluded). TeX comments are ignored, so the old commented-out remark cannot count as an active statement. It
 starts no compiler. The second builds the required local modules in dependency
 order, one at a time, then runs the declaration audits again. It prints
 `[current/total]`, the active module, log paths, and a message every 15 seconds
@@ -97,3 +97,9 @@ additional evidence; merely compiling the pairs is not a Comparator check.
 this update, with the corresponding text logs. It distinguishes successful checks,
 intentional negative tests, and the unperformed Comparator run. Reproduce the
 checks yourself rather than treating a committed log as certification.
+
+## arXiv v3 reconciliation
+
+[paper/VERSION.md](../paper/VERSION.md) records the source and PDF hashes and the changes to the coverage map. Existing successful Lean logs are retained as historical evidence for unchanged theorem declarations; they are not relabelled as a new clean-room build or Comparator run. The original main challenge, solution, and configuration are unchanged. The broader challenge types and proof bodies are also unchanged; only their manuscript-reference comments are updated.
+
+The v3 Fogarty global-smoothness assertion and the new del Pezzo Remark 1.5 are explicitly outside the formalized scope. Local smoothness at the original classifier and the named lifting conclusion remain covered.

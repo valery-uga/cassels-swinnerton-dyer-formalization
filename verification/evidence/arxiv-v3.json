@@ -1,0 +1,75 @@
+{
+  "manuscript_version": "arXiv:2609.15930v3",
+  "manuscript_sha256": "3ba2c489afb164c0a7269d02abe7d23233f1c7dc3d6f85b58d5fec8bca73e299",
+  "manuscript_pdf_sha256": "dd901a166391585ac9f2e7643dcf9ff4560d8e10df26c2d25125800ca0871f2e",
+  "previous_manuscript_sha256": "93aa0e1fdaa2bdee5a7dbc7fcd786bfdac856a692100da8f016d0dd3e696059e",
+  "selected_conclusions": 25,
+  "active_numbered_statements": 27,
+  "excluded_labels": [
+    "cor:unirational",
+    "rem:delPezzo"
+  ],
+  "changed_lean_sources": [
+    {
+      "file": "AllCharacteristics/ManuscriptVerification/SectionFourChallenge.lean",
+      "previous_sha256": "5c58fb21e72754bab13ceadcd58b4aa1e969e49902177eab3084e169bb567334",
+      "sha256": "83e3e581c20697863d1958e13f5f2c1e19323adbc2fe57f83828cda5135ea555",
+      "change": "Doc-comment manuscript line references only; code outside doc comments byte-identical"
+    },
+    {
+      "file": "AllCharacteristics/ManuscriptVerification/SectionFourSolution.lean",
+      "previous_sha256": "8615b788af567276cf7a8da32655b7c5507e9aed3d3aa910976c2fc6bd3ac8c9",
+      "sha256": "9d09b1d33870f01c58e5ff0484cfb72c7967fb51fa9f2298272ae2870e059a2f",
+      "change": "Doc-comment manuscript line references only; code outside doc comments byte-identical"
+    }
+  ],
+  "unchanged_pinned_files": 4176,
+  "original_comparator": [
+    {
+      "file": "AllCharacteristics/ComparatorChallenge/Challenge.lean",
+      "sha256": "0a9dfbe4ff022ba6e0acd95fa1c2aba8b40246edfb8be83cb155f69038cbed0e",
+      "change": "unchanged; not replaced by overlay"
+    },
+    {
+      "file": "AllCharacteristics/ComparatorChallenge/Solution.lean",
+      "sha256": "dc9e41f7e0a03893ec9d7dcddcaff38271ef035d2b9b0f8f16f20fd5f3028109",
+      "change": "unchanged; not replaced by overlay"
+    },
+    {
+      "file": "AllCharacteristics/ComparatorChallenge/config.json",
+      "sha256": "4709f3ff160d5fb66063c39284358edf5ce8685c31186b3e13625cd3b1cdb2f7",
+      "change": "unchanged; not replaced by overlay"
+    }
+  ],
+  "comparison": "Source review of all active statements and revised proof passages; existing selected endpoints remain applicable",
+  "scope_limits": [
+    {
+      "manuscript_label": "lem:lift",
+      "tex_lines": [
+        1141,
+        1149
+      ],
+      "claim": "Global smoothness of Hilb^d(S/R) via Fogarty",
+      "status": "not_formalized",
+      "existing_coverage": "Original closed-point classifier smoothness and actual global-family lifting suffice for the named lifting conclusion."
+    }
+  ],
+  "new_lean_compilations": 0,
+  "prior_checks": "Retained results.json records 12 groups / 63 root checks and 35 statement wrappers for unchanged proof code. No new kernel replay or Comparator verdict is claimed.",
+  "comparator": "not_run",
+  "pdf_check": "16-page user-supplied v3 PDF; first page rendered and inspected; text checked for v3 identifier and revised statements; no PDF edits",
+  "tex_archive_match": true,
+  "runner_tests": {
+    "command": "python3 -m unittest discover -s verification -p test_runner.py",
+    "passed": 30,
+    "failed": 0
+  },
+  "package_validation": {
+    "conflict_rejection": "pass; original manuscript untouched",
+    "round_trip_installation": "pass; all installed bytes matched manifest",
+    "idempotency": "pass; second installation changed zero files",
+    "installed_verifier": "pass; 4178 pins, TeX/PDF assets, all 27 statements accounted for",
+    "relative_documentation_links": 140,
+    "public_checkout": "dry run only; existing checkout not modified"
+  }
+}

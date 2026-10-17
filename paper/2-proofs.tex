@@ -163,7 +163,7 @@ Welfengarten 1, 30167 Hannover, Germany}
 
 
 
-\date{September 13, 2026}
+\date{\today}
 \subjclass[2020]{Primary 14G05; Secondary 14C25, 14J26}
 \keywords{Cubic surfaces, rational points, zero-cycles, nets of quadrics,
 Pfaffian presentations, Cassels--Swinnerton-Dyer conjecture}
@@ -171,9 +171,13 @@ Pfaffian presentations, Cassels--Swinnerton-Dyer conjecture}
 \begin{document}
 \begin{abstract}
 The Cassels--Swinnerton-Dyer conjecture asserts that a cubic hypersurface contains a rational point if and only if it contains a point of degree coprime to $3$, or, equivalently, a zero-cycle of degree $1$.
-The case of smooth cubic surfaces in characteristic zero has been reduced by Coray and Voisin to the case of points of degree $4$.
-We give two independent proofs of this missing case and use a lifting argument of Ma to extend the result to smooth cubic surfaces over arbitrary fields.
-We further give a separate argument for the case of singular cubic surfaces, extending previous work of Coray over perfect fields.
+The case of smooth cubic surfaces in characteristic zero has been reduced by Coray (1976) and Voisin (2026) to the case of points of degree $4$.
+We give two independent proofs of this missing case and use a lifting argument 
+%of Ma 
+to extend the result to smooth cubic surfaces over arbitrary fields.
+We further give a 
+separate 
+argument for the case of singular cubic surfaces, extending previous work of Coray over perfect fields.
 Altogether, this proves the Cassels--Swinnerton-Dyer conjecture for cubic surfaces.
 \end{abstract}
 
@@ -189,9 +193,15 @@ The analogous criteria for quadrics and plane cubic curves are due to Springer \
 
 Coray formulated the Cassels--Swinnerton-Dyer conjecture for cubics of arbitrary dimension \cite[Conjecture~(CS)]{coray}.
 Over perfect fields, he proved the singular surface case \cite[Proposition~8.2]{coray} and reduced the case of smooth cubic surfaces to points of degrees $4$ and $10$ \cite[Theorem~7.1]{coray}.
-Further developments and related results appeared in \cite{CT-coray,CT-SD,CT-zero-cycles,ma,rivera-viray,balestrieri,porzio-thesis}.
-Recently, Voisin \cite{voisin-coray} showed that, in characteristic zero, a smooth cubic surface with a point of degree $10$ has a rational point or a point of degree $4$. 
-This reduces the conjecture for smooth cubic surfaces in characteristic zero to the following statement, which we prove in this paper.
+Further developments and related results appeared in \cite{CoraySingular,CT-coray,CT-SD,BN,CT-zero-cycles,ma,rivera-viray,balestrieri,porzio-thesis}. 
+
+In a recent breakthrough, Voisin \cite{voisin-coray} eliminated
+the degree-$10$ case in Coray's reduction: she showed that,
+in characteristic zero, a smooth cubic surface with a point
+of degree $10$ has a rational point or a point of degree $4$.
+This reduces the conjecture for smooth cubic surfaces in
+characteristic zero to the following statement, which we
+prove in this paper.
 
 
 \begin{theorem}\label{thm:deg=4-intro}
@@ -209,6 +219,8 @@ homogeneous cubic form over a field $k$.
 Then $F$ represents zero nontrivially over $k$ if and only if it represents zero nontrivially over a finite field extension $L/k$ of degree coprime to $3$. 
 \end{theorem}
 
+
+
 By results of Segre, Manin \cite{manin} and Koll\'ar \cite{kollar}, smooth cubic surfaces with a rational point are unirational.
 We therefore obtain the following corollary.
 
@@ -217,34 +229,58 @@ Let $S$ be a smooth cubic surface over a field $k$.
 Then $S$ is unirational if and only if it contains a zero-cycle of degree $1$.
 \end{corollary}
 
+% The analogue of Theorem \ref{thm:main:intro} is known to fail for quartic curves and surfaces, see \cite[Example 2.8]{coray} and \cite{BN}, respectively. 
+% In the case of del Pezzo surfaces, we have the following.
+
+
+Another application of Theorem \ref{thm:main:intro} to the Hasse principle for cubic hypersurfaces is given by Colliot-Thélène and Wittenberg in \cite{CTW}.
+
+
+ 
 
 In view of \cite{coray,ma,voisin-coray}, the key new ingredient in the proof of Theorem \ref{thm:main:intro} is Theorem \ref{thm:deg=4-intro} above.
 We give two independent proofs of the latter statement. 
 The first proof, presented in Section \ref{sec:degree-five}, uses a reduction of Cassels (see Proposition \ref{prop:four-five} below) to pass from a point of degree $4$ to an effective zero-cycle of degree $5$.
-Using work of Buchsbaum--Eisenbud \cite{BE}, Beauville \cite{Beauville} and Tanturri \cite{Tanturri}, we show that the surface either has a rational point or admits a linear \(6\times6\) Pfaffian presentation over the ground field. 
-The following result then completes the argument.
+Using work of Buchsbaum--Eisenbud \cite{BE} and Beauville \cite{Beauville}, we show that the surface either has a rational point or admits a linear \(6\times6\) Pfaffian presentation over the ground field. 
+The following result then completes the argument, where 
+we recall that the Pfaffian $\operatorname{Pf}(A)$ of an alternating
+$2n\times 2n$ matrix $A$ is a homogeneous polynomial of degree $n$
+in its entries satisfying $\operatorname{Pf}(A)^2=\det(A)$.
+
 
 \begin{theorem}\label{thm:pfaffian-intro}
-Let $k$ be a field of characteristic different from $2$. 
-If a nonzero cubic form in four
-variables has a linear $6\times6$ Pfaffian presentation over $k$,
-then its projective zero locus has a $k$-rational point.
+Let $k$ be a field of characteristic different from $2$.
+Let $A=(a_{ij})$ be an alternating $6\times 6$ matrix of linear forms $a_{ij}\in k[x_0,\dots ,x_3]$ in four variables.
+Then the cubic form $\operatorname{Pf} (A)$ given by the Pfaffian of $A$ represents zero nontrivially over $k$.
+%Let $k$ be a field of characteristic different from $2$, and let
+%$F\in k[x_0,x_1,x_2,x_3]$ be a nontrivial cubic form. 
+% If $F=\operatorname{Pf} (A)$ is the Pfaffian of a
+% $6\times 6$ alternating matrix $A$ of linear forms over $k$, then
+% $\{F=0\}\subset \mathbb{P}^3_k$ has a $k$-rational point.
+%
+%Let $k$ be a field of characteristic different from $2$. 
+%If a nonzero cubic form in four
+%variables has a linear $6\times6$ Pfaffian presentation over $k$,
+%then its projective zero locus has a $k$-rational point.
 \end{theorem}
 
 
 
-The second proof of Theorem \ref{thm:deg=4-intro}, given in Section \ref{sec:degree-four}, works directly with the given closed point $P$ of degree $4$ on $S$. We construct a suitable tangent direction at $P$, giving rise to a nonreduced subscheme $Z$ of $S$ of length $8$ that is contained in three linearly independent quadrics $Q_1,Q_2,Q_3$.
-If these quadrics have zero-dimensional base locus, then the cubic form $F$ that cuts out $S$ can be written as $F=H_1Q_1+H_2Q_2+H_3Q_3$ for linear forms $H_i$ (see Lemma \ref{lem:net-of-quadrics}), and any $k$-rational point of ${H_1=H_2=H_3=0}$ lies on $S$.
+The second proof of Theorem \ref{thm:deg=4-intro}, given in Section \ref{sec:degree-four}, works directly with the given closed point $P$ of degree $4$ on $S$. We construct a suitable tangent direction at $P$, giving rise to a nonreduced subscheme $Z$ of $S$ of length $8$ that is contained in the vanishing locus of three linearly independent quadratic forms $Q_1,Q_2,Q_3$.
+If the corresponding quadrics have zero-dimensional base locus, then the cubic form $F$ that cuts out $S$ can be written as $F=H_1Q_1+H_2Q_2+H_3Q_3$ for linear forms $H_i$ (see Lemma \ref{lem:net-of-quadrics}), and any $k$-rational point of ${H_1=H_2=H_3=0}$ lies on $S$.
 If the base locus of the linear series of quadrics through $Z$ is not zero-dimensional, then we show that either $S$ has a rational point or the base locus is a twisted cubic $\Gamma$.
 If $\Gamma$ lies in $S$, then $S$ has a rational point because $\Gamma\cong \CP^1_k$ (see Lemma \ref{lem:twisted-cubic}).
 Otherwise, $\Gamma\cap S$ has degree $9$ and contains the subscheme $Z$ of length $8$, so the residual intersection has degree $1$ and yields a rational point.
 
-The results in this paper have been obtained by or with substantial help from currently available LLMs;
-see also the AI disclosure section below for further details.
+\begin{remark} \label{rem:delPezzo}
+Theorem \ref{thm:main:intro} implies that a smooth del Pezzo surface of degree $3$ over an arbitrary field has a rational point if and only if it has index $1$, equivalently, a zero-cycle of degree $1$.
+This equivalence was already known for del Pezzo surfaces of degree at least $4$; the case of perfect fields is due to Coray \cite{coray2}, degree $4$ over arbitrary fields is due to Amer, Brumer and Leep (see e.g.~\cite[Corollary 18.7]{EKM}), and the higher degrees can be deduced from \cite[\S6--\S10]{AB} and the references therein.  
+The statement also holds in degree $1$, as every del Pezzo surface of degree $1$ has a rational point, namely the base point of its anticanonical pencil. 
+However, the statement fails for del Pezzo surfaces of degree $2$, even in characteristic zero, see \cite{KM17} and \cite[Remarque~4.3]{CT-zero-cycles}.
+The analogue of Theorem \ref{thm:main:intro} also fails for quartic curves and surfaces, see \cite[Example 2.8]{coray} and \cite{BN}, respectively.  
+\end{remark}
 
-
-
-
+The starting points for this paper were two GPT-assisted proofs obtained independently by the authors; see the AI disclosure below for details of the interactions with GPT and the respective contributions.
 
 
 \section{Preliminaries and degree reductions} \label{sec:preliminaries}
@@ -253,8 +289,8 @@ Throughout this section, the field $k$ is perfect.
 The degree of a finite $k$-scheme is its length over $k$. 
 We use the associated effective zero-cycle when taking residual intersections.
 
-The secant and plane-curve descent arguments below are classical;
-see \cite[Propositions~2.2 and~2.3]{coray} for quadratic descent and Poincar\'e's descent on cubic curves.
+The reductions in Lemmas \ref{lem:secant} and \ref{lem:position} below 
+are classical, see \cite[Propositions~2.2 and~2.3]{coray}. 
 
 \begin{lemma}
 \label{lem:secant}
@@ -279,16 +315,23 @@ in general linear position: any four of them span $\PP^3$.\label{item:lem:positi
 \end{enumerate}
 \end{lemma}
 \begin{proof}
-For \eqref{item:lem:position:1}, let $\Pi$ contain $P$. Since
-$h^0(\Pi,\OO_\Pi(2))=6>d$, there is a conic $Q\subset\Pi$
+For \eqref{item:lem:position:1}, which goes back to Poincar\'e \cite{poincare}, 
+let $\Pi$ be a $k$-plane that contains $P$. 
+Since $h^0(\Pi,\OO_\Pi(2))=6>d$, there is a conic $Q\subset\Pi$
 containing $P$. Write $C=S\cap\Pi$. If $C$ and $Q$ have no common
 component, then $[C\cap Q]-[P]$ is effective of degree $6-d\le2$,
 and Lemma~\ref{lem:secant} applies. Otherwise the greatest common
 divisor of their equations over $k$ has degree one or two. In the
 first case it defines a $k$-line on $S$; in the second, the residual
 factor of the cubic defines such a line.
-Part \eqref{item:lem:position:2} is immediate.
+
+For \eqref{item:lem:position:2}, the Galois group acts transitively
+on the four-element subsets of the geometric points of $P$.
+Thus, if one such subset were coplanar, all would be, and the
+span of $P$ would be contained in a $k$-plane, a contradiction. 
 \end{proof}
+
+The next lemma studies the arithmetic of twisted cubics.
 
 \begin{lemma}\label{lem:twisted-cubic}
 Let $\Gamma\subset \PP_k^3$ be a smooth projective  curve over a field $k$, whose base change to $\bar k$ is a twisted cubic.
@@ -300,9 +343,9 @@ Hence, $\omega_\Gamma\otimes \mathcal O(1)$ is a line bundle of degree one and s
 Under the identification $\Gamma\cong\PP^1_k$, the embedding $\Gamma\subset \PP_k^3$ must then be given by the full linear series $|\mathcal O_{\PP^1_k}(3)|$, hence $\Gamma$ is a twisted cubic.
 \end{proof}
 
-The next proposition follows from the $r=1$ case of Cassels's descent
-\cite[Proposition~3.1, pp.~274--275]{coray}. We give the twisted-cubic
-construction explicitly.
+The next proposition follows from a result of Cassels, see
+\cite[Proposition~3.1, pp.~274--275]{coray}. 
+We give a complete argument for convenience of the reader.
 
 \begin{proposition}[Cassels]\label{prop:four-five}
 A smooth cubic surface $S/k$ has an effective zero-cycle of degree
@@ -356,9 +399,9 @@ Under the standing assumption $S(k)=\varnothing$, this effective
 cycle is a single closed point, as above.
 \end{proof}
 
-\begin{remark}\label{rem:voisin}
-When $\operatorname{char}(k)=0$, the effectivity argument in Voisin's proof of \cite[Proposition 4.3(b)]{voisin-coray} gives another proof.
-\end{remark}
+% \begin{remark}\label{rem:voisin}
+% When $\operatorname{char}(k)=0$, the effectivity argument in Voisin's proof of \cite[Proposition 4.3(b)]{voisin-coray} gives another proof of Proposition \ref{prop:four-five}.
+% \end{remark}
 
 
 \section{The degree-five argument: Pfaffian presentations}  \label{sec:degree-five}
@@ -378,7 +421,7 @@ if $A|_{W\times W}=0$.
 
 Consider the scheme
     \[
- \cI=\{(W,A_0,A_1,A_2):A_i|_{W\times W}=0\ (0\le i\le2)\}
+ \cI=\{(W,A_0,A_1,A_2) \; \mid \;  A_i|_{W\times W}=0\ (0\le i\le2)\}
  \subset\Gr(3,V)\times\cT
 \]
 which parametrizes three-spaces $W\subset V$ that are isotropic for each entry of $(A_0,A_1,A_2)\in \cT$.
@@ -394,38 +437,42 @@ The following lemma is an ordered-triple version of Han's incidence calculation
 
 
 \begin{proof}
-The restriction map $\bigwedge^2V^*\to\bigwedge^2W^*$ is surjective.
+For a three-space $W\subset V$, the restriction map $\bigwedge^2V^*\to\bigwedge^2W^*$ is surjective with $12$-dimensional kernel.
 Thus $\cI$ is the total space of a rank-$36$ vector bundle over
-$\Gr(3,6)$, and is smooth of dimension $45$. The projection
+$\Gr(3,V)=\Gr(3,6)$.
+In particular, $\mathcal I$ is smooth of dimension $45$ and the projection
 $\pi:\cI\to\cT$ is proper.
 
 Write $V=V_1\oplus V_2\oplus V_3$, with $\dim V_i=2$, and set
 \[
- J=\begin{pmatrix}0&1\\-1&0\end{pmatrix},
- \qquad D=\begin{pmatrix}1&0\\0&2\end{pmatrix}.
+ I\coloneq \begin{pmatrix}1&0\\0&1\end{pmatrix}  ,\qquad J\coloneq \begin{pmatrix}0&1\\-1&0\end{pmatrix} \qquad \text{and}
+ \qquad D\coloneq \begin{pmatrix}1&0\\0&2\end{pmatrix}.
 \]
 Consider the triple
 of alternating $6\times 6$ matrices
 \begin{equation}\label{eq:triple}
- B_0=\diag(J,J,J),\qquad B_1=\diag(J,2J,3J),\qquad
- B_2=\begin{pmatrix}0&I_2&I_2\\-I_2&0&D\\-I_2&-D&0\end{pmatrix}.
+ B_0\coloneq \diag(J,J,J),\qquad B_1\coloneq \diag(J,2J,3J),\qquad
+ B_2\coloneq \begin{pmatrix}0&I&I\\-I&0&D\\-I&-D&0\end{pmatrix}.
 \end{equation}
+%where $I_2$ denotes the $2\times 2$ identity matrix.
+We aim to compute the fiber of $\pi$ at $(B_0,B_1,B_2)$ scheme-theoretically.
 A $B_0$-isotropic three-space $W$ is Lagrangian 
 with respect to the standard symplectic form on $V=k^6$.
 Put
-$T=B_0^{-1}B_1=\diag(I_2,2I_2,3I_2)$. If $W$ is also
+$T=B_0^{-1}B_1=\diag(I,2I,3I)$. If $W$ is also
 $B_1$-isotropic, then
 \[
- B_0(Tw,w')=B_1(w,w')=0\quad(w,w'\in W),
- \qquad T(W)\subset W^{\perp_{B_0}}=W.
+ B_0(Tw,w')=B_1(w,w')=0\qquad \text{for all }w,w'\in W . 
 \]
-Thus $W$ is $T$-invariant and splits into its intersections with the
-three eigenspaces. Isotropy bounds the dimension of each summand by one,
+Hence, $T(W)\subset W^{\perp_{B_0}}=W$.
+Therefore, $W$ is $T$-invariant and splits into its intersections with the
+three $T$-eigenspaces. Isotropy bounds the dimension of each summand by one,
 so $W=\ell_1\oplus\ell_2\oplus\ell_3$ with $\ell_i\subset V_i$
 a line. 
 This description holds scheme-theoretically.
 The common isotropic locus for $B_0,B_1$ is therefore $(\PP^1)^3$.
-Writing $\ell_i=[a_i:b_i]$, the remaining equations are
+Writing $\ell_i=[a_i:b_i]$ and imposing isotropy with respect to $B_2$,
+we obtain the following description of the fiber under consideration: 
 \[
  a_1a_2+b_1b_2=0,\qquad
  a_1a_3+b_1b_3=0,\qquad
@@ -433,28 +480,32 @@ Writing $\ell_i=[a_i:b_i]$, the remaining equations are
 \]
 No $a_i$ vanishes at a geometric solution: if $a_1=0$ then
 $b_2=b_3=0$, contradicting the third equation; the other cases are
-similar. Set $u_i=b_i/a_i$. The fiber is
+similar. Set $u_i=b_i/a_i$. The %fiber is thus described by
+above equations thus simplify to
 \begin{equation}\label{eq:fiber}
- u_2=u_3=-u_1^{-1},\qquad u_1^2+2=0,
+ u_2=u_3=-u_1^{-1},\qquad u_1^2+2=0.
 \end{equation}
-and hence is finite and geometrically reduced of degree two.
+Hence the scheme-theoretic fiber of $\pi$ at $(B_0,B_1,B_2)$ is finite and geometrically reduced of degree two.
 
 At these two geometric points the differential of $\pi$ is an
 isomorphism, since source and target are smooth of the same dimension
-and the fiber tangent spaces vanish. Thus $\pi$ is \emph{\'etale}
-there. Properness allows us to remove the image of its non-\emph{\'etale}
+and the fiber tangent spaces vanish. Thus $\pi$ is \'etale 
+there. Properness allows us to remove the image of its non-\'etale
 locus and shrink around $(B_0,B_1,B_2)$; the resulting morphism is
-proper and quasi-finite, hence finite \emph{\'etale}, of degree two.
+proper and quasi-finite, hence finite \'etale, of degree two.
 \end{proof}
 
 \begin{proof}[Proof of Theorem~\ref{thm:pfaffian-intro}]
-Let $k$ be a field of characteristic different from $2$ and let $S\subset \PP^3_k$ be a cubic surface, cut out by $F=0$.
-Assume that
-%Write
+Let $k$ be a field of characteristic different from $2$
+and let $F(x)=\Pf(A)$ be the Pfaffian of an alternating $6\times 6$ matrix of linear forms in $x_0,\dots ,x_3$ over $k$.
+We may write
+%Let
 \[
  F(x)=\Pf\!\left(\sum_{i=0}^3x_iA_i\right),
 \]
-where the $A_i$ are alternating matrices over $k$. 
+where the $A_i$ are alternating $6\times 6$ matrices over $k$. 
+The theorem is trivial if $F$ is identical to zero.
+We may therefore assume that $S=\{F=0\}\subset \CP^3_k$ is a cubic surface. 
 
 We first deal with the case where 
 $(A_0,A_1,A_2)\in\cT^\circ(k)$. Then Lemma~\ref{lem:incidence} gives
@@ -462,22 +513,23 @@ an extension $L/k$ of degree at most two and a three-space
 $W\subset L^6$ isotropic for $A_0,A_1,A_2$.
 
 The alternating form $A_3|_W$ has a nonzero radical vector $v\in W$,
-since $\dim W=3$. Consequently all four covectors
+since $\dim W=3$. Consequently all four linear forms %covectors
 \[
  A_0v,\ A_1v,\ A_2v,\ A_3v
 \]
 belong to the three-dimensional subspace $\Ann(W)\subset(L^6)^*$ 
 of linear forms $\lambda\colon L^6\to L$ that vanish on $W$.
-Choose a nontrivial relation $\sum b_i (A_i v)=0$ with $b_i\in L$.
-The alternating matrix $\sum b_iA_i$ is 
+Choose a nontrivial relation $\sum c_i (A_i v)=0$ with $c_i\in L$. Since $\bigl(\sum c_i A_i\bigr) v=0$, 
+the alternating matrix $\sum c_iA_i$ is 
 degenerate, 
 so
 \[
- F(b_0,b_1,b_2,b_3)^2
-   =\det\!\left(\sum_{i=0}^3b_iA_i\right)=0.
+ F(c_0,c_1,c_2,c_3)^2
+   =\det\!\left(\sum_{i=0}^3c_iA_i\right)=0.
 \]
 This gives an $L$-point of $F=0$. Its image in $S$ has degree at most two,
-and Lemma~\ref{lem:secant} gives a $k$-point.
+and Lemma~\ref{lem:secant} (whose proof in fact applies over any field of 
+characteristic different from $2$) gives a $k$-point.
 
 For an arbitrary triple $(A_0,A_1,A_2)\in\cT(k)$, 
 use the fixed matrices~\eqref{eq:triple} and
@@ -489,69 +541,109 @@ put
 \]
 The generic triple belongs to $\cT^\circ$ because its value at $t=1$
 does; moreover $F_t\ne0$ over $k(t)$ since $F_0=F\ne0$.
-The preceding argument over $k(t)$ gives a $k(t)$-point of $F_t=0$.
+The preceding argument over $k(t)$ gives a $k(t)$-point of $\{F_t=0\}$.
 Scale its homogeneous coordinates into the discrete valuation ring
 $k[t]_{(t)}$, with at least one a unit. Reduction modulo $t$ then gives
-a $k$-point of $F=0$.
+a $k$-point of $\{F=0\}$.
 \end{proof}
 
 \subsection{Five points and the characteristic-zero theorem}\label{sec:five}
 
-\begin{lemma}[Buchsbaum--Eisenbud, Beauville, Tanturri]
+\begin{lemma}[Beauville] %[Buchsbaum--Eisenbud, Beauville, Tanturri]
 \label{lem:presentation}
-Let $Z\subset\PP^3_k$ be a reduced subscheme of degree five whose
-geometric points are in general linear position. Every cubic form
-vanishing on $Z$ has a linear $6\times6$ Pfaffian presentation over $k$.
+% Let $Z\subset\PP^3_k$ be a reduced subscheme of degree five whose
+% geometric points are in general linear position. Every cubic form
+% vanishing on $Z$ has a linear $6\times6$ Pfaffian presentation over $k$.
+Let $Z\subset\PP^3_k$ be a geometrically reduced subscheme of degree
+five whose geometric points are in general linear position.
+Then every cubic form $F\in k[x_0,\dots,x_3]$ vanishing along $Z$
+is the Pfaffian of an alternating $6\times 6$ matrix 
+$A=(a_{ij})$ of linear forms $a_{ij}\in k[x_0,\dots ,x_3]$.   
 \end{lemma}
-\begin{proof}
-Put $R=k[x_0,x_1,x_2,x_3]$. The ideal of five points in general linear
-position is arithmetically Gorenstein, with resolution
+ 
+\begin{proof} 
+For a smooth cubic surface (which is the only case needed in this section), this is \cite[Proposition~7.2 and Examples 7.4]{Beauville}. 
+The alternative approach suggested in \cite[Remark 7.3(b)]{Beauville}
+works for any cubic form. 
+For clarity, we provide the proof of this alternative version below. See also
+Tanturri \cite[Section~2]{Tanturri}, who gives an explicit algorithm for this Pfaffian presentation starting from five $k$-rational points in general linear position.
+  
+  Put $S=k[x_0,x_1,x_2,x_3]$, and let $I_Z\subset S$ be the homogeneous
+  ideal of $Z$. We claim that the quotient ring $S/I_Z$ is Gorenstein, with graded free resolution
 \begin{equation}\label{eq:resolution}
- 0\longrightarrow R(-5)\longrightarrow R(-3)^5
- \longrightarrow R(-2)^5\longrightarrow R
- \longrightarrow R/I_Z\longrightarrow0.
+ 0\longrightarrow S(-5)\xrightarrow{\ q^t\ } S(-3)^5
+  \xrightarrow{\ T\ } S(-2)^5 
+ \xrightarrow{\ q\ } S \longrightarrow S/I_Z\longrightarrow 0,
 \end{equation}
-For completeness, this standard five-point calculation can be checked
-after extending to $\bk$ and moving the points to
-$[e_0],[e_1],[e_2],[e_3],[1:1:1:1]$. Their ideal is generated by the five
-independent differences among the six products $x_ix_j$ with $i<j$.
-In the quotient all mixed monomials of a fixed degree agree, and the
-Hilbert function is $1,4,5,5,\ldots$ 
-(equal to $5$ for all degrees $d\ge2$).
-Reducing by the nonzerodivisor
-$\ell=x_0+x_1+x_2+x_3$, and writing $q$ for the class represented by $x_ix_j$ with $i\neq j$
-gives
+where $T$ is a $5\times 5$ alternating matrix of linear forms,
 \[
- x_i^2=-3q,\qquad x_ix_j=q\ (i\ne j),\qquad x_iq=0.
+ q_i=(-1)^{i+1}\Pf(T_{\widehat i})\qquad(1\le i\le5)
 \]
-On the basis $x_0,x_1,x_2$ of degree one, multiplication into degree
-two is represented by
-\[
- \begin{pmatrix}-3&1&1\\1&-3&1\\1&1&-3\end{pmatrix},
- \qquad \det=-16.
-\]
-Thus the socle is one-dimensional in degree two. The ring is
-Gorenstein, and its five quadratic generators and self-duality give
-\eqref{eq:resolution}. Gorensteinness and the graded Betti numbers
-descend by faithful flatness.
+are the signed Pfaffians of the principal submatrices $T_{\widehat i}$ of
+$T$, and $q = (q_1,q_2,q_3,q_4,q_5)$.
 
-Apply the Buchsbaum--Eisenbud structure theorem \cite{BE} over $k$.
-The middle map of~\eqref{eq:resolution} is represented by a
-$5\times5$ alternating matrix $T$ of linear forms, and $I_Z$ is
-generated by
-\[
- q_i=(-1)^{i+1}\Pf(T_{\widehat i})\qquad(1\le i\le5),
-\]
-where $T_{\widehat i}$ are the principal submatrices of $T$.
-If $F$ is a cubic vanishing on $Z$, write $F=\sum_i\ell_iq_i$ with
-linear forms $\ell_i$ over $k$. Expanding along the last column gives
-\begin{equation}\label{eq:augmentation}
- F=\Pf\begin{pmatrix}T&\ell\\-\ell^{\tr}&0\end{pmatrix},
- \qquad \ell=(\ell_1,\ldots,\ell_5)^{\tr}.
+Let us first prove these statements over an algebraic closure $\bk$. 
+The five geometric points can be moved to
+$[e_0],[e_1],[e_2],[e_3],[1:1:1:1]$. It is easy to see that the ideal $I_Z\otimes_k\bk \subset S\otimes_k\bk$ is
+generated by the following five quadratic polynomials: 
+\begin{displaymath}
+  \begin{aligned}
+    q'_1&=x_0x_2-x_0x_1, &\qquad q'_2&=x_0x_3-x_0x_1,\\
+    q'_3&=x_1x_2-x_0x_1, &\qquad q'_4&=x_1x_3-x_0x_1,\\
+    q'_5&=x_2x_3-x_0x_1.
+  \end{aligned}
+\end{displaymath}
+These are the signed principal Pfaffians of the alternating matrix
+\begin{displaymath}
+  T' =
+  \begin{pmatrix}
+    0 & -x_1 & -x_3 & 0 & x_1 \\
+    x_1 & 0 & 0 & x_2 & -x_1 \\
+    x_3 & 0 & 0 & x_0 & -x_0 \\
+    0 & -x_2 & -x_0 & 0 & x_0 \\
+    -x_1 & x_1 & x_0 & -x_0 & 0
+  \end{pmatrix}
+\end{displaymath}
+Put $\bar S=S\otimes_k\bk$ and $q'=(q'_1,\ldots,q'_5)$.
+Since the signed principal
+Pfaffians of $T'$ generate the height-three ideal $I_Z\bar S$,
+the Buchsbaum--Eisenbud structure theorem 
+for codimension~$3$ Gorenstein ideals
+\cite[Theorem~2.1(1)]{BE} shows that
+$\bar S/I_Z\bar S$ is Gorenstein and that the associated
+Pfaffian complex \eqref{eq:resolution} (with $q',T'$ in place of $q,T$) is a free resolution. 
+
+Graded Betti numbers and Gorensteinness descend under field extensions.
+Thus $S/I_Z$ is Gorenstein and its minimal graded free
+resolution has the same ranks and degree shifts.
+
+By the graded version of 
+%the Buchsbaum--Eisenbud structure theorem 
+\cite[Theorem~2.1(2) and its proof]{BE} (cf.~the discussion about the graded version on \cite[page 466]{BE}), this resolution
+can be chosen to be a Pfaffian resolution as in  \eqref{eq:resolution}.
+Its middle map $S(-3)^5\to S(-2)^5$ is therefore represented
+by a $5\times5$ alternating matrix $T$ of linear forms
+and the quadrics $q_i=(-1)^{i+1}\Pf(T_{\widehat i})$ and
+$q=(q_1,\ldots,q_5)$ make \eqref{eq:resolution} exact (over~$k$).
+
+In particular, $I_Z$ is generated by $q_1,\dots q_5$.
+If $F$ is a cubic vanishing on $Z$, we may thus write
+$F=\sum_{i=1}^{5}\ell_i q_i$ with linear forms $\ell_i$ over $k$.
+Expanding along the last column gives
+\begin{equation}\tag{3.4}
+ F=\operatorname{Pf}\begin{pmatrix}
+ T & \ell^t \\
+ -\ell & 0
+ \end{pmatrix},
+ \qquad
+ \ell=(\ell_1,\ldots,\ell_5) ,
 \end{equation}
-This is the construction in \cite[Remark~7.3(b)]{Beauville} and
-\cite[Section~2]{Tanturri}.  
+as we want.  
 \end{proof}
+
+
+
+
 
 \begin{proof}[Proof of Theorem \ref{thm:five}]
 If the cycle has a point of degree one or two in its support, apply
@@ -575,10 +667,9 @@ In this section we give a second proof, which naturally works over any perfect f
 Let $S\subset\PP^{3}_k$ be a smooth cubic surface over a perfect
 field. If $S$ has a closed point $P$ of degree four, then $S(k)\ne\varnothing$.
 \end{theorem}
+ 
 
-The purpose of this section is to give a direct proof of Theorem \ref{thm:4->1} which works directly with the given degree 4 point.
-
-\subsection{A rational-point criterion from three quadrics}
+\subsection{A rational-point criterion from three quadrics} \label{subsec:3-quadrics-criterion}
 
 Let $S=\{F=0\}\subset \CP^3_k$ be a smooth cubic surface over a field $k$.
 If $S$ has a $k$-rational point $P$, then we may after a change of coordinates assume that $P=[1:0:0:0]$, in which case $F=x_1Q_1+x_2Q_2+x_3Q_3$ for quadratic forms $Q_i$.
@@ -630,7 +721,7 @@ Then $S$ admits a rational point.
 \begin{proof}
 Since the base locus of $|\mathcal I_Z(2)|$ is zero-dimensional, we can find, after base change to an infinite field, three linearly independent quadrics which have zero-dimensional intersection.
 Hence, $h^0(\CP^3_k, \mathcal I_{Z}(2))=h^0(\CP^3_{\bar k}, \mathcal I_{Z_{\bar k}}(2))=3$ by Remark \ref{rem:h^0(I_Z)=3}.
-It follows that there are three quadratic forms $Q_1,Q_2,Q_3$ which satisfy the assumptions in Lemma \ref{lem:net-of-quadrics}.
+It follows that there are three quadratic forms $Q_1,Q_2,Q_3\in k[x_0,x_1,x_2,x_3]$ which satisfy the assumptions in Lemma \ref{lem:net-of-quadrics}.
 Hence, $F$ has a decomposition as in \eqref{eq:F=HiQi} and so $S$ has a rational point.
 \end{proof}
 
@@ -645,7 +736,7 @@ We will study this condition and the resulting base loci in the next subsection;
  Let $Z=\sqcup_{i=0}^3Z_i$ be a length 8 subscheme of $S$, where $Z_i$ is of length $2$ and supported at the point $p_i$. 
  
 We may represent $Z_i$ by $[e_i+\epsilon v_i]$, where $\epsilon^2=0$ and $v_i=(u_{i0},\ldots,u_{i3})$ is a nontrivial tangent direction at $p_i$ with $u_{ii}=0$.
-That is, the line $\{[se_i+tv_i]\mid [s:t]\in \CP^1\} \subset \CP^3$ is contained in the projective tangent space of $S$ at $p_i$. 
+That is, the line $\{[se_i+tv_i]\; \mid \; [s:t]\in \CP^1\} \subset \CP^3$ is contained in the projective tangent space of $S$ at $p_i$. 
 In the affine chart $x_i=1$, with coordinates $y_j=x_j/x_i$ for $j\neq i$, the tangent direction $v_i$ may equivalently be described by
 \begin{align} \label{def:uij}
 v_i=\sum_{j\neq i}u_{ij}\frac{\partial}{\partial y_j} \in T_{p_i}S.
@@ -671,7 +762,7 @@ Q=\sum_{0\leq i<j\leq 3}q_{ij}x_ix_j.
 The space of such quadrics has dimension $\binom{4}{2}=6$.
 
 For convenience, set $q_{ji}=q_{ij}$ whenever $i<j$. 
-Since $Q(p_i)=0$, the quadric $Q$ vanishes along $Z_i$ if and only if
+The quadric $Q$ in \eqref{def:Q} vanishes along $Z_i$ if and only if
 $d_{p_i}Q(v_i)=0$. 
 Moreover,
 \begin{equation}\label{def:dpQ}
@@ -686,11 +777,11 @@ Q\mapsto
 from a six-dimensional vector space to $k^4$.
 This kernel has dimension at least $3$ if and only if the four linear functionals $Q\mapsto d_{p_i}Q(v_i)$ are linearly dependent. 
 This is equivalent to the existence of scalars $\lambda_i$, not all zero, such that
-\[
+\begin{equation} \label{def:R}
 0=\sum_{i=0}^3\lambda_i d_{p_i}Q(v_i)
  =\sum_{i<j}q_{ij}
    \bigl(\lambda_i u_{ij}+\lambda_j u_{ji}\bigr)
-\]
+\end{equation}
 for every $Q$. Since the coefficients $q_{ij}$ are arbitrary, this is equivalent to
 $
 \lambda_i u_{ij}=-\lambda_j u_{ji}
@@ -767,7 +858,7 @@ Note that each $x_i$ is homogeneous of degree $3$ in $s,t$, hence may be viewed 
 We check that the coefficient matrix of $x_0,\dots ,x_3$ in the basis $s^3,s^2t,st^2,t^3$ has determinant $ -a^2b^2c^2d^2e^2(be-cd)\ne 0$.
 Hence, the above expressions for $x_0,\dots ,x_3$ form a basis of $H^0(\CP^1,\mathcal O(3))$, hence they parametrize a smooth twisted cubic $\Gamma\subset \CP^3$.
 
-To double check our computation, we substitute into $Q_1$ and $Q_2$ and get zero, while substitution into $Q_3$ gives
+To double check our computation, we substitute the above parametrization of $\Gamma$ into $Q_1$ and $Q_2$ and get zero, while substitution into $Q_3$ gives
 \[
   s^2t^2(ds-bt)(es-ct)\Delta=0.
 \]
@@ -783,31 +874,45 @@ We first show that the assumption $u_{ij}=-u_{ji}$ used in Lemma \ref{lem:base-l
 
 \begin{lemma} \label{lem:uij=-uji}
 Let $S\subset\mathbb P^3_k$ be a smooth cubic surface over a perfect field $k$, and let $Z\subset S$ be a
-subscheme of length 8 supported at a closed point of degree $4$ whose geometric points span $\CP^3_{\bar k}$.
+subscheme of length 8 supported at a closed point $P$ of degree $4$ whose geometric points span $\CP^3_{\bar k}$.
 If $h^0(\mathbb P^3_k,\mathcal I_Z(2))\geq 3$, then, over $\bar k$, and in coordinates such that $Z$ is supported on the coordinate vertices $p_i=[e_i]$, the tangent directions can be chosen so that $u_{ij}=-u_{ji}$ for all $i,j$ in \eqref{def:uij}.
 \end{lemma}
 
 \begin{proof}
-Work over $\bar k$ and take the four geometric support points as
-coordinate vertices. Using the row convention for the tangent
-representatives, Lemma~\ref{lem:uij-skew-symmetric} shows that
+We work over $\bar k$ and pick coordinates so that the geometric points 
+of the support of $Z$ are the four coordinate vertices $p_i=[e_i]$.  
+Lemma \ref{lem:uij-skew-symmetric} shows that
 \[
-R=\left\{(\lambda_i)\in\bar k^4 \; \mid\; \lambda_i u_{ij}+\lambda_j u_{ji}=0 \text{ for all }i<j\right\}
+R\coloneq \left\{(\lambda_i)\in\bar k^4 \; \mid\; \lambda_i u_{ij}+\lambda_j u_{ji}=0 \text{ for all }i<j\right\}
 \]
 is nonzero.
 
-Since $Z$ is defined over $k$, Galois acts semilinearly on $R$,
-permuting the coordinates up to nonzero scalar factors.
-This permutation action is transitive because the support of $Z$
-is a single closed point.
+Write $f_i(Q)=d_{p_i}Q(v_i)$ for the functionals \eqref{def:dpQ} in Lemma \ref{lem:uij-skew-symmetric}.
+By \eqref{def:R}, $R$ is the space of relations $\sum_i\lambda_i f_i=0$.
+Since $Z$ is defined over $k$, the natural Galois action on $H^0(\CP^3_{\bar k},\mathcal I_{Z_{\operatorname{red}}}(2))^\vee$ 
+%of quadrics through $Z_{\mathrm{red}}$ 
+satisfies, for all $\sigma\in \Gal(\bar k/k)$,
+\[
+\sigma(f_i)=c_{\sigma,i}f_{\sigma(i)}
+\]
+for some $c_{\sigma,i}\in{\bar k}^\times $, where
+$\sigma(p_i)=p_{\sigma(i)}$.
+Applying $\sigma$ to a relation $\lambda\in R$ therefore induces a semilinear
+action on $R$, given explicitly by
+\[
+(\sigma\cdot\lambda)_{\sigma(i)}
+   =c_{\sigma,i}\,\sigma(\lambda_i).
+\]
+In particular, this action permutes the coordinate hyperplanes
+according to the transitive Galois action on the four points.  
 Thus, if $R$ were contained in one coordinate hyperplane
 $\{\lambda_i=0\}$, it would be contained in all four, contradicting
 $R\neq0$.
 
 Since $\bar k$ is infinite, the four proper linear subspaces
-$R\cap\{\lambda_i=0\}$ cannot cover $R$.
-Choose $(\lambda_i)\in R$ with every $\lambda_i\neq0$.
-Replacing $v_i$ by $\lambda_i v_i$ preserves $Z_i$ and gives
+$R\cap\{\lambda_i=0\}$ $(i=0,1,2,3)$ cannot cover $R$.
+We may therefore choose $(\lambda_i)\in R$ with $\lambda_i\neq0$ for all $i$.
+Replacing $v_i$ by $\lambda_i v_i=(\widetilde u_{i0}, \dots, \widetilde u_{i3})$ preserves $Z_i$ and gives $ $
 \[
 \widetilde u_{ij}=\lambda_i u_{ij}
 =-\lambda_j u_{ji}=-\widetilde u_{ji},
@@ -825,7 +930,7 @@ Let $Z\subset S$ be a subscheme of length $8$ with $Z_{\mathrm{red}}=P$.
 Suppose that, after choosing coordinates in which the four geometric
 points of $P$ are the coordinate vertices $p_i=[e_i]$, we can write
 \[
-  Z_{\bar k}=\coprod_{i=0}^3 Z_i,  \qquad Z_i=\{[e_i+\epsilon v_i]:\epsilon^2=0\},  \qquad v_i=\sum_{j=0}^3u_{ij}e_j,
+  Z_{\bar k}=\coprod_{i=0}^3 Z_i,  \qquad Z_i=\{[e_i+\epsilon v_i]\; \mid \; \epsilon^2=0\},  \qquad v_i=\sum_{j=0}^3u_{ij}e_j,
 \]
 where every $v_i$ is nonzero and $U=(u_{ij})$ is skew-symmetric with $u_{ii}=0$ for all $i$.
 
@@ -833,8 +938,8 @@ If $u_{ij}=0$ for some $i\ne j$, then $S(k)\ne\varnothing$.
 \end{proposition}
 
 \begin{proof}
-Consider the graph $\Gamma$ on the set of vertices $\{0,1,2,3\}$ whose edges are the unordered pairs $\{i,j\}$ with $u_{ij}\ne 0$. 
-This graph carries a natural action by the Galois group of $k$. 
+Consider the graph $G$ on the set of vertices $\{0,1,2,3\}$ whose edges are the unordered pairs $\{i,j\}$ with $u_{ij}\ne 0$. 
+This graph carries a natural action by the absolute Galois group of $k$. 
 The Galois action on the four vertices is transitive, so this graph is regular, i.e.~there is a positive integer $n$ such that its valence at each vertex is $n$. 
 Since every $v_i$ is nonzero, while some $u_{ij}$ with $i\neq j$ are zero, we find $n\in \{ 1,2\}$. 
 
@@ -854,7 +959,7 @@ If $M\subset S$, it supplies a $k$-rational point.
 Otherwise the residual intersection point of $M\cap S$ provides such a point. 
 
 Suppose now that $n=2$. 
-Then $\Gamma$ is the four-cycle graph $C_4$.
+Then $G$ is the four-cycle graph $C_4$.
 After relabeling, we may assume that
 \[
   u_{01}=u_{23}=0,
@@ -895,9 +1000,9 @@ Then there exists a subscheme $Z\subset S$, defined over $k$ and supported at $P
 
 \begin{proof}
 Put $L=\kappa (P)$, and let $\mathcal J_{P}\subset \mathcal O_S$ be the ideal sheaf of $P$ in $S$. 
-Since $S$ is smooth and $L/k$ is separable, the restriction of the cotangent bundle $\Omega^1_{S}\coloneq \Omega^1_{S/k}$ to $P$
+Since $S$ is smooth and $L/k$ is separable, the restriction of the cotangent bundle $\Omega^1_{S}\coloneq \Omega^1_{S/k}$ to $P$,
 \[
-\Omega^1_{S}|_P\coloneq \Omega^1_{S/k}\otimes_{\mathcal O_S} L\cong \mathcal J_P/\mathcal J_P^2 
+\Omega^1_{S}|_P\coloneq \Omega^1_{S/k}\otimes_{\mathcal O_S} L\cong \mathcal J_P/\mathcal J_P^2 ,
 \]
 has dimension $2$ over $L$.
 The dual of this space is the tangent space $T_{S}|_P$ at $P$.
@@ -916,9 +1021,9 @@ Thus $\dim_k V=6$.
 Moreover, $\dim_L E=2$ and $\dim_k E=8$. 
 Restricting a quadric which vanishes at $P$ to $S$ and reducing modulo $\mathcal J_P^2$ defines a canonical $k$-linear map
 \[
-  \varphi \colon V\longrightarrow H^0\bigl(P,(\mathcal J_P/\mathcal J_P^2)\otimes_L \mathcal O_S(2)|_P\bigr)=\Omega^1_S(2)|_P ,
+  \varphi \colon V\longrightarrow H^0\bigl(P,(\mathcal J_P/\mathcal J_P^2)\otimes_L \mathcal O_S(2)|_P\bigr)\cong \Omega^1_S(2)|_P ,
 \]
-where we use that $ \Omega^1_S(2)|_P=(\mathcal J_P/\mathcal J_P^2)\otimes_L \mathcal O_S(2)|_P$.
+where we use that $ \Omega^1_S(2)|_P\cong (\mathcal J_P/\mathcal J_P^2)\otimes_L \mathcal O_S(2)|_P$.
 
 Let us first express the desired property in terms of this map.
 Given any $L$-linear quotient $q\colon E\twoheadrightarrow N$ with $\dim_L N=1$, tensoring with $\mathcal O_S(-2)|_P$ yields a one-dimensional quotient of $\Omega^1_S|_P$, hence a length 8 subscheme $Z_q$ supported at $P$ as above.
@@ -977,14 +1082,13 @@ By Proposition \ref{prop:existence-of-Z}, there is a closed subscheme $Z\subset 
 We pass to the algebraic closure $\bar k$ of $k$ and choose coordinates on $\CP^3_{\bar k}$ such that the four geometric points $p_0,\dots ,p_3$ that correspond to $P$ agree with the four coordinate vertices: $p_i=[e_i]$.
 We may then write $Z_{\bar k}=\sqcup_{i=0}^3Z_i$, where $Z_i$ is the length $2$ subscheme supported at $p_i$ that is given by $[e_i+\epsilon v_i]$ with $\epsilon^2=0$ and $v_i=(u_{i0},\dots,u_{i3})$ with $u_{ii}=0$.
 By Lemma \ref{lem:uij=-uji}, we can arrange that $u_{ij}=-u_{ji}$.
-By Proposition \ref{prop:zero-off-diagonal} we may further assume that $u_{ij}$ is nonzero for all $i\neq j$.
+By Proposition \ref{prop:zero-off-diagonal}, we may further assume that $u_{ij}$ is nonzero for all $i\neq j$.
 It then follows from Lemma \ref{lem:base-locus} that the base locus of $|\mathcal I_{Z_{\bar k}}(2)|$ is either finite or a twisted cubic.
-It follows that the base locus of the linear series $|\mathcal I_{Z}(2)|$ on $\CP^3_k$ over the ground field $k$ is either finite or a smooth curve $\Gamma$ whose base change to $\bar k$ is a twisted cubic.
+It follows that the base locus of the linear series $|\mathcal I_{Z}(2)|$ on $\CP^3_k$ over the ground field $k$ is either finite or a smooth curve $\Gamma$ whose base change to $\bar k$ is a twisted cubic, hence $\Gamma\cong \CP^1_k$ is a twisted cubic by Lemma \ref{lem:twisted-cubic}.
 
 
 If the base locus of $|\mathcal I_Z(2)|$ is zero-dimensional, then $S$ has a rational point by Proposition \ref{prop:existence-of-point}.
-Otherwise, the base locus is a smooth geometrically rational curve $\Gamma\subset \CP^3_k$ such that $\Gamma_{\bar k}$ is a twisted cubic.
-By Lemma \ref{lem:twisted-cubic}, $\Gamma\cong \CP^1_k$ is a twisted cubic, hence has a rational point.
+Otherwise, the base locus is a twisted cubic $\Gamma$. 
 If $\Gamma\subset S$, then $S$ has a rational point because $\Gamma\cong \CP_k^1$.
 Otherwise, $\Gamma\cap S$ is a zero-dimensional subscheme of length $9$ which contains the length $8$ subscheme $Z$; the residual intersection point then yields a rational point.
 This concludes the proof of the theorem.
@@ -1013,8 +1117,7 @@ Theorem~\ref{thm:five}.
 In the remainder of this section, we reduce the case 
 of arbitrary base fields 
 (including imperfect ones) to the case of characteristic zero.
-The required lifting statement
-is the smooth-surface instance of Ma's method
+The required lifting statement follows 
 \cite[Section~2.2, Lemmas~2.4--2.5]{ma}; we include its proof.
 
 \begin{lemma}\label{lem:lift}
@@ -1035,16 +1138,13 @@ is closed and proper over $R$. If nonempty, its image would contain
 the closed point of $\Spec R$, a contradiction. Thus
 $\mathscr S/R$ is smooth.
 
-The closed immersion $P\hookrightarrow S$ is a local complete
-intersection: the maximal ideal of the regular local ring
-$\OO_{S,P}$ is generated by a regular sequence. By the infinitesimal
-lifting theorem for finite local complete intersections, the relative
-Hilbert functor is formally smooth at $[P]$
-\cite[Tag~06D9]{Stacks}. Since the relative Hilbert scheme
-$\Hilb^d(\mathscr S/R)$ is locally of finite presentation, it is
-smooth over $R$ near $[P]$; see also \cite[Theorem~2.9]{Fogarty} and \cite[Lemma~2.5]{ma}.
-Since $R$ is complete, hence henselian, its $k$-point $[P]$ lifts to
-an $R$-point. The universal subscheme gives $\mathscr Z$.
+Since $R$ is a discrete valuation ring and $\mathcal S/R$ is smooth
+and projective of relative dimension two, Fogarty's theorem
+\cite[Theorem~2.9]{Fogarty} implies that
+$\operatorname{Hilb}^d(\mathcal S/R)$ is smooth over $R$, see also \cite[Tag~06D9]{Stacks} and \cite[Lemma~2.5]{ma}.
+As $R$ is complete, hence henselian, the $k$-point $[P]$ lifts
+to an $R$-point. The corresponding universal family gives the
+required finite flat subscheme $\mathcal Z\subset\mathcal S$. 
 \end{proof}
 
 
@@ -1085,12 +1185,12 @@ Theorem~\ref{thm:main} is due to Coray
 \cite[Proposition~8.2]{coray}; see also
 \cite[Corollary~1]{CoraySingular} for a second proof. We give a
 reduction to the smooth case over a Laurent-series field that applies
-over arbitrary fields, without integrality or reducedness assumptions.
+over arbitrary fields.  
 
 Let $X=\{F=0\}\subset\PP^3_k$ for a nonzero homogeneous cubic $F$,
 with no assumption on $k$ or on the singularities of $X$. If $F$ is
 reducible over $k$, it has a linear factor $\ell$, so $X$ contains
-the $k$-plane $V(\ell)$ and $X(k)\ne\varnothing$. Write
+the $k$-plane $\{\ell=0\}$ and $X(k)\ne\varnothing$. Write
 $X_{\mathrm{sm}}$ for the smooth locus over $k$. We first handle the
 possibility that a zero-cycle of degree one is supported entirely in
 the singular locus.
@@ -1102,7 +1202,9 @@ $X_{\mathrm{sm}}(L)\ne\varnothing$.
 \end{lemma}
 \begin{proof}
 Choose $p\in X(L)$. Its multiplicity on the hypersurface $X_L$ is
-one, two, or three. Multiplicity one means that $p$ is smooth.
+one, two, or three. Multiplicity one means that $p$ is smooth. 
+If $p$ has multiplicity two, we will construct a smooth $L$-rational point;
+if it has degree $3$ we will show that $X$ has a $k$-rational point.
 
 Suppose the multiplicity is two. In coordinates over $L$ with
 $p=[1:0:0:0]$, the equation is
@@ -1111,24 +1213,19 @@ $p=[1:0:0:0]$, the equation is
  \qquad Q\ne0,
 \]
 where $Q$ and $C$ have degrees two and three, respectively. There exists
-$a\in L^3$ with $Q(a)\ne0$, even over a finite field: the values
+$a\in L^3$ with $Q(a)\ne0$, even over a finite field, because the values
 $Q(e_i)$ and $Q(e_i+e_j)-Q(e_i)-Q(e_j)$ recover all coefficients of
-$Q$. 
-The condition $Q(a)\ne 0$ ensures that the line joining $p$ to
-$[0:a_1:a_2:a_3]$ is not contained in $X_L$, and hence not in any
-plane component of $X_L$ through $p$.
-The point
+$Q$.  
+Then the point
 \[
  q=\left[-\frac{C(a)}{Q(a)}:a_1:a_2:a_3\right]
 \]
 lies on $X_L$ and satisfies $\partial F/\partial x_0(q)=Q(a)\ne0$.
-It is therefore a smooth point of $X_L$.
-In fact, this is the usual construction arising from projection
-from a double point; see \cite[Section~5]{kollar}.
+It is therefore a smooth point of $X_L$,  and so $X_{\rm sm}(L)\neq \emptyset$. 
 
-Suppose now that $p$ has multiplicity three. A vertex of a cubic
-cone has multiplicity three and is therefore covered by this case.
-In coordinates with $p=[1:0:0:0]$, the equation is independent of $x_0$. In the original
+Suppose now that $p$ has multiplicity three. 
+In coordinates with $p=[1:0:0:0]$, the equation $F$ 
+that cuts out $X$ is then independent of $x_0$. In the original
 coordinates, a nonzero vector $v\in L^4$ representing $p$ consequently
 satisfies
 \begin{equation}\label{eq:translation}
@@ -1137,11 +1234,14 @@ satisfies
 \end{equation}
 If $\operatorname{char}k\ne3$, consider the $k$-linear map
 \[
- D_F:k^4\longrightarrow k[x_0,x_1,x_2,x_3]_2,
+ D_F \colon k^4\longrightarrow k[x_0,x_1,x_2,x_3]_2,
  \qquad w\longmapsto D_wF=\sum_{i=0}^3w_i\frac{\partial F}{\partial x_i}.
 \]
-Its kernel becomes nonzero over $L$, hence contains a nonzero vector
-$w\in k^4$. Euler's identity gives
+By differentiating \eqref{eq:translation} with respect to $s$,
+we obtain $D_vF=0$. Thus $D_F\otimes_k L$ has nonzero kernel,
+and hence so does $D_F$.
+We may thus pick a nonzero vector $w\in k^4$ in the kernel of 
+the linear map $D_F$. Euler's identity gives
 $0=(D_wF)(w)=3F(w)$, so $[w]\in X(k)$.
 
 If $\operatorname{char}k=3$, the hypothesis on $[L:k]$ implies that
@@ -1151,14 +1251,13 @@ Every conjugate $\sigma(v)$ satisfies~\eqref{eq:translation}, and
 directions satisfying this identity are closed under addition, since
 translations compose. Thus
 \[
- w=\Tr_{L/k}(v)=\sum_{\sigma:L\hookrightarrow\bk}\sigma(v)\in k^4
+ w\coloneq \Tr_{L/k}(v)=\sum_{\sigma:L\hookrightarrow\bk}\sigma(v)\in k^4
 \]
 also satisfies~\eqref{eq:translation}. 
 By our normalization, the $i_0$-th coordinate of $w$ is
 $[L:k]\ne0$ in $k$, so $w\ne0$.
 Setting $x=0$ and $s=1$ in \eqref{eq:translation} then gives
-$F(w)=0$. Finally, smoothness commutes with field extension, so the
-smooth points constructed on $X_L$ belong to $X_{\mathrm{sm}}(L)$.
+$F(w)=0$. This concludes the argument. 
 \end{proof}
 
 \begin{proposition}
@@ -1168,53 +1267,66 @@ degree one has a $k((t))$-rational point. Then every cubic surface over
 $k$ with a zero-cycle of degree one has a $k$-rational point.
 \end{proposition}
 \begin{proof}
-Choose a closed point of degree $d$ prime to three from the given
-zero-cycle, and let $L/k$ be its residue field extension. By
-Lemma~\ref{lem:singular-point}, we may assume that there is a point
-$q\in X_{\mathrm{sm}}(L)$.
+Let $Y=\{F=0\}$ be a cubic surface over $k$ with a zero-cycle of degree one.
+Choose a closed point of degree $d$ prime to three from the support of
+the given zero-cycle, and let $L/k$ be its residue field extension.
+By Lemma~\ref{lem:singular-point}, we may assume that there is a point
+$q\in Y_{\mathrm{sm}}(L)$.
 
 Choose a homogeneous cubic $G$ defining a smooth surface over $k$.
 For example, one may take
 \[
- G=\begin{cases}
- x_0^3+x_1^3+x_2^3+x_3^3,&\operatorname{char}k\ne3,\\
- x_0^3+x_0x_1^2+x_1x_2^2+x_2x_3^2,&\operatorname{char}k=3.
+ G\coloneq
+ \begin{cases}
+ x_0^3+x_1^3+x_2^3+x_3^3,
+     &\operatorname{char}k\ne3,\\
+ x_0^3+x_0x_1^2+x_1x_2^2+x_2x_3^2,
+     &\operatorname{char}k=3.
  \end{cases}
 \]
 
 Put $R=k[[t]]$, $K=k((t))$, and
 \[
- \mathscr X=V\bigl((1-t)F+tG\bigr)\subset\PP^3_R.
+ \mathscr X\coloneq
+ \{(1-t)F+tG=0\}\subset\PP^3_R.
 \]
-This is a flat projective family with special fiber $X$ and smooth
-generic fiber $Y=\mathscr X_K$. Indeed, the image in $\Aff^1_k$ of
-the closed locus defined by the pencil and its partial derivatives
-is closed by properness and excludes $t=1$, so it excludes the
-generic point.
+This is a flat projective family with special fiber $Y$ and smooth
+generic fiber $X\coloneq\mathscr X_K$. Indeed, the pencil over
+$\Aff^1_k$ contains the smooth member $\{G=0\}$ at $t=1$, so its
+generic fiber is smooth.
 
-The point $q$ lifts to a point $\tilde q\in \mathscr X(L[[t]])$ by Hensel's lemma: on an
-affine chart containing $q$, choose a coordinate for which the
-partial derivative of the defining equation is nonzero at $q$.
-Fixing the other coordinates at their values at $q$, Hensel's lemma
-lifts the remaining coordinate to a power series in $t$ satisfying
-the equation of $\mathscr X$.
-(Alternatively, we may apply the smooth-point lifting statement of
-\cite[Lemma~2.4]{ma} to construct $\tilde q$.)
-The generic point of $\tilde q$ belongs to $Y(L((t)))$.
-A $k$-basis of $L$ is also a $K$-basis of $M=L((t))$, so
-$[M:K]=d$, without any separability assumption. If $y$ denotes the
-image in $Y$, the pushforward cycle is
+The point $q$ lifts to a point
+$\tilde q\in\mathscr X(L[[t]])$ by Hensel's lemma: on an affine chart
+containing $q$, choose a coordinate for which the partial derivative
+of the defining equation is nonzero at $q$. Fixing the other
+coordinates at their values at $q$, Hensel's lemma lifts the remaining
+coordinate to a power series in $t$ satisfying the equation of
+$\mathscr X$; see also \cite[Lemma~2.4]{ma}.
+
+Put $M=L((t))$. Restricting $\tilde q$ to the generic point of
+$\operatorname{Spec}L[[t]]$ gives a point $\tilde q_\eta\in X(M)$.
+A $k$-basis of $L$ is also a $K$-basis of $M$, so $[M:K]=d$.
+Let
 \[
- \zeta=[M:\kappa(y)]\,[y],\qquad \deg_K\zeta=d.
+ \pi\colon X_M=X\times_K M\longrightarrow X
 \]
-Combining $\zeta$ with the degree-three intersection class with a line 
-gives a zero-cycle of degree one on $Y$. 
-Since $Y$ is smooth and has a zero-cycle of degree one, the hypothesis
-of the proposition implies that $Y(K)\ne\varnothing$.
-Properness of $\mathscr X/R$
-extends any point in $Y(K)$ to an $R$-point of $\mathscr X$, whose reduction belongs to $X(k)$.
-\end{proof}
+be the projection, and regard $\tilde q_\eta$ as an $M$-rational
+point of $X_M$. If $P$ denotes its image in $X$, then
+\[
+ \zeta\coloneq\pi_*[\tilde q_\eta]
+   =[M:\kappa(P)]\cdot[P]\in\CH_0(X),
+ \qquad \deg_K\zeta=d.
+\]
+Since $\gcd(d,3)=1$, an integral linear combination of $\zeta$ and
+the degree-three intersection class with a line gives a zero-cycle
+of degree one on $X$.
 
+Since $X$ is smooth and has a zero-cycle of degree one, the hypothesis
+of the proposition implies that $X(K)\ne\varnothing$.
+By the valuative criterion of properness, any point of $X(K)$ extends
+to an $R$-point of $\mathscr X$, whose reduction belongs to $Y(k)$.
+\end{proof}
+  
 
 \begin{proof}[Proof of Theorem~\ref{thm:main}]
 Apply Proposition~\ref{prop:smoothing}, using Theorem~\ref{thm:smooth}
@@ -1224,8 +1336,40 @@ over $k((t))$.
 
 \section*{AI disclosure} 
 The starting points for this paper were two different 
-GPT-assisted proofs of the Cassels--Swinnerton-Dyer conjecture for cubic surfaces, obtained independently by the authors. The paper is the synthesis of these arguments, with %LLMs 
-GPT used to help with the copyediting.
+GPT-assisted proofs of the Cassels--Swinnerton-Dyer conjecture for cubic surfaces, obtained independently by the authors. The paper is the synthesis of these arguments, with GPT used to help with the copyediting.
+The authors’ interactions with GPT and their respective 
+contributions were as follows. 
+
+VA asked GPT-5.5 to find a 
+counterexample to the conjecture,  
+suggesting many ideas for it to try,
+including the universal family
+of four-pointed cubic surfaces as a candidate. 
+GPT-5.5 made no progress, but when VA put the same question to 
+GPT-6 Astra, it produced a rational section of this family. 
+While the initial argument seemed convoluted, further exchanges 
+with GPT led to the key idea presented 
+in Section \ref{sec:degree-five}.
+At VA’s request, GPT then developed extensions to arbitrary 
+fields and arbitrary cubic forms, leading to the arguments 
+presented in Sections \ref{sec:specialization} and \ref{sec:arbitrary}.  
+
+Having set aside the search for counterexamples some time 
+earlier, SS explored various approaches to constructing a 
+rational point from a point of degree $4$ in conversations with 
+GPT. After exploring one such approach, involving quadrics through effective 
+zero-cycles of degree $8$ (cf.~Section \ref{subsec:3-quadrics-criterion}), 
+GPT pointed out that the dimension 
+of the space of quadrics through a nonreduced subscheme of 
+length $8$ supported at four general geometric points can jump for 
+special choices of the tangent directions, 
+cf.~Section \ref{sec:quadrics}. It suggested 
+that this observation offered a promising approach, 
+while noting that the details still needed to be worked 
+out and checked. SS developed and checked these details 
+with GPT’s assistance, leading to the results presented 
+in Sections \ref{sec:degree-four} and \ref{sec:specialization}.  
+
 
 \section*{Acknowledgments} 
 SS first learned about this problem from Johan de Jong in 2020 in connection with the work of his student Qixiao Ma, who subsequently held a postdoctoral position in SS's group from 2021 to 2023.  
@@ -1233,12 +1377,20 @@ VA learned about the problem from a talk given by Claire Voisin at a conference 
 
 We thank Jean-Louis Colliot-Th\'el\`ene, Philip Engel, Qixiao Ma, Matthias Paulsen, Alexei Skorobogatov and Claire Voisin for discussions and comments. 
 
-VA was partially supported by NSF grant DMS-2501855. VA's free subscription to GPT was provided by the OpenAI for Science program. 
+VA was partially supported by NSF grant DMS-2501855. VA's free subscription to GPT was provided by the OpenAI for Academic Researchers program. 
 
 This project has also received funding from the European Research Council (ERC) under the European Union’s Horizon 2020 research and innovation programme under grant agreement No 948066 (ERC-StG RationAlgic).
 The research was partly conducted in the framework of the DFG-funded research training group RTG 2965: From Geometry to Numbers, Project number 512730679. 
 
 \begin{thebibliography}{CTC79}
+
+
+\bibitem[AB18]{AB}
+A.\ Auel and M.\ Bernardara,
+\emph{Semiorthogonal decompositions and birational geometry
+of del Pezzo surfaces over arbitrary fields},
+Proc. Lond. Math. Soc. (3) \textbf{117} (2018), no.~1, 1--64.
+
 \bibitem[Bal24]{balestrieri}
 F.\ Balestrieri,
 {\em Degrees of closed points on hypersurfaces},
@@ -1249,6 +1401,11 @@ A.\ Beauville,
 \emph{Determinantal hypersurfaces},
 Michigan Mathematical Journal \textbf{48} (2000), 39--64.
 %\href{https://doi.org/10.1307/mmj/1030132707}{doi:10.1307/mmj/1030132707}.
+
+\bibitem[BN18]{BN}
+A.\ Bremner and T.\ N.\ Xuan,
+\emph{An interesting quartic surface, everywhere locally solvable, with cubic point but no global point},
+Publ. Math. Debrecen \textbf{93} (2018), no.~1--2, 253--260.
 
 \bibitem[BE77]{BE}
 D.\ A.\ Buchsbaum and D.\ Eisenbud,
@@ -1261,11 +1418,19 @@ D.\ F.\ Coray,
 {\em Algebraic points on cubic hypersurfaces},
 Acta Arith.\ \textbf{30} (1976), no.\ 3, 267--296.
 
+
+
 \bibitem[Cor76b]{CoraySingular}
 D.\ F.\ Coray,
 \emph{Arithmetic on singular cubic surfaces},
 Compositio Mathematica \textbf{33} (1976), no.~1, 55--67.
 %\href{https://www.numdam.org/item/CM_1976__33_1_55_0/}{NUMDAM}.
+
+\bibitem[Cor77]{coray2} 
+D.~F.~Coray,
+\emph{Points alg\'ebriques sur les surfaces de del Pezzo},
+C. R. Acad. Sci. Paris S\'er. A-B \textbf{284} (1977),
+no.~24, 1531--1534.
 
 
 \bibitem[CT20]{CT-zero-cycles}
@@ -1274,7 +1439,7 @@ J.-L.\ Colliot-Th\'el\`ene,
 (Variations sur un th\`eme de Daniel Coray)},
 Enseign.\ Math.\ (2) \textbf{66} (2020), no.\ 3--4, 447--487.
 
-\bibitem[CT79]{CT-coray}
+\bibitem[CTC79]{CT-coray}
 J.-L.\ Colliot-Th\'el\`ene and D.\ Coray,
 {\em L'\'equivalence rationnelle sur les points ferm\'es
 des surfaces rationnelles fibr\'ees en coniques},
@@ -1285,6 +1450,9 @@ J.-L.\ Colliot-Th\'el\`ene and P.\ Swinnerton-Dyer,
 {\em Zero-cycles and rational points on some surfaces over a global
 function field},
 Acta Arith.\ \textbf{155} (2012), 63--70.
+
+\bibitem[CTW26]{CTW}
+J.-L.\ Colliot-Th\'el\`ene and O.\ Wittenberg, {\em Principe de Hasse pour les hypersurfaces cubiques lisses dans le cas fonctionnel}, Preprint 2026.
 
 %% \bibitem[EGAIV]{EGAIV4}
 %% A.\ Grothendieck (avec la collaboration de J.\ Dieudonn\'e),
@@ -1298,6 +1466,13 @@ D.\ Eisenbud, {\em The Geometry of Syzygies: A Second Course in Algebraic Geomet
 Graduate Texts in Mathematics \textbf{229},
 Springer, New York, 2005.
 
+
+\bibitem[EKM08]{EKM}
+R.\ Elman, N.\ Karpenko, and A.\ Merkurjev,
+\emph{The algebraic and geometric theory of quadratic forms},
+American Mathematical Society Colloquium Publications, vol.~56,
+American Mathematical Society, Providence, RI, 2008.
+
 \bibitem[Fog68]{Fogarty}
 J.\ Fogarty,
 \emph{Algebraic families on an algebraic surface},
@@ -1305,7 +1480,7 @@ American Journal of Mathematics \textbf{90} (1968), no.~2, 511--521.
 %\href{https://doi.org/10.2307/2373541}{doi:10.2307/2373541}.
 
 \bibitem[Han14]{Han}
-Fr\'ed\'eric Han,
+F.\ Han,
 \emph{Pfaffian bundles on cubic surfaces and configurations of planes},
 Mathematische Zeitschrift \textbf{278} (2014), nos.~1--2, 363--383.
 %\href{https://doi.org/10.1007/s00209-014-1319-1}{doi:10.1007/s00209-014-1319-1}.
@@ -1315,6 +1490,12 @@ Mathematische Zeitschrift \textbf{278} (2014), nos.~1--2, 363--383.
 J.\ Koll\'ar,
 {\em Unirationality of cubic hypersurfaces},
 J.\ Inst.\ Math.\ Jussieu \textbf{1} (2002), no.\ 3, 467--476.
+
+\bibitem[KM17]{KM17}
+J. Koll\'ar and M. Mella,
+Quadratic families of elliptic curves and unirationality
+of degree 1 conic bundles,
+Amer. J. Math. \textbf{139} (2017), no.~4, 915--936.
 
 \bibitem[Ma21]{ma}
 Q.\ Ma,
@@ -1364,7 +1545,7 @@ Geometriae Dedicata \textbf{168} (2014), 69--86.
 \bibitem[Voi26]{voisin-coray}
 C.\ Voisin,
 {\em Rank 2 vector bundles and degrees of points of del Pezzo surfaces},
-J.\ Reine Angew.\ Math.\ \textbf{836} (2026), 303--327.
+J.\ Reine Angew.\ Math.\ \textbf{836} (2026), 303--327. (bicentennial issue 2026)
 
 
 \end{thebibliography}

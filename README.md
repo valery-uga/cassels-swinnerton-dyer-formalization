@@ -1,8 +1,10 @@
 # Cassels–Swinnerton-Dyer for cubic surfaces in Lean
 
-This repository contains a Lean formalization of the selected results and methods in **Two proofs of the Cassels–Swinnerton-Dyer conjecture for cubic surfaces**. The [manuscript](paper/2-proofs.tex) and [coverage table](paper/COVERAGE.md) identify the exact scope: 25 selected conclusions across Sections 1–6, including the quadratic-net proof in Section 4, the required internal characteristic-zero Coray reduction, and the global Hilbert-family lifting route in Section 5.
+This repository contains a Lean formalization of the selected results and methods in **Two proofs of the Cassels–Swinnerton-Dyer conjecture for cubic surfaces**. The [arXiv v3 manuscript](paper/2-proofs.tex) ([PDF](paper/2-proofs.pdf)) and [coverage table](paper/COVERAGE.md) identify the exact scope: 25 selected conclusions across Sections 1–6, including the quadratic-net proof in Section 4, the required internal characteristic-zero Coray reduction, and the global Hilbert-family lifting route in Section 5.
 
-**Corollary 1.3 on unirationality is excluded. Lemma 2.3 is included over perfect fields.** The coverage table records ordinary hypotheses, stronger Lean statements, and differences in proof routes. This is not a formalization of every prose assertion or of the entire 1976 Coray paper.
+**Corollary 1.3 on unirationality and the new Remark 1.5 are outside the selected scope. Lemma 2.3 is included over perfect fields.** The coverage table records ordinary hypotheses, stronger Lean statements, and differences in proof routes. This is not a formalization of every prose assertion or of the entire 1976 Coray paper.
+
+The [v3 revision notes](paper/VERSION.md) identify the reviewed changes. In particular, the lifting conclusion of Lemma 5.2 remains covered, while the new citation of Fogarty for global smoothness of the Hilbert scheme goes beyond the selected Lean proof, which establishes smoothness at the chosen classifier.
 
 The main result concerns a nonzero homogeneous cubic in four variables over an arbitrary field. A nontrivial zero over a finite extension of degree coprime to three gives a nontrivial zero over the base field. The selected final endpoints require no external Coray or Voisin theorem as a premise; they include singular and nonreduced cubic hypersurfaces and impose no perfectness or separability assumption on the main theorem.
 

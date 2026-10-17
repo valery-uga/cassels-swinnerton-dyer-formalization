@@ -298,5 +298,167 @@ class SourceIntegrityTests(TemporaryProject):
             self.verify()
 
 
+class TeXInventoryTests(unittest.TestCase):
+    def test_comments_preserve_lines_and_escaped_percent_parity(self):
+        source = ('kept ' + r'\% literal % removed' + '\n'
+                  + r'linebreak \\% removed' + '\n'
+                  + r'odd \\\% literal' + '\n'
+                  + 'tail%removed')
+        expected = ('kept ' + r'\% literal ' + '\n'
+                    + r'linebreak \\' + '\n'
+                    + r'odd \\\% literal' + '\n'
+                    + 'tail')
+        self.assertEqual(check.active_tex(source), expected)
+        self.assertEqual(check.active_tex(source).count('\n'), source.count('\n'))
+
+    def test_commented_old_remark_is_not_an_active_statement(self):
+        source = ('\\section{First}\n'
+                  '% \\begin{remark}\\label{rem:voisin}\n'
+                  '% old alternative proof\n'
+                  '% \\end{remark}\n'
+                  '\\begin{theorem}\n'
+                  '\\label{thm:live} Text. % \\label{thm:fake}\n'
+                  '\\end{theorem}\n')
+        self.assertEqual(check.manuscript_inventory(source), [
+            {'number': 'Theorem 1.1', 'label': 'thm:live', 'tex_line': 6}])
+
+    def test_shared_counter_section_reset_and_actual_label_line(self):
+        lines = [
+            '\\section{First}',
+            '\\begin{theorem}',
+            '\\label{thm:a} A. \\end{theorem}',
+            '\\begin{remark}\\label{rem:b} B. \\end{remark}',
+            '\\section*{Unnumbered}',
+            '\\begin{lemma}\\label{lem:c} C. \\end{lemma}',
+            '\\section {Second}',
+        ]
+        expected = [
+            {'number': 'Theorem 1.1', 'label': 'thm:a', 'tex_line': 3},
+            {'number': 'Remark 1.2', 'label': 'rem:b', 'tex_line': 4},
+            {'number': 'Lemma 1.3', 'label': 'lem:c', 'tex_line': 6},
+        ]
+        for index, env in enumerate(['definition', 'example', 'question',
+                                     'corollary', 'proposition', 'conjecture'], 1):
+            lines.append('\\begin{' + env + '}\\label{item:' + str(index)
+                         + '} Statement. \\end{' + env + '}')
+            expected.append({'number': env.capitalize() + ' 2.' + str(index),
+                             'label': 'item:' + str(index), 'tex_line': len(lines)})
+        self.assertEqual(check.manuscript_inventory('\n'.join(lines)), expected)
+
+    def test_malformed_or_duplicate_active_statements_rejected(self):
+        cases = [
+            ('\\begin{lemma} Unlabelled. \\end{lemma}', 'Unlabelled'),
+            ('\\begin{lemma}\\label{lem:a}', 'Unclosed'),
+            ('\\begin{lemma}\\label{same} A. \\end{lemma}\n'
+             '\\begin{remark}\\label{same} B. \\end{remark}', 'Duplicate active'),
+        ]
+        for text, error in cases:
+            with self.subTest(error=error), self.assertRaisesRegex(ValueError, error):
+                check.manuscript_inventory(text)
+
+
+class V3SourceIntegrityTests(TemporaryProject):
+    def setUp(self):
+        super().setUp()
+        self.here = self.project / 'verification'
+        self.here.mkdir()
+        source = self.project / 'endpoint.lean'
+        source.write_text('-- pinned endpoint\n')
+        pdf = self.project / 'v3.pdf'
+        pdf.write_bytes(b'%PDF-1.7\nfixture bytes for integrity checks\n')
+        lines = ['\\section{Introduction}']
+        inventory = []
+
+        def statement(env, label, number):
+            lines.extend(['\\begin{' + env + '}', '\\label{' + label + '} Statement.',
+                          '\\end{' + env + '}'])
+            inventory.append({'number': env.capitalize() + ' ' + number,
+                              'label': label, 'tex_line': len(lines) - 1})
+
+        statement('theorem', 'claim:0', '1.1')
+        statement('corollary', 'cor:unirational', '1.2')
+        statement('remark', 'rem:delPezzo', '1.3')
+        lines.extend(['% \\begin{remark}\\label{rem:voisin}',
+                      '% commented old remark \\end{remark}',
+                      '\\section{Results}'])
+        for index in range(1, 25):
+            env = ['theorem', 'lemma', 'proposition'][(index - 1) % 3]
+            statement(env, 'claim:' + str(index), '2.' + str(index))
+        tex = self.project / 'v3.tex'
+        tex.write_text('\n'.join(lines) + '\n')
+        excluded_labels = {'cor:unirational', 'rem:delPezzo'}
+        included = [dict(row, endpoints=[{'source': 'endpoint.lean'}])
+                    for row in inventory if row['label'] not in excluded_labels]
+        self.manifest = dict(
+            manuscript='v3.tex', manuscript_sha256=check.digest(tex),
+            manuscript_pdf='v3.pdf', manuscript_pdf_sha256=check.digest(pdf),
+            manuscript_version='arxiv-v3', statement_inventory=inventory,
+            included_conclusions=included,
+            excluded=[dict(row, reason='Explicit scope exclusion')
+                      for row in inventory if row['label'] in excluded_labels])
+        self.pins = {'endpoint.lean': check.digest(source)}
+        self.save()
+
+    def save(self):
+        (self.here / 'coverage.json').write_text(json.dumps(self.manifest))
+        (self.here / 'source-pins.json').write_text(json.dumps(self.pins))
+
+    def verify(self):
+        with mock.patch.object(check, 'ROOT', self.project), \
+                mock.patch.object(check, 'HERE', self.here), \
+                contextlib.redirect_stdout(io.StringIO()), \
+                mock.patch.object(check.subprocess, 'Popen') as child:
+            try:
+                return check.verify()
+            finally:
+                child.assert_not_called()
+
+    def test_v3_accounts_for_included_and_explicitly_excluded_statements(self):
+        self.assertEqual(self.verify(), self.manifest)
+        self.assertEqual(len(self.manifest['included_conclusions']), 25)
+        self.assertEqual(len(self.manifest['excluded']), 2)
+        self.assertNotIn('rem:voisin', [row['label'] for row in self.manifest['statement_inventory']])
+
+    def test_unaccounted_or_duplicate_exclusion_rejected(self):
+        original = self.manifest['excluded'][:]
+        for replacement in (original[:1], original + [original[0]]):
+            self.manifest['excluded'] = replacement
+            self.save()
+            with self.subTest(count=len(replacement)), self.assertRaisesRegex(
+                    ValueError, 'Every active numbered statement'):
+                self.verify()
+
+    def test_commented_label_cannot_replace_an_active_exclusion(self):
+        self.manifest['excluded'][0]['label'] = 'rem:voisin'
+        self.save()
+        with self.assertRaisesRegex(ValueError, 'Every active numbered statement'):
+            self.verify()
+
+    def test_pdf_hash_mismatch_rejected(self):
+        (self.project / 'v3.pdf').write_bytes(b'%PDF-1.7\nchanged PDF\n')
+        with self.assertRaisesRegex(ValueError, 'changed pinned source: v3.pdf'):
+            self.verify()
+
+    def test_stale_included_or_excluded_line_and_number_rejected(self):
+        for category in ['included_conclusions', 'excluded']:
+            for key, bad in [('number', 'Theorem 99.99'), ('tex_line', 9999)]:
+                row = self.manifest[category][0]
+                original = row[key]
+                row[key] = bad
+                self.save()
+                with self.subTest(category=category, key=key), self.assertRaisesRegex(
+                        ValueError, 'Stale statement reference'):
+                    self.verify()
+                row[key] = original
+
+    def test_changed_line_inventory_rejected_even_with_fresh_tex_hash(self):
+        tex = self.project / 'v3.tex'
+        tex.write_text('% inserted line\n' + tex.read_text())
+        self.manifest['manuscript_sha256'] = check.digest(tex)
+        self.save()
+        with self.assertRaisesRegex(ValueError, 'numbering or line inventory changed'):
+            self.verify()
+
+
 if __name__ == '__main__':
     unittest.main()

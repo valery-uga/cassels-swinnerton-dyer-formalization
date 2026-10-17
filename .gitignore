@@ -5,3 +5,5 @@
 *.log
 verification-results/
 __pycache__/
+# Publish the canonical manuscript PDF even when a global rule ignores PDFs.
+!paper/2-proofs.pdf

@@ -21,7 +21,7 @@ open AllCharacteristics.HomogeneousProjective
 universe u
 attribute [local instance] MvPolynomial.gradedAlgebra
 
-/-- 4.1: `thm:4->1` (2-proofs.tex:574). -/
+/-- 4.1: `thm:4->1` (arXiv v3, 2-proofs.tex:666). -/
 theorem claim_4_1 :
     ∀ {k : Type u} [Field k] [PerfectField k]
     (F : MvPolynomial (Fin 4) k) (hF : F.IsHomogeneous 3) (hF₀ : F ≠ 0)
@@ -43,7 +43,7 @@ attribute [local instance] MvPolynomial.gradedAlgebra
 attribute [local instance] MvPolynomial.algebraMvPolynomial
 universe u
 
-/-- 4.2: `lem:net-of-quadrics` (2-proofs.tex:594). -/
+/-- 4.2: `lem:net-of-quadrics` (arXiv v3, 2-proofs.tex:685). -/
 theorem claim_4_2 :
     ∀ {k : Type u} [Field k]
     (F Q₁ Q₂ Q₃ : MvPolynomial (Fin 4) k)
@@ -74,7 +74,7 @@ open AllCharacteristics.HomogeneousProjective ProjectiveNegativeTwist
 universe u
 attribute [local instance] MvPolynomial.gradedAlgebra
 
-/-- 4.3: `rem:h^0(I_Z)=3` (2-proofs.tex:619). -/
+/-- 4.3: `rem:h^0(I_Z)=3` (arXiv v3, 2-proofs.tex:710). -/
 theorem claim_4_3 :
     ∀ {K : Type u} [Field K]
     (f g h : MvPolynomial (Fin 4) K)
@@ -100,7 +100,7 @@ open AllCharacteristics.HomogeneousProjective
 universe u
 attribute [local instance] MvPolynomial.gradedAlgebra
 
-/-- 4.4: `prop:existence-of-point` (2-proofs.tex:623). -/
+/-- 4.4: `prop:existence-of-point` (arXiv v3, 2-proofs.tex:714). -/
 theorem claim_4_4 :
     ∀ {K : Type u} [Field K]
     (F : MvPolynomial (Fin 4) K) (hF : F.IsHomogeneous 3)
@@ -123,7 +123,7 @@ open AllCharacteristics.HomogeneousProjective ProjectiveNegativeTwist
 universe u
 attribute [local instance] MvPolynomial.gradedAlgebra
 
-/-- 4.5: `lem:uij-skew-symmetric` (2-proofs.tex:654). -/
+/-- 4.5: `lem:uij-skew-symmetric` (arXiv v3, 2-proofs.tex:745). -/
 theorem claim_4_5 :
     ∀ {K : Type u} [Field K] [IsAlgClosed K] {Z : Scheme.{u}}
     (i : Z ⟶ scheme (⊥ : HomogeneousIdeal (homogeneousSubmodule (Fin 4) K)))
@@ -156,7 +156,7 @@ open AllCharacteristics.HomogeneousProjective ProjectiveNegativeTwist
 universe u
 attribute [local instance] MvPolynomial.gradedAlgebra
 
-/-- 4.6: `lem:base-locus` (2-proofs.tex:707). -/
+/-- 4.6: `lem:base-locus` (arXiv v3, 2-proofs.tex:798). -/
 theorem claim_4_6 :
     ∀ {K : Type u} [Field K] [IsAlgClosed K] {Z : Scheme.{u}}
     (i : Z ⟶ scheme (⊥ : HomogeneousIdeal (homogeneousSubmodule (Fin 4) K)))
@@ -196,7 +196,7 @@ open scoped TensorProduct
 universe u
 attribute [local instance] MvPolynomial.gradedAlgebra
 
-/-- 4.7: `lem:uij=-uji` (2-proofs.tex:784). -/
+/-- 4.7: `lem:uij=-uji` (arXiv v3, 2-proofs.tex:875). -/
 theorem claim_4_7 :
     ∀ {k : Type u} [Field k] [PerfectField k] (I : HomogeneousIdeal (homogeneousSubmodule (Fin 4) k))
     {Z : Scheme.{u}} (i : Z ⟶ scheme I) [IsClosedImmersion i]
@@ -252,7 +252,7 @@ universe u
 attribute [local instance] MvPolynomial.gradedAlgebra
 set_option backward.isDefEq.respectTransparency false
 
-/-- 4.8: `prop:zero-off-diagonal` (2-proofs.tex:822). -/
+/-- 4.8: `prop:zero-off-diagonal` (arXiv v3, 2-proofs.tex:927). -/
 theorem claim_4_8 :
     ∀ {k : Type u} [Field k] [PerfectField k] (p : MvPolynomial (Fin 4) k) (hp : p.IsHomogeneous 3)
     {Z : Scheme.{u}} (i : Z ⟶ scheme (equationIdeal p hp)) [IsClosedImmersion i]
@@ -356,7 +356,7 @@ universe u
 attribute [local instance] MvPolynomial.gradedAlgebra
 set_option backward.isDefEq.respectTransparency false
 
-/-- 4.9: `prop:existence-of-Z` (2-proofs.tex:888). -/
+/-- 4.9: `prop:existence-of-Z` (arXiv v3, 2-proofs.tex:993). -/
 theorem claim_4_9 :
     ∀ {K : Type u} [Field K] [PerfectField K]
     (p : MvPolynomial (Fin 4) K) (hp : p.IsHomogeneous 3) (hp0 : p ≠ 0)

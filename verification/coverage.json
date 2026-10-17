@@ -1,7 +1,7 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "manuscript": "paper/2-proofs.tex",
-  "manuscript_sha256": "93aa0e1fdaa2bdee5a7dbc7fcd786bfdac856a692100da8f016d0dd3e696059e",
+  "manuscript_sha256": "3ba2c489afb164c0a7269d02abe7d23233f1c7dc3d6f85b58d5fec8bca73e299",
   "allowed_axioms": [
     "propext",
     "Quot.sound",
@@ -11,7 +11,7 @@
     {
       "number": "Theorem 1.1",
       "label": "thm:deg=4-intro",
-      "tex_line": 197,
+      "tex_line": 207,
       "title": "Degree four implies a rational point",
       "endpoints": [
         {
@@ -29,7 +29,7 @@
     {
       "number": "Theorem 1.2",
       "label": "thm:main:intro",
-      "tex_line": 206,
+      "tex_line": 216,
       "title": "Finite extension equivalence",
       "endpoints": [
         {
@@ -54,7 +54,7 @@
     {
       "number": "Theorem 1.4",
       "label": "thm:pfaffian-intro",
-      "tex_line": 227,
+      "tex_line": 251,
       "title": "Pfaffian cubic has a point",
       "endpoints": [
         {
@@ -66,13 +66,13 @@
         }
       ],
       "hypotheses": "Field k; NeZero (2:k); homogeneous cubic p; four alternating 6x6 coefficient matrices A; polynomial of pfaffianCubic A equals p; conclusion is original hypersurface rational section.",
-      "difference": "Stronger: no p != 0 required. Alternating matrices and exact polynomial equality encode the stated Pfaffian presentation.",
+      "difference": "Matches v3, including the identically zero Pfaffian. Four alternating coefficient matrices encode the matrix of homogeneous linear forms; a rational section expresses a nontrivial projective zero.",
       "note": null
     },
     {
       "number": "Lemma 2.1",
       "label": "lem:secant",
-      "tex_line": 259,
+      "tex_line": 296,
       "title": "Secant descent",
       "endpoints": [
         {
@@ -90,7 +90,7 @@
     {
       "number": "Lemma 2.2",
       "label": "lem:position",
-      "tex_line": 272,
+      "tex_line": 308,
       "title": "Position, both numbered parts",
       "endpoints": [
         {
@@ -108,7 +108,7 @@
     {
       "number": "Lemma 2.3",
       "label": "lem:twisted-cubic",
-      "tex_line": 293,
+      "tex_line": 336,
       "title": "Twisted cubic descends over a perfect field",
       "endpoints": [
         {
@@ -133,7 +133,7 @@
     {
       "number": "Proposition 2.4",
       "label": "prop:four-five",
-      "tex_line": 307,
+      "tex_line": 350,
       "title": "Cassels equivalence and precise closed-point alternative",
       "endpoints": [
         {
@@ -158,7 +158,7 @@
     {
       "number": "Theorem 3.1",
       "label": "thm:five",
-      "tex_line": 368,
+      "tex_line": 411,
       "title": "Effective degree five implies rational point",
       "endpoints": [
         {
@@ -176,7 +176,7 @@
     {
       "number": "Lemma 3.2",
       "label": "lem:incidence",
-      "tex_line": 388,
+      "tex_line": 432,
       "title": "Finite etale degree-two incidence open",
       "endpoints": [
         {
@@ -194,7 +194,7 @@
     {
       "number": "Lemma 3.3",
       "label": "lem:presentation",
-      "tex_line": 500,
+      "tex_line": 553,
       "title": "Five-point Pfaffian presentation",
       "endpoints": [
         {
@@ -206,13 +206,13 @@
         }
       ],
       "hypotheses": "CharZero field; homogeneous cubic p; reduced Z with closed immersion into original hypersurface, finite to k of rank5, ProjectiveGeometricGeneralPosition. Produces alternating 6x6 linear Pfaffian presentation equal to exactly p.",
-      "difference": "Matches Section3.2 standing CharZero, although environment itself omits characteristic. Closed immersion into p=0 encodes vanishing on Z; reducedness, length and general-position inputs are manuscript hypotheses.",
+      "difference": "Matches the standing characteristic-zero assumption of subsection 3.2. V3 states geometric reducedness; the Lean provider needs only reducedness over this characteristic-zero field. The closed immersion encodes vanishing along Z.",
       "note": "Do not claim this particular endpoint for arbitrary characteristic merely by reading the environment in isolation."
     },
     {
       "number": "Theorem 4.1",
       "label": "thm:4->1",
-      "tex_line": 574,
+      "tex_line": 666,
       "title": "Degree-four descent by the original H0 construction",
       "endpoints": [
         {
@@ -230,7 +230,7 @@
     {
       "number": "Lemma 4.2",
       "label": "lem:net-of-quadrics",
-      "tex_line": 594,
+      "tex_line": 685,
       "title": "Linear times quadratic decomposition",
       "endpoints": [
         {
@@ -248,7 +248,7 @@
     {
       "number": "Remark 4.3",
       "label": "rem:h^0(I_Z)=3",
-      "tex_line": 619,
+      "tex_line": 710,
       "title": "Dimension of the actual quadratic ideal sections",
       "endpoints": [
         {
@@ -266,7 +266,7 @@
     {
       "number": "Proposition 4.4",
       "label": "prop:existence-of-point",
-      "tex_line": 623,
+      "tex_line": 714,
       "title": "A rational point from a finite quadratic base locus",
       "endpoints": [
         {
@@ -284,7 +284,7 @@
     {
       "number": "Lemma 4.5",
       "label": "lem:uij-skew-symmetric",
-      "tex_line": 654,
+      "tex_line": 745,
       "title": "Weighted skew-symmetry criterion",
       "endpoints": [
         {
@@ -302,7 +302,7 @@
     {
       "number": "Lemma 4.6",
       "label": "lem:base-locus",
-      "tex_line": 707,
+      "tex_line": 798,
       "title": "Whole quadratic base-locus alternative",
       "endpoints": [
         {
@@ -320,7 +320,7 @@
     {
       "number": "Lemma 4.7",
       "label": "lem:uij=-uji",
-      "tex_line": 784,
+      "tex_line": 875,
       "title": "Skew representation after arithmetic descent",
       "endpoints": [
         {
@@ -338,7 +338,7 @@
     {
       "number": "Proposition 4.8",
       "label": "prop:zero-off-diagonal",
-      "tex_line": 822,
+      "tex_line": 927,
       "title": "Zero off-diagonal entry geometry",
       "endpoints": [
         {
@@ -356,7 +356,7 @@
     {
       "number": "Proposition 4.9",
       "label": "prop:existence-of-Z",
-      "tex_line": 888,
+      "tex_line": 993,
       "title": "Original tangent subscheme and actual H0",
       "endpoints": [
         {
@@ -374,7 +374,7 @@
     {
       "number": "Theorem 5.1",
       "label": "thm:charzero",
-      "tex_line": 997,
+      "tex_line": 1101,
       "title": "Characteristic-zero degree-one cycle theorem",
       "endpoints": [
         {
@@ -392,7 +392,7 @@
     {
       "number": "Lemma 5.2",
       "label": "lem:lift",
-      "tex_line": 1020,
+      "tex_line": 1123,
       "title": "Complete mixed-characteristic degree-preserving lifting",
       "endpoints": [
         {
@@ -426,12 +426,12 @@
       ],
       "hypotheses": "Positive-characteristic field with actual prime characteristic; nonzero homogeneous smooth cubic and original closed point x. Constructs complete CharZero DVR R, surjective R\u2192k, actual smooth lifted cubic equation, finite flat closed family of rank residueDegree(x) everywhere, and IsPullback square recovering same original closed subscheme P.",
       "difference": "Matches arbitrary imperfect-field manuscript scope; no supplied DVR, Cohen ring, family, smooth Hilbert point, field-finite-generation, perfectness or desired geometry premise on final natural roots. Outer prime-uniformizer variant is even stronger.",
-      "note": "Conditional _of_completeCharZeroDVR and supplied-R helper are intermediate interfaces and must not replace the unrestricted natural endpoints in a public table."
+      "note": "The v3 proof cites global smoothness of the relative Hilbert scheme via Fogarty. The selected Lean route constructs the global family and proves smoothness at the original closed-point classifier, sufficient for this lifting conclusion; it does not prove Fogarty global smoothness."
     },
     {
       "number": "Theorem 5.3",
       "label": "thm:smooth",
-      "tex_line": 1053,
+      "tex_line": 1154,
       "title": "Smooth surfaces over arbitrary fields",
       "endpoints": [
         {
@@ -456,7 +456,7 @@
     {
       "number": "Theorem 6.1",
       "label": "thm:main",
-      "tex_line": 1078,
+      "tex_line": 1178,
       "title": "Main theorem with both equivalent cycle formulations",
       "endpoints": [
         {
@@ -481,7 +481,7 @@
     {
       "number": "Lemma 6.2",
       "label": "lem:singular-point",
-      "tex_line": 1098,
+      "tex_line": 1198,
       "title": "Singular point or smooth point over same extension",
       "endpoints": [
         {
@@ -506,7 +506,7 @@
     {
       "number": "Proposition 6.3",
       "label": "prop:smoothing",
-      "tex_line": 1164,
+      "tex_line": 1264,
       "title": "Reduction to Laurent-series smooth criterion",
       "endpoints": [
         {
@@ -519,7 +519,7 @@
       ],
       "hypotheses": "Field k; SmoothCubicZeroCyclePointFor (FractionRing (PowerSeries k)); homogeneous cubic and actual degree1 zero-cycle; original rational section.",
       "difference": "Exactly the manuscript implication antecedent, with k((t)) represented by FractionRing(PowerSeries k). No external Ma/pencil input; reference smooth cubic and Hensel/pencil work supplied internally.",
-      "note": "This proposition is intentionally conditional on the smooth criterion; calling every selected endpoint premise-free would be false. Its antecedent is stated in the paper, not an additional unproved external result."
+      "note": "V3 writes the pushforward cycle in CH_0; the Lean proof constructs zero-cycle representatives before rational equivalence. The required degree-one representative and final conclusion are covered, without a separate general Chow-group export."
     }
   ],
   "method_groups": {
@@ -684,13 +684,22 @@
     {
       "number": "Corollary 1.3",
       "label": "cor:unirational",
-      "reason": "Unirationality excluded from the agreed scope; existing adapter is conditional."
+      "reason": "Unirationality excluded from the agreed scope; existing adapter is conditional.",
+      "tex_line": 227
+    },
+    {
+      "number": "Remark 1.5",
+      "label": "rem:delPezzo",
+      "reason": "New v3 comparative del Pezzo/index and quartic discussion is outside the 25 selected conclusions; no separate formalization of the whole remark is claimed.",
+      "tex_line": 275
     }
   ],
   "qualifications": [
     "Lemma 2.3 is over perfect fields, consistent with Section 2 standing assumption.",
-    "Bibliographic Remark 2.5 is not an additional selected conclusion.",
-    "Selected methods are audited; this is not a translation of every prose sentence or of the whole 1976 Coray paper."
+    "Selected methods are audited; this is not a translation of every prose sentence or of the whole 1976 Coray paper.",
+    "The former bibliographic Remark 2.5 (rem:voisin) is commented out in v3 and is not an active statement.",
+    "New Remark 1.5 (del Pezzo surfaces and quartic comparisons) is outside the selected scope.",
+    "Lemma 5.2 conclusion remains proved; the v3 Fogarty assertion of global Hilbert-scheme smoothness is not formalized by the selected local-smoothness lifting route."
   ],
   "audit_groups": [
     {
@@ -843,5 +852,157 @@
       "trusted_imports": "project definition/provider modules; not a Mathlib-only independent baseline"
     }
   ],
-  "local_lean_source_count": 4175
+  "local_lean_source_count": 4175,
+  "manuscript_version": "arXiv:2609.15930v3",
+  "manuscript_pdf": "paper/2-proofs.pdf",
+  "manuscript_pdf_sha256": "dd901a166391585ac9f2e7643dcf9ff4560d8e10df26c2d25125800ca0871f2e",
+  "statement_inventory": [
+    {
+      "number": "Theorem 1.1",
+      "label": "thm:deg=4-intro",
+      "tex_line": 207
+    },
+    {
+      "number": "Theorem 1.2",
+      "label": "thm:main:intro",
+      "tex_line": 216
+    },
+    {
+      "number": "Corollary 1.3",
+      "label": "cor:unirational",
+      "tex_line": 227
+    },
+    {
+      "number": "Theorem 1.4",
+      "label": "thm:pfaffian-intro",
+      "tex_line": 251
+    },
+    {
+      "number": "Remark 1.5",
+      "label": "rem:delPezzo",
+      "tex_line": 275
+    },
+    {
+      "number": "Lemma 2.1",
+      "label": "lem:secant",
+      "tex_line": 296
+    },
+    {
+      "number": "Lemma 2.2",
+      "label": "lem:position",
+      "tex_line": 308
+    },
+    {
+      "number": "Lemma 2.3",
+      "label": "lem:twisted-cubic",
+      "tex_line": 336
+    },
+    {
+      "number": "Proposition 2.4",
+      "label": "prop:four-five",
+      "tex_line": 350
+    },
+    {
+      "number": "Theorem 3.1",
+      "label": "thm:five",
+      "tex_line": 411
+    },
+    {
+      "number": "Lemma 3.2",
+      "label": "lem:incidence",
+      "tex_line": 432
+    },
+    {
+      "number": "Lemma 3.3",
+      "label": "lem:presentation",
+      "tex_line": 553
+    },
+    {
+      "number": "Theorem 4.1",
+      "label": "thm:4->1",
+      "tex_line": 666
+    },
+    {
+      "number": "Lemma 4.2",
+      "label": "lem:net-of-quadrics",
+      "tex_line": 685
+    },
+    {
+      "number": "Remark 4.3",
+      "label": "rem:h^0(I_Z)=3",
+      "tex_line": 710
+    },
+    {
+      "number": "Proposition 4.4",
+      "label": "prop:existence-of-point",
+      "tex_line": 714
+    },
+    {
+      "number": "Lemma 4.5",
+      "label": "lem:uij-skew-symmetric",
+      "tex_line": 745
+    },
+    {
+      "number": "Lemma 4.6",
+      "label": "lem:base-locus",
+      "tex_line": 798
+    },
+    {
+      "number": "Lemma 4.7",
+      "label": "lem:uij=-uji",
+      "tex_line": 875
+    },
+    {
+      "number": "Proposition 4.8",
+      "label": "prop:zero-off-diagonal",
+      "tex_line": 927
+    },
+    {
+      "number": "Proposition 4.9",
+      "label": "prop:existence-of-Z",
+      "tex_line": 993
+    },
+    {
+      "number": "Theorem 5.1",
+      "label": "thm:charzero",
+      "tex_line": 1101
+    },
+    {
+      "number": "Lemma 5.2",
+      "label": "lem:lift",
+      "tex_line": 1123
+    },
+    {
+      "number": "Theorem 5.3",
+      "label": "thm:smooth",
+      "tex_line": 1154
+    },
+    {
+      "number": "Theorem 6.1",
+      "label": "thm:main",
+      "tex_line": 1178
+    },
+    {
+      "number": "Lemma 6.2",
+      "label": "lem:singular-point",
+      "tex_line": 1198
+    },
+    {
+      "number": "Proposition 6.3",
+      "label": "prop:smoothing",
+      "tex_line": 1264
+    }
+  ],
+  "method_scope_limits": [
+    {
+      "manuscript_label": "lem:lift",
+      "tex_lines": [
+        1141,
+        1149
+      ],
+      "claim": "Global smoothness of Hilb^d(S/R) via Fogarty",
+      "status": "not_formalized",
+      "existing_coverage": "Original closed-point classifier smoothness and actual global-family lifting suffice for the named lifting conclusion."
+    }
+  ]
 }

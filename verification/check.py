@@ -1,27 +1,73 @@
 #!/usr/bin/env python3
 """Verify pinned sources; --run also builds serially and runs fresh declaration audits."""
-import argparse, datetime, hashlib, json, os, signal, subprocess, sys
+import argparse, datetime, hashlib, json, os, re, signal, subprocess, sys
 from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 HERE = ROOT / 'verification'
 
 def digest(path): return hashlib.sha256(path.read_bytes()).hexdigest()
+def active_tex(text):
+    """Remove TeX line comments while preserving line numbers and escaped percent signs."""
+    result=[]
+    for line in text.splitlines(keepends=True):
+        for index,char in enumerate(line):
+            if char != '%': continue
+            backslashes=0
+            cursor=index-1
+            while cursor>=0 and line[cursor]=='\\':
+                backslashes+=1;cursor-=1
+            if backslashes%2==0:
+                line=line[:index]+ ('\n' if line.endswith('\n') else '')
+                break
+        result.append(line)
+    return ''.join(result)
+
+def manuscript_inventory(text):
+    """Read this manuscript's shared theorem counter; not a general TeX interpreter."""
+    text=active_tex(text);section=0;counter=0;items=[]
+    pattern=r'\\section\s*\{|\\begin\{(theorem|lemma|proposition|corollary|remark|definition|example|question|conjecture)\}'
+    for match in re.finditer(pattern,text):
+        if match[1] is None:
+            section+=1;counter=0;continue
+        counter+=1;end=text.find('\\end{'+match[1]+'}',match.end())
+        if end<0:raise ValueError('Unclosed manuscript statement')
+        label=re.search(r'\\label\{([^}]+)\}',text[match.end():end])
+        if label is None:raise ValueError('Unlabelled numbered manuscript statement')
+        position=match.end()+label.start()
+        items.append({'number':match[1].capitalize()+f' {section}.{counter}',
+                      'label':label[1],'tex_line':text[:position].count('\n')+1})
+    if len({r['label'] for r in items})!=len(items):raise ValueError('Duplicate active manuscript labels')
+    return items
+
 def verify():
     manifest=json.loads((HERE/'coverage.json').read_text())
     pins=json.loads((HERE/'source-pins.json').read_text())
+    source_count=len(pins)
     pins[manifest['manuscript']]=manifest['manuscript_sha256']
+    if 'manuscript_pdf' in manifest:
+        pins[manifest['manuscript_pdf']]=manifest['manuscript_pdf_sha256']
     for rel,expected in pins.items():
         path=ROOT/rel
         if Path(rel).is_absolute() or '..' in Path(rel).parts: raise ValueError('Unsafe pin path')
         if not path.is_file() or digest(path)!=expected: raise ValueError('Missing or changed pinned source: '+rel)
     rows=manifest['included_conclusions']
     if len(rows)!=25 or len({r['label'] for r in rows})!=25: raise ValueError('Coverage must contain 25 distinct labels')
-    tex=(ROOT/manifest['manuscript']).read_text()
+    tex=active_tex((ROOT/manifest['manuscript']).read_text())
+    if 'manuscript_version' in manifest:
+        inventory=manuscript_inventory(tex)
+        if inventory!=manifest['statement_inventory']: raise ValueError('Manuscript numbering or line inventory changed')
+        expected={r['label']:r for r in inventory}
+        accounted=rows+manifest['excluded']
+        if len(accounted)!=len(expected) or {r['label'] for r in accounted}!=set(expected):
+            raise ValueError('Every active numbered statement must be included or explicitly excluded')
+        for row in accounted:
+            if any(row.get(k)!=expected[row['label']][k] for k in ['number','tex_line']):
+                raise ValueError('Stale statement reference: '+row['label'])
     for row in rows:
         if '\\label{'+row['label']+'}' not in tex: raise ValueError('Missing manuscript label: '+row['label'])
         for end in row['endpoints']:
             if end['source'] not in pins: raise ValueError('Unpinned endpoint source')
-    print(f'PASS source integrity: {len(pins)-1} pinned files and manuscript; 25 mapped conclusions.',flush=True)
+    print(f'PASS source integrity: {source_count} pinned files and manuscript assets; 25 mapped conclusions.',flush=True)
     return manifest
 
 def main():
