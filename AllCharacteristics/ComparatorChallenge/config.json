@@ -1,0 +1,6 @@
+{
+  "challenge_module": "AllCharacteristics.ComparatorChallenge.Challenge",
+  "solution_module": "AllCharacteristics.ComparatorChallenge.Solution",
+  "theorem_names": ["CasselsSwinnertonDyerChallenge.rational_point_descent"],
+  "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"]
+}

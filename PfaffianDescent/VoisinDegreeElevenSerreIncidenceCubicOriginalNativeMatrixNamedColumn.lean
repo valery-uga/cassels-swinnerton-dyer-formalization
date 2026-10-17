@@ -1,0 +1,55 @@
+import PfaffianDescent.VoisinDegreeElevenSerreIncidenceCubicOriginalExactCoordinates
+import PfaffianDescent.VoisinDegreeElevenSerreIncidenceTensorMatrixAnyIndex
+
+noncomputable section
+open AlgebraicGeometry CategoryTheory CategoryTheory.Limits MvPolynomial
+open AllCharacteristics AllCharacteristics.HomogeneousProjective
+open scoped TensorProduct
+namespace PfaffianDescent
+universe u
+attribute [local instance] MvPolynomial.gradedAlgebra
+set_option backward.isDefEq.respectTransparency false
+variable {K E : Type u} [Field K] [Field E]
+variable (p : MvPolynomial (Fin 4) K) (hp : p.IsHomogeneous 3)
+variable [hB : IsIntegral (cubicConfigurationBase p hp 3)]
+local instance : IsIntegral (projectiveConfigurationQuotientOpen
+    (grading (equationIdeal p hp)) (toBase (equationIdeal p hp)) 3).toScheme := hB
+variable [hordered : IsIntegral (orderedFamilyConfigurationOver (hypersurfaceToBase p hp) 3).left]
+local instance : IsIntegral (orderedFamilyConfigurationOver (toBase (equationIdeal p hp)) 3).left := hordered
+variable (c : Spec (.of E) ⟶ (orderedFamilyConfigurationOver (hypersurfaceToBase p hp) 3).left)
+variable (β : (cubicConfigurationBase p hp 3).functionField →+* E)
+variable (hβ : Spec.map (CommRingCat.ofHom β) ≫
+    (cubicConfigurationBase p hp 3).fromSpecStalk
+      (genericPoint (cubicConfigurationBase p hp 3)) =
+    c ≫ configurationQuotientMap (equationIdeal p hp) 3)
+variable (a : CommRingCat.of K ⟶ CommRingCat.of (cubicConfigurationBase p hp 3).functionField)
+variable (ha : Spec.map a = cubicConfigurationGenericBaseMap p hp 3 ≫
+    cubicConfigurationToBase p hp 3)
+
+
+open ProjectiveNegativeTwist
+
+/-- The actual tensor-evaluation column, with its native row reindexing.
+The proposition is inferred from the checked generic column proof. -/
+@[irreducible]
+def serreIncidenceCubicOriginalNativeMatrix_named_column
+    {N : (hypersurface p hp).Modules} (e : SerreExtensionData (hypersurface p hp) N)
+    (C : SerreExtensionData.SerreExtensionRankTwoAffineCover e)
+    [FiniteDimensional K (SchemeModuleGlobalSectionsOver (hypersurfaceToBase p hp) e.E)]
+    (h9 : Module.finrank K (SchemeModuleGlobalSectionsOver (hypersurfaceToBase p hp) e.E) = 9)
+    {B : Scheme.{u}} (chart : Fin 3 → C.ι)
+    (marked : ∀ i, B ⟶ (C.U (chart i) : Scheme.{u})) (cB : Spec (.of E) ⟶ B)
+    (hpoint : ∀ i, (cB ≫ marked i) ≫ (C.U (chart i)).ι =
+      serreIncidenceCubicOriginalMarkedPoint p hp c i)
+    (ρ : Fin 6 ≃ (Fin 3 × ULift.{u} (Fin 2))) (k : Fin 9) :=
+  letI : Algebra K E := (β.comp a.hom).toAlgebra
+  (congrArg (LinearEquiv.piCongrLeft E (fun _ : Fin 6 => E) ρ.symm)
+    (serreIncidenceNativeTensorMatrix_column (K := K) (E := E)
+      (hypersurfaceToBase p hp) e C h9 chart marked cB
+      (serreIncidenceCubicOriginalMarkedPoint p hp c) hpoint
+      (fun i => pointSplittingCubicSerrePulledEvaluation_original_base p hp c β hβ a ha i) k)).trans
+    (serreIncidenceMatrix_reindexed_column ρ
+      ((serreIncidenceNativeAffineEvaluationMatrix (hypersurfaceToBase p hp)
+        e C h9 chart marked).map (fieldPointΓevaluation cB)) k)
+
+end PfaffianDescent
