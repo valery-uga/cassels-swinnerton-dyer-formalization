@@ -1,0 +1,112 @@
+@AllCharacteristics.twoProofs_chapterFive_charzero_internalCoray001.{u_1} : ∀ {k : Type u_1} [inst : Field.{u_1} k]
+  [CharZero.{u_1} k] (p : MvPolynomial.{0, u_1} (Fin 4) k) (hp : MvPolynomial.IsHomogeneous.{0, u_1} p 3)
+  [AlgebraicGeometry.Smooth.{u_1} (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} p hp)]
+  (z : AllCharacteristics.ZeroCycle.{u_1} (AllCharacteristics.HomogeneousProjective.hypersurface.{u_1} p hp)),
+  Eq.{1}
+      ((AllCharacteristics.ZeroCycle.degree.{u_1}
+          (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} p hp))
+        z)
+      1 →
+    ∃ s,
+      Eq.{u_1 + 1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} s
+          (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} p hp))
+        (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} (AlgebraicGeometry.Spec.{u_1} (CommRingCat.of.{u_1} k)))
+'AllCharacteristics.twoProofs_chapterFive_charzero_internalCoray001' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+AllCharacteristics.twoProofs_chapterFive_lift.{u_1} : AllCharacteristics.ChapterFiveLiftStatement.{u_1}
+'AllCharacteristics.twoProofs_chapterFive_lift' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@AllCharacteristics.chapterFiveLiftFor_viaGlobalHilbert001.{u_1} : ∀ {k : Type u_1} [inst : Field.{u_1} k],
+  AllCharacteristics.ChapterFiveLiftFor.{u_1} k
+'AllCharacteristics.chapterFiveLiftFor_viaGlobalHilbert001' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+AllCharacteristics.chapterFiveLiftStatement_viaGlobalHilbert001.{u_1} : AllCharacteristics.ChapterFiveLiftStatement.{u_1}
+'AllCharacteristics.chapterFiveLiftStatement_viaGlobalHilbert001' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@AllCharacteristics.exists_smooth_charZero_cubic_lift_with_original_closed_subscheme_viaGlobalHilbert001.{u_1} : ∀
+  {k : Type u_1} [inst : Field.{u_1} k] (ℓ : ℕ) [Fact (Nat.Prime ℓ)] [CharP.{u_1} k ℓ]
+  {p : MvPolynomial.{0, u_1} (Fin 4) k} (hp : MvPolynomial.IsHomogeneous.{0, u_1} p 3),
+  Ne.{u_1 + 1} p 0 →
+    ∀ [AlgebraicGeometry.Smooth.{u_1} (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} p hp)]
+      (x : ↑(closedPoints.{u_1} ↥(AllCharacteristics.HomogeneousProjective.hypersurface.{u_1} p hp))),
+      ∃ R x_1,
+        ∃ (x_2 : IsDomain.{u_1} R) (x_3 : IsDiscreteValuationRing.{u_1} R) (_ :
+          IsAdicComplete.{u_1, u_1} (IsLocalRing.maximalIdeal.{u_1} R) R) (_ : CharZero.{u_1} R),
+          ∃ b,
+            Function.Surjective.{u_1 + 1, u_1 + 1} ⇑b ∧
+              ∃ q,
+                ∃ (hq : MvPolynomial.IsHomogeneous.{0, u_1} q 3) (he :
+                  Eq.{u_1 + 1} ((MvPolynomial.map.{u_1, u_1, 0} b) q) p),
+                  AlgebraicGeometry.Smooth.{u_1}
+                      (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} q hq) ∧
+                    ∃ Z i j,
+                      AlgebraicGeometry.IsClosedImmersion.{u_1} i ∧
+                        AlgebraicGeometry.IsFinite.{u_1}
+                            (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i
+                              (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} q hq)) ∧
+                          AlgebraicGeometry.Flat.{u_1}
+                              (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i
+                                (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} q hq)) ∧
+                            (∀ (r : ↥(AlgebraicGeometry.Spec.{u_1} (CommRingCat.of.{u_1} R))),
+                                Eq.{1}
+                                  (AlgebraicGeometry.Scheme.Hom.finrank.{u_1}
+                                    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i
+                                      (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} q hq))
+                                    r)
+                                  (AlgebraicGeometry.Scheme.Hom.residueDegree.{u_1}
+                                    (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} p hp) ↑x)) ∧
+                              CategoryTheory.IsPullback.{u_1, u_1 + 1} j
+                                (AlgebraicGeometry.Scheme.fromSpecResidueField.{u_1}
+                                  (AllCharacteristics.HomogeneousProjective.hypersurface.{u_1} p hp) ↑x)
+                                i
+                                (AllCharacteristics.HomogeneousProjective.hypersurfaceReductionMap.{u_1} b q hq p hp he)
+'AllCharacteristics.exists_smooth_charZero_cubic_lift_with_original_closed_subscheme_viaGlobalHilbert001' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@AllCharacteristics.twoProofs_chapterFive_smooth_internalCoray001.{u_1} : ∀ {k : Type u_1} [inst : Field.{u_1} k]
+  (p : MvPolynomial.{0, u_1} (Fin 4) k) (hp : MvPolynomial.IsHomogeneous.{0, u_1} p 3)
+  [AlgebraicGeometry.Smooth.{u_1} (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} p hp)]
+  (z : AllCharacteristics.ZeroCycle.{u_1} (AllCharacteristics.HomogeneousProjective.hypersurface.{u_1} p hp)),
+  Eq.{1}
+      ((AllCharacteristics.ZeroCycle.degree.{u_1}
+          (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} p hp))
+        z)
+      1 →
+    ∃ s,
+      Eq.{u_1 + 1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} s
+          (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} p hp))
+        (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} (AlgebraicGeometry.Spec.{u_1} (CommRingCat.of.{u_1} k)))
+'AllCharacteristics.twoProofs_chapterFive_smooth_internalCoray001' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@AllCharacteristics.twoProofs_chapterFive_smooth_by_selected_closedPoint_viaGlobalHilbert_internalCoray001.{u_1} : ∀
+  {k : Type u_1} [inst : Field.{u_1} k] (ell : ℕ) [Fact (Nat.Prime ell)] [CharP.{u_1} k ell]
+  (p : MvPolynomial.{0, u_1} (Fin 4) k) (hp : MvPolynomial.IsHomogeneous.{0, u_1} p 3),
+  Ne.{u_1 + 1} p 0 →
+    ∀ [AlgebraicGeometry.Smooth.{u_1} (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} p hp)]
+      (w : AllCharacteristics.ZeroCycle.{u_1} (AllCharacteristics.HomogeneousProjective.hypersurface.{u_1} p hp)),
+      Eq.{1}
+          ((AllCharacteristics.ZeroCycle.degree.{u_1}
+              (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} p hp))
+            w)
+          1 →
+        ∃ s,
+          Eq.{u_1 + 1}
+            (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} s
+              (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} p hp))
+            (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} (AlgebraicGeometry.Spec.{u_1} (CommRingCat.of.{u_1} k)))
+'AllCharacteristics.twoProofs_chapterFive_smooth_by_selected_closedPoint_viaGlobalHilbert_internalCoray001' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+PASS AllCharacteristics.twoProofs_chapterFive_charzero_internalCoray001: declarations=109373; axioms=#[Quot.sound, Classical.choice, propext]
+PASS AllCharacteristics.twoProofs_chapterFive_lift: declarations=54005; axioms=#[Quot.sound, Classical.choice, propext]
+PASS AllCharacteristics.chapterFiveLiftFor_viaGlobalHilbert001: declarations=62300; axioms=#[Quot.sound, Classical.choice, propext]
+PASS AllCharacteristics.chapterFiveLiftStatement_viaGlobalHilbert001: declarations=62302; axioms=#[Quot.sound, Classical.choice, propext]
+PASS AllCharacteristics.exists_smooth_charZero_cubic_lift_with_original_closed_subscheme_viaGlobalHilbert001: declarations=62298; axioms=#[Quot.sound, Classical.choice, propext]
+PASS AllCharacteristics.twoProofs_chapterFive_smooth_internalCoray001: declarations=109373; axioms=#[Quot.sound, Classical.choice, propext]
+PASS AllCharacteristics.twoProofs_chapterFive_smooth_by_selected_closedPoint_viaGlobalHilbert_internalCoray001: declarations=112251; axioms=#[Quot.sound, Classical.choice, propext]
+AUDIT COMPLETE: 7 roots; type/value/projection/recursor traversal

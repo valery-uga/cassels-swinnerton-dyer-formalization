@@ -3,3 +3,5 @@
 *.olean
 *.ilean
 *.log
+verification-results/
+__pycache__/

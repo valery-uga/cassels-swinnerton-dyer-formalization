@@ -1,0 +1,52 @@
+import AllCharacteristics.ManuscriptVerification.Audit
+import AllCharacteristics.InternalCorayPaperConclusions
+import AllCharacteristics.TwistedCubicLemma
+import AllCharacteristics.TwoProofs
+import AllCharacteristics.TwoProofsLiteralPreliminaries
+
+set_option pp.universes true
+set_option pp.deepTerms true
+
+#check @AllCharacteristics.twoProofs_degree_four_closed_point_has_point
+#print axioms AllCharacteristics.twoProofs_degree_four_closed_point_has_point
+#check @AllCharacteristics.twoProofs_intro_finiteExtension_iff_internalCoray001
+#print axioms AllCharacteristics.twoProofs_intro_finiteExtension_iff_internalCoray001
+#check @AllCharacteristics.twoProofs_finite_point_coprime_has_point_internalCoray001
+#print axioms AllCharacteristics.twoProofs_finite_point_coprime_has_point_internalCoray001
+#check @AllCharacteristics.twoProofs_pfaffian_cubic_has_point
+#print axioms AllCharacteristics.twoProofs_pfaffian_cubic_has_point
+#check @AllCharacteristics.twoProofs_secant
+#print axioms AllCharacteristics.twoProofs_secant
+#check @AllCharacteristics.twoProofs_position_perfect
+#print axioms AllCharacteristics.twoProofs_position_perfect
+#check @AllCharacteristics.twoProofs_twisted_cubic_smooth_embedding_of_algebraicClosure_presentation
+#print axioms AllCharacteristics.twoProofs_twisted_cubic_smooth_embedding_of_algebraicClosure_presentation
+#check @AllCharacteristics.paper_twisted_cubic_perfect
+#print axioms AllCharacteristics.paper_twisted_cubic_perfect
+#check @AllCharacteristics.twoProofs_cassels_four_five
+#print axioms AllCharacteristics.twoProofs_cassels_four_five
+#check @AllCharacteristics.twoProofs_cassels_four_five_closed_point_alternative
+#print axioms AllCharacteristics.twoProofs_cassels_four_five_closed_point_alternative
+#check @AllCharacteristics.twoProofs_degree_five_has_point
+#print axioms AllCharacteristics.twoProofs_degree_five_has_point
+#check @AllCharacteristics.twoProofs_incidence_finite_etale_degree_two_open
+#print axioms AllCharacteristics.twoProofs_incidence_finite_etale_degree_two_open
+#check @AllCharacteristics.twoProofs_reduced_length_five_subscheme_pfaffian
+#print axioms AllCharacteristics.twoProofs_reduced_length_five_subscheme_pfaffian
+
+open Lean Elab Command
+run_cmd do
+  let env := (← getEnv).setExporting false
+  liftIO <| ManuscriptVerification.inspect env #[`AllCharacteristics.twoProofs_degree_four_closed_point_has_point,
+  `AllCharacteristics.twoProofs_intro_finiteExtension_iff_internalCoray001,
+  `AllCharacteristics.twoProofs_finite_point_coprime_has_point_internalCoray001,
+  `AllCharacteristics.twoProofs_pfaffian_cubic_has_point,
+  `AllCharacteristics.twoProofs_secant,
+  `AllCharacteristics.twoProofs_position_perfect,
+  `AllCharacteristics.twoProofs_twisted_cubic_smooth_embedding_of_algebraicClosure_presentation,
+  `AllCharacteristics.paper_twisted_cubic_perfect,
+  `AllCharacteristics.twoProofs_cassels_four_five,
+  `AllCharacteristics.twoProofs_cassels_four_five_closed_point_alternative,
+  `AllCharacteristics.twoProofs_degree_five_has_point,
+  `AllCharacteristics.twoProofs_incidence_finite_etale_degree_two_open,
+  `AllCharacteristics.twoProofs_reduced_length_five_subscheme_pfaffian]

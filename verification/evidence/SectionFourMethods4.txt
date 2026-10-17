@@ -1,0 +1,110 @@
+@PfaffianDescent.fourCoordinateVertex_whole_actual_choice_independent_H0_literal_presentation.{u_1} : ∀ {K : Type u_1}
+  [inst : Field.{u_1} K] [IsAlgClosed.{u_1} K] {Z : AlgebraicGeometry.Scheme.{u_1}}
+  (i : Quiver.Hom.{u_1, u_1 + 1} Z (AllCharacteristics.HomogeneousProjective.scheme.{u_1} Bot.bot.{u_1}))
+  [inst_2 : AlgebraicGeometry.IsClosedImmersion.{u_1} i]
+  [inst_3 :
+    AlgebraicGeometry.IsFinite.{u_1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i
+        (AllCharacteristics.HomogeneousProjective.toBase.{u_1} Bot.bot.{u_1}))]
+  (Y : Fin 4 → AlgebraicGeometry.Scheme.{u_1}) (c : (r : Fin 4) → Quiver.Hom.{u_1, u_1 + 1} (Y r) Z)
+  [inst_4 : ∀ (r : Fin 4), AlgebraicGeometry.IsClosedImmersion.{u_1} (c r)],
+  (Pairwise.{0} fun r s => Disjoint.{u_1} (Set.range.{u_1, u_1 + 1} ⇑(c r)) (Set.range.{u_1, u_1 + 1} ⇑(c s))) →
+    (∀ (r : Fin 4),
+        Eq.{u_1 + 1} (Set.range.{u_1, u_1 + 1} ⇑(CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (c r) i))
+          (singleton.{u_1, u_1} (PfaffianDescent.coordinateVertex.{u_1} r))) →
+      (∀ (r : Fin 4),
+          Eq.{1}
+            (AllCharacteristics.finiteSchemeRank.{u_1}
+              (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (c r)
+                (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i
+                  (AllCharacteristics.HomogeneousProjective.toBase.{u_1} Bot.bot.{u_1}))))
+            2) →
+        Eq.{1}
+            (AllCharacteristics.finiteSchemeRank.{u_1}
+              (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i
+                (AllCharacteristics.HomogeneousProjective.toBase.{u_1} Bot.bot.{u_1})))
+            8 →
+          ∃ U eOne,
+            ∃ (hUdiag : ∀ (r : Fin 4), Eq.{u_1 + 1} (U r r) 0),
+              (∀ (r : Fin 4), Ne.{u_1 + 1} (U r) 0) ∧
+                (∀ (r : Fin 4),
+                    Eq.{u_1 + 1}
+                      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+                        (CategoryTheory.Iso.hom.{u_1, u_1 + 1} (eOne r))
+                        (PfaffianDescent.ambientNormalizedCoordinateChartPoint.{u_1}
+                          (fun s =>
+                            HAdd.hAdd.{u_1, u_1, u_1}
+                              (TrivSqZeroExt.inl.{u_1, u_1} (PfaffianDescent.coordinateVertexCoordinates.{u_1} r s))
+                              (TrivSqZeroExt.inr.{u_1, u_1} (U r s)))
+                          r ⋯))
+                      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+                        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (c r) i)
+                        (AllCharacteristics.HomogeneousProjective.quotientProjMap.{u_1} Bot.bot.{u_1}))) ∧
+                  ∀ (V : Fin 4 → Fin 4 → K) (hVdiag : ∀ (r : Fin 4), Eq.{u_1 + 1} (V r r) 0)
+                    (eTwo :
+                      (r : Fin 4) →
+                        CategoryTheory.Iso.{u_1, u_1 + 1} (Y r)
+                          (AlgebraicGeometry.Spec.{u_1} (CommRingCat.of.{u_1} (DualNumber.{u_1} K)))),
+                    (∀ (r : Fin 4),
+                        Eq.{u_1 + 1}
+                          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+                            (CategoryTheory.Iso.hom.{u_1, u_1 + 1} (eTwo r))
+                            (PfaffianDescent.ambientNormalizedCoordinateChartPoint.{u_1}
+                              (fun s =>
+                                HAdd.hAdd.{u_1, u_1, u_1}
+                                  (TrivSqZeroExt.inl.{u_1, u_1} (PfaffianDescent.coordinateVertexCoordinates.{u_1} r s))
+                                  (TrivSqZeroExt.inr.{u_1, u_1} (V r s)))
+                              r ⋯))
+                          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+                            (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (c r) i)
+                            (AllCharacteristics.HomogeneousProjective.quotientProjMap.{u_1} Bot.bot.{u_1}))) →
+                      (LE.le.{0} 3
+                            (Module.finrank.{u_1, u_1} K
+                              (PfaffianDescent.ActualP3IdealQuadraticHZero.{u_1}
+                                (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i
+                                  (AllCharacteristics.HomogeneousProjective.quotientProjMap.{u_1} Bot.bot.{u_1})))) ↔
+                          ∃ w,
+                            Ne.{u_1 + 1} w 0 ∧
+                              ∀ (r s : Fin 4),
+                                LT.lt.{0} r s →
+                                  Eq.{u_1 + 1} (HMul.hMul.{u_1, u_1, u_1} (w r) (V r s))
+                                    (Neg.neg.{u_1} (HMul.hMul.{u_1, u_1, u_1} (w s) (V s r)))) ∧
+                        ((∀ (r s : Fin 4), Eq.{u_1 + 1} (V r s) (Neg.neg.{u_1} (V s r))) →
+                          (∀ (r s : Fin 4), Ne.{1} r s → Ne.{u_1 + 1} (V r s) 0) →
+                            (∃ l,
+                                CategoryTheory.IsIso.{u_1, u_1 + 1} l ∧
+                                  Eq.{u_1 + 1}
+                                    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} l
+                                      (AllCharacteristics.HomogeneousProjective.quotientProjMap.{u_1}
+                                        (PfaffianDescent.p3ActualIdealQuadraticGlobalBaseIdeal.{u_1}
+                                          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i
+                                            (AllCharacteristics.HomogeneousProjective.quotientProjMap.{u_1}
+                                              Bot.bot.{u_1})))))
+                                    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i
+                                      (AllCharacteristics.HomogeneousProjective.quotientProjMap.{u_1} Bot.bot.{u_1}))) ∨
+                              PfaffianDescent.QuarticNet.GroundTwistedCubicPresentation.{u_1}
+                                (PfaffianDescent.p3ActualIdealQuadraticGlobalBaseIdeal.{u_1}
+                                  (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i
+                                    (AllCharacteristics.HomogeneousProjective.quotientProjMap.{u_1} Bot.bot.{u_1}))))
+'PfaffianDescent.fourCoordinateVertex_whole_actual_choice_independent_H0_literal_presentation' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@PfaffianDescent.QuarticNet.baseLocusExceptionalNativeHZero_completeBasis.{u_1} : ∀ {K : Type u_1}
+  [inst : Field.{u_1} K] (a b c d e f : K),
+  Ne.{u_1 + 1} a 0 →
+    Ne.{u_1 + 1} b 0 →
+      Ne.{u_1 + 1} c 0 →
+        Ne.{u_1 + 1} d 0 →
+          Ne.{u_1 + 1} e 0 →
+            Ne.{u_1 + 1} f 0 →
+              Eq.{u_1 + 1} (PfaffianDescent.QuarticNet.baseLocusDelta.{u_1} a b c d e f) 0 →
+                ∃ B,
+                  ∀ (i : Fin 4),
+                    Eq.{u_1 + 1} (B i)
+                      (PfaffianDescent.QuarticNet.exceptionalParameterNativeCubicHZeroSection.{u_1} a b c d e i)
+'PfaffianDescent.QuarticNet.baseLocusExceptionalNativeHZero_completeBasis' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+PASS PfaffianDescent.fourCoordinateVertex_whole_actual_choice_independent_H0_literal_presentation: declarations=71981; axioms=#[Quot.sound, Classical.choice, propext]
+PASS PfaffianDescent.QuarticNet.baseLocusExceptionalNativeHZero_completeBasis: declarations=34406; axioms=#[Quot.sound, Classical.choice, propext]
+AUDIT COMPLETE: 2 roots; type/value/projection/recursor traversal

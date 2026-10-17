@@ -1,0 +1,239 @@
+@PfaffianDescent.QuadraticSkewRationality.OrdinaryLines201.rankTwoConjugateSkew_exists_paired_frame201.{u_1} : ∀
+  {k E : Type u_1} [inst : Field.{u_1} k] [inst_1 : Field.{u_1} E] [inst_2 : Algebra.{u_1, u_1} k E] (σ : Gal(E/k))
+  (U V : Submodule.{u_1, u_1} E (Fin 4 → E)) (hU : Eq.{1} (Module.finrank.{u_1, u_1} E ↥U) 2)
+  (hV : Eq.{1} (Module.finrank.{u_1, u_1} E ↥V) 2) (hSkew : Disjoint.{u_1} U V),
+  (∀ (x : Fin 4 → E), Membership.mem.{u_1, u_1} U x → Membership.mem.{u_1, u_1} V fun i => σ (x i)) →
+    (∀ (x : Fin 4 → E), Membership.mem.{u_1, u_1} V x → Membership.mem.{u_1, u_1} U fun i => σ (x i)) →
+      have h := ⋯;
+      ∃ C,
+        Eq.{u_1 + 1} (PfaffianDescent.QuarticNet.matchingEdgeProjectorMatrix.{u_1} C)
+            (PfaffianDescent.QuadraticSkewRationality.OrdinaryLines201.skewLineProjector201.{u_1} U V h) ∧
+          ∀ (i : Fin 2) (j : Fin 4), Eq.{u_1 + 1} (C (Fin.natAdd 2 i) j) (σ (C (Fin.castAdd 2 i) j))
+'PfaffianDescent.QuadraticSkewRationality.OrdinaryLines201.rankTwoConjugateSkew_exists_paired_frame201' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@PfaffianDescent.QuadraticSkewRationality.OrdinaryLines201.coefficientExtension_exists_same_projector_frame201.{u_1} : ∀
+  {E K : Type u_1} [inst : Field.{u_1} E] [inst_1 : Field.{u_1} K] (f : RingHom.{u_1, u_1} E K)
+  (C : Module.Basis.{0, u_1, u_1} (Fin 4) E (Fin 4 → E)),
+  ∃ B,
+    Eq.{u_1 + 1} (PfaffianDescent.QuarticNet.basisCoordinateMatrix.{u_1} B)
+        (Matrix.map.{u_1, u_1, 0, 0} (PfaffianDescent.QuarticNet.basisCoordinateMatrix.{u_1} C) ⇑f) ∧
+      Eq.{u_1 + 1} (Matrix.map.{u_1, u_1, 0, 0} (PfaffianDescent.QuarticNet.matchingEdgeProjectorMatrix.{u_1} C) ⇑f)
+        (PfaffianDescent.QuarticNet.matchingEdgeProjectorMatrix.{u_1} B)
+'PfaffianDescent.QuadraticSkewRationality.OrdinaryLines201.coefficientExtension_exists_same_projector_frame201' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@PfaffianDescent.QuarticNet.originalMatchingBranch_original_cubic_isRationalOver.{u_1} : ∀ {k L K : Type u_1}
+  [inst : Field.{u_1} k] [inst_1 : Field.{u_1} L] [inst_2 : Field.{u_1} K] [inst_3 : Algebra.{u_1, u_1} k L]
+  [inst_4 : Algebra.{u_1, u_1} k K] [IsGalois.{u_1, u_1} k K]
+  (full : Equiv.{1, u_1 + 1} (Fin 4) (AlgHom.{u_1, u_1, u_1} k L K)) (p v : Fin 4 → L)
+  (hs : Eq.{u_1 + 1} (Submodule.span.{u_1, u_1} K (Set.range.{u_1, u_1 + 1} fun sigma m => sigma (p m))) Top.top.{u_1})
+  (l : Fin 4 → K),
+  (∀ (r : Fin 4), Ne.{u_1 + 1} (l r) 0) →
+    ∀ (pi : Equiv.Perm.{1} (Fin 4)) (a f : K),
+      Ne.{u_1 + 1} a 0 →
+        Ne.{u_1 + 1} f 0 →
+          Eq.{u_1 + 1}
+              (PfaffianDescent.QuarticNet.tangentRelabel.{u_1}
+                (PfaffianDescent.QuarticNet.rescaleTangentDirections.{u_1} l
+                  (PfaffianDescent.QuarticNet.conjugateTangentMatrix.{u_1, u_1, u_1} full p v hs))
+                pi)
+              (PfaffianDescent.QuarticNet.skewTangentDirections.{u_1} a 0 0 0 0 f) →
+            ∀ (F : MvPolynomial.{0, u_1} (Fin 4) k) (hF : MvPolynomial.IsHomogeneous.{0, u_1} F 3),
+              Ne.{u_1 + 1} F 0 →
+                ∀
+                  [AlgebraicGeometry.Smooth.{u_1}
+                      (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} F hF)],
+                  (∀ (r : Fin 4),
+                      Eq.{u_1 + 1}
+                        ((MvPolynomial.aeval.{u_1, u_1, 0}
+                            (PfaffianDescent.QuarticNet.tangentDualPoint.{u_1}
+                              (PfaffianDescent.QuarticNet.skewTangentDirections.{u_1} a 0 0 0 0 f) r))
+                          ((PfaffianDescent.linearSubstitution.{u_1}
+                              (PfaffianDescent.QuarticNet.basisCoordinateMatrix.{u_1}
+                                (Module.Basis.reindex.{0, 0, u_1, u_1}
+                                  (PfaffianDescent.QuarticNet.conjugateBasis.{u_1, u_1, u_1} full p hs)
+                                  (Equiv.symm.{1, 1} pi))))
+                            ((MvPolynomial.map.{u_1, u_1, 0} (algebraMap.{u_1, u_1} k K)) F)))
+                        0) →
+                    AlgebraicGeometry.Scheme.IsRationalOver.{u_1}
+                      (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} F hF)
+'PfaffianDescent.QuarticNet.originalMatchingBranch_original_cubic_isRationalOver' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@PfaffianDescent.QuarticNet.originalMatchingBranch_original_cubic_rational_and_section.{u_1} : ∀ {k L K : Type u_1}
+  [inst : Field.{u_1} k] [inst_1 : Field.{u_1} L] [inst_2 : Field.{u_1} K] [inst_3 : Algebra.{u_1, u_1} k L]
+  [inst_4 : Algebra.{u_1, u_1} k K] [IsGalois.{u_1, u_1} k K]
+  (full : Equiv.{1, u_1 + 1} (Fin 4) (AlgHom.{u_1, u_1, u_1} k L K)) (p v : Fin 4 → L)
+  (hs : Eq.{u_1 + 1} (Submodule.span.{u_1, u_1} K (Set.range.{u_1, u_1 + 1} fun sigma m => sigma (p m))) Top.top.{u_1})
+  (l : Fin 4 → K),
+  (∀ (r : Fin 4), Ne.{u_1 + 1} (l r) 0) →
+    ∀ (pi : Equiv.Perm.{1} (Fin 4)) (a f : K),
+      Ne.{u_1 + 1} a 0 →
+        Ne.{u_1 + 1} f 0 →
+          Eq.{u_1 + 1}
+              (PfaffianDescent.QuarticNet.tangentRelabel.{u_1}
+                (PfaffianDescent.QuarticNet.rescaleTangentDirections.{u_1} l
+                  (PfaffianDescent.QuarticNet.conjugateTangentMatrix.{u_1, u_1, u_1} full p v hs))
+                pi)
+              (PfaffianDescent.QuarticNet.skewTangentDirections.{u_1} a 0 0 0 0 f) →
+            ∀ (F : MvPolynomial.{0, u_1} (Fin 4) k) (hF : MvPolynomial.IsHomogeneous.{0, u_1} F 3),
+              Ne.{u_1 + 1} F 0 →
+                ∀
+                  [AlgebraicGeometry.Smooth.{u_1}
+                      (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} F hF)],
+                  (∀ (r : Fin 4),
+                      Eq.{u_1 + 1}
+                        ((MvPolynomial.aeval.{u_1, u_1, 0}
+                            (PfaffianDescent.QuarticNet.tangentDualPoint.{u_1}
+                              (PfaffianDescent.QuarticNet.skewTangentDirections.{u_1} a 0 0 0 0 f) r))
+                          ((PfaffianDescent.linearSubstitution.{u_1}
+                              (PfaffianDescent.QuarticNet.basisCoordinateMatrix.{u_1}
+                                (Module.Basis.reindex.{0, 0, u_1, u_1}
+                                  (PfaffianDescent.QuarticNet.conjugateBasis.{u_1, u_1, u_1} full p hs)
+                                  (Equiv.symm.{1, 1} pi))))
+                            ((MvPolynomial.map.{u_1, u_1, 0} (algebraMap.{u_1, u_1} k K)) F)))
+                        0) →
+                    AlgebraicGeometry.Scheme.IsRationalOver.{u_1}
+                        (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} F hF) ∧
+                      ∃ s,
+                        Eq.{u_1 + 1}
+                          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} s
+                            (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} F hF))
+                          (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1}
+                            (AlgebraicGeometry.Spec.{u_1} (CommRingCat.of.{u_1} k)))
+'PfaffianDescent.QuarticNet.originalMatchingBranch_original_cubic_rational_and_section' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@PfaffianDescent.singleSupport_originalZ_actual_H0_matching_rational_section_or_finite.{u_1} : ∀ {k : Type u_1}
+  [inst : Field.{u_1} k] [inst_1 : PerfectField.{u_1} k] (F : MvPolynomial.{0, u_1} (Fin 4) k)
+  (hF : MvPolynomial.IsHomogeneous.{0, u_1} F 3),
+  Ne.{u_1 + 1} F 0 →
+    ∀ [AlgebraicGeometry.Smooth.{u_1} (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} F hF)]
+      {Z : AlgebraicGeometry.Scheme.{u_1}}
+      (i :
+        Quiver.Hom.{u_1, u_1 + 1} Z
+          (AllCharacteristics.HomogeneousProjective.scheme.{u_1}
+            (AllCharacteristics.HomogeneousProjective.equationIdeal.{u_1} F hF)))
+      [inst_3 : AlgebraicGeometry.IsClosedImmersion.{u_1} i]
+      [inst_4 :
+        AlgebraicGeometry.IsFinite.{u_1}
+          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i
+            (AllCharacteristics.HomogeneousProjective.toBase.{u_1}
+              (AllCharacteristics.HomogeneousProjective.equationIdeal.{u_1} F hF)))]
+      (P :
+        ↑(closedPoints.{u_1}
+            ↥(AllCharacteristics.HomogeneousProjective.scheme.{u_1}
+                (AllCharacteristics.HomogeneousProjective.equationIdeal.{u_1} F hF)))),
+      Eq.{u_1 + 1} (Set.range.{u_1, u_1 + 1} ⇑i) (singleton.{u_1, u_1} ↑P) →
+        Eq.{1}
+            (AlgebraicGeometry.Scheme.Hom.residueDegree.{u_1}
+              (AllCharacteristics.HomogeneousProjective.toBase.{u_1}
+                (AllCharacteristics.HomogeneousProjective.equationIdeal.{u_1} F hF))
+              ↑P)
+            4 →
+          PfaffianDescent.ProjectiveGeometricGeneralPosition.{u_1}
+              (AllCharacteristics.HomogeneousProjective.equationIdeal.{u_1} F hF)
+              (AlgebraicGeometry.Scheme.fromSpecResidueField.{u_1}
+                (AllCharacteristics.HomogeneousProjective.scheme.{u_1}
+                  (AllCharacteristics.HomogeneousProjective.equationIdeal.{u_1} F hF))
+                ↑P) →
+            LE.le.{0} 3
+                (Module.finrank.{u_1, u_1} k
+                  (PfaffianDescent.ActualP3IdealQuadraticHZero.{u_1}
+                    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i
+                      (AllCharacteristics.HomogeneousProjective.quotientProjMap.{u_1}
+                        (AllCharacteristics.HomogeneousProjective.equationIdeal.{u_1} F hF))))) →
+              Eq.{1}
+                  (AllCharacteristics.finiteSchemeRank.{u_1}
+                    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i
+                      (AllCharacteristics.HomogeneousProjective.toBase.{u_1}
+                        (AllCharacteristics.HomogeneousProjective.equationIdeal.{u_1} F hF))))
+                  8 →
+                ∃ j g x eA b v full l,
+                  Eq.{u_1 + 1} (x j) 1 ∧
+                    Function.Surjective.{u_1 + 1, u_1 + 1} ⇑(MvPolynomial.aeval.{u_1, u_1, 0} x) ∧
+                      Eq.{u_1 + 1}
+                          (RingHom.comp.{u_1, u_1, u_1} g
+                            (AllCharacteristics.HomogeneousProjective.chartBaseMap.{u_1}
+                              (AllCharacteristics.HomogeneousProjective.equationIdeal.{u_1} F hF) j))
+                          (algebraMap.{u_1, u_1} k
+                            ↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1, u_1 + 1}
+                                (AlgebraicGeometry.PresheafedSpace.presheaf.{u_1, u_1 + 1, u_1}
+                                  (AlgebraicGeometry.SheafedSpace.toPresheafedSpace.{u_1 + 1, u_1, u_1}
+                                    (AlgebraicGeometry.LocallyRingedSpace.toSheafedSpace.{u_1}
+                                      (AlgebraicGeometry.Scheme.toLocallyRingedSpace.{u_1} Z))))
+                                (Opposite.op.{u_1 + 1} Top.top.{u_1}))) ∧
+                        Eq.{u_1 + 1} (b j) 1 ∧
+                          Eq.{u_1 + 1} (v j) 0 ∧
+                            Ne.{u_1 + 1} v 0 ∧
+                              (∀ (r : Fin 4),
+                                  Eq.{u_1 + 1} (x r)
+                                    (g
+                                      (AllCharacteristics.HomogeneousProjective.chartCoordinate.{u_1}
+                                        (AllCharacteristics.HomogeneousProjective.equationIdeal.{u_1} F hF) j r))) ∧
+                                Eq.{u_1 + 1}
+                                    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+                                      (AlgebraicGeometry.Spec.map.{u_1} (CommRingCat.ofHom.{u_1} g))
+                                      (AllCharacteristics.HomogeneousProjective.chartι.{u_1}
+                                        (AllCharacteristics.HomogeneousProjective.equationIdeal.{u_1} F hF) j))
+                                    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+                                      (CategoryTheory.Iso.inv.{u_1, u_1 + 1} (AlgebraicGeometry.Scheme.isoSpec.{u_1} Z))
+                                      i) ∧
+                                  (∀ (r : Fin 4),
+                                      Eq.{u_1 + 1} (eA (x r))
+                                        (HAdd.hAdd.{u_1, u_1, u_1} (TrivSqZeroExt.inl.{u_1, u_1} (b r))
+                                          (TrivSqZeroExt.inr.{u_1, u_1} (v r)))) ∧
+                                    (∀ (r : Fin 4), Ne.{u_1 + 1} (l r) 0) ∧
+                                      have U :=
+                                        PfaffianDescent.QuarticNet.conjugateTangentMatrix.{u_1, u_1, u_1} full (⇑b) v ⋯;
+                                      (∀ (r : Fin 4), ∃ s, Ne.{u_1 + 1} (U r s) 0) ∧
+                                        (∀ (r s : Fin 4),
+                                            Eq.{u_1 + 1} (HMul.hMul.{u_1, u_1, u_1} (l r) (U r s))
+                                              (Neg.neg.{u_1} (HMul.hMul.{u_1, u_1, u_1} (l s) (U s r)))) ∧
+                                          ((∀ (r : Fin 4),
+                                                ExistsUnique.{1} fun s =>
+                                                  Ne.{u_1 + 1}
+                                                    (PfaffianDescent.QuarticNet.rescaleTangentDirections.{u_1} l U r s)
+                                                    0) →
+                                              AlgebraicGeometry.Scheme.IsRationalOver.{u_1}
+                                                  (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} F
+                                                    hF) ∧
+                                                ∃ s,
+                                                  Eq.{u_1 + 1}
+                                                    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} s
+                                                      (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1}
+                                                        F hF))
+                                                    (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1}
+                                                      (AlgebraicGeometry.Spec.{u_1} (CommRingCat.of.{u_1} k)))) ∧
+                                            ((∃ r s,
+                                                Ne.{1} r s ∧
+                                                  Eq.{u_1 + 1}
+                                                    (PfaffianDescent.QuarticNet.rescaleTangentDirections.{u_1} l U r s)
+                                                    0) →
+                                              (AlgebraicGeometry.Scheme.IsRationalOver.{u_1}
+                                                    (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} F
+                                                      hF) ∧
+                                                  ∃ s,
+                                                    Eq.{u_1 + 1}
+                                                      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} s
+                                                        (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1}
+                                                          F hF))
+                                                      (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1}
+                                                        (AlgebraicGeometry.Spec.{u_1} (CommRingCat.of.{u_1} k)))) ∨
+                                                AlgebraicGeometry.IsFinite.{u_1}
+                                                  (AllCharacteristics.HomogeneousProjective.toBase.{u_1}
+                                                    (PfaffianDescent.intrinsicFullQuadraticBaseIdeal.{u_1}
+                                                      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i
+                                                        (AllCharacteristics.HomogeneousProjective.quotientProjMap.{u_1}
+                                                          (AllCharacteristics.HomogeneousProjective.equationIdeal.{u_1}
+                                                            F hF))))))
+'PfaffianDescent.singleSupport_originalZ_actual_H0_matching_rational_section_or_finite' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+PASS PfaffianDescent.QuadraticSkewRationality.OrdinaryLines201.rankTwoConjugateSkew_exists_paired_frame201: declarations=17669; axioms=#[Quot.sound, Classical.choice, propext]
+PASS PfaffianDescent.QuadraticSkewRationality.OrdinaryLines201.coefficientExtension_exists_same_projector_frame201: declarations=9612; axioms=#[Quot.sound, Classical.choice, propext]
+PASS PfaffianDescent.QuarticNet.originalMatchingBranch_original_cubic_isRationalOver: declarations=54310; axioms=#[Quot.sound, Classical.choice, propext]
+PASS PfaffianDescent.QuarticNet.originalMatchingBranch_original_cubic_rational_and_section: declarations=54519; axioms=#[Quot.sound, Classical.choice, propext]
+PASS PfaffianDescent.singleSupport_originalZ_actual_H0_matching_rational_section_or_finite: declarations=64893; axioms=#[Quot.sound, Classical.choice, propext]
+AUDIT COMPLETE: 5 roots; type/value/projection/recursor traversal

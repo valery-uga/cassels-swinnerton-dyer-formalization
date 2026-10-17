@@ -1,0 +1,9 @@
+AllCharacteristics/ManuscriptVerification/SectionFourChallenge.lean:25:8: warning: declaration uses `sorry`
+AllCharacteristics/ManuscriptVerification/SectionFourChallenge.lean:47:8: warning: declaration uses `sorry`
+AllCharacteristics/ManuscriptVerification/SectionFourChallenge.lean:78:8: warning: declaration uses `sorry`
+AllCharacteristics/ManuscriptVerification/SectionFourChallenge.lean:104:8: warning: declaration uses `sorry`
+AllCharacteristics/ManuscriptVerification/SectionFourChallenge.lean:127:8: warning: declaration uses `sorry`
+AllCharacteristics/ManuscriptVerification/SectionFourChallenge.lean:160:8: warning: declaration uses `sorry`
+AllCharacteristics/ManuscriptVerification/SectionFourChallenge.lean:200:8: warning: declaration uses `sorry`
+AllCharacteristics/ManuscriptVerification/SectionFourChallenge.lean:256:8: warning: declaration uses `sorry`
+AllCharacteristics/ManuscriptVerification/SectionFourChallenge.lean:360:8: warning: declaration uses `sorry`

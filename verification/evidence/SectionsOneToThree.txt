@@ -1,0 +1,269 @@
+@AllCharacteristics.twoProofs_degree_four_closed_point_has_point.{u_1} : ∀ {k : Type u_1} [inst : Field.{u_1} k]
+  (p : MvPolynomial.{0, u_1} (Fin 4) k) (hp : MvPolynomial.IsHomogeneous.{0, u_1} p 3),
+  Ne.{u_1 + 1} p 0 →
+    ∀ [AlgebraicGeometry.Smooth.{u_1} (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} p hp)]
+      (x : ↑(closedPoints.{u_1} ↥(AllCharacteristics.HomogeneousProjective.hypersurface.{u_1} p hp))),
+      Eq.{1}
+          (AlgebraicGeometry.Scheme.Hom.residueDegree.{u_1}
+            (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} p hp) ↑x)
+          4 →
+        ∃ s,
+          Eq.{u_1 + 1}
+            (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} s
+              (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} p hp))
+            (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} (AlgebraicGeometry.Spec.{u_1} (CommRingCat.of.{u_1} k)))
+'AllCharacteristics.twoProofs_degree_four_closed_point_has_point' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@AllCharacteristics.twoProofs_intro_finiteExtension_iff_internalCoray001.{u_1} : ∀ {k : Type u_1} [inst : Field.{u_1} k]
+  (p : MvPolynomial.{0, u_1} (Fin 4) k),
+  MvPolynomial.IsHomogeneous.{0, u_1} p 3 →
+    ((∃ y, Ne.{u_1 + 1} y 0 ∧ Eq.{u_1 + 1} ((MvPolynomial.eval.{u_1, 0} y) p) 0) ↔
+      ∃ L hL hAlg,
+        ∃ (_ : Module.Finite.{u_1, u_1} k L),
+          (Module.finrank.{u_1, u_1} k L).Coprime 3 ∧
+            ∃ x, Ne.{u_1 + 1} x 0 ∧ Eq.{u_1 + 1} (MvPolynomial.eval₂.{u_1, u_1, 0} (algebraMap.{u_1, u_1} k L) x p) 0)
+'AllCharacteristics.twoProofs_intro_finiteExtension_iff_internalCoray001' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@AllCharacteristics.twoProofs_finite_point_coprime_has_point_internalCoray001.{u_1} : ∀ {k L : Type u_1}
+  [inst : Field.{u_1} k] [inst_1 : Field.{u_1} L] [inst_2 : Algebra.{u_1, u_1} k L] [Module.Finite.{u_1, u_1} k L]
+  (p : MvPolynomial.{0, u_1} (Fin 4) k),
+  MvPolynomial.IsHomogeneous.{0, u_1} p 3 →
+    (Module.finrank.{u_1, u_1} k L).Coprime 3 →
+      ∀ (x : Fin 4 → L),
+        Ne.{u_1 + 1} x 0 →
+          Eq.{u_1 + 1} (MvPolynomial.eval₂.{u_1, u_1, 0} (algebraMap.{u_1, u_1} k L) x p) 0 →
+            ∃ y, Ne.{u_1 + 1} y 0 ∧ Eq.{u_1 + 1} ((MvPolynomial.eval.{u_1, 0} y) p) 0
+'AllCharacteristics.twoProofs_finite_point_coprime_has_point_internalCoray001' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@AllCharacteristics.twoProofs_pfaffian_cubic_has_point.{u_1} : ∀ {k : Type u_1} [inst : Field.{u_1} k] [NeZero.{u_1} 2]
+  (p : MvPolynomial.{0, u_1} (Fin 4) k) (hp : MvPolynomial.IsHomogeneous.{0, u_1} p 3)
+  (A : Fin 4 → PfaffianDescent.Mat.{u_1} k 6),
+  (∀ (i : Fin 4), PfaffianDescent.IsAlternating.{u_1} (A i)) →
+    Eq.{u_1 + 1} (PfaffianDescent.Cubic.toMvPolynomial.{u_1} (PfaffianDescent.pfaffianCubic.{u_1} A)) p →
+      ∃ s,
+        Eq.{u_1 + 1}
+          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} s
+            (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} p hp))
+          (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} (AlgebraicGeometry.Spec.{u_1} (CommRingCat.of.{u_1} k)))
+'AllCharacteristics.twoProofs_pfaffian_cubic_has_point' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@AllCharacteristics.twoProofs_secant.{u_1} : ∀ {k : Type u_1} [inst : Field.{u_1} k]
+  (p : MvPolynomial.{0, u_1} (Fin 4) k) (hp : MvPolynomial.IsHomogeneous.{0, u_1} p 3)
+  (z : AllCharacteristics.EffectiveZeroCycle.{u_1} (AllCharacteristics.HomogeneousProjective.hypersurface.{u_1} p hp)),
+  Eq.{1}
+        (AllCharacteristics.EffectiveZeroCycle.degree.{u_1}
+          (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} p hp) z)
+        1 ∨
+      Eq.{1}
+        (AllCharacteristics.EffectiveZeroCycle.degree.{u_1}
+          (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} p hp) z)
+        2 →
+    ∃ s,
+      Eq.{u_1 + 1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} s
+          (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} p hp))
+        (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} (AlgebraicGeometry.Spec.{u_1} (CommRingCat.of.{u_1} k)))
+'AllCharacteristics.twoProofs_secant' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@AllCharacteristics.twoProofs_position_perfect.{u_1} : ∀ {k : Type u_1} [inst : Field.{u_1} k] [PerfectField.{u_1} k]
+  (p : MvPolynomial.{0, u_1} (Fin 4) k) (hp : MvPolynomial.IsHomogeneous.{0, u_1} p 3),
+  Ne.{u_1 + 1} p 0 →
+    ∀ [AlgebraicGeometry.Smooth.{u_1} (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} p hp)]
+      (x : ↑(closedPoints.{u_1} ↥(AllCharacteristics.HomogeneousProjective.hypersurface.{u_1} p hp))),
+      Eq.{1}
+            (AlgebraicGeometry.Scheme.Hom.residueDegree.{u_1}
+              (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} p hp) ↑x)
+            4 ∨
+          Eq.{1}
+            (AlgebraicGeometry.Scheme.Hom.residueDegree.{u_1}
+              (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} p hp) ↑x)
+            5 →
+        have coplanar :=
+          ∃ c,
+            Ne.{u_1 + 1} c 0 ∧
+              Membership.mem.{u_1, u_1}
+                (HomogeneousIdeal.toIdeal.{0, u_1, u_1} (ProjectiveSpectrum.asHomogeneousIdeal.{u_1, u_1} ↑x))
+                ((Ideal.Quotient.mk.{u_1}
+                    (HomogeneousIdeal.toIdeal.{0, u_1, u_1}
+                      (AllCharacteristics.HomogeneousProjective.equationIdeal.{u_1} p hp)))
+                  (PfaffianDescent.homogeneousLinearForm.{u_1} c));
+        (coplanar →
+            ∃ s,
+              Eq.{u_1 + 1}
+                (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} s
+                  (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} p hp))
+                (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1}
+                  (AlgebraicGeometry.Spec.{u_1} (CommRingCat.of.{u_1} k)))) ∧
+          (¬coplanar →
+            PfaffianDescent.ProjectiveGeometricGeneralPosition.{u_1}
+              (AllCharacteristics.HomogeneousProjective.equationIdeal.{u_1} p hp)
+              (AlgebraicGeometry.Scheme.fromSpecResidueField.{u_1}
+                (AllCharacteristics.HomogeneousProjective.hypersurface.{u_1} p hp) ↑x))
+'AllCharacteristics.twoProofs_position_perfect' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@AllCharacteristics.twoProofs_twisted_cubic_smooth_embedding_of_algebraicClosure_presentation.{u_1} : ∀ {k : Type u_1}
+  [inst : Field.{u_1} k] [PerfectField.{u_1} k] {X : AlgebraicGeometry.Scheme.{u_1}}
+  (i :
+    Quiver.Hom.{u_1, u_1 + 1} X
+      (AlgebraicGeometry.Proj.{u_1, u_1} (MvPolynomial.homogeneousSubmodule.{0, u_1} (Fin 4) k)))
+  [inst_2 : AlgebraicGeometry.IsClosedImmersion.{u_1} i],
+  AlgebraicGeometry.Smooth.{u_1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i
+        AllCharacteristics.HomogeneousProjective.ambientToBase.{u_1}) →
+    AllCharacteristics.IsTwistedCubicAfterCoefficientExtension.{u_1}
+        (algebraMap.{u_1, u_1} k (AlgebraicClosure.{u_1} k)) i →
+      PfaffianDescent.QuarticNet.GroundTwistedCubicPresentation.{u_1}
+          (AllCharacteristics.HomogeneousProjective.closedImmersionVanishingIdeal.{u_1} i) ∧
+        ∃ r,
+          Eq.{u_1 + 1}
+              (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (CategoryTheory.Iso.hom.{u_1, u_1 + 1} r)
+                (AllCharacteristics.HomogeneousProjective.quotientProjMap.{u_1}
+                  (AllCharacteristics.HomogeneousProjective.closedImmersionVanishingIdeal.{u_1} i)))
+              i ∧
+            ∃ e,
+              Eq.{u_1 + 1}
+                  (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (CategoryTheory.Iso.hom.{u_1, u_1 + 1} e)
+                    (PfaffianDescent.projectiveLineProjToBase.{u_1} k))
+                  (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i
+                    AllCharacteristics.HomogeneousProjective.ambientToBase.{u_1}) ∧
+                ∃ s,
+                  Eq.{u_1 + 1}
+                    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} s
+                      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i
+                        AllCharacteristics.HomogeneousProjective.ambientToBase.{u_1}))
+                    (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1}
+                      (AlgebraicGeometry.Spec.{u_1} (CommRingCat.of.{u_1} k)))
+'AllCharacteristics.twoProofs_twisted_cubic_smooth_embedding_of_algebraicClosure_presentation' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@AllCharacteristics.paper_twisted_cubic_perfect.{u_1} : ∀ {k : Type u_1} [inst : Field.{u_1} k] [PerfectField.{u_1} k]
+  {X : AlgebraicGeometry.Scheme.{u_1}}
+  (i :
+    Quiver.Hom.{u_1, u_1 + 1} X
+      (AlgebraicGeometry.Proj.{u_1, u_1} (MvPolynomial.homogeneousSubmodule.{0, u_1} (Fin 4) k)))
+  [inst_2 : AlgebraicGeometry.IsClosedImmersion.{u_1} i],
+  AlgebraicGeometry.Smooth.{u_1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i
+        AllCharacteristics.HomogeneousProjective.ambientToBase.{u_1}) →
+    AllCharacteristics.IsTwistedCubicAfterCoefficientExtension.{u_1}
+        (algebraMap.{u_1, u_1} k (AlgebraicClosure.{u_1} k)) i →
+      PfaffianDescent.QuarticNet.GroundTwistedCubicPresentation.{u_1}
+          (AllCharacteristics.HomogeneousProjective.closedImmersionVanishingIdeal.{u_1} i) ∧
+        ∃ e,
+          Eq.{u_1 + 1}
+            (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (CategoryTheory.Iso.hom.{u_1, u_1 + 1} e)
+              (PfaffianDescent.projectiveLineProjToBase.{u_1} k))
+            (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i
+              AllCharacteristics.HomogeneousProjective.ambientToBase.{u_1})
+'AllCharacteristics.paper_twisted_cubic_perfect' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@AllCharacteristics.twoProofs_cassels_four_five.{u_1} : ∀ {k : Type u_1} [inst : Field.{u_1} k]
+  (p : MvPolynomial.{0, u_1} (Fin 4) k) (hp : MvPolynomial.IsHomogeneous.{0, u_1} p 3),
+  Ne.{u_1 + 1} p 0 →
+    ∀ [AlgebraicGeometry.Smooth.{u_1} (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} p hp)],
+      (∃ z,
+          Eq.{1}
+            (AllCharacteristics.EffectiveZeroCycle.degree.{u_1}
+              (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} p hp) z)
+            4) ↔
+        ∃ z,
+          Eq.{1}
+            (AllCharacteristics.EffectiveZeroCycle.degree.{u_1}
+              (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} p hp) z)
+            5
+'AllCharacteristics.twoProofs_cassels_four_five' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@AllCharacteristics.twoProofs_cassels_four_five_closed_point_alternative.{u_1} : ∀ {k : Type u_1} [inst : Field.{u_1} k]
+  (p : MvPolynomial.{0, u_1} (Fin 4) k) (hp : MvPolynomial.IsHomogeneous.{0, u_1} p 3),
+  Ne.{u_1 + 1} p 0 →
+    ∀ [AlgebraicGeometry.Smooth.{u_1} (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} p hp)]
+      (x : ↑(closedPoints.{u_1} ↥(AllCharacteristics.HomogeneousProjective.hypersurface.{u_1} p hp))),
+      Eq.{1}
+            (AlgebraicGeometry.Scheme.Hom.residueDegree.{u_1}
+              (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} p hp) ↑x)
+            4 ∨
+          Eq.{1}
+            (AlgebraicGeometry.Scheme.Hom.residueDegree.{u_1}
+              (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} p hp) ↑x)
+            5 →
+        (∃ s,
+            Eq.{u_1 + 1}
+              (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} s
+                (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} p hp))
+              (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1}
+                (AlgebraicGeometry.Spec.{u_1} (CommRingCat.of.{u_1} k)))) ∨
+          ∃ y,
+            Eq.{1}
+              (AlgebraicGeometry.Scheme.Hom.residueDegree.{u_1}
+                (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} p hp) ↑y)
+              (HSub.hSub.{0, 0, 0} 9
+                (AlgebraicGeometry.Scheme.Hom.residueDegree.{u_1}
+                  (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} p hp) ↑x))
+'AllCharacteristics.twoProofs_cassels_four_five_closed_point_alternative' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@AllCharacteristics.twoProofs_degree_five_has_point.{u_1} : ∀ {k : Type u_1} [inst : Field.{u_1} k] [CharZero.{u_1} k]
+  (p : MvPolynomial.{0, u_1} (Fin 4) k) (hp : MvPolynomial.IsHomogeneous.{0, u_1} p 3)
+  (z : AllCharacteristics.EffectiveZeroCycle.{u_1} (AllCharacteristics.HomogeneousProjective.hypersurface.{u_1} p hp)),
+  Eq.{1}
+      (AllCharacteristics.EffectiveZeroCycle.degree.{u_1}
+        (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} p hp) z)
+      5 →
+    ∃ s,
+      Eq.{u_1 + 1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} s
+          (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} p hp))
+        (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} (AlgebraicGeometry.Spec.{u_1} (CommRingCat.of.{u_1} k)))
+'AllCharacteristics.twoProofs_degree_five_has_point' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@AllCharacteristics.twoProofs_incidence_finite_etale_degree_two_open.{u_1} : ∀ {k : Type u_1} [inst : Field.{u_1} k]
+  [NeZero.{u_1} 2],
+  ∃ U,
+    Set.Nonempty.{u_1} ↑U ∧
+      AlgebraicGeometry.IsFinite.{u_1}
+          (AlgebraicGeometry.morphismRestrict.{u_1} (PfaffianDescent.incidenceToTriples.{u_1} k) U) ∧
+        AlgebraicGeometry.Etale.{u_1}
+            (AlgebraicGeometry.morphismRestrict.{u_1} (PfaffianDescent.incidenceToTriples.{u_1} k) U) ∧
+          ∀ (x : ↥↑U),
+            Eq.{1}
+              (AlgebraicGeometry.Scheme.Hom.finrank.{u_1}
+                (AlgebraicGeometry.morphismRestrict.{u_1} (PfaffianDescent.incidenceToTriples.{u_1} k) U) x)
+              2
+'AllCharacteristics.twoProofs_incidence_finite_etale_degree_two_open' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@AllCharacteristics.twoProofs_reduced_length_five_subscheme_pfaffian.{u_1} : ∀ {k : Type u_1} [inst : Field.{u_1} k]
+  [CharZero.{u_1} k] (p : MvPolynomial.{0, u_1} (Fin 4) k) (hp : MvPolynomial.IsHomogeneous.{0, u_1} p 3)
+  {Z : AlgebraicGeometry.Scheme.{u_1}} [AlgebraicGeometry.IsReduced.{u_1} Z]
+  (i : Quiver.Hom.{u_1, u_1 + 1} Z (AllCharacteristics.HomogeneousProjective.hypersurface.{u_1} p hp))
+  [AlgebraicGeometry.IsClosedImmersion.{u_1} i]
+  [inst_4 :
+    AlgebraicGeometry.IsFinite.{u_1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i
+        (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} p hp))],
+  Eq.{1}
+      (AllCharacteristics.finiteSchemeRank.{u_1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i
+          (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} p hp)))
+      5 →
+    PfaffianDescent.ProjectiveGeometricGeneralPosition.{u_1}
+        (AllCharacteristics.HomogeneousProjective.equationIdeal.{u_1} p hp) i →
+      ∃ A,
+        (∀ (j : Fin 4), PfaffianDescent.IsAlternating.{u_1} (A j)) ∧
+          Eq.{u_1 + 1} (PfaffianDescent.Cubic.toMvPolynomial.{u_1} (PfaffianDescent.pfaffianCubic.{u_1} A)) p
+'AllCharacteristics.twoProofs_reduced_length_five_subscheme_pfaffian' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+PASS AllCharacteristics.twoProofs_degree_four_closed_point_has_point: declarations=57788; axioms=#[Quot.sound, Classical.choice, propext]
+PASS AllCharacteristics.twoProofs_intro_finiteExtension_iff_internalCoray001: declarations=109372; axioms=#[Quot.sound, Classical.choice, propext]
+PASS AllCharacteristics.twoProofs_finite_point_coprime_has_point_internalCoray001: declarations=109371; axioms=#[Quot.sound, Classical.choice, propext]
+PASS AllCharacteristics.twoProofs_pfaffian_cubic_has_point: declarations=32214; axioms=#[Quot.sound, Classical.choice, propext]
+PASS AllCharacteristics.twoProofs_secant: declarations=43461; axioms=#[Quot.sound, Classical.choice, propext]
+PASS AllCharacteristics.twoProofs_position_perfect: declarations=58328; axioms=#[Quot.sound, Classical.choice, propext]
+PASS AllCharacteristics.twoProofs_twisted_cubic_smooth_embedding_of_algebraicClosure_presentation: declarations=53752; axioms=#[Quot.sound, Classical.choice, propext]
+PASS AllCharacteristics.paper_twisted_cubic_perfect: declarations=53752; axioms=#[Quot.sound, Classical.choice, propext]
+PASS AllCharacteristics.twoProofs_cassels_four_five: declarations=57874; axioms=#[Quot.sound, Classical.choice, propext]
+PASS AllCharacteristics.twoProofs_cassels_four_five_closed_point_alternative: declarations=57788; axioms=#[Quot.sound, Classical.choice, propext]
+PASS AllCharacteristics.twoProofs_degree_five_has_point: declarations=50225; axioms=#[Quot.sound, Classical.choice, propext]
+PASS AllCharacteristics.twoProofs_incidence_finite_etale_degree_two_open: declarations=59239; axioms=#[Quot.sound, Classical.choice, propext]
+PASS AllCharacteristics.twoProofs_reduced_length_five_subscheme_pfaffian: declarations=48747; axioms=#[Quot.sound, Classical.choice, propext]
+AUDIT COMPLETE: 13 roots; type/value/projection/recursor traversal

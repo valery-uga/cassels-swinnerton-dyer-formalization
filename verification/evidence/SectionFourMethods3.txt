@@ -1,0 +1,130 @@
+@PfaffianDescent.actualOriginalGlobalCanonicalQuadraticPhi_eq_native.{u_1} : ∀ {K : Type u_1} [inst : Field.{u_1} K]
+  [inst_1 : PerfectField.{u_1} K] (p : MvPolynomial.{0, u_1} (Fin 4) K) (hp : MvPolynomial.IsHomogeneous.{0, u_1} p 3)
+  (P : ↑(closedPoints.{u_1} ↥(AllCharacteristics.HomogeneousProjective.hypersurface.{u_1} p hp)))
+  (hP :
+    Eq.{1}
+      (AlgebraicGeometry.Scheme.Hom.residueDegree.{u_1}
+        (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} p hp) ↑P)
+      4)
+  (s : PfaffianDescent.ActualOriginalPointIdealQuadraticSections.{u_1} p hp P),
+  Eq.{u_1 + 1} (PfaffianDescent.actualOriginalGlobalCanonicalQuadraticPhi.{u_1} p hp P s)
+    ((PfaffianDescent.actualOriginalIdealQuadraticPositiveTwoPhi.{u_1} p hp P hP) s)
+'PfaffianDescent.actualOriginalGlobalCanonicalQuadraticPhi_eq_native' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@PfaffianDescent.actualOriginalOneDimensionalQuotient_globalCanonicalPhiHZero_injective_and_range_eq_kernel163.{u_1} : ∀
+  {K : Type u_1} [inst : Field.{u_1} K] [inst_1 : PerfectField.{u_1} K] (p : MvPolynomial.{0, u_1} (Fin 4) K)
+  (hp : MvPolynomial.IsHomogeneous.{0, u_1} p 3)
+  (P : ↑(closedPoints.{u_1} ↥(AllCharacteristics.HomogeneousProjective.hypersurface.{u_1} p hp)))
+  (hP :
+    Eq.{1}
+      (AlgebraicGeometry.Scheme.Hom.residueDegree.{u_1}
+        (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} p hp) ↑P)
+      4)
+  (N : Type u_1) [inst_2 : AddCommGroup.{u_1} N]
+  [inst_3 :
+    Module.{u_1, u_1}
+      (↑(AlgebraicGeometry.Scheme.residueField.{u_1} (AllCharacteristics.HomogeneousProjective.hypersurface.{u_1} p hp)
+          ↑P))
+      N]
+  (hN :
+    Eq.{1}
+      (Module.finrank.{u_1, u_1}
+        (↑(AlgebraicGeometry.Scheme.residueField.{u_1}
+            (AllCharacteristics.HomogeneousProjective.hypersurface.{u_1} p hp) ↑P))
+        N)
+      1)
+  (q :
+    LinearMap.{u_1, u_1, u_1, u_1}
+      (RingHom.id.{u_1}
+        ↑(AlgebraicGeometry.Scheme.residueField.{u_1} (AllCharacteristics.HomogeneousProjective.hypersurface.{u_1} p hp)
+            ↑P))
+      (↑(PfaffianDescent.ActualOriginalPositiveTwoFiber.{u_1} p hp P)) N)
+  (hq : Function.Surjective.{u_1 + 1, u_1 + 1} ⇑q),
+  let L :=
+    AlgebraicGeometry.Scheme.residueField.{u_1} (AllCharacteristics.HomogeneousProjective.hypersurface.{u_1} p hp) ↑P;
+  let E2 := PfaffianDescent.ActualOriginalPositiveTwoFiber.{u_1} p hp P;
+  let e := PfaffianDescent.oneDimensionalQuotientTargetEquiv.{u_1} (↑L) N hN;
+  let ell := ↑e ∘ₗ q;
+  have hell := ⋯;
+  have d := PfaffianDescent.actualOriginalPositiveTwoNativeJetEmbedding.{u_1} p hp P hP ell;
+  Function.Injective.{u_1 + 1, u_1 + 1}
+      ⇑(PfaffianDescent.actualOriginalNativePhiJetHZeroSheafInclusion163.{u_1} p hp P hP ell hell) ∧
+    Eq.{u_1 + 1}
+      (LinearMap.range.{u_1, u_1, u_1, u_1}
+        (PfaffianDescent.actualOriginalNativePhiJetHZeroSheafInclusion163.{u_1} p hp P hP ell hell))
+      (LinearMap.ker.{u_1, u_1, u_1, u_1}
+        (↑K q ∘ₗ PfaffianDescent.actualOriginalGlobalCanonicalQuadraticPhiLinearMap.{u_1} p hp P))
+'PfaffianDescent.actualOriginalOneDimensionalQuotient_globalCanonicalPhiHZero_injective_and_range_eq_kernel163' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@PfaffianDescent.perfectField_originalGlobalCanonicalPhi_traceSelectedQuotient.{u_1} : ∀ {K : Type u_1}
+  [inst : Field.{u_1} K] [PerfectField.{u_1} K] (p : MvPolynomial.{0, u_1} (Fin 4) K)
+  (hp : MvPolynomial.IsHomogeneous.{0, u_1} p 3),
+  Ne.{u_1 + 1} p 0 →
+    ∀ [AlgebraicGeometry.Smooth.{u_1} (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} p hp)]
+      (P : ↑(closedPoints.{u_1} ↥(AllCharacteristics.HomogeneousProjective.hypersurface.{u_1} p hp))),
+      Eq.{1}
+          (AlgebraicGeometry.Scheme.Hom.residueDegree.{u_1}
+            (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} p hp) ↑P)
+          4 →
+        PfaffianDescent.ProjectiveGeometricGeneralPosition.{u_1}
+            (AllCharacteristics.HomogeneousProjective.equationIdeal.{u_1} p hp)
+            (AlgebraicGeometry.Scheme.fromSpecResidueField.{u_1}
+              (AllCharacteristics.HomogeneousProjective.hypersurface.{u_1} p hp) ↑P) →
+          let L :=
+            AlgebraicGeometry.Scheme.residueField.{u_1}
+              (AllCharacteristics.HomogeneousProjective.hypersurface.{u_1} p hp) ↑P;
+          let E2 :=
+            CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} AlgebraicGeometry.moduleSpecΓFunctor.{u_1}
+              (CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1}
+                (AlgebraicGeometry.Scheme.Modules.pullback.{u_1}
+                  (AlgebraicGeometry.Scheme.fromSpecResidueField.{u_1}
+                    (AllCharacteristics.HomogeneousProjective.hypersurface.{u_1} p hp) ↑P))
+                (PfaffianDescent.actualCubicPositiveTwoDifferentials.{u_1} p hp));
+          ∃ ell,
+            Function.Surjective.{u_1 + 1, u_1 + 1} ⇑ell ∧
+              Eq.{u_1 + 1}
+                  (Algebra.trace.{u_1, u_1} K ↑L ∘ₗ
+                    ↑K ell ∘ₗ PfaffianDescent.actualOriginalGlobalCanonicalQuadraticPhiLinearMap.{u_1} p hp P)
+                  0 ∧
+                LE.le.{0} 3
+                  (Module.finrank.{u_1, u_1} K
+                    ↥(LinearMap.ker.{u_1, u_1, u_1, u_1}
+                        (↑K ell ∘ₗ PfaffianDescent.actualOriginalGlobalCanonicalQuadraticPhiLinearMap.{u_1} p hp P)))
+'PfaffianDescent.perfectField_originalGlobalCanonicalPhi_traceSelectedQuotient' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@PfaffianDescent.actualOriginalPositiveTwoTraceDualEquiv.{u_1} : {K : Type u_1} →
+  [inst : Field.{u_1} K] →
+    [PerfectField.{u_1} K] →
+      (p : MvPolynomial.{0, u_1} (Fin 4) K) →
+        (hp : MvPolynomial.IsHomogeneous.{0, u_1} p 3) →
+          Ne.{u_1 + 1} p 0 →
+            [AlgebraicGeometry.Smooth.{u_1} (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} p hp)] →
+              (P : ↑(closedPoints.{u_1} ↥(AllCharacteristics.HomogeneousProjective.hypersurface.{u_1} p hp))) →
+                Eq.{1}
+                    (AlgebraicGeometry.Scheme.Hom.residueDegree.{u_1}
+                      (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} p hp) ↑P)
+                    4 →
+                  let L :=
+                    AlgebraicGeometry.Scheme.residueField.{u_1}
+                      (AllCharacteristics.HomogeneousProjective.hypersurface.{u_1} p hp) ↑P;
+                  let E2 :=
+                    CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} AlgebraicGeometry.moduleSpecΓFunctor.{u_1}
+                      (CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1}
+                        (AlgebraicGeometry.Scheme.Modules.pullback.{u_1}
+                          (AlgebraicGeometry.Scheme.fromSpecResidueField.{u_1}
+                            (AllCharacteristics.HomogeneousProjective.hypersurface.{u_1} p hp) ↑P))
+                        (PfaffianDescent.actualCubicPositiveTwoDifferentials.{u_1} p hp));
+                  LinearEquiv.{u_1, u_1, u_1, u_1} (RingHom.id.{u_1} K)
+                    (LinearMap.{u_1, u_1, u_1, u_1} (RingHom.id.{u_1} ↑L) ↑E2 ↑L)
+                    (LinearMap.{u_1, u_1, u_1, u_1} (RingHom.id.{u_1} K) (↑E2) K)
+'PfaffianDescent.actualOriginalPositiveTwoTraceDualEquiv' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+PASS PfaffianDescent.actualOriginalGlobalCanonicalQuadraticPhi_eq_native: declarations=47590; axioms=#[Quot.sound, Classical.choice, propext]
+PASS PfaffianDescent.actualOriginalOneDimensionalQuotient_globalCanonicalPhiHZero_injective_and_range_eq_kernel163: declarations=59776; axioms=#[Quot.sound, Classical.choice, propext]
+PASS PfaffianDescent.perfectField_originalGlobalCanonicalPhi_traceSelectedQuotient: declarations=61047; axioms=#[Quot.sound, Classical.choice, propext]
+PASS PfaffianDescent.actualOriginalPositiveTwoTraceDualEquiv: declarations=56167; axioms=#[Quot.sound, Classical.choice, propext]
+AUDIT COMPLETE: 4 roots; type/value/projection/recursor traversal

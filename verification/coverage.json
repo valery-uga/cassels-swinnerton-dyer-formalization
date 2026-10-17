@@ -1,0 +1,847 @@
+{
+  "schema_version": 1,
+  "manuscript": "paper/2-proofs.tex",
+  "manuscript_sha256": "93aa0e1fdaa2bdee5a7dbc7fcd786bfdac856a692100da8f016d0dd3e696059e",
+  "allowed_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "included_conclusions": [
+    {
+      "number": "Theorem 1.1",
+      "label": "thm:deg=4-intro",
+      "tex_line": 197,
+      "title": "Degree four implies a rational point",
+      "endpoints": [
+        {
+          "module": "AllCharacteristics.TwoProofs",
+          "name": "AllCharacteristics.twoProofs_degree_four_closed_point_has_point",
+          "line": 308,
+          "part": "conclusion",
+          "source": "AllCharacteristics/TwoProofs.lean"
+        }
+      ],
+      "hypotheses": "Field k; homogeneous nonzero cubic p; Smooth original hypersurface; original closed point x of residue degree 4 gives a rational section of the same hypersurface.",
+      "difference": "Stronger: no characteristic-zero assumption.",
+      "note": null
+    },
+    {
+      "number": "Theorem 1.2",
+      "label": "thm:main:intro",
+      "tex_line": 206,
+      "title": "Finite extension equivalence",
+      "endpoints": [
+        {
+          "module": "AllCharacteristics.InternalCorayPaperConclusions",
+          "name": "AllCharacteristics.twoProofs_intro_finiteExtension_iff_internalCoray001",
+          "line": 47,
+          "part": "conclusion",
+          "source": "AllCharacteristics/InternalCorayPaperConclusions.lean"
+        },
+        {
+          "module": "AllCharacteristics.InternalCorayPaperConclusions",
+          "name": "AllCharacteristics.twoProofs_finite_point_coprime_has_point_internalCoray001",
+          "line": 36,
+          "part": "finite-extension reverse direction",
+          "source": "AllCharacteristics/InternalCorayPaperConclusions.lean"
+        }
+      ],
+      "hypotheses": "Arbitrary Field k; homogeneous cubic p. Ground nonzero zero coordinates iff there exists a finite extension L/k of coprime-to-three degree with nonzero zero coordinates.",
+      "difference": "Stronger: no p != 0 required. No external Coray binder on selected endpoints.",
+      "note": "The older _of_coray introduction endpoint and TwoProofs.twoProofs_finite_point_coprime_has_point still bind uniform Coray; use the internalCoray001 names."
+    },
+    {
+      "number": "Theorem 1.4",
+      "label": "thm:pfaffian-intro",
+      "tex_line": 227,
+      "title": "Pfaffian cubic has a point",
+      "endpoints": [
+        {
+          "module": "AllCharacteristics.TwoProofs",
+          "name": "AllCharacteristics.twoProofs_pfaffian_cubic_has_point",
+          "line": 232,
+          "part": "conclusion",
+          "source": "AllCharacteristics/TwoProofs.lean"
+        }
+      ],
+      "hypotheses": "Field k; NeZero (2:k); homogeneous cubic p; four alternating 6x6 coefficient matrices A; polynomial of pfaffianCubic A equals p; conclusion is original hypersurface rational section.",
+      "difference": "Stronger: no p != 0 required. Alternating matrices and exact polynomial equality encode the stated Pfaffian presentation.",
+      "note": null
+    },
+    {
+      "number": "Lemma 2.1",
+      "label": "lem:secant",
+      "tex_line": 259,
+      "title": "Secant descent",
+      "endpoints": [
+        {
+          "module": "AllCharacteristics.TwoProofs",
+          "name": "AllCharacteristics.twoProofs_secant",
+          "line": 166,
+          "part": "conclusion",
+          "source": "AllCharacteristics/TwoProofs.lean"
+        }
+      ],
+      "hypotheses": "Any field; homogeneous cubic; effective cycle of degree one or two on original hypersurface gives a rational section.",
+      "difference": "Stronger: no perfectness or nonzero-cubic premise.",
+      "note": null
+    },
+    {
+      "number": "Lemma 2.2",
+      "label": "lem:position",
+      "tex_line": 272,
+      "title": "Position, both numbered parts",
+      "endpoints": [
+        {
+          "module": "AllCharacteristics.TwoProofsLiteralPreliminaries",
+          "name": "AllCharacteristics.twoProofs_position_perfect",
+          "line": 19,
+          "part": "(i) coplanar implies point AND (ii) noncoplanar implies geometric general position",
+          "source": "AllCharacteristics/TwoProofsLiteralPreliminaries.lean"
+        }
+      ],
+      "hypotheses": "PerfectField; homogeneous nonzero smooth cubic; same original closed point x of degree 4 or 5. Ground-plane containment implies rational section; its negation implies ProjectiveGeometricGeneralPosition of original residue-field immersion.",
+      "difference": "Matches Section2 perfect-field scope. The primitive general-position theorem needs no smoothness.",
+      "note": "The older TwoProofs.twoProofs_coplanar_degree_four_or_five_has_point alone is CharZero-only; it cannot stand for this perfect-field result. Coplanar rationality is supplied by stronger any-field degree4/5 descent."
+    },
+    {
+      "number": "Lemma 2.3",
+      "label": "lem:twisted-cubic",
+      "tex_line": 293,
+      "title": "Twisted cubic descends over a perfect field",
+      "endpoints": [
+        {
+          "module": "AllCharacteristics.TwoProofs",
+          "name": "AllCharacteristics.twoProofs_twisted_cubic_smooth_embedding_of_algebraicClosure_presentation",
+          "line": 71,
+          "part": "original ground embedding and original X \u2245 P1",
+          "source": "AllCharacteristics/TwoProofs.lean"
+        },
+        {
+          "module": "AllCharacteristics.TwistedCubicLemma",
+          "name": "AllCharacteristics.paper_twisted_cubic_perfect",
+          "line": 801,
+          "part": "simplified original ground embedding and X \u2245 P1",
+          "source": "AllCharacteristics/TwistedCubicLemma.lean"
+        }
+      ],
+      "hypotheses": "PerfectField; original closed immersion i:X\u2192P3; Smooth structure map; IsTwistedCubicAfterCoefficientExtension to AlgebraicClosure k. Conclusion includes GroundTwistedCubicPresentation of original vanishing ideal, original ambient recovery, and X \u2245 P1 over k (full root also supplies a section).",
+      "difference": "Included with requested PerfectField restriction, already consistent with Section2 standing assumption. Geometric standardization is the manuscript geometric hypothesis.",
+      "note": "Do not describe this as merely an abstract rationality certificate, or as an arbitrary-imperfect-field theorem. It does not separately state the manuscript canonical-bundle degree argument or a line-bundle O(3) isomorphism."
+    },
+    {
+      "number": "Proposition 2.4",
+      "label": "prop:four-five",
+      "tex_line": 307,
+      "title": "Cassels equivalence and precise closed-point alternative",
+      "endpoints": [
+        {
+          "module": "AllCharacteristics.TwoProofs",
+          "name": "AllCharacteristics.twoProofs_cassels_four_five",
+          "line": 153,
+          "part": "first sentence: effective degree4 iff effective degree5",
+          "source": "AllCharacteristics/TwoProofs.lean"
+        },
+        {
+          "module": "AllCharacteristics.TwoProofsLiteralPreliminaries",
+          "name": "AllCharacteristics.twoProofs_cassels_four_five_closed_point_alternative",
+          "line": 44,
+          "part": "second sentence: degree4/5 point gives rational point OR other degree",
+          "source": "AllCharacteristics/TwoProofsLiteralPreliminaries.lean"
+        }
+      ],
+      "hypotheses": "Any field; homogeneous nonzero smooth cubic. First endpoint gives effective-cycle equivalence. Second takes original closed point degree4 or5 and concludes section OR closed point of degree 9 - original residue degree.",
+      "difference": "Stronger: no perfectness required. Both sentences must be listed.",
+      "note": "The precise-alternative wrapper always proves its rational-point branch through stronger descent; it does not assert construction of the particular twisted-cubic residual point in the printed proof."
+    },
+    {
+      "number": "Theorem 3.1",
+      "label": "thm:five",
+      "tex_line": 368,
+      "title": "Effective degree five implies rational point",
+      "endpoints": [
+        {
+          "module": "AllCharacteristics.TwoProofs",
+          "name": "AllCharacteristics.twoProofs_degree_five_has_point",
+          "line": 297,
+          "part": "conclusion",
+          "source": "AllCharacteristics/TwoProofs.lean"
+        }
+      ],
+      "hypotheses": "CharZero field; homogeneous cubic; actual effective degree5 cycle gives original hypersurface rational section.",
+      "difference": "Stronger: no smoothness or p != 0 premise.",
+      "note": null
+    },
+    {
+      "number": "Lemma 3.2",
+      "label": "lem:incidence",
+      "tex_line": 388,
+      "title": "Finite etale degree-two incidence open",
+      "endpoints": [
+        {
+          "module": "AllCharacteristics.TwoProofs",
+          "name": "AllCharacteristics.twoProofs_incidence_finite_etale_degree_two_open",
+          "line": 140,
+          "part": "conclusion",
+          "source": "AllCharacteristics/TwoProofs.lean"
+        }
+      ],
+      "hypotheses": "Field k; NeZero (2:k). There exists nonempty open U in actual alternating-triple scheme such that actual incidence restriction is finite, etale, and has finrank2 at every point of U.",
+      "difference": "Matches standing characteristic != 2 in Section3.1. No supplied generic-open or degree certificate.",
+      "note": null
+    },
+    {
+      "number": "Lemma 3.3",
+      "label": "lem:presentation",
+      "tex_line": 500,
+      "title": "Five-point Pfaffian presentation",
+      "endpoints": [
+        {
+          "module": "AllCharacteristics.TwoProofs",
+          "name": "AllCharacteristics.twoProofs_reduced_length_five_subscheme_pfaffian",
+          "line": 244,
+          "part": "conclusion",
+          "source": "AllCharacteristics/TwoProofs.lean"
+        }
+      ],
+      "hypotheses": "CharZero field; homogeneous cubic p; reduced Z with closed immersion into original hypersurface, finite to k of rank5, ProjectiveGeometricGeneralPosition. Produces alternating 6x6 linear Pfaffian presentation equal to exactly p.",
+      "difference": "Matches Section3.2 standing CharZero, although environment itself omits characteristic. Closed immersion into p=0 encodes vanishing on Z; reducedness, length and general-position inputs are manuscript hypotheses.",
+      "note": "Do not claim this particular endpoint for arbitrary characteristic merely by reading the environment in isolation."
+    },
+    {
+      "number": "Theorem 4.1",
+      "label": "thm:4->1",
+      "tex_line": 574,
+      "title": "Degree-four descent by the original H0 construction",
+      "endpoints": [
+        {
+          "module": "PfaffianDescent.PerfectFieldOriginalH0SectionFourPointCaller",
+          "name": "PfaffianDescent.perfectField_degree_four_originalHZero_graph_rational_section",
+          "line": 45,
+          "source": "PfaffianDescent/PerfectFieldOriginalH0SectionFourPointCaller.lean",
+          "part": "conclusion"
+        }
+      ],
+      "hypotheses": "PerfectField; original nonzero homogeneous smooth cubic; original closed P of residue degree4. Derives spanning/H0/Z/lines/base/residual, includes coplanar branch.",
+      "difference": "See explicit hypotheses; coordinate/supplied-frame assumptions express the local geometric statement.",
+      "note": null
+    },
+    {
+      "number": "Lemma 4.2",
+      "label": "lem:net-of-quadrics",
+      "tex_line": 594,
+      "title": "Linear times quadratic decomposition",
+      "endpoints": [
+        {
+          "module": "AllCharacteristics.SectionFour",
+          "name": "AllCharacteristics.sectionFour_linear_quadric_decomposition_of_finite_nonempty_net",
+          "line": 1075,
+          "source": "AllCharacteristics/SectionFour.lean",
+          "part": "conclusion"
+        }
+      ],
+      "hypotheses": "Any field; finite three-quadric intersection; SAME original closed rank8 Z with scheme-kernel containment and compatible cubic immersion; regularity/decomposition derived.",
+      "difference": "See explicit hypotheses; coordinate/supplied-frame assumptions express the local geometric statement.",
+      "note": null
+    },
+    {
+      "number": "Remark 4.3",
+      "label": "rem:h^0(I_Z)=3",
+      "tex_line": 619,
+      "title": "Dimension of the actual quadratic ideal sections",
+      "endpoints": [
+        {
+          "module": "PfaffianDescent.ActualP3IdealQuadraticFiniteNetDimension",
+          "name": "PfaffianDescent.sectionFour_actual_ideal_quadratic_global_dimension_three_of_finite_net",
+          "line": 38,
+          "source": "PfaffianDescent/ActualP3IdealQuadraticFiniteNetDimension.lean",
+          "part": "conclusion"
+        }
+      ],
+      "hypotheses": "Any field; finite triple and same rank8 Z with scheme-theoretic kernel containment. Genuine original ideal-sheaf H0 dimension3. Exact1735 audited root is finite_net; finite_triple at17 is a companion.",
+      "difference": "See explicit hypotheses; coordinate/supplied-frame assumptions express the local geometric statement.",
+      "note": null
+    },
+    {
+      "number": "Proposition 4.4",
+      "label": "prop:existence-of-point",
+      "tex_line": 623,
+      "title": "A rational point from a finite quadratic base locus",
+      "endpoints": [
+        {
+          "module": "PfaffianDescent.SectionFourActualIdealHZeroPoint",
+          "name": "PfaffianDescent.sectionFour_section_of_cubic_of_finite_actual_ideal_quadratic_global_base",
+          "line": 13,
+          "source": "PfaffianDescent/SectionFourActualIdealHZeroPoint.lean",
+          "part": "conclusion"
+        }
+      ],
+      "hypotheses": "Any field; SAME original closed finite rank8 Z on cubic; full actual H0 quadratic base finite. No supplied triple, Infinite field or regularity certificate.",
+      "difference": "See explicit hypotheses; coordinate/supplied-frame assumptions express the local geometric statement.",
+      "note": null
+    },
+    {
+      "number": "Lemma 4.5",
+      "label": "lem:uij-skew-symmetric",
+      "tex_line": 654,
+      "title": "Weighted skew-symmetry criterion",
+      "endpoints": [
+        {
+          "module": "PfaffianDescent.FourCoordinateVertexSuppliedActualH0Literal",
+          "name": "PfaffianDescent.fourCoordinateVertex_whole_supplied_actual_H0_weighted_iff",
+          "line": 19,
+          "source": "PfaffianDescent/FourCoordinateVertexSuppliedActualH0Literal.lean",
+          "part": "conclusion"
+        }
+      ],
+      "hypotheses": "Algebraically closed field; actual four disjoint vertex-supported length2 components of same rank8 Z; arbitrary supplied epsilon representation. Genuine H0>=3 iff nonzero weighted-skew relation. Whole-Z Iso derived.",
+      "difference": "See explicit hypotheses; coordinate/supplied-frame assumptions express the local geometric statement.",
+      "note": null
+    },
+    {
+      "number": "Lemma 4.6",
+      "label": "lem:base-locus",
+      "tex_line": 707,
+      "title": "Whole quadratic base-locus alternative",
+      "endpoints": [
+        {
+          "module": "PfaffianDescent.FourCoordinateVertexSuppliedActualH0Literal",
+          "name": "PfaffianDescent.fourCoordinateVertex_whole_supplied_actual_H0_fullBase_alternative",
+          "line": 47,
+          "source": "PfaffianDescent/FourCoordinateVertexSuppliedActualH0Literal.lean",
+          "part": "conclusion"
+        }
+      ],
+      "hypotheses": "Same actual geometric components/epsilon rows; skew U and all off-diagonal entries nonzero. Ambient-compatible Z-to-full-base Iso or ground twisted-cubic presentation of SAME full ideal.",
+      "difference": "See explicit hypotheses; coordinate/supplied-frame assumptions express the local geometric statement.",
+      "note": null
+    },
+    {
+      "number": "Lemma 4.7",
+      "label": "lem:uij=-uji",
+      "tex_line": 784,
+      "title": "Skew representation after arithmetic descent",
+      "endpoints": [
+        {
+          "module": "PfaffianDescent.LiteralArithmeticH0SkewGeometricRepresentation",
+          "name": "PfaffianDescent.singleSupport_actual_H0_skew_geometric_representation",
+          "line": 24,
+          "source": "PfaffianDescent/LiteralArithmeticH0SkewGeometricRepresentation.lean",
+          "part": "conclusion"
+        }
+      ],
+      "hypotheses": "Perfect field; arbitrary same original singleton-support degree4 rank8 Z, geometric spanning, genuine H0>=3. Produces actual geometric pullback representation and skew nonzero rows with original ambient/base squares.",
+      "difference": "See explicit hypotheses; coordinate/supplied-frame assumptions express the local geometric statement.",
+      "note": null
+    },
+    {
+      "number": "Proposition 4.8",
+      "label": "prop:zero-off-diagonal",
+      "tex_line": 822,
+      "title": "Zero off-diagonal entry geometry",
+      "endpoints": [
+        {
+          "module": "PfaffianDescent.SingleSupportOriginalSuppliedFrameZeroEntryGeometry",
+          "name": "PfaffianDescent.singleSupport_originalZ_supplied_frame_epsilon_zero_entry_geometry",
+          "line": 24,
+          "source": "PfaffianDescent/SingleSupportOriginalSuppliedFrameZeroEntryGeometry.lean",
+          "part": "conclusion"
+        }
+      ],
+      "hypotheses": "Perfect field; same original singleton-support degree4 rank8 Z and geometric spanning. Universally accepts supplied vertex frame/components/epsilon rows. Skew rows and missing entry imply original section. No H0 premise; export stronger without Smooth.",
+      "difference": "See explicit hypotheses; coordinate/supplied-frame assumptions express the local geometric statement.",
+      "note": null
+    },
+    {
+      "number": "Proposition 4.9",
+      "label": "prop:existence-of-Z",
+      "tex_line": 888,
+      "title": "Original tangent subscheme and actual H0",
+      "endpoints": [
+        {
+          "module": "PfaffianDescent.PerfectFieldClosedQuarticOriginalTangentHZero",
+          "name": "PfaffianDescent.perfectField_closedQuarticPoint_exists_original_tangentSubscheme_actualHZero",
+          "line": 14,
+          "source": "PfaffianDescent/PerfectFieldClosedQuarticOriginalTangentHZero.lean",
+          "part": "conclusion"
+        }
+      ],
+      "hypotheses": "Perfect field; original nonzero homogeneous smooth cubic, original degree4 P and geometric spanning. Produces actual DualNumber(kappa(P)) closed embedding, support/reduction, rank8, geometric four length2 split and genuine H0>=3.",
+      "difference": "See explicit hypotheses; coordinate/supplied-frame assumptions express the local geometric statement.",
+      "note": null
+    },
+    {
+      "number": "Theorem 5.1",
+      "label": "thm:charzero",
+      "tex_line": 997,
+      "title": "Characteristic-zero degree-one cycle theorem",
+      "endpoints": [
+        {
+          "module": "AllCharacteristics.InternalCorayPaperConclusions",
+          "name": "AllCharacteristics.twoProofs_chapterFive_charzero_internalCoray001",
+          "line": 62,
+          "part": "conclusion",
+          "source": "AllCharacteristics/InternalCorayPaperConclusions.lean"
+        }
+      ],
+      "hypotheses": "CharZero field; homogeneous smooth cubic; actual degree1 zero-cycle; rational section of original hypersurface.",
+      "difference": "Stronger: p != 0 omitted. Internal Coray/native geometry supplied internally.",
+      "note": "Legacy twoProofs_chapterFive_charzero still takes uniform Coray."
+    },
+    {
+      "number": "Lemma 5.2",
+      "label": "lem:lift",
+      "tex_line": 1020,
+      "title": "Complete mixed-characteristic degree-preserving lifting",
+      "endpoints": [
+        {
+          "module": "AllCharacteristics.TwoProofsLiteralChaptersFiveSix",
+          "name": "AllCharacteristics.twoProofs_chapterFive_lift",
+          "line": 304,
+          "part": "named conclusion, earlier route",
+          "source": "AllCharacteristics/TwoProofsLiteralChaptersFiveSix.lean"
+        },
+        {
+          "module": "AllCharacteristics.OriginalGlobalHilbertChapterFiveIntegration",
+          "name": "AllCharacteristics.chapterFiveLiftFor_viaGlobalHilbert001",
+          "line": 18,
+          "part": "per-field global-family route",
+          "source": "AllCharacteristics/OriginalGlobalHilbertChapterFiveIntegration.lean"
+        },
+        {
+          "module": "AllCharacteristics.OriginalGlobalHilbertChapterFiveIntegration",
+          "name": "AllCharacteristics.chapterFiveLiftStatement_viaGlobalHilbert001",
+          "line": 27,
+          "part": "unrestricted global-family named statement",
+          "source": "AllCharacteristics/OriginalGlobalHilbertChapterFiveIntegration.lean"
+        },
+        {
+          "module": "AllCharacteristics.OriginalGlobalHilbertCubicSubschemeLifting",
+          "name": "AllCharacteristics.exists_smooth_charZero_cubic_lift_with_original_closed_subscheme_viaGlobalHilbert001",
+          "line": 106,
+          "part": "fully expanded outer global-family lifting",
+          "source": "AllCharacteristics/OriginalGlobalHilbertCubicSubschemeLifting.lean"
+        }
+      ],
+      "hypotheses": "Positive-characteristic field with actual prime characteristic; nonzero homogeneous smooth cubic and original closed point x. Constructs complete CharZero DVR R, surjective R\u2192k, actual smooth lifted cubic equation, finite flat closed family of rank residueDegree(x) everywhere, and IsPullback square recovering same original closed subscheme P.",
+      "difference": "Matches arbitrary imperfect-field manuscript scope; no supplied DVR, Cohen ring, family, smooth Hilbert point, field-finite-generation, perfectness or desired geometry premise on final natural roots. Outer prime-uniformizer variant is even stronger.",
+      "note": "Conditional _of_completeCharZeroDVR and supplied-R helper are intermediate interfaces and must not replace the unrestricted natural endpoints in a public table."
+    },
+    {
+      "number": "Theorem 5.3",
+      "label": "thm:smooth",
+      "tex_line": 1053,
+      "title": "Smooth surfaces over arbitrary fields",
+      "endpoints": [
+        {
+          "module": "AllCharacteristics.InternalCorayPaperConclusions",
+          "name": "AllCharacteristics.twoProofs_chapterFive_smooth_internalCoray001",
+          "line": 74,
+          "part": "all-characteristic named conclusion",
+          "source": "AllCharacteristics/InternalCorayPaperConclusions.lean"
+        },
+        {
+          "module": "AllCharacteristics.OriginalGlobalHilbertChapterFiveIntegration",
+          "name": "AllCharacteristics.twoProofs_chapterFive_smooth_by_selected_closedPoint_viaGlobalHilbert_internalCoray001",
+          "line": 35,
+          "part": "positive-characteristic selected-point manuscript global-Hilbert method",
+          "source": "AllCharacteristics/OriginalGlobalHilbertChapterFiveIntegration.lean"
+        }
+      ],
+      "hypotheses": "All-field internalCoray endpoint: homogeneous smooth cubic and actual degree1 zero-cycle give section. Global-Hilbert endpoint additionally binds prime positive characteristic and p != 0, and constructs the selected-point method using the actual global family.",
+      "difference": "All-field theorem omits p != 0 (stronger). Positive-characteristic global-method endpoint retains p != 0 and prime-characteristic data from the method.",
+      "note": "Do not describe the global-method endpoint alone as all-characteristic, or claim that DEEP6507 rewrote older terminal constants to the global route. Pair with Theorem5.1/all-field endpoint for full scope."
+    },
+    {
+      "number": "Theorem 6.1",
+      "label": "thm:main",
+      "tex_line": 1078,
+      "title": "Main theorem with both equivalent cycle formulations",
+      "endpoints": [
+        {
+          "module": "AllCharacteristics.InternalCorayPaperConclusions",
+          "name": "AllCharacteristics.twoProofs_chapterSix_main_internalCoray001",
+          "line": 86,
+          "part": "section iff coprime-degree point AND point iff degree1 zero-cycle",
+          "source": "AllCharacteristics/InternalCorayPaperConclusions.lean"
+        },
+        {
+          "module": "AllCharacteristics.InternalCorayPaperConclusions",
+          "name": "AllCharacteristics.twoProofs_main_theorem_internalCoray001",
+          "line": 25,
+          "part": "section iff degree1 zero-cycle",
+          "source": "AllCharacteristics/InternalCorayPaperConclusions.lean"
+        }
+      ],
+      "hypotheses": "Arbitrary field; homogeneous cubic; ground section iff closed point of degree coprime to3, and closed-point condition iff degree1 zero-cycle.",
+      "difference": "Stronger: no nonzero, smoothness, integrality, reducedness or perfectness premise. No external Coray/Voisin input.",
+      "note": "Keep both conjuncts in the literal Chapter6 endpoint; section iff cycle alone does not explicitly expose the closed-point formulation."
+    },
+    {
+      "number": "Lemma 6.2",
+      "label": "lem:singular-point",
+      "tex_line": 1098,
+      "title": "Singular point or smooth point over same extension",
+      "endpoints": [
+        {
+          "module": "AllCharacteristics.TwoProofsLiteralChaptersFiveSix",
+          "name": "AllCharacteristics.twoProofs_chapterSix_singular_point_scheme",
+          "line": 511,
+          "part": "conclusion",
+          "source": "AllCharacteristics/TwoProofsLiteralChaptersFiveSix.lean"
+        },
+        {
+          "module": "AllCharacteristics.TwoProofs",
+          "name": "AllCharacteristics.twoProofs_singular_point_or_smooth_extension_point",
+          "line": 329,
+          "part": "coordinate version",
+          "source": "AllCharacteristics/TwoProofs.lean"
+        }
+      ],
+      "hypotheses": "Arbitrary finite extension L/k of coprime-to3 degree; homogeneous cubic and original L-rational point. Either ground rational section OR an actual point of smooth locus over SAME L.",
+      "difference": "Stronger: no p != 0 required. No separability assumption; inseparability retained.",
+      "note": "Do not replace SAME original extension with an unspecified new extension, or add smoothness/integrality assumptions."
+    },
+    {
+      "number": "Proposition 6.3",
+      "label": "prop:smoothing",
+      "tex_line": 1164,
+      "title": "Reduction to Laurent-series smooth criterion",
+      "endpoints": [
+        {
+          "module": "AllCharacteristics.TwoProofsLiteralChaptersFiveSix",
+          "name": "AllCharacteristics.twoProofs_chapterSix_smoothing",
+          "line": 570,
+          "part": "conclusion",
+          "source": "AllCharacteristics/TwoProofsLiteralChaptersFiveSix.lean"
+        }
+      ],
+      "hypotheses": "Field k; SmoothCubicZeroCyclePointFor (FractionRing (PowerSeries k)); homogeneous cubic and actual degree1 zero-cycle; original rational section.",
+      "difference": "Exactly the manuscript implication antecedent, with k((t)) represented by FractionRing(PowerSeries k). No external Ma/pencil input; reference smooth cubic and Hensel/pencil work supplied internally.",
+      "note": "This proposition is intentionally conditional on the smooth criterion; calling every selected endpoint premise-free would be false. Its antecedent is stated in the paper, not an additional unproved external result."
+    }
+  ],
+  "method_groups": {
+    "net_koszul_actual_H0": [
+      {
+        "module": "PfaffianDescent.OriginalThreeQuadricIdealAugmentation",
+        "name": "PfaffianDescent.ProjectiveNegativeTwist.p3OriginalThreeQuadricSheafKoszul_displayed_resolution",
+        "line": 319,
+        "source": "PfaffianDescent/OriginalThreeQuadricIdealAugmentation.lean"
+      },
+      {
+        "module": "PfaffianDescent.OriginalThreeQuadricOThreeResolution",
+        "name": "PfaffianDescent.ProjectiveNegativeTwist.p3OriginalThreeQuadricOThree_displayed_resolution",
+        "line": 221,
+        "source": "PfaffianDescent/OriginalThreeQuadricOThreeResolution.lean"
+      },
+      {
+        "module": "PfaffianDescent.OriginalThreeQuadricCohomologicalHZero",
+        "name": "PfaffianDescent.p3OriginalThreeQuadricOThreeGlobalAugmentation_cohomological_bijective",
+        "line": 88,
+        "source": "PfaffianDescent/OriginalThreeQuadricCohomologicalHZero.lean"
+      },
+      {
+        "module": "PfaffianDescent.OriginalThreeQuadricCohomologicalHZero",
+        "name": "PfaffianDescent.p3OriginalThreeQuadricOThreeCohomologicalGlobalEquiv_polynomial",
+        "line": 140,
+        "source": "PfaffianDescent/OriginalThreeQuadricCohomologicalHZero.lean"
+      }
+    ],
+    "whole_base_field_extension": [
+      {
+        "module": "PfaffianDescent.ActualP3IdealQuadraticGlobalBaseFieldExtension",
+        "name": "PfaffianDescent.p3ActualIdealQuadraticGlobalBaseIdeal_actual_fieldExtension",
+        "line": 15,
+        "source": "PfaffianDescent/ActualP3IdealQuadraticGlobalBaseFieldExtension.lean"
+      },
+      {
+        "module": "PfaffianDescent.ActualP3IdealQuadraticGlobalBaseFieldExtension",
+        "name": "PfaffianDescent.p3ActualIdealQuadraticHZero_actual_fieldExtension_finrank",
+        "line": 31,
+        "source": "PfaffianDescent/ActualP3IdealQuadraticGlobalBaseFieldExtension.lean"
+      }
+    ],
+    "canonical_Phi_every_quotient_trace": [
+      {
+        "module": "PfaffianDescent.ActualOriginalGlobalCanonicalQuadraticPhiNativeEquality",
+        "name": "PfaffianDescent.actualOriginalGlobalCanonicalQuadraticPhi_eq_native",
+        "line": 201,
+        "source": "PfaffianDescent/ActualOriginalGlobalCanonicalQuadraticPhiNativeEquality.lean"
+      },
+      {
+        "module": "PfaffianDescent.ActualOriginalOneDimensionalQuotientGlobalCanonicalPhiHZeroKernel163",
+        "name": "PfaffianDescent.actualOriginalOneDimensionalQuotient_globalCanonicalPhiHZero_injective_and_range_eq_kernel163",
+        "line": 18,
+        "source": "PfaffianDescent/ActualOriginalOneDimensionalQuotientGlobalCanonicalPhiHZeroKernel163.lean"
+      },
+      {
+        "module": "PfaffianDescent.ActualOriginalGlobalCanonicalPhiTraceSelectedQuotient",
+        "name": "PfaffianDescent.perfectField_originalGlobalCanonicalPhi_traceSelectedQuotient",
+        "line": 15,
+        "source": "PfaffianDescent/ActualOriginalGlobalCanonicalPhiTraceSelectedQuotient.lean"
+      },
+      {
+        "module": "PfaffianDescent.ActualOriginalPositiveTwoTraceDuality",
+        "name": "PfaffianDescent.actualOriginalPositiveTwoTraceDualEquiv",
+        "line": 15,
+        "source": "PfaffianDescent/ActualOriginalPositiveTwoTraceDuality.lean"
+      }
+    ],
+    "geometric_whole_Z": [
+      {
+        "module": "PfaffianDescent.FourCoordinateVertexActualH0LiteralWhole",
+        "name": "PfaffianDescent.fourCoordinateVertex_whole_actual_choice_independent_H0_literal_presentation",
+        "line": 15,
+        "source": "PfaffianDescent/FourCoordinateVertexActualH0LiteralWhole.lean"
+      },
+      {
+        "module": "PfaffianDescent.QuarticExceptionalNativeCubicHZeroBasis",
+        "name": "PfaffianDescent.QuarticNet.baseLocusExceptionalNativeHZero_completeBasis",
+        "line": 159,
+        "source": "PfaffianDescent/QuarticExceptionalNativeCubicHZeroBasis.lean"
+      }
+    ],
+    "actual_matching_rationality": [
+      {
+        "module": "PfaffianDescent.QuadraticSkewOrdinaryLineProjector201",
+        "name": "PfaffianDescent.QuadraticSkewRationality.OrdinaryLines201.rankTwoConjugateSkew_exists_paired_frame201",
+        "line": 115,
+        "source": "PfaffianDescent/QuadraticSkewOrdinaryLineProjector201.lean"
+      },
+      {
+        "module": "PfaffianDescent.QuadraticSkewOrdinaryLineFrameExtension201",
+        "name": "PfaffianDescent.QuadraticSkewRationality.OrdinaryLines201.coefficientExtension_exists_same_projector_frame201",
+        "line": 12,
+        "source": "PfaffianDescent/QuadraticSkewOrdinaryLineFrameExtension201.lean"
+      },
+      {
+        "module": "PfaffianDescent.QuadraticSkewOriginalMatchingBranchRationality",
+        "name": "PfaffianDescent.QuarticNet.originalMatchingBranch_original_cubic_isRationalOver",
+        "line": 16,
+        "source": "PfaffianDescent/QuadraticSkewOriginalMatchingBranchRationality.lean"
+      },
+      {
+        "module": "PfaffianDescent.OriginalMatchingBranchRationalSectionCaller",
+        "name": "PfaffianDescent.QuarticNet.originalMatchingBranch_original_cubic_rational_and_section",
+        "line": 16,
+        "source": "PfaffianDescent/OriginalMatchingBranchRationalSectionCaller.lean"
+      },
+      {
+        "module": "PfaffianDescent.SingleSupportOriginalH0MatchingRationalSectionCaller",
+        "name": "PfaffianDescent.singleSupport_originalZ_actual_H0_matching_rational_section_or_finite",
+        "line": 31,
+        "source": "PfaffianDescent/SingleSupportOriginalH0MatchingRationalSectionCaller.lean"
+      }
+    ],
+    "actual_binary_nine_whole_intersection_restriction": [
+      {
+        "module": "PfaffianDescent.GroundTwistedCubicBinaryNineNativeGlobalComparison",
+        "name": "PfaffianDescent.QuarticNet.GroundTwistedCubicPresentation.literalBinaryNineNativeGlobalIso",
+        "line": 248,
+        "source": "PfaffianDescent/GroundTwistedCubicBinaryNineNativeGlobalComparison.lean"
+      },
+      {
+        "module": "PfaffianDescent.GroundTwistedCubicBinaryNineNativeGlobalComparison",
+        "name": "PfaffianDescent.QuarticNet.GroundTwistedCubicPresentation.literalBinaryNineOriginalWholeIntersectionIso",
+        "line": 272,
+        "source": "PfaffianDescent/GroundTwistedCubicBinaryNineNativeGlobalComparison.lean"
+      },
+      {
+        "module": "PfaffianDescent.GroundTwistedCubicBinaryNineNativeRestrictionComparison",
+        "name": "PfaffianDescent.QuarticNet.GroundTwistedCubicPresentation.literalBinaryNineActualRestrictionIso",
+        "line": 186,
+        "source": "PfaffianDescent/GroundTwistedCubicBinaryNineNativeRestrictionComparison.lean"
+      },
+      {
+        "module": "PfaffianDescent.GroundTwistedCubicBinaryNineNativeRestrictionComparison",
+        "name": "PfaffianDescent.QuarticNet.GroundTwistedCubicPresentation.literalBinaryNineActualRestrictionIso_surface",
+        "line": 227,
+        "source": "PfaffianDescent/GroundTwistedCubicBinaryNineNativeRestrictionComparison.lean"
+      },
+      {
+        "module": "PfaffianDescent.IntrinsicOriginalTwistedCubicResidualAnyField",
+        "name": "PfaffianDescent.intrinsicOriginalTwistedFullBase_cubic_intersection_alternative_anyField",
+        "line": 17,
+        "source": "PfaffianDescent/IntrinsicOriginalTwistedCubicResidualAnyField.lean"
+      },
+      {
+        "module": "PfaffianDescent.IntrinsicOriginalTwistedCubicResidualAnyField",
+        "name": "PfaffianDescent.sectionFour_section_of_cubic_of_twisted_intrinsic_full_quadratic_base_direct",
+        "line": 55,
+        "source": "PfaffianDescent/IntrinsicOriginalTwistedCubicResidualAnyField.lean"
+      },
+      {
+        "module": "PfaffianDescent.SingleSupportOriginalH0SectionFourPointCaller",
+        "name": "PfaffianDescent.singleSupport_originalZ_actual_H0_has_section",
+        "line": 17,
+        "source": "PfaffianDescent/SingleSupportOriginalH0SectionFourPointCaller.lean"
+      }
+    ]
+  },
+  "excluded": [
+    {
+      "number": "Corollary 1.3",
+      "label": "cor:unirational",
+      "reason": "Unirationality excluded from the agreed scope; existing adapter is conditional."
+    }
+  ],
+  "qualifications": [
+    "Lemma 2.3 is over perfect fields, consistent with Section 2 standing assumption.",
+    "Bibliographic Remark 2.5 is not an additional selected conclusion.",
+    "Selected methods are audited; this is not a translation of every prose sentence or of the whole 1976 Coray paper."
+  ],
+  "audit_groups": [
+    {
+      "module": "AllCharacteristics.ManuscriptVerification.SectionsOneToThree",
+      "roots": [
+        "AllCharacteristics.twoProofs_degree_four_closed_point_has_point",
+        "AllCharacteristics.twoProofs_intro_finiteExtension_iff_internalCoray001",
+        "AllCharacteristics.twoProofs_finite_point_coprime_has_point_internalCoray001",
+        "AllCharacteristics.twoProofs_pfaffian_cubic_has_point",
+        "AllCharacteristics.twoProofs_secant",
+        "AllCharacteristics.twoProofs_position_perfect",
+        "AllCharacteristics.twoProofs_twisted_cubic_smooth_embedding_of_algebraicClosure_presentation",
+        "AllCharacteristics.paper_twisted_cubic_perfect",
+        "AllCharacteristics.twoProofs_cassels_four_five",
+        "AllCharacteristics.twoProofs_cassels_four_five_closed_point_alternative",
+        "AllCharacteristics.twoProofs_degree_five_has_point",
+        "AllCharacteristics.twoProofs_incidence_finite_etale_degree_two_open",
+        "AllCharacteristics.twoProofs_reduced_length_five_subscheme_pfaffian"
+      ],
+      "allow_definitions": false
+    },
+    {
+      "module": "AllCharacteristics.ManuscriptVerification.SectionFive",
+      "roots": [
+        "AllCharacteristics.twoProofs_chapterFive_charzero_internalCoray001",
+        "AllCharacteristics.twoProofs_chapterFive_lift",
+        "AllCharacteristics.chapterFiveLiftFor_viaGlobalHilbert001",
+        "AllCharacteristics.chapterFiveLiftStatement_viaGlobalHilbert001",
+        "AllCharacteristics.exists_smooth_charZero_cubic_lift_with_original_closed_subscheme_viaGlobalHilbert001",
+        "AllCharacteristics.twoProofs_chapterFive_smooth_internalCoray001",
+        "AllCharacteristics.twoProofs_chapterFive_smooth_by_selected_closedPoint_viaGlobalHilbert_internalCoray001"
+      ],
+      "allow_definitions": false
+    },
+    {
+      "module": "AllCharacteristics.ManuscriptVerification.SectionSix",
+      "roots": [
+        "AllCharacteristics.twoProofs_chapterSix_main_internalCoray001",
+        "AllCharacteristics.twoProofs_main_theorem_internalCoray001",
+        "AllCharacteristics.twoProofs_chapterSix_singular_point_scheme",
+        "AllCharacteristics.twoProofs_singular_point_or_smooth_extension_point",
+        "AllCharacteristics.twoProofs_chapterSix_smoothing"
+      ],
+      "allow_definitions": false
+    },
+    {
+      "module": "AllCharacteristics.ManuscriptVerification.SectionFour",
+      "roots": [
+        "PfaffianDescent.perfectField_degree_four_originalHZero_graph_rational_section",
+        "AllCharacteristics.sectionFour_linear_quadric_decomposition_of_finite_nonempty_net",
+        "PfaffianDescent.sectionFour_actual_ideal_quadratic_global_dimension_three_of_finite_net",
+        "PfaffianDescent.sectionFour_section_of_cubic_of_finite_actual_ideal_quadratic_global_base",
+        "PfaffianDescent.fourCoordinateVertex_whole_supplied_actual_H0_weighted_iff",
+        "PfaffianDescent.fourCoordinateVertex_whole_supplied_actual_H0_fullBase_alternative",
+        "PfaffianDescent.singleSupport_actual_H0_skew_geometric_representation",
+        "PfaffianDescent.singleSupport_originalZ_supplied_frame_epsilon_zero_entry_geometry",
+        "PfaffianDescent.perfectField_closedQuarticPoint_exists_original_tangentSubscheme_actualHZero",
+        "AllCharacteristics.sectionFour_degree_four_closed_point_has_point"
+      ],
+      "allow_definitions": false
+    },
+    {
+      "module": "AllCharacteristics.ManuscriptVerification.Coray",
+      "roots": [
+        "AllCharacteristics.internalCorayDegreeOneFourOrTenFor_uniform001"
+      ],
+      "allow_definitions": false
+    },
+    {
+      "module": "AllCharacteristics.ManuscriptVerification.SectionFourMethods1",
+      "roots": [
+        "PfaffianDescent.ProjectiveNegativeTwist.p3OriginalThreeQuadricSheafKoszul_displayed_resolution",
+        "PfaffianDescent.ProjectiveNegativeTwist.p3OriginalThreeQuadricOThree_displayed_resolution",
+        "PfaffianDescent.p3OriginalThreeQuadricOThreeGlobalAugmentation_cohomological_bijective",
+        "PfaffianDescent.p3OriginalThreeQuadricOThreeCohomologicalGlobalEquiv_polynomial"
+      ],
+      "allow_definitions": true
+    },
+    {
+      "module": "AllCharacteristics.ManuscriptVerification.SectionFourMethods2",
+      "roots": [
+        "PfaffianDescent.p3ActualIdealQuadraticGlobalBaseIdeal_actual_fieldExtension",
+        "PfaffianDescent.p3ActualIdealQuadraticHZero_actual_fieldExtension_finrank"
+      ],
+      "allow_definitions": true
+    },
+    {
+      "module": "AllCharacteristics.ManuscriptVerification.SectionFourMethods3",
+      "roots": [
+        "PfaffianDescent.actualOriginalGlobalCanonicalQuadraticPhi_eq_native",
+        "PfaffianDescent.actualOriginalOneDimensionalQuotient_globalCanonicalPhiHZero_injective_and_range_eq_kernel163",
+        "PfaffianDescent.perfectField_originalGlobalCanonicalPhi_traceSelectedQuotient",
+        "PfaffianDescent.actualOriginalPositiveTwoTraceDualEquiv"
+      ],
+      "allow_definitions": true
+    },
+    {
+      "module": "AllCharacteristics.ManuscriptVerification.SectionFourMethods4",
+      "roots": [
+        "PfaffianDescent.fourCoordinateVertex_whole_actual_choice_independent_H0_literal_presentation",
+        "PfaffianDescent.QuarticNet.baseLocusExceptionalNativeHZero_completeBasis"
+      ],
+      "allow_definitions": true
+    },
+    {
+      "module": "AllCharacteristics.ManuscriptVerification.SectionFourMethods5",
+      "roots": [
+        "PfaffianDescent.QuadraticSkewRationality.OrdinaryLines201.rankTwoConjugateSkew_exists_paired_frame201",
+        "PfaffianDescent.QuadraticSkewRationality.OrdinaryLines201.coefficientExtension_exists_same_projector_frame201",
+        "PfaffianDescent.QuarticNet.originalMatchingBranch_original_cubic_isRationalOver",
+        "PfaffianDescent.QuarticNet.originalMatchingBranch_original_cubic_rational_and_section",
+        "PfaffianDescent.singleSupport_originalZ_actual_H0_matching_rational_section_or_finite"
+      ],
+      "allow_definitions": true
+    },
+    {
+      "module": "AllCharacteristics.ManuscriptVerification.SectionFourMethods6",
+      "roots": [
+        "PfaffianDescent.QuarticNet.GroundTwistedCubicPresentation.literalBinaryNineNativeGlobalIso",
+        "PfaffianDescent.QuarticNet.GroundTwistedCubicPresentation.literalBinaryNineOriginalWholeIntersectionIso",
+        "PfaffianDescent.QuarticNet.GroundTwistedCubicPresentation.literalBinaryNineActualRestrictionIso",
+        "PfaffianDescent.QuarticNet.GroundTwistedCubicPresentation.literalBinaryNineActualRestrictionIso_surface",
+        "PfaffianDescent.intrinsicOriginalTwistedFullBase_cubic_intersection_alternative_anyField",
+        "PfaffianDescent.sectionFour_section_of_cubic_of_twisted_intrinsic_full_quadratic_base_direct",
+        "PfaffianDescent.singleSupport_originalZ_actual_H0_has_section"
+      ],
+      "allow_definitions": true
+    },
+    {
+      "module": "AllCharacteristics.ManuscriptVerification.GlobalHilbertRoute",
+      "roots": [
+        "AllCharacteristics.chapterFiveLiftFor_viaGlobalHilbert001",
+        "AllCharacteristics.chapterFiveLiftStatement_viaGlobalHilbert001",
+        "AllCharacteristics.twoProofs_chapterFive_smooth_by_selected_closedPoint_viaGlobalHilbert_internalCoray001"
+      ],
+      "route_check": true
+    }
+  ],
+  "comparator_groups": [
+    {
+      "config": "verification/comparator-outside.json",
+      "count": 26,
+      "status": "not_run",
+      "trusted_imports": "project definition/provider modules; not a Mathlib-only independent baseline"
+    },
+    {
+      "config": "verification/comparator-sectionfour.json",
+      "count": 9,
+      "status": "not_run",
+      "trusted_imports": "project definition/provider modules; not a Mathlib-only independent baseline"
+    }
+  ],
+  "local_lean_source_count": 4175
+}

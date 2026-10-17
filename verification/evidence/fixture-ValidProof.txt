@@ -1,0 +1,2 @@
+PASS publicationValid: declarations=3; axioms=#[]
+AUDIT COMPLETE: 1 roots; type/value/projection/recursor traversal

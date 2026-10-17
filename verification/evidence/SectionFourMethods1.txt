@@ -1,0 +1,125 @@
+@PfaffianDescent.ProjectiveNegativeTwist.p3OriginalThreeQuadricSheafKoszul_displayed_resolution.{u_1} : ∀ {K : Type u_1}
+  [inst : Field.{u_1} K] (f g h : ↥(MvPolynomial.homogeneousSubmodule.{0, u_1} (Fin 4) K 2))
+  [inst_1 :
+    AlgebraicGeometry.IsFinite.{u_1}
+      (AllCharacteristics.HomogeneousProjective.toBase.{u_1}
+        (PfaffianDescent.tripleCompleteIntersectionHomogeneousIdeal.{u_1} ↑f ↑g ↑h ⋯ ⋯ ⋯))]
+  {Z : AlgebraicGeometry.Scheme.{u_1}}
+  (l :
+    Quiver.Hom.{u_1, u_1 + 1} Z
+      (AllCharacteristics.HomogeneousProjective.scheme.{u_1}
+        (PfaffianDescent.tripleCompleteIntersectionHomogeneousIdeal.{u_1} ↑f ↑g ↑h ⋯ ⋯ ⋯)))
+  [inst_2 : AlgebraicGeometry.IsClosedImmersion.{u_1} l]
+  (hZ :
+    Eq.{1}
+      (AllCharacteristics.finiteSchemeRank.{u_1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} l
+          (AllCharacteristics.HomogeneousProjective.toBase.{u_1}
+            (PfaffianDescent.tripleCompleteIntersectionHomogeneousIdeal.{u_1} ↑f ↑g ↑h ⋯ ⋯ ⋯))))
+      8),
+  CategoryTheory.Mono.{u_1, u_1 + 1}
+      (PfaffianDescent.ProjectiveNegativeTwist.threeQuadricSheafKoszulFirst.{u_1} K f g h) ∧
+    CategoryTheory.ShortComplex.Exact.{u_1, u_1 + 1}
+        (PfaffianDescent.ProjectiveNegativeTwist.threeQuadricSheafKoszul_firstMiddleShortComplex.{u_1} K f g h) ∧
+      CategoryTheory.ShortComplex.Exact.{u_1, u_1 + 1}
+          (PfaffianDescent.ProjectiveNegativeTwist.p3OriginalThreeQuadricSheafKoszul_middleAugmentationShortComplex.{u_1}
+            f g h l hZ) ∧
+        CategoryTheory.Epi.{u_1, u_1 + 1}
+          (PfaffianDescent.ProjectiveNegativeTwist.p3OriginalThreeQuadricSheafAugmentation.{u_1} f g h l hZ)
+'PfaffianDescent.ProjectiveNegativeTwist.p3OriginalThreeQuadricSheafKoszul_displayed_resolution' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@PfaffianDescent.ProjectiveNegativeTwist.p3OriginalThreeQuadricOThree_displayed_resolution.{u_1} : ∀ {K : Type u_1}
+  [inst : Field.{u_1} K] (f g h : ↥(MvPolynomial.homogeneousSubmodule.{0, u_1} (Fin 4) K 2))
+  [inst_1 :
+    AlgebraicGeometry.IsFinite.{u_1}
+      (AllCharacteristics.HomogeneousProjective.toBase.{u_1}
+        (PfaffianDescent.tripleCompleteIntersectionHomogeneousIdeal.{u_1} ↑f ↑g ↑h ⋯ ⋯ ⋯))]
+  {Z : AlgebraicGeometry.Scheme.{u_1}}
+  (l :
+    Quiver.Hom.{u_1, u_1 + 1} Z
+      (AllCharacteristics.HomogeneousProjective.scheme.{u_1}
+        (PfaffianDescent.tripleCompleteIntersectionHomogeneousIdeal.{u_1} ↑f ↑g ↑h ⋯ ⋯ ⋯)))
+  [inst_2 : AlgebraicGeometry.IsClosedImmersion.{u_1} l]
+  (hZ :
+    Eq.{1}
+      (AllCharacteristics.finiteSchemeRank.{u_1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} l
+          (AllCharacteristics.HomogeneousProjective.toBase.{u_1}
+            (PfaffianDescent.tripleCompleteIntersectionHomogeneousIdeal.{u_1} ↑f ↑g ↑h ⋯ ⋯ ⋯))))
+      8),
+  CategoryTheory.Mono.{u_1, u_1 + 1}
+      (PfaffianDescent.ProjectiveNegativeTwist.threeQuadricOThreeKoszulFirst.{u_1} K f g h) ∧
+    CategoryTheory.ShortComplex.Exact.{u_1, u_1 + 1}
+        (PfaffianDescent.ProjectiveNegativeTwist.threeQuadricOThreeKoszul_firstMiddleShortComplex.{u_1} K f g h) ∧
+      CategoryTheory.ShortComplex.Exact.{u_1, u_1 + 1}
+          (PfaffianDescent.ProjectiveNegativeTwist.p3OriginalThreeQuadricOThree_middleAugmentationShortComplex.{u_1} f g
+            h l hZ) ∧
+        CategoryTheory.Epi.{u_1, u_1 + 1}
+          (PfaffianDescent.ProjectiveNegativeTwist.p3OriginalThreeQuadricOThreeAugmentation.{u_1} f g h l hZ)
+'PfaffianDescent.ProjectiveNegativeTwist.p3OriginalThreeQuadricOThree_displayed_resolution' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@PfaffianDescent.p3OriginalThreeQuadricOThreeGlobalAugmentation_cohomological_bijective.{u_1} : ∀ {K : Type u_1}
+  [inst : Field.{u_1} K] (f g h : ↥(MvPolynomial.homogeneousSubmodule.{0, u_1} (Fin 4) K 2))
+  [inst_1 :
+    AlgebraicGeometry.IsFinite.{u_1}
+      (AllCharacteristics.HomogeneousProjective.toBase.{u_1}
+        (PfaffianDescent.tripleCompleteIntersectionHomogeneousIdeal.{u_1} ↑f ↑g ↑h ⋯ ⋯ ⋯))]
+  {Z : AlgebraicGeometry.Scheme.{u_1}}
+  (l :
+    Quiver.Hom.{u_1, u_1 + 1} Z
+      (AllCharacteristics.HomogeneousProjective.scheme.{u_1}
+        (PfaffianDescent.tripleCompleteIntersectionHomogeneousIdeal.{u_1} ↑f ↑g ↑h ⋯ ⋯ ⋯)))
+  [inst_2 : AlgebraicGeometry.IsClosedImmersion.{u_1} l]
+  (hZ :
+    Eq.{1}
+      (AllCharacteristics.finiteSchemeRank.{u_1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} l
+          (AllCharacteristics.HomogeneousProjective.toBase.{u_1}
+            (PfaffianDescent.tripleCompleteIntersectionHomogeneousIdeal.{u_1} ↑f ↑g ↑h ⋯ ⋯ ⋯))))
+      8),
+  Function.Bijective.{u_1 + 1, u_1 + 1}
+    ⇑(PfaffianDescent.p3OriginalThreeQuadricOThreeGlobalAugmentationLinearMap.{u_1} f g h l hZ)
+'PfaffianDescent.p3OriginalThreeQuadricOThreeGlobalAugmentation_cohomological_bijective' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@PfaffianDescent.p3OriginalThreeQuadricOThreeCohomologicalGlobalEquiv_polynomial.{u_1} : ∀ {K : Type u_1}
+  [inst : Field.{u_1} K] (f g h : ↥(MvPolynomial.homogeneousSubmodule.{0, u_1} (Fin 4) K 2))
+  [inst_1 :
+    AlgebraicGeometry.IsFinite.{u_1}
+      (AllCharacteristics.HomogeneousProjective.toBase.{u_1}
+        (PfaffianDescent.tripleCompleteIntersectionHomogeneousIdeal.{u_1} ↑f ↑g ↑h ⋯ ⋯ ⋯))]
+  {Z : AlgebraicGeometry.Scheme.{u_1}}
+  (l :
+    Quiver.Hom.{u_1, u_1 + 1} Z
+      (AllCharacteristics.HomogeneousProjective.scheme.{u_1}
+        (PfaffianDescent.tripleCompleteIntersectionHomogeneousIdeal.{u_1} ↑f ↑g ↑h ⋯ ⋯ ⋯)))
+  [inst_2 : AlgebraicGeometry.IsClosedImmersion.{u_1} l]
+  (hZ :
+    Eq.{1}
+      (AllCharacteristics.finiteSchemeRank.{u_1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} l
+          (AllCharacteristics.HomogeneousProjective.toBase.{u_1}
+            (PfaffianDescent.tripleCompleteIntersectionHomogeneousIdeal.{u_1} ↑f ↑g ↑h ⋯ ⋯ ⋯))))
+      8)
+  (s :
+    PfaffianDescent.SchemeModuleGlobalSectionsOver.{u_1} AllCharacteristics.HomogeneousProjective.ambientToBase.{u_1}
+      (CategoryTheory.Limits.biproduct.{0, u_1, u_1 + 1} PfaffianDescent.p3ActualPositiveOneTriple.{u_1})),
+  Eq.{u_1 + 1}
+    ↑((PfaffianDescent.p3ClosedImmersionIdealHomogeneousKernelEquiv.{u_1}
+          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} l
+            (AllCharacteristics.HomogeneousProjective.quotientProjMap.{u_1}
+              (PfaffianDescent.tripleCompleteIntersectionHomogeneousIdeal.{u_1} ↑f ↑g ↑h ⋯ ⋯ ⋯)))
+          3 ⋯)
+        ((PfaffianDescent.p3OriginalThreeQuadricOThreeCohomologicalGlobalEquiv.{u_1} f g h l hZ) s))
+    ↑((PfaffianDescent.threeQuadricCubicIdealLinearMap.{u_1} f g h)
+        (PfaffianDescent.p3ActualPositiveOneTripleHomogeneousEquiv.{u_1} s))
+'PfaffianDescent.p3OriginalThreeQuadricOThreeCohomologicalGlobalEquiv_polynomial' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+PASS PfaffianDescent.ProjectiveNegativeTwist.p3OriginalThreeQuadricSheafKoszul_displayed_resolution: declarations=70332; axioms=#[Quot.sound, Classical.choice, propext]
+PASS PfaffianDescent.ProjectiveNegativeTwist.p3OriginalThreeQuadricOThree_displayed_resolution: declarations=71702; axioms=#[Quot.sound, Classical.choice, propext]
+PASS PfaffianDescent.p3OriginalThreeQuadricOThreeGlobalAugmentation_cohomological_bijective: declarations=76786; axioms=#[Quot.sound, Classical.choice, propext]
+PASS PfaffianDescent.p3OriginalThreeQuadricOThreeCohomologicalGlobalEquiv_polynomial: declarations=77034; axioms=#[Quot.sound, Classical.choice, propext]
+AUDIT COMPLETE: 4 roots; type/value/projection/recursor traversal

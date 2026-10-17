@@ -1,0 +1,216 @@
+@PfaffianDescent.QuarticNet.GroundTwistedCubicPresentation.literalBinaryNineNativeGlobalIso.{u_1} : {K : Type u_1} →
+  [inst : Field.{u_1} K] →
+    {B : HomogeneousIdeal.{0, u_1, u_1} (MvPolynomial.homogeneousSubmodule.{0, u_1} (Fin 4) K)} →
+      (hB : PfaffianDescent.QuarticNet.GroundTwistedCubicPresentation.{u_1} B) →
+        (F : MvPolynomial.{0, u_1} (Fin 4) K) →
+          (hF : MvPolynomial.IsHomogeneous.{0, u_1} F 3) →
+            CategoryTheory.Iso.{u_1, u_1 + 1}
+              (AllCharacteristics.HomogeneousProjective.scheme.{u_1}
+                (PfaffianDescent.QuarticNet.chosenBinaryEquationIdeal✝.{u_1} hB F hF))
+              (AllCharacteristics.HomogeneousProjective.scheme.{u_1}
+                (PfaffianDescent.QuarticNet.chosenStandardIntersectionIdeal✝.{u_1} hB F hF))
+'PfaffianDescent.QuarticNet.GroundTwistedCubicPresentation.literalBinaryNineNativeGlobalIso' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@PfaffianDescent.QuarticNet.GroundTwistedCubicPresentation.literalBinaryNineOriginalWholeIntersectionIso.{u_1} : {K :
+    Type u_1} →
+  [inst : Field.{u_1} K] →
+    {B : HomogeneousIdeal.{0, u_1, u_1} (MvPolynomial.homogeneousSubmodule.{0, u_1} (Fin 4) K)} →
+      (hB : PfaffianDescent.QuarticNet.GroundTwistedCubicPresentation.{u_1} B) →
+        (F : MvPolynomial.{0, u_1} (Fin 4) K) →
+          (hF : MvPolynomial.IsHomogeneous.{0, u_1} F 3) →
+            CategoryTheory.Iso.{u_1, u_1 + 1}
+              (AllCharacteristics.HomogeneousProjective.scheme.{u_1}
+                (AllCharacteristics.HomogeneousProjective.equationIdeal.{u_1}
+                  ↑(PfaffianDescent.QuarticNet.GroundTwistedCubicPresentation.literalRestrictedBinaryNine.{u_1} hB F hF)
+                  ⋯))
+              (AllCharacteristics.HomogeneousProjective.scheme.{u_1}
+                (PfaffianDescent.QuarticNet.groundTwistedCubicCubicIntersectionIdeal.{u_1} B F hF))
+'PfaffianDescent.QuarticNet.GroundTwistedCubicPresentation.literalBinaryNineOriginalWholeIntersectionIso' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@PfaffianDescent.QuarticNet.GroundTwistedCubicPresentation.literalBinaryNineActualRestrictionIso.{u_1} : {K :
+    Type u_1} →
+  [inst : Field.{u_1} K] →
+    {B : HomogeneousIdeal.{0, u_1, u_1} (MvPolynomial.homogeneousSubmodule.{0, u_1} (Fin 4) K)} →
+      (hB : PfaffianDescent.QuarticNet.GroundTwistedCubicPresentation.{u_1} B) →
+        (F : MvPolynomial.{0, u_1} (Fin 4) K) →
+          (hF : MvPolynomial.IsHomogeneous.{0, u_1} F 3) →
+            have G :=
+              PfaffianDescent.QuarticNet.GroundTwistedCubicPresentation.literalRestrictedBinaryNine.{u_1} hB F hF;
+            CategoryTheory.Iso.{u_1, u_1 + 1}
+              (AllCharacteristics.HomogeneousProjective.scheme.{u_1}
+                (AllCharacteristics.HomogeneousProjective.equationIdeal.{u_1} ↑G ⋯))
+              (CategoryTheory.Limits.pullback.{u_1, u_1 + 1}
+                (PfaffianDescent.QuarticNet.GroundTwistedCubicPresentation.actualAmbientParameterMap.{u_1} hB)
+                (AllCharacteristics.HomogeneousProjective.hypersurfaceToAmbient.{u_1} F hF))
+'PfaffianDescent.QuarticNet.GroundTwistedCubicPresentation.literalBinaryNineActualRestrictionIso' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@PfaffianDescent.QuarticNet.GroundTwistedCubicPresentation.literalBinaryNineActualRestrictionIso_surface.{u_1} : ∀
+  {K : Type u_1} [inst : Field.{u_1} K]
+  {B : HomogeneousIdeal.{0, u_1, u_1} (MvPolynomial.homogeneousSubmodule.{0, u_1} (Fin 4) K)}
+  (hB : PfaffianDescent.QuarticNet.GroundTwistedCubicPresentation.{u_1} B) (F : MvPolynomial.{0, u_1} (Fin 4) K)
+  (hF : MvPolynomial.IsHomogeneous.{0, u_1} F 3),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (CategoryTheory.Iso.hom.{u_1, u_1 + 1}
+        (PfaffianDescent.QuarticNet.GroundTwistedCubicPresentation.literalBinaryNineActualRestrictionIso.{u_1} hB F hF))
+      (CategoryTheory.Limits.pullback.snd.{u_1, u_1 + 1}
+        (PfaffianDescent.QuarticNet.GroundTwistedCubicPresentation.actualAmbientParameterMap.{u_1} hB)
+        (AllCharacteristics.HomogeneousProjective.hypersurfaceToAmbient.{u_1} F hF)))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (CategoryTheory.Iso.hom.{u_1, u_1 + 1}
+        (PfaffianDescent.QuarticNet.GroundTwistedCubicPresentation.literalBinaryNineOriginalWholeIntersectionIso.{u_1}
+          hB F hF))
+      (PfaffianDescent.casselsTwistedCubicIntersectionToSurface.{u_1} B F hF))
+'PfaffianDescent.QuarticNet.GroundTwistedCubicPresentation.literalBinaryNineActualRestrictionIso_surface' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@PfaffianDescent.intrinsicOriginalTwistedFullBase_cubic_intersection_alternative_anyField.{u_1} : ∀ {k : Type u_1}
+  [inst : Field.{u_1} k] (F : MvPolynomial.{0, u_1} (Fin 4) k) (hF : MvPolynomial.IsHomogeneous.{0, u_1} F 3)
+  {Z : AlgebraicGeometry.Scheme.{u_1}}
+  (i : Quiver.Hom.{u_1, u_1 + 1} Z (AllCharacteristics.HomogeneousProjective.hypersurface.{u_1} F hF))
+  [AlgebraicGeometry.IsClosedImmersion.{u_1} i],
+  PfaffianDescent.QuarticNet.GroundTwistedCubicPresentation.{u_1}
+      (PfaffianDescent.intrinsicFullQuadraticBaseIdeal.{u_1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i
+          (AllCharacteristics.HomogeneousProjective.hypersurfaceToAmbient.{u_1} F hF))) →
+    (∃ c,
+        Eq.{u_1 + 1}
+            (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} c
+              (AllCharacteristics.HomogeneousProjective.hypersurfaceToAmbient.{u_1} F hF))
+            (AllCharacteristics.HomogeneousProjective.quotientProjMap.{u_1}
+              (PfaffianDescent.intrinsicFullQuadraticBaseIdeal.{u_1}
+                (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i
+                  (AllCharacteristics.HomogeneousProjective.hypersurfaceToAmbient.{u_1} F hF)))) ∧
+          Eq.{u_1 + 1}
+              (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} c
+                (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} F hF))
+              (AllCharacteristics.HomogeneousProjective.toBase.{u_1}
+                (PfaffianDescent.intrinsicFullQuadraticBaseIdeal.{u_1}
+                  (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i
+                    (AllCharacteristics.HomogeneousProjective.hypersurfaceToAmbient.{u_1} F hF)))) ∧
+            ∃ s,
+              Eq.{u_1 + 1}
+                (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} s
+                  (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} F hF))
+                (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1}
+                  (AlgebraicGeometry.Spec.{u_1} (CommRingCat.of.{u_1} k)))) ∨
+      ∃ (hfinite :
+        AlgebraicGeometry.IsFinite.{u_1}
+          (AllCharacteristics.HomogeneousProjective.toBase.{u_1}
+            (PfaffianDescent.intrinsicOriginalCubicFullBaseIntersectionIdeal.{u_1} F hF i))),
+        Eq.{1}
+            (AllCharacteristics.finiteSchemeRank.{u_1}
+              (AllCharacteristics.HomogeneousProjective.toBase.{u_1}
+                (PfaffianDescent.intrinsicOriginalCubicFullBaseIntersectionIdeal.{u_1} F hF i)))
+            9 ∧
+          ∃ l,
+            AlgebraicGeometry.IsClosedImmersion.{u_1} l ∧
+              Eq.{u_1 + 1}
+                  (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} l
+                    (PfaffianDescent.intrinsicOriginalCubicFullBaseIntersectionToSurface.{u_1} F hF i))
+                  i ∧
+                Eq.{u_1 + 1}
+                    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} l
+                      (AllCharacteristics.HomogeneousProjective.quotientProjMap.{u_1}
+                        (PfaffianDescent.intrinsicOriginalCubicFullBaseIntersectionIdeal.{u_1} F hF i)))
+                    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i
+                      (AllCharacteristics.HomogeneousProjective.hypersurfaceToAmbient.{u_1} F hF)) ∧
+                  Eq.{u_1 + 1}
+                    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} l
+                      (AllCharacteristics.HomogeneousProjective.toBase.{u_1}
+                        (PfaffianDescent.intrinsicOriginalCubicFullBaseIntersectionIdeal.{u_1} F hF i)))
+                    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i
+                      (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} F hF))
+'PfaffianDescent.intrinsicOriginalTwistedFullBase_cubic_intersection_alternative_anyField' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@PfaffianDescent.sectionFour_section_of_cubic_of_twisted_intrinsic_full_quadratic_base_direct.{u_1} : ∀ {k : Type u_1}
+  [inst : Field.{u_1} k] (F : MvPolynomial.{0, u_1} (Fin 4) k) (hF : MvPolynomial.IsHomogeneous.{0, u_1} F 3)
+  {Z : AlgebraicGeometry.Scheme.{u_1}}
+  (i : Quiver.Hom.{u_1, u_1 + 1} Z (AllCharacteristics.HomogeneousProjective.hypersurface.{u_1} F hF))
+  [AlgebraicGeometry.IsClosedImmersion.{u_1} i]
+  [inst_2 :
+    AlgebraicGeometry.IsFinite.{u_1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i
+        (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} F hF))],
+  Eq.{1}
+      (AllCharacteristics.finiteSchemeRank.{u_1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i
+          (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} F hF)))
+      8 →
+    PfaffianDescent.QuarticNet.GroundTwistedCubicPresentation.{u_1}
+        (PfaffianDescent.intrinsicFullQuadraticBaseIdeal.{u_1}
+          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i
+            (AllCharacteristics.HomogeneousProjective.hypersurfaceToAmbient.{u_1} F hF))) →
+      ∃ s,
+        Eq.{u_1 + 1}
+          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} s
+            (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} F hF))
+          (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} (AlgebraicGeometry.Spec.{u_1} (CommRingCat.of.{u_1} k)))
+'PfaffianDescent.sectionFour_section_of_cubic_of_twisted_intrinsic_full_quadratic_base_direct' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@PfaffianDescent.singleSupport_originalZ_actual_H0_has_section.{u_1} : ∀ {k : Type u_1} [inst : Field.{u_1} k]
+  [PerfectField.{u_1} k] (F : MvPolynomial.{0, u_1} (Fin 4) k) (hF : MvPolynomial.IsHomogeneous.{0, u_1} F 3),
+  Ne.{u_1 + 1} F 0 →
+    ∀ [AlgebraicGeometry.Smooth.{u_1} (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} F hF)]
+      {Z : AlgebraicGeometry.Scheme.{u_1}}
+      (i :
+        Quiver.Hom.{u_1, u_1 + 1} Z
+          (AllCharacteristics.HomogeneousProjective.scheme.{u_1}
+            (AllCharacteristics.HomogeneousProjective.equationIdeal.{u_1} F hF)))
+      [inst_3 : AlgebraicGeometry.IsClosedImmersion.{u_1} i]
+      [inst_4 :
+        AlgebraicGeometry.IsFinite.{u_1}
+          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i
+            (AllCharacteristics.HomogeneousProjective.toBase.{u_1}
+              (AllCharacteristics.HomogeneousProjective.equationIdeal.{u_1} F hF)))]
+      (P :
+        ↑(closedPoints.{u_1}
+            ↥(AllCharacteristics.HomogeneousProjective.scheme.{u_1}
+                (AllCharacteristics.HomogeneousProjective.equationIdeal.{u_1} F hF)))),
+      Eq.{u_1 + 1} (Set.range.{u_1, u_1 + 1} ⇑i) (singleton.{u_1, u_1} ↑P) →
+        Eq.{1}
+            (AlgebraicGeometry.Scheme.Hom.residueDegree.{u_1}
+              (AllCharacteristics.HomogeneousProjective.toBase.{u_1}
+                (AllCharacteristics.HomogeneousProjective.equationIdeal.{u_1} F hF))
+              ↑P)
+            4 →
+          PfaffianDescent.ProjectiveGeometricGeneralPosition.{u_1}
+              (AllCharacteristics.HomogeneousProjective.equationIdeal.{u_1} F hF)
+              (AlgebraicGeometry.Scheme.fromSpecResidueField.{u_1}
+                (AllCharacteristics.HomogeneousProjective.scheme.{u_1}
+                  (AllCharacteristics.HomogeneousProjective.equationIdeal.{u_1} F hF))
+                ↑P) →
+            LE.le.{0} 3
+                (Module.finrank.{u_1, u_1} k
+                  (PfaffianDescent.ActualP3IdealQuadraticHZero.{u_1}
+                    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i
+                      (AllCharacteristics.HomogeneousProjective.quotientProjMap.{u_1}
+                        (AllCharacteristics.HomogeneousProjective.equationIdeal.{u_1} F hF))))) →
+              Eq.{1}
+                  (AllCharacteristics.finiteSchemeRank.{u_1}
+                    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i
+                      (AllCharacteristics.HomogeneousProjective.toBase.{u_1}
+                        (AllCharacteristics.HomogeneousProjective.equationIdeal.{u_1} F hF))))
+                  8 →
+                ∃ s,
+                  Eq.{u_1 + 1}
+                    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} s
+                      (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} F hF))
+                    (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1}
+                      (AlgebraicGeometry.Spec.{u_1} (CommRingCat.of.{u_1} k)))
+'PfaffianDescent.singleSupport_originalZ_actual_H0_has_section' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+PASS PfaffianDescent.QuarticNet.GroundTwistedCubicPresentation.literalBinaryNineNativeGlobalIso: declarations=25751; axioms=#[Quot.sound, Classical.choice, propext]
+PASS PfaffianDescent.QuarticNet.GroundTwistedCubicPresentation.literalBinaryNineOriginalWholeIntersectionIso: declarations=30567; axioms=#[Quot.sound, Classical.choice, propext]
+PASS PfaffianDescent.QuarticNet.GroundTwistedCubicPresentation.literalBinaryNineActualRestrictionIso: declarations=30874; axioms=#[Quot.sound, Classical.choice, propext]
+PASS PfaffianDescent.QuarticNet.GroundTwistedCubicPresentation.literalBinaryNineActualRestrictionIso_surface: declarations=30876; axioms=#[Quot.sound, Classical.choice, propext]
+PASS PfaffianDescent.intrinsicOriginalTwistedFullBase_cubic_intersection_alternative_anyField: declarations=59181; axioms=#[Quot.sound, Classical.choice, propext]
+PASS PfaffianDescent.sectionFour_section_of_cubic_of_twisted_intrinsic_full_quadratic_base_direct: declarations=59810; axioms=#[Quot.sound, Classical.choice, propext]
+PASS PfaffianDescent.singleSupport_originalZ_actual_H0_has_section: declarations=82448; axioms=#[Quot.sound, Classical.choice, propext]
+AUDIT COMPLETE: 7 roots; type/value/projection/recursor traversal

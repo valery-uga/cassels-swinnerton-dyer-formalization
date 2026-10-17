@@ -1,0 +1,37 @@
+{
+  "challenge_module": "AllCharacteristics.ManuscriptVerification.OutsideChallenge",
+  "solution_module": "AllCharacteristics.ManuscriptVerification.OutsideSolution",
+  "theorem_names": [
+    "AllCharacteristics.PublicationComparators.OutsideSectionFour.challenge_twoProofs_degree_four_closed_point_has_point",
+    "AllCharacteristics.PublicationComparators.OutsideSectionFour.challenge_twoProofs_intro_finiteExtension_iff_internalCoray001",
+    "AllCharacteristics.PublicationComparators.OutsideSectionFour.challenge_twoProofs_finite_point_coprime_has_point_internalCoray001",
+    "AllCharacteristics.PublicationComparators.OutsideSectionFour.challenge_twoProofs_pfaffian_cubic_has_point",
+    "AllCharacteristics.PublicationComparators.OutsideSectionFour.challenge_twoProofs_secant",
+    "AllCharacteristics.PublicationComparators.OutsideSectionFour.challenge_twoProofs_position_perfect",
+    "AllCharacteristics.PublicationComparators.OutsideSectionFour.challenge_twoProofs_twisted_cubic_smooth_embedding_of_algebraicClosure_presentation",
+    "AllCharacteristics.PublicationComparators.OutsideSectionFour.challenge_paper_twisted_cubic_perfect",
+    "AllCharacteristics.PublicationComparators.OutsideSectionFour.challenge_twoProofs_cassels_four_five",
+    "AllCharacteristics.PublicationComparators.OutsideSectionFour.challenge_twoProofs_cassels_four_five_closed_point_alternative",
+    "AllCharacteristics.PublicationComparators.OutsideSectionFour.challenge_twoProofs_degree_five_has_point",
+    "AllCharacteristics.PublicationComparators.OutsideSectionFour.challenge_twoProofs_incidence_finite_etale_degree_two_open",
+    "AllCharacteristics.PublicationComparators.OutsideSectionFour.challenge_twoProofs_reduced_length_five_subscheme_pfaffian",
+    "AllCharacteristics.PublicationComparators.OutsideSectionFour.challenge_twoProofs_chapterFive_charzero_internalCoray001",
+    "AllCharacteristics.PublicationComparators.OutsideSectionFour.challenge_twoProofs_chapterFive_lift",
+    "AllCharacteristics.PublicationComparators.OutsideSectionFour.challenge_chapterFiveLiftFor_viaGlobalHilbert001",
+    "AllCharacteristics.PublicationComparators.OutsideSectionFour.challenge_chapterFiveLiftStatement_viaGlobalHilbert001",
+    "AllCharacteristics.PublicationComparators.OutsideSectionFour.challenge_exists_smooth_charZero_cubic_lift_with_original_closed_subscheme_viaGlobalHilbert001",
+    "AllCharacteristics.PublicationComparators.OutsideSectionFour.challenge_twoProofs_chapterFive_smooth_internalCoray001",
+    "AllCharacteristics.PublicationComparators.OutsideSectionFour.challenge_twoProofs_chapterFive_smooth_by_selected_closedPoint_viaGlobalHilbert_internalCoray001",
+    "AllCharacteristics.PublicationComparators.OutsideSectionFour.challenge_twoProofs_chapterSix_main_internalCoray001",
+    "AllCharacteristics.PublicationComparators.OutsideSectionFour.challenge_twoProofs_main_theorem_internalCoray001",
+    "AllCharacteristics.PublicationComparators.OutsideSectionFour.challenge_twoProofs_chapterSix_singular_point_scheme",
+    "AllCharacteristics.PublicationComparators.OutsideSectionFour.challenge_twoProofs_singular_point_or_smooth_extension_point",
+    "AllCharacteristics.PublicationComparators.OutsideSectionFour.challenge_twoProofs_chapterSix_smoothing",
+    "AllCharacteristics.PublicationComparators.OutsideSectionFour.challenge_internalCorayDegreeOneFourOrTenFor_uniform001"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}

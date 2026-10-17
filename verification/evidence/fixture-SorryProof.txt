@@ -1,0 +1,2 @@
+verification/fixtures/SorryProof.lean:3:8: warning: declaration uses `sorry`
+verification/fixtures/SorryProof.lean:4:0: error: Unapproved axiom for publicationSorry: sorryAx

@@ -1,0 +1,27 @@
+import AllCharacteristics.ManuscriptVerification.Audit
+import AllCharacteristics.InternalCorayPaperConclusions
+import AllCharacteristics.TwoProofs
+import AllCharacteristics.TwoProofsLiteralChaptersFiveSix
+
+set_option pp.universes true
+set_option pp.deepTerms true
+
+#check @AllCharacteristics.twoProofs_chapterSix_main_internalCoray001
+#print axioms AllCharacteristics.twoProofs_chapterSix_main_internalCoray001
+#check @AllCharacteristics.twoProofs_main_theorem_internalCoray001
+#print axioms AllCharacteristics.twoProofs_main_theorem_internalCoray001
+#check @AllCharacteristics.twoProofs_chapterSix_singular_point_scheme
+#print axioms AllCharacteristics.twoProofs_chapterSix_singular_point_scheme
+#check @AllCharacteristics.twoProofs_singular_point_or_smooth_extension_point
+#print axioms AllCharacteristics.twoProofs_singular_point_or_smooth_extension_point
+#check @AllCharacteristics.twoProofs_chapterSix_smoothing
+#print axioms AllCharacteristics.twoProofs_chapterSix_smoothing
+
+open Lean Elab Command
+run_cmd do
+  let env := (← getEnv).setExporting false
+  liftIO <| ManuscriptVerification.inspect env #[`AllCharacteristics.twoProofs_chapterSix_main_internalCoray001,
+  `AllCharacteristics.twoProofs_main_theorem_internalCoray001,
+  `AllCharacteristics.twoProofs_chapterSix_singular_point_scheme,
+  `AllCharacteristics.twoProofs_singular_point_or_smooth_extension_point,
+  `AllCharacteristics.twoProofs_chapterSix_smoothing]

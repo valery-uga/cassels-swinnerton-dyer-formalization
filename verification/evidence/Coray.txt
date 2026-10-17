@@ -1,0 +1,7 @@
+AllCharacteristics.internalCorayDegreeOneFourOrTenFor_uniform001.{u_1} : ∀ (K : Type u_1) [inst : Field.{u_1} K]
+  [inst_1 : CharZero.{u_1} K], AllCharacteristics.CorayDegreeOneFourOrTenFor.{u_1} K
+'AllCharacteristics.internalCorayDegreeOneFourOrTenFor_uniform001' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+PASS AllCharacteristics.internalCorayDegreeOneFourOrTenFor_uniform001: declarations=93625; axioms=#[Quot.sound, Classical.choice, propext]
+AUDIT COMPLETE: 1 roots; type/value/projection/recursor traversal

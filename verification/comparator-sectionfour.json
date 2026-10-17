@@ -1,0 +1,20 @@
+{
+  "challenge_module": "AllCharacteristics.ManuscriptVerification.SectionFourChallenge",
+  "solution_module": "AllCharacteristics.ManuscriptVerification.SectionFourSolution",
+  "theorem_names": [
+    "PfaffianDescent.ManuscriptComparators.claim_4_1",
+    "AllCharacteristics.ManuscriptComparators.claim_4_2",
+    "PfaffianDescent.ManuscriptComparators.claim_4_3",
+    "PfaffianDescent.ManuscriptComparators.claim_4_4",
+    "PfaffianDescent.ManuscriptComparators.claim_4_5",
+    "PfaffianDescent.ManuscriptComparators.claim_4_6",
+    "PfaffianDescent.ManuscriptComparators.claim_4_7",
+    "PfaffianDescent.ManuscriptComparators.claim_4_8",
+    "PfaffianDescent.ManuscriptComparators.claim_4_9"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}

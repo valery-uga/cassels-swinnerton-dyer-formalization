@@ -1,0 +1,1 @@
+verification/fixtures/UnapprovedAxiom.lean:5:0: error: Unapproved axiom for publicationBad: publicationUnapproved

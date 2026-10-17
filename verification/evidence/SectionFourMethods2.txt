@@ -1,0 +1,38 @@
+@PfaffianDescent.p3ActualIdealQuadraticGlobalBaseIdeal_actual_fieldExtension.{u_1} : ∀ {k K : Type u_1}
+  [inst : Field.{u_1} k] [inst_1 : Field.{u_1} K] [inst_2 : Algebra.{u_1, u_1} k K] {Z : AlgebraicGeometry.Scheme.{u_1}}
+  (i :
+    Quiver.Hom.{u_1, u_1 + 1} Z
+      (AlgebraicGeometry.Proj.{u_1, u_1} (MvPolynomial.homogeneousSubmodule.{0, u_1} (Fin 4) k)))
+  [inst_3 : AlgebraicGeometry.IsClosedImmersion.{u_1} i]
+  [AlgebraicGeometry.IsFinite.{u_1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i
+        AllCharacteristics.HomogeneousProjective.ambientToBase.{u_1})],
+  Eq.{u_1 + 1}
+    (PfaffianDescent.p3ActualIdealQuadraticGlobalBaseIdeal.{u_1}
+      (PfaffianDescent.canonicalProjectiveFieldBaseChangeEmbedding.{u_1} i))
+    (HomogeneousIdeal.map.{u_1, u_1, u_1, u_1, 0}
+      (AllCharacteristics.HomogeneousProjective.ambientCoefficientGradedRingHom.{u_1} (algebraMap.{u_1, u_1} k K))
+      (PfaffianDescent.p3ActualIdealQuadraticGlobalBaseIdeal.{u_1} i))
+'PfaffianDescent.p3ActualIdealQuadraticGlobalBaseIdeal_actual_fieldExtension' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@PfaffianDescent.p3ActualIdealQuadraticHZero_actual_fieldExtension_finrank.{u_1} : ∀ {k K : Type u_1}
+  [inst : Field.{u_1} k] [inst_1 : Field.{u_1} K] [inst_2 : Algebra.{u_1, u_1} k K] {Z : AlgebraicGeometry.Scheme.{u_1}}
+  (i :
+    Quiver.Hom.{u_1, u_1 + 1} Z
+      (AlgebraicGeometry.Proj.{u_1, u_1} (MvPolynomial.homogeneousSubmodule.{0, u_1} (Fin 4) k)))
+  [inst_3 : AlgebraicGeometry.IsClosedImmersion.{u_1} i]
+  [AlgebraicGeometry.IsFinite.{u_1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i
+        AllCharacteristics.HomogeneousProjective.ambientToBase.{u_1})],
+  Eq.{1}
+    (Module.finrank.{u_1, u_1} K
+      (PfaffianDescent.ActualP3IdealQuadraticHZero.{u_1}
+        (PfaffianDescent.canonicalProjectiveFieldBaseChangeEmbedding.{u_1} i)))
+    (Module.finrank.{u_1, u_1} k (PfaffianDescent.ActualP3IdealQuadraticHZero.{u_1} i))
+'PfaffianDescent.p3ActualIdealQuadraticHZero_actual_fieldExtension_finrank' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+PASS PfaffianDescent.p3ActualIdealQuadraticGlobalBaseIdeal_actual_fieldExtension: declarations=48607; axioms=#[Quot.sound, Classical.choice, propext]
+PASS PfaffianDescent.p3ActualIdealQuadraticHZero_actual_fieldExtension_finrank: declarations=48655; axioms=#[Quot.sound, Classical.choice, propext]
+AUDIT COMPLETE: 2 roots; type/value/projection/recursor traversal

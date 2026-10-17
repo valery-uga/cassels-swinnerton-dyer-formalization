@@ -1,0 +1,244 @@
+{
+  "date": "2026-10-17",
+  "platform": "macOS ARM64",
+  "lean": "v4.33.1",
+  "mathlib": "v4.33.1",
+  "mode": "Sequential guarded lake env lean -M14000 MODULE.lean in original project with existing compiled dependencies; no clean-room rebuild",
+  "source_scope": "Source closure hashes matched the publication checkout; only new verification modules were added to original project for these checks",
+  "guard": "45% available memory cutoff; no pressure or quota stop; exact logs unheld and global compiler lock free after each check",
+  "audit_groups": [
+    {
+      "group": "SectionsOneToThree",
+      "roots": [
+        "AllCharacteristics.twoProofs_degree_four_closed_point_has_point",
+        "AllCharacteristics.twoProofs_intro_finiteExtension_iff_internalCoray001",
+        "AllCharacteristics.twoProofs_finite_point_coprime_has_point_internalCoray001",
+        "AllCharacteristics.twoProofs_pfaffian_cubic_has_point",
+        "AllCharacteristics.twoProofs_secant",
+        "AllCharacteristics.twoProofs_position_perfect",
+        "AllCharacteristics.twoProofs_twisted_cubic_smooth_embedding_of_algebraicClosure_presentation",
+        "AllCharacteristics.paper_twisted_cubic_perfect",
+        "AllCharacteristics.twoProofs_cassels_four_five",
+        "AllCharacteristics.twoProofs_cassels_four_five_closed_point_alternative",
+        "AllCharacteristics.twoProofs_degree_five_has_point",
+        "AllCharacteristics.twoProofs_incidence_finite_etale_degree_two_open",
+        "AllCharacteristics.twoProofs_reduced_length_five_subscheme_pfaffian"
+      ],
+      "exit_code": 0,
+      "log": "SectionsOneToThree.txt",
+      "sha256": "ee80ad5c9c5742543c914bc0c2675f869b55873c65f8eb6aa2b5ed4a0af0f3ac"
+    },
+    {
+      "group": "SectionFive",
+      "roots": [
+        "AllCharacteristics.twoProofs_chapterFive_charzero_internalCoray001",
+        "AllCharacteristics.twoProofs_chapterFive_lift",
+        "AllCharacteristics.chapterFiveLiftFor_viaGlobalHilbert001",
+        "AllCharacteristics.chapterFiveLiftStatement_viaGlobalHilbert001",
+        "AllCharacteristics.exists_smooth_charZero_cubic_lift_with_original_closed_subscheme_viaGlobalHilbert001",
+        "AllCharacteristics.twoProofs_chapterFive_smooth_internalCoray001",
+        "AllCharacteristics.twoProofs_chapterFive_smooth_by_selected_closedPoint_viaGlobalHilbert_internalCoray001"
+      ],
+      "exit_code": 0,
+      "log": "SectionFive.txt",
+      "sha256": "3746ec3e64e3cbba353a58a4de64d44273e86273a7dd3839e9ece838f7a494a5"
+    },
+    {
+      "group": "SectionSix",
+      "roots": [
+        "AllCharacteristics.twoProofs_chapterSix_main_internalCoray001",
+        "AllCharacteristics.twoProofs_main_theorem_internalCoray001",
+        "AllCharacteristics.twoProofs_chapterSix_singular_point_scheme",
+        "AllCharacteristics.twoProofs_singular_point_or_smooth_extension_point",
+        "AllCharacteristics.twoProofs_chapterSix_smoothing"
+      ],
+      "exit_code": 0,
+      "log": "SectionSix.txt",
+      "sha256": "cbfb42578347850bab2eee5bf937cb22cb0333c9c83f57521275fd3a10d20d9d"
+    },
+    {
+      "group": "SectionFour",
+      "roots": [
+        "PfaffianDescent.perfectField_degree_four_originalHZero_graph_rational_section",
+        "AllCharacteristics.sectionFour_linear_quadric_decomposition_of_finite_nonempty_net",
+        "PfaffianDescent.sectionFour_actual_ideal_quadratic_global_dimension_three_of_finite_net",
+        "PfaffianDescent.sectionFour_section_of_cubic_of_finite_actual_ideal_quadratic_global_base",
+        "PfaffianDescent.fourCoordinateVertex_whole_supplied_actual_H0_weighted_iff",
+        "PfaffianDescent.fourCoordinateVertex_whole_supplied_actual_H0_fullBase_alternative",
+        "PfaffianDescent.singleSupport_actual_H0_skew_geometric_representation",
+        "PfaffianDescent.singleSupport_originalZ_supplied_frame_epsilon_zero_entry_geometry",
+        "PfaffianDescent.perfectField_closedQuarticPoint_exists_original_tangentSubscheme_actualHZero",
+        "AllCharacteristics.sectionFour_degree_four_closed_point_has_point"
+      ],
+      "exit_code": 0,
+      "log": "SectionFour.txt",
+      "sha256": "d9416e2bcc4a018c9b75308307566bd02041bc3931d803fc7f00379b3723c760"
+    },
+    {
+      "group": "Coray",
+      "roots": [
+        "AllCharacteristics.internalCorayDegreeOneFourOrTenFor_uniform001"
+      ],
+      "exit_code": 0,
+      "log": "Coray.txt",
+      "sha256": "070e4a0edc4aac5b38c6f5c21a819437d7a107907e5abfb7ed00719a69628355"
+    },
+    {
+      "group": "SectionFourMethods1",
+      "roots": [
+        "PfaffianDescent.ProjectiveNegativeTwist.p3OriginalThreeQuadricSheafKoszul_displayed_resolution",
+        "PfaffianDescent.ProjectiveNegativeTwist.p3OriginalThreeQuadricOThree_displayed_resolution",
+        "PfaffianDescent.p3OriginalThreeQuadricOThreeGlobalAugmentation_cohomological_bijective",
+        "PfaffianDescent.p3OriginalThreeQuadricOThreeCohomologicalGlobalEquiv_polynomial"
+      ],
+      "exit_code": 0,
+      "log": "SectionFourMethods1.txt",
+      "sha256": "f60d3cdbbf1ff0252a012a2d4209a6b18a128865a6143377b4b6c3348d4d1813"
+    },
+    {
+      "group": "SectionFourMethods2",
+      "roots": [
+        "PfaffianDescent.p3ActualIdealQuadraticGlobalBaseIdeal_actual_fieldExtension",
+        "PfaffianDescent.p3ActualIdealQuadraticHZero_actual_fieldExtension_finrank"
+      ],
+      "exit_code": 0,
+      "log": "SectionFourMethods2.txt",
+      "sha256": "b97076f58cda10b3a3bb0cd760bf0208528ee9c58d8d21e0a5a12460743ecdb5"
+    },
+    {
+      "group": "SectionFourMethods3",
+      "roots": [
+        "PfaffianDescent.actualOriginalGlobalCanonicalQuadraticPhi_eq_native",
+        "PfaffianDescent.actualOriginalOneDimensionalQuotient_globalCanonicalPhiHZero_injective_and_range_eq_kernel163",
+        "PfaffianDescent.perfectField_originalGlobalCanonicalPhi_traceSelectedQuotient",
+        "PfaffianDescent.actualOriginalPositiveTwoTraceDualEquiv"
+      ],
+      "exit_code": 0,
+      "log": "SectionFourMethods3.txt",
+      "sha256": "4d2bba5665238bcd95cf531a2d8d2e3f2a08ca48577bcf78753c120bcb0a52c6"
+    },
+    {
+      "group": "SectionFourMethods4",
+      "roots": [
+        "PfaffianDescent.fourCoordinateVertex_whole_actual_choice_independent_H0_literal_presentation",
+        "PfaffianDescent.QuarticNet.baseLocusExceptionalNativeHZero_completeBasis"
+      ],
+      "exit_code": 0,
+      "log": "SectionFourMethods4.txt",
+      "sha256": "03a45d0e5dcfcf901cd6d8f31108f1b408612570de71fbefafc8fda9c5720db3"
+    },
+    {
+      "group": "SectionFourMethods5",
+      "roots": [
+        "PfaffianDescent.QuadraticSkewRationality.OrdinaryLines201.rankTwoConjugateSkew_exists_paired_frame201",
+        "PfaffianDescent.QuadraticSkewRationality.OrdinaryLines201.coefficientExtension_exists_same_projector_frame201",
+        "PfaffianDescent.QuarticNet.originalMatchingBranch_original_cubic_isRationalOver",
+        "PfaffianDescent.QuarticNet.originalMatchingBranch_original_cubic_rational_and_section",
+        "PfaffianDescent.singleSupport_originalZ_actual_H0_matching_rational_section_or_finite"
+      ],
+      "exit_code": 0,
+      "log": "SectionFourMethods5.txt",
+      "sha256": "560741ab884a7933943c0e39d3df25943a5cc852a5e4c69f5a0e4ce4bd4c3e18"
+    },
+    {
+      "group": "SectionFourMethods6",
+      "roots": [
+        "PfaffianDescent.QuarticNet.GroundTwistedCubicPresentation.literalBinaryNineNativeGlobalIso",
+        "PfaffianDescent.QuarticNet.GroundTwistedCubicPresentation.literalBinaryNineOriginalWholeIntersectionIso",
+        "PfaffianDescent.QuarticNet.GroundTwistedCubicPresentation.literalBinaryNineActualRestrictionIso",
+        "PfaffianDescent.QuarticNet.GroundTwistedCubicPresentation.literalBinaryNineActualRestrictionIso_surface",
+        "PfaffianDescent.intrinsicOriginalTwistedFullBase_cubic_intersection_alternative_anyField",
+        "PfaffianDescent.sectionFour_section_of_cubic_of_twisted_intrinsic_full_quadratic_base_direct",
+        "PfaffianDescent.singleSupport_originalZ_actual_H0_has_section"
+      ],
+      "exit_code": 0,
+      "log": "SectionFourMethods6.txt",
+      "sha256": "f5597a3a00e3dfe6f4eda77e15ec095b7bfc684d31ce42215df8cbf36168214f"
+    },
+    {
+      "group": "GlobalHilbertRoute",
+      "roots": [
+        "AllCharacteristics.chapterFiveLiftFor_viaGlobalHilbert001",
+        "AllCharacteristics.chapterFiveLiftStatement_viaGlobalHilbert001",
+        "AllCharacteristics.twoProofs_chapterFive_smooth_by_selected_closedPoint_viaGlobalHilbert_internalCoray001"
+      ],
+      "exit_code": 0,
+      "log": "GlobalHilbertRoute.txt",
+      "sha256": "34f0853b287a75e731a814ff8ad318197af47bc132e03b422b28c909acfd4ed2"
+    }
+  ],
+  "wrapper_checks": [
+    {
+      "module": "AllCharacteristics.ManuscriptVerification.OutsideSolution",
+      "exit_code": 0,
+      "expected_sorry_placeholders": false,
+      "log": "OutsideSolution.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "AllCharacteristics.ManuscriptVerification.SectionFourSolution",
+      "exit_code": 0,
+      "expected_sorry_placeholders": false,
+      "log": "SectionFourSolution.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "AllCharacteristics.ManuscriptVerification.OutsideChallenge",
+      "exit_code": 0,
+      "expected_sorry_placeholders": true,
+      "log": "OutsideChallenge.txt",
+      "sha256": "90e4a655a28a99f551257ed3e91a149cf6056cfbb7d7ed37542e67f5606d1d7d"
+    },
+    {
+      "module": "AllCharacteristics.ManuscriptVerification.SectionFourChallenge",
+      "exit_code": 0,
+      "expected_sorry_placeholders": true,
+      "log": "SectionFourChallenge.txt",
+      "sha256": "6b6904cb486bbf6dbafb39b11a0c6962d7c55eb01113e80f8ac0c82d38bc3ef1"
+    }
+  ],
+  "runner_tests": {
+    "command": "python3 -m unittest discover -s verification -p test_runner.py",
+    "passed": 20,
+    "failed": 0,
+    "type": "Mocked unit tests; no Lean processes launched"
+  },
+  "comparator": "not_run",
+  "audit_self_tests": [
+    {
+      "fixture": "verification/fixtures/UnapprovedAxiom.lean",
+      "expected_exit_code": 1,
+      "actual_exit_code": 1,
+      "result": "pass",
+      "log": "fixture-UnapprovedAxiom.txt",
+      "sha256": "b2bf24bc00f979375557e1817af269ad0ce95dcd4396ce9274c1294e2aba6aa7",
+      "normalization": "Absolute package prefix removed from diagnostic paths"
+    },
+    {
+      "fixture": "verification/fixtures/SorryProof.lean",
+      "expected_exit_code": 1,
+      "actual_exit_code": 1,
+      "result": "pass",
+      "log": "fixture-SorryProof.txt",
+      "sha256": "b5cfe770cdcafc734a61210135e5953cd957f626f6205be3a7e97168ca63ec6c",
+      "normalization": "Absolute package prefix removed from diagnostic paths"
+    },
+    {
+      "fixture": "verification/fixtures/ValidProof.lean",
+      "expected_exit_code": 0,
+      "actual_exit_code": 0,
+      "result": "pass",
+      "log": "fixture-ValidProof.txt",
+      "sha256": "f6b532e2b84b13fc2fb0387e6552eaf3a62f7c16e346b155c024e54e3d1af43a",
+      "normalization": "Absolute package prefix removed from diagnostic paths"
+    }
+  ],
+  "publication_packaging_tests": {
+    "installer_conflict_rejection": "pass; no files copied",
+    "installer_round_trip": "pass; all bytes matched",
+    "installer_idempotency": "pass; second install changes zero files",
+    "installed_source_integrity": "pass; 4178 pinned files and 25 labels",
+    "portable_guard_smoke": "pass; real benign Python child exited 0, no Lean launched",
+    "public_checkout": "dry run only; no files changed"
+  }
+}

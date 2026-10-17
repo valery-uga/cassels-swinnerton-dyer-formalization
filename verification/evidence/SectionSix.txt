@@ -1,0 +1,111 @@
+@AllCharacteristics.twoProofs_chapterSix_main_internalCoray001.{u_1} : ∀ {k : Type u_1} [inst : Field.{u_1} k]
+  (p : MvPolynomial.{0, u_1} (Fin 4) k) (hp : MvPolynomial.IsHomogeneous.{0, u_1} p 3),
+  ((∃ s,
+        Eq.{u_1 + 1}
+          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} s
+            (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} p hp))
+          (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} (AlgebraicGeometry.Spec.{u_1} (CommRingCat.of.{u_1} k)))) ↔
+      ∃ x,
+        (AlgebraicGeometry.Scheme.Hom.residueDegree.{u_1}
+              (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} p hp) ↑x).Coprime
+          3) ∧
+    ((∃ x,
+        (AlgebraicGeometry.Scheme.Hom.residueDegree.{u_1}
+              (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} p hp) ↑x).Coprime
+          3) ↔
+      ∃ z,
+        Eq.{1}
+          ((AllCharacteristics.ZeroCycle.degree.{u_1}
+              (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} p hp))
+            z)
+          1)
+'AllCharacteristics.twoProofs_chapterSix_main_internalCoray001' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@AllCharacteristics.twoProofs_main_theorem_internalCoray001.{u_1} : ∀ {k : Type u_1} [inst : Field.{u_1} k]
+  (p : MvPolynomial.{0, u_1} (Fin 4) k) (hp : MvPolynomial.IsHomogeneous.{0, u_1} p 3),
+  (∃ s,
+      Eq.{u_1 + 1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} s
+          (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} p hp))
+        (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} (AlgebraicGeometry.Spec.{u_1} (CommRingCat.of.{u_1} k)))) ↔
+    ∃ z,
+      Eq.{1}
+        ((AllCharacteristics.ZeroCycle.degree.{u_1}
+            (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} p hp))
+          z)
+        1
+'AllCharacteristics.twoProofs_main_theorem_internalCoray001' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@AllCharacteristics.twoProofs_chapterSix_singular_point_scheme.{u_1} : ∀ {k L : Type u_1} [inst : Field.{u_1} k]
+  [inst_1 : Field.{u_1} L] [inst_2 : Algebra.{u_1, u_1} k L] [FiniteDimensional.{u_1, u_1} k L]
+  (p : MvPolynomial.{0, u_1} (Fin 4) k) (hp : MvPolynomial.IsHomogeneous.{0, u_1} p 3),
+  (Module.finrank.{u_1, u_1} k L).Coprime 3 →
+    ∀
+      (a :
+        Quiver.Hom.{u_1, u_1 + 1} (AlgebraicGeometry.Spec.{u_1} (CommRingCat.of.{u_1} L))
+          (AllCharacteristics.HomogeneousProjective.hypersurface.{u_1}
+            ((MvPolynomial.map.{u_1, u_1, 0} (algebraMap.{u_1, u_1} k L)) p) ⋯)),
+      Eq.{u_1 + 1}
+          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} a
+            (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1}
+              ((MvPolynomial.map.{u_1, u_1, 0} (algebraMap.{u_1, u_1} k L)) p) ⋯))
+          (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} (AlgebraicGeometry.Spec.{u_1} (CommRingCat.of.{u_1} L))) →
+        (∃ s,
+            Eq.{u_1 + 1}
+              (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} s
+                (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} p hp))
+              (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1}
+                (AlgebraicGeometry.Spec.{u_1} (CommRingCat.of.{u_1} k)))) ∨
+          ∃ q,
+            Eq.{u_1 + 1}
+                (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} q
+                  (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1}
+                    ((MvPolynomial.map.{u_1, u_1, 0} (algebraMap.{u_1, u_1} k L)) p) ⋯))
+                (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1}
+                  (AlgebraicGeometry.Spec.{u_1} (CommRingCat.of.{u_1} L))) ∧
+              Membership.mem.{u_1, u_1}
+                (AlgebraicGeometry.Scheme.Hom.smoothLocus.{u_1}
+                  (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1}
+                    ((MvPolynomial.map.{u_1, u_1, 0} (algebraMap.{u_1, u_1} k L)) p) ⋯))
+                (q (IsLocalRing.closedPoint.{u_1} L))
+'AllCharacteristics.twoProofs_chapterSix_singular_point_scheme' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@AllCharacteristics.twoProofs_singular_point_or_smooth_extension_point.{u_1} : ∀ {k L : Type u_1} [inst : Field.{u_1} k]
+  [inst_1 : Field.{u_1} L] [inst_2 : Algebra.{u_1, u_1} k L] [FiniteDimensional.{u_1, u_1} k L]
+  (p : MvPolynomial.{0, u_1} (Fin 4) k),
+  MvPolynomial.IsHomogeneous.{0, u_1} p 3 →
+    (Module.finrank.{u_1, u_1} k L).Coprime 3 →
+      ∀ (x : Fin 4 → L),
+        Ne.{u_1 + 1} x 0 →
+          Eq.{u_1 + 1} (MvPolynomial.eval₂.{u_1, u_1, 0} (algebraMap.{u_1, u_1} k L) x p) 0 →
+            (∃ y, Ne.{u_1 + 1} y 0 ∧ Eq.{u_1 + 1} ((MvPolynomial.eval.{u_1, 0} y) p) 0) ∨
+              ∃ q,
+                AllCharacteristics.IsSmoothCubicCoordinatePoint.{u_1}
+                  ((MvPolynomial.map.{u_1, u_1, 0} (algebraMap.{u_1, u_1} k L)) p) q
+'AllCharacteristics.twoProofs_singular_point_or_smooth_extension_point' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@AllCharacteristics.twoProofs_chapterSix_smoothing.{u_1} : ∀ {k : Type u_1} [inst : Field.{u_1} k],
+  AllCharacteristics.SmoothCubicZeroCyclePointFor.{u_1} (FractionRing.{u_1} (PowerSeries.{u_1} k)) →
+    ∀ (p : MvPolynomial.{0, u_1} (Fin 4) k) (hp : MvPolynomial.IsHomogeneous.{0, u_1} p 3)
+      (z : AllCharacteristics.ZeroCycle.{u_1} (AllCharacteristics.HomogeneousProjective.hypersurface.{u_1} p hp)),
+      Eq.{1}
+          ((AllCharacteristics.ZeroCycle.degree.{u_1}
+              (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} p hp))
+            z)
+          1 →
+        ∃ s,
+          Eq.{u_1 + 1}
+            (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} s
+              (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase.{u_1} p hp))
+            (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} (AlgebraicGeometry.Spec.{u_1} (CommRingCat.of.{u_1} k)))
+'AllCharacteristics.twoProofs_chapterSix_smoothing' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+PASS AllCharacteristics.twoProofs_chapterSix_main_internalCoray001: declarations=109383; axioms=#[Quot.sound, Classical.choice, propext]
+PASS AllCharacteristics.twoProofs_main_theorem_internalCoray001: declarations=109374; axioms=#[Quot.sound, Classical.choice, propext]
+PASS AllCharacteristics.twoProofs_chapterSix_singular_point_scheme: declarations=50869; axioms=#[Quot.sound, Classical.choice, propext]
+PASS AllCharacteristics.twoProofs_singular_point_or_smooth_extension_point: declarations=30790; axioms=#[Quot.sound, Classical.choice, propext]
+PASS AllCharacteristics.twoProofs_chapterSix_smoothing: declarations=57052; axioms=#[Quot.sound, Classical.choice, propext]
+AUDIT COMPLETE: 5 roots; type/value/projection/recursor traversal
