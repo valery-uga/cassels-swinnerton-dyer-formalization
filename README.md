@@ -1,14 +1,49 @@
 # Cassels–Swinnerton-Dyer for cubic surfaces in Lean
 
-This repository contains a Lean formalization of the selected results and methods in **Two proofs of the Cassels–Swinnerton-Dyer conjecture for cubic surfaces**. The [arXiv v3 manuscript](paper/2-proofs.tex) ([PDF](paper/2-proofs.pdf)) and [coverage table](paper/COVERAGE.md) identify the exact scope: 25 selected conclusions across Sections 1–6, including the quadratic-net proof in Section 4, the required internal characteristic-zero Coray reduction, and the global Hilbert-family lifting route in Section 5.
+**All numbered mathematical statements in _Two proofs of the Cassels–Swinnerton-Dyer conjecture for cubic surfaces_ have formally checked Lean counterparts, except Corollary 1.3 and Remark 1.5.** This refers to the [arXiv v3 manuscript](paper/2-proofs.tex) ([PDF](paper/2-proofs.pdf)): 25 of its 27 numbered statements are covered, across Sections 1–6. The precise exceptions and the Hilbert-scheme qualification are explained below.
 
-**Corollary 1.3 on unirationality and the new Remark 1.5 are outside the selected scope. Lemma 2.3 is included over perfect fields.** The coverage table records ordinary hypotheses, stronger Lean statements, and differences in proof routes. This is not a formalization of every prose assertion or of the entire 1976 Coray paper.
+**The two proofs in Sections 3 and 4 have been formalized and checked independently of one another, as explained below.** The Pfaffian argument of Section 3 and the quadratic-net argument of Section 4 are both present; Section 4 is not verified merely by invoking Section 3's conclusion.
 
-The [v3 revision notes](paper/VERSION.md) identify the reviewed changes. In particular, the lifting conclusion of Lemma 5.2 remains covered, while the new citation of Fogarty for global smoothness of the Hilbert scheme goes beyond the selected Lean proof, which establishes smoothness at the chosen classifier.
+**In addition to the Lean verification, the main Cassels–Swinnerton-Dyer theorem passed Comparator on October 17, 2026.** Comparator adds statement comparison, an axiom check, and a fresh Lean-kernel check of the exported solution. The recorded run and its exact safeguards are described below.
 
-The main result concerns a nonzero homogeneous cubic in four variables over an arbitrary field. A nontrivial zero over a finite extension of degree coprime to three gives a nontrivial zero over the base field. The selected final endpoints require no external Coray or Voisin theorem as a premise; they include singular and nonreduced cubic hypersurfaces and impose no perfectness or separability assumption on the main theorem.
+The main theorem says that a cubic surface over any field has a rational point if it has a point over a finite extension of degree coprime to three. Equivalently, it has a rational point if it has a zero-cycle of degree one. Singular and nonreduced cubic hypersurfaces are included. The main theorem requires no perfectness or separability assumption, and the final proofs do not assume Coray's or Voisin's results as unproved inputs: the needed reductions are supplied within the formalization.
 
-## Verify the selected manuscript scope
+## What has been checked, and the exceptions
+
+Lean is a proof assistant. A formal proof supplies an exact mathematical statement and a proof that Lean's small kernel checks against its logical rules. This is deductive verification, rather than testing examples or checking numerical evidence. The project uses Mathlib, Lean's mathematical library.
+
+The coverage includes the numbered theorems, propositions, lemmas, and the computational remark on the dimension of H⁰ in Section 4. The [coverage table](paper/COVERAGE.md) matches each covered statement to its Lean theorem, hypotheses, and any differences in formulation. The two excluded numbered statements are:
+
+- **Corollary 1.3:** the equivalence between unirationality of a smooth cubic surface and existence of a zero-cycle of degree one. The rational-point theorem is verified; the further implication from a rational point to unirationality is not included in this coverage.
+- **Remark 1.5:** the discussion of other del Pezzo surfaces and comparisons with quartics. These additional comparisons are outside the formalization's scope.
+
+There is also a qualification about a theorem cited inside the proof of **Lemma 5.2**, not an exception to its lifting conclusion. The manuscript invokes Fogarty's theorem to obtain smoothness of the entire relative Hilbert scheme. **Lean checks smoothness at the Hilbert-scheme points corresponding to the closed subschemes being lifted. Global smoothness is unnecessary for this lifting argument and has not been formalized here.** Smoothness at those points, together with the complete henselian base, gives the required lifts; pulling back the actual global universal family then gives the finite flat subschemes. Thus the conclusion of Lemma 5.2 is formally verified using precisely the smoothness needed for it. See the [global Hilbert-family construction](AllCharacteristics/OriginalGlobalHilbertChapterFiveIntegration.lean) and [its audit](AllCharacteristics/ManuscriptVerification/GlobalHilbertRoute.lean).
+
+Lemma 2.3 is covered over perfect fields, as stipulated by Section 2 of the paper. Several other Lean statements are stronger than their manuscript counterparts. The coverage claim concerns the mathematical conclusions under the recorded hypotheses, not a line-by-line transcription of every proof sentence, bibliographic assertion, or result in the cited literature. Where a formal proof takes a different route, the coverage table says so. For example, some preliminary point-existence alternatives follow from a stronger descent theorem rather than from the particular residual-point construction printed in the paper. The [version notes](paper/VERSION.md) record the reconciliation with v3.
+
+## The two proofs in Sections 3 and 4
+
+Section 3 uses degree-five cycles and Pfaffian presentations. Section 4 uses a net of quadrics and the tangent-subscheme construction associated with the original degree-four point. Both constructions and their conclusions have Lean proofs.
+
+Their independence means that the two arguments are available separately, while sharing ordinary mathematical foundations and preliminary material. The Section 3 proof providers do not import the Section 4 providers. In the other direction, the [Section 4 audit](AllCharacteristics/ManuscriptVerification/SectionFour.lean) and its six method-audit modules inspect the transitive dependencies of the Section 4 conclusions and constructions and reject the specified Section 3 Pfaffian and degree-five results. This also detects indirect uses of those results through intermediate lemmas.
+
+For a technical reader, the enforced boundary is the explicit list of **17 forbidden Section 3 declarations** in those audits. It is a check of named dependencies in theorem types and proof terms, not a claim that the two developments have disjoint libraries or that software has decided mathematical independence in every possible sense. The later proofs assembling Sections 5 and 6 may use the first route and shared ingredients; the repository does not claim that every final theorem has also been rebuilt through an entirely separate Section 4-only dependency chain.
+
+## The additional Comparator verification
+
+Comparator is an additional verification tool around Lean, rather than a different mathematical foundation. It is reasonable to think of this check as **Lean verification with additional safeguards**. For the main theorem, the successful run performed three checks:
+
+1. **Statement comparison:** the solution was compared with a separately written challenge stating the conjecture directly in polynomial coordinates. The challenge imports only Mathlib, so its statement does not depend on this project's definitions of cubic surfaces or on its theorem providers.
+2. **Axiom check:** the proof was checked against the permitted axioms. An admitted proof or an additional axiom asserting a mathematical result would not pass this check.
+3. **Kernel replay:** the exported solution was checked again by Lean's default kernel, beyond the earlier project build and declaration audits.
+
+Comparator exited successfully with code 0 after **2 hours 54 minutes 16 seconds**, reporting `Lean default kernel accepts the solution` and `Your solution is okay!`. The [run record](verification/evidence/comparator-main-20261017.json), [result excerpt](verification/evidence/comparator-main-20261017.txt), and [complete compressed log](verification/evidence/comparator-main-20261017.log.gz) preserve the evidence. This additional check covers the main conjecture; it is not being claimed for each of the 25 manuscript conclusions separately.
+
+The run used Lean v4.33.1 on macOS ARM64. **The optional Nanoda checker was disabled, and the native run did not provide Linux sandbox isolation.** The safeguards actually exercised were statement comparison, the permitted-axiom check, and Lean default kernel replay. There is no claim of acceptance by a second kernel implementation or of a sandboxed evaluation of hostile code.
+
+The [challenge](AllCharacteristics/ComparatorChallenge/Challenge.lean), [solution](AllCharacteristics/ComparatorChallenge/Solution.lean), and [configuration](AllCharacteristics/ComparatorChallenge/config.json) remain available at their original paths. The challenge asks whether a nonzero homogeneous cubic in four variables that vanishes nontrivially over a finite extension of degree coprime to three must vanish nontrivially over the base field. The solution applies the project's proof. [Instructions for repeating Comparator](verification/README.md#comparator) are separate from the manuscript's ordinary Lean checks.
+
+## Reproduce the Lean checks
 
 Use the pinned Lean and Mathlib versions in `lean-toolchain`, `lakefile.toml`, and `lake-manifest.json` (Lean v4.33.1 and Mathlib v4.33.1). Run commands from the repository root.
 
@@ -33,18 +68,21 @@ The Lean audit modules print the actual theorem types and axioms, then inspect t
 - [Coverage table](paper/COVERAGE.md): every selected manuscript conclusion, full Lean endpoint links, hypotheses, and qualifications.
 - [Machine-readable coverage](verification/coverage.json): the same claim inventory, audit roots, exclusions, and Comparator configurations.
 - [Internal Coray paper conclusions](AllCharacteristics/InternalCorayPaperConclusions.lean): final endpoints with the characteristic-zero Coray premise supplied internally.
+- [Notes on Coray's degree reduction](coray-paper/README.md) ([PDF](coray-paper/coray-formalization-notes.pdf)): incidence counts, normalization, multiplicities, and field hypotheses, with links to the formal constructions.
+- [Notes on Voisin's degree-ten reduction](voisin-paper/README.md) ([PDF](voisin-paper/voisin-formalization-notes.pdf)): cycle notation, geometric constructions, specialization, and the precise scope of the formalized input.
+- Original papers used by the project: [Coray (1976)](coray-paper/coray_1976_algebraic_points.pdf) ([source information](coray-paper/SOURCES.md)) and [Voisin (arXiv v2)](voisin-paper/voisin_2509.17996v2.pdf) ([source information](voisin-paper/SOURCES.md)).
 - [Section 4 verification](AllCharacteristics/ManuscriptVerification/SectionFour.lean) and [method checks](AllCharacteristics/ManuscriptVerification/SectionFourMethods1.lean): the independent quadratic-net route and its selected constructions.
 - [Global Hilbert integration](AllCharacteristics/OriginalGlobalHilbertChapterFiveIntegration.lean) and [route audit](AllCharacteristics/ManuscriptVerification/GlobalHilbertRoute.lean): lifting the original closed subscheme and the positive-characteristic smooth-surface argument.
 
 Some earlier compatibility theorems still expose external theorem or geometric-construction premises. The coverage table selects the internally supplied endpoints and distinguishes them from those adapters. The final manuscript conclusions may use the permitted mixed Chapter 3 route; Section 4 has its own separate independence check.
 
-## Comparator status and trust boundary
+## Technical scope and trust assumptions
 
-**The main Cassels–Swinnerton-Dyer Comparator challenge passed on October 17, 2026.** Comparator matched the challenge and solution statements, checked the permitted axioms, and replayed the exported solution in Lean's default kernel. It exited with code 0 after **2 hours 54 minutes 16 seconds**, reporting `Lean default kernel accepts the solution` and `Your solution is okay!`. See the [run record](verification/evidence/comparator-main-20261017.json), [result excerpt](verification/evidence/comparator-main-20261017.txt), and [reproduction instructions](verification/README.md#comparator).
+The permitted axioms are `propext`, `Quot.sound`, and `Classical.choice`: propositional extensionality, soundness of quotients, and classical choice. These are standard foundations used by Lean/Mathlib. The audits reject other axioms, including `sorryAx`, which represents an admitted proof. Intentional `sorry` placeholders occur in challenge files; they are not accepted as proofs in the corresponding solutions.
 
-This was a native macOS ARM64 run using Lean v4.33.1, with Nanoda disabled and the `fake-landrun.sh` shim. It establishes the recorded statement, axiom, and Lean-kernel checks; it does not provide Linux sandbox isolation or a Nanoda verdict. It covers the main CSD challenge, not all manuscript challenge configurations.
+The recorded manuscript validation checked the declarations and their dependencies using existing compiled dependencies; it was not a clean-room rebuild of every dependency. A successful Lean build checks newly compiled proofs, but loading a compiled `.olean` file is not itself fresh kernel replay of every theorem in that file. The subsequent Comparator run adds the recorded replay of the main solution. Exact versions, source hashes, historical audit results, and the later Comparator result are distinguished in [verification/README.md](verification/README.md).
 
-The original main-theorem challenge remains at [AllCharacteristics/ComparatorChallenge/Challenge.lean](AllCharacteristics/ComparatorChallenge/Challenge.lean), with its [solution](AllCharacteristics/ComparatorChallenge/Solution.lean) and [configuration](AllCharacteristics/ComparatorChallenge/config.json). Its challenge imports **only Mathlib** and states rational-point descent directly in polynomial coordinates. The solution uses this project's proof. Its [README](AllCharacteristics/ComparatorChallenge/README.md) describes the separate Comparator procedure.
+Formal verification establishes the Lean propositions. Reviewing that those propositions faithfully express the intended mathematics remains a human responsibility. The explicit coverage map, the Mathlib-only main challenge, and the published source make that comparison possible; neither a checksum nor a successful log substitutes for it.
 
 The broader manuscript configurations are [comparator-outside.json](verification/comparator-outside.json) (26 statement wrappers) and [comparator-sectionfour.json](verification/comparator-sectionfour.json) (9 statement wrappers). They have status **`not_run`**: no Comparator verdict is claimed. Their challenge and solution modules deliberately state the same names separately, so they must not be imported together. The challenge placeholders are intentional; the solution modules apply the linked project theorems.
 

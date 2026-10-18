@@ -7,3 +7,7 @@ verification-results/
 __pycache__/
 # Publish the canonical manuscript PDF even when a global rule ignores PDFs.
 !paper/2-proofs.pdf
+!coray-paper/coray-formalization-notes.pdf
+!voisin-paper/voisin-formalization-notes.pdf
+!coray-paper/coray_1976_algebraic_points.pdf
+!voisin-paper/voisin_2509.17996v2.pdf
