@@ -32,8 +32,11 @@ not counted. Lemma 2.3 retains the perfect-field qualification.
 
 ## Proof and verification status
 
-The original Cassels–Swinnerton-Dyer Comparator challenge, solution, and JSON
-configuration are unchanged. The broader manuscript challenge types and solution
+The v3 reconciliation preserved the original Cassels–Swinnerton-Dyer Comparator
+challenge, solution, and JSON configuration. Subsequently, the main configuration
+was set to `"enable_nanoda": false` for the successful native macOS run described
+below; the challenge statement and solution proof remain unchanged.
+The broader manuscript challenge types and solution
 proof bodies are unchanged as well; their Section 4 source-reference comments
 now point to v3. Existing proof modules and their pinned Lean/Mathlib versions
 are preserved.
@@ -49,3 +52,17 @@ and [verification instructions](../verification/README.md).
 statement numbering, exact label lines, and an explicit status for every
 numbered statement. `python3 verification/check.py --run` performs the full
 serial Lean build and dependency audits described in the verification guide.
+
+## Subsequent main-theorem Comparator verification
+
+On October 17, 2026, the main CSD challenge passed statement comparison, the
+permitted-axiom check, and Lean default kernel replay, with exit code 0 after
+10,455.5 seconds. The [separate run record](../verification/evidence/comparator-main-20261017.json)
+and [result excerpt](../verification/evidence/comparator-main-20261017.txt)
+document this later verification; the earlier v3 reconciliation record remains
+historical evidence for its own checks.
+
+This native macOS ARM64 run used Lean v4.33.1 and Comparator revision `3927ad3`
+with progress logging, Nanoda disabled, and `fake-landrun.sh` (no Linux sandbox).
+The broader manuscript Comparator configurations remain `not_run`, and all
+manuscript scope qualifications above remain in effect.

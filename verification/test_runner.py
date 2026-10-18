@@ -53,6 +53,13 @@ class TemporaryProject(unittest.TestCase):
     def isolated(self):
         stack = contextlib.ExitStack()
         # Never touch the live compiler's global lock or send real signals.
+        guard_global = self.project / 'guard-global'
+        guard_global.mkdir(exist_ok=True)
+        def guard_path(value):
+            if str(value) in ('/private/tmp', '/tmp'):
+                return guard_global
+            return Path(value)
+        stack.enter_context(mock.patch.object(guard, 'Path', side_effect=guard_path))
         original_open = Path.open
         def safe_open(path, *args, **kwargs):
             if path.name == 'cassels-lean-single-compiler.lock':
@@ -185,6 +192,7 @@ class BuildTests(TemporaryProject):
 class GuardTests(TemporaryProject):
     def run_guard(self, samples, waits, poll=None, times=None):
         log = self.project / 'guard.log'
+        transcript = io.StringIO()
         proc = mock.Mock(pid=12345)
         proc.poll.return_value = poll
         waits = iter(waits)
@@ -200,17 +208,18 @@ class GuardTests(TemporaryProject):
             # First actual stop request succeeds, then the group is absent.
             if sig == 0 or len(group_calls) > 1:
                 raise ProcessLookupError()
-        with self.isolated(), mock.patch.object(sys, 'argv', ['serial_guard.py', str(log), 'fake-command']), \
+        with self.isolated(), contextlib.redirect_stdout(transcript), mock.patch.object(sys, 'argv', ['serial_guard.py', str(log), 'fake-command']), \
                 mock.patch.object(guard, 'memory_sample', side_effect=samples), \
                 mock.patch.object(guard.subprocess, 'Popen', return_value=proc) as popen, \
                 mock.patch.object(guard.os, 'killpg', side_effect=killpg), \
                 mock.patch.object(guard.time, 'monotonic', side_effect=times or (lambda: 0)):
             with self.assertRaises(SystemExit) as caught:
                 guard.main()
+        self.guard_output = transcript.getvalue()
         return caught.exception.code, popen, group_calls
 
     def test_low_initial_memory_never_starts_child(self):
-        code, popen, groups = self.run_guard([(44, 0)], [])
+        code, popen, groups = self.run_guard([(19, 0)], [])
         self.assertIn('Not started', code)
         popen.assert_not_called()
         self.assertEqual(groups, [])
@@ -222,13 +231,34 @@ class GuardTests(TemporaryProject):
 
     def test_runtime_memory_drop_stops_owned_group(self):
         timeout = subprocess.TimeoutExpired('mock', 5)
-        code, _, groups = self.run_guard([(90, 0), (44, 0)], [timeout, 0])
+        code, _, groups = self.run_guard([(90, 0), (19, 0)], [timeout, 0])
         self.assertEqual(code, 130)
         self.assertIn((12345, signal.SIGINT), groups)
 
-    def test_sustained_swap_growth_stops_owned_group(self):
+    def test_twenty_percent_initial_memory_allows_launch(self):
+        code, popen, groups = self.run_guard([(20, 0)], [0], poll=0)
+        self.assertEqual(code, 0)
+        popen.assert_called_once()
+        self.assertEqual(groups, [(12345, 0)])
+
+    def test_runtime_continues_at_previous_cutoff_and_new_boundary(self):
+        timeout = subprocess.TimeoutExpired('mock', 5)
+        code, _, groups = self.run_guard([(90, 0), (43, 0), (20, 0)],
+                                         [timeout, timeout, 0, 0])
+        self.assertEqual(code, 0)
+        self.assertEqual(groups, [(12345, 0)])
+
+    def test_sustained_swap_growth_warns_and_allows_completion(self):
         timeout = subprocess.TimeoutExpired('mock', 5)
         code, _, groups = self.run_guard([(90, 0), (90, 0), (90, 65536)],
+                                         [timeout, timeout, 0, 0], times=[0, 5, 60, 61])
+        self.assertEqual(code, 0)
+        self.assertEqual(groups, [(12345, 0)])
+        self.assertIn('WARNING: sustained system-wide swapping; continuing', self.guard_output)
+
+    def test_low_memory_still_stops_when_swapping(self):
+        timeout = subprocess.TimeoutExpired('mock', 5)
+        code, _, groups = self.run_guard([(90, 0), (90, 0), (19, 65536)],
                                          [timeout, timeout, 0], times=[0, 5, 60])
         self.assertEqual(code, 130)
         self.assertIn((12345, signal.SIGINT), groups)
@@ -246,6 +276,193 @@ class GuardTests(TemporaryProject):
                 mock.patch.object(guard.subprocess, 'check_output', return_value='unparseable'):
             with self.assertRaisesRegex(RuntimeError, 'memory pressure'):
                 guard.memory_sample()
+
+
+class ProcessMetricsTests(unittest.TestCase):
+    def test_sums_only_owned_group(self):
+        result = subprocess.CompletedProcess(['ps'], 0, '12345 80.0 1048576\n12345 10.0 524288\n9 50.0 999999\n', '')
+        with mock.patch.object(guard.subprocess, 'run', return_value=result):
+            self.assertEqual(guard.process_metrics(12345), 'group CPU 90.0%; group RSS 1.50 GiB; 2 processes')
+
+    def test_unavailable_or_malformed_metrics_do_not_raise(self):
+        for result in [subprocess.CompletedProcess(['ps'], 1, '', 'denied'),
+                       subprocess.CompletedProcess(['ps'], 0, 'bad data', ''),
+                       subprocess.CompletedProcess(['ps'], 0, '', ''),
+                       subprocess.CompletedProcess(['ps'], 0, '12345 bad 10', '')]:
+            with self.subTest(result=result), mock.patch.object(guard.subprocess, 'run', return_value=result):
+                self.assertEqual(guard.process_metrics(12345), 'process metrics unavailable')
+        with mock.patch.object(guard.subprocess, 'run', side_effect=PermissionError()):
+            self.assertEqual(guard.process_metrics(12345), 'process metrics unavailable')
+
+
+class GroupProbeTests(unittest.TestCase):
+    def test_permission_denied_probe_uses_read_only_inventory_for_absence(self):
+        result = subprocess.CompletedProcess(['ps'], 0, '1 1 Ss\n42 42 S\n', '')
+        with mock.patch.object(guard.os, 'killpg', side_effect=PermissionError()) as probe, \
+                mock.patch.object(guard.subprocess, 'run', return_value=result) as inventory:
+            self.assertFalse(guard.group_exists(12345))
+        probe.assert_called_once_with(12345, 0)
+        inventory.assert_called_once_with(['ps', '-axo', 'pid=,pgid=,stat='],
+                                         capture_output=True, text=True, timeout=5)
+
+    def test_permission_denied_probe_with_live_group_never_means_gone(self):
+        # Keep zombie entries conservative too: an inventory containing the
+        # owned group is not evidence that it has disappeared.
+        for status in ('S', 'Z'):
+            result = subprocess.CompletedProcess(['ps'], 0, '12346 12345 ' + status + '\n', '')
+            with self.subTest(status=status), \
+                    mock.patch.object(guard.os, 'killpg', side_effect=PermissionError()), \
+                    mock.patch.object(guard.subprocess, 'run', return_value=result):
+                self.assertTrue(guard.group_exists(12345))
+
+    def test_failed_empty_or_malformed_inventory_is_unknown(self):
+        results = [
+            subprocess.CompletedProcess(['ps'], 1, '', 'denied'),
+            subprocess.CompletedProcess(['ps'], 0, '', ''),
+            subprocess.CompletedProcess(['ps'], 0, 'bad output\n', ''),
+            subprocess.CompletedProcess(['ps'], 0, '12 not-a-group S\n', ''),
+        ]
+        for result in results:
+            with self.subTest(result=result), \
+                    mock.patch.object(guard.os, 'killpg', side_effect=PermissionError()), \
+                    mock.patch.object(guard.subprocess, 'run', return_value=result), \
+                    self.assertRaises(RuntimeError):
+                guard.group_exists(12345)
+
+    def test_inventory_timeout_or_execution_failure_never_returns_absence(self):
+        for error in (subprocess.TimeoutExpired('ps', 5), OSError('ps unavailable')):
+            with self.subTest(error=type(error).__name__), \
+                    mock.patch.object(guard.os, 'killpg', side_effect=PermissionError()), \
+                    mock.patch.object(guard.subprocess, 'run', side_effect=error), \
+                    self.assertRaises((RuntimeError, subprocess.TimeoutExpired, OSError)):
+                guard.group_exists(12345)
+
+    def test_normal_signal_probe_and_esrch_do_not_run_inventory(self):
+        for error, expected in ((None, True), (ProcessLookupError(), False)):
+            with self.subTest(expected=expected), \
+                    mock.patch.object(guard.os, 'killpg', side_effect=error), \
+                    mock.patch.object(guard.subprocess, 'run') as inventory:
+                self.assertEqual(guard.group_exists(12345), expected)
+                inventory.assert_not_called()
+
+
+class UnconfirmedShutdownTests(TemporaryProject):
+    def setUp(self):
+        super().setUp()
+        self.marker = self.project / 'guard-global' / 'cassels-lean-single-compiler.unconfirmed.json'
+
+    def exercise(self, *, inventory_text='1 1 Ss\n', inventory_error=None,
+                 deny_stop=False, timeout_all_waits=False, memory_drop=True,
+                 completed=False, existing_marker=False, launch_notice_interrupt=False):
+        proc = mock.Mock(pid=12345)
+        proc.poll.return_value = 0 if completed else None
+        waits = []
+        def wait(*args, **kwargs):
+            waits.append((args, kwargs))
+            if not completed and (len(waits) == 1 or timeout_all_waits):
+                raise subprocess.TimeoutExpired('mock-owned-command', 5)
+            return 0
+        proc.wait.side_effect = wait
+        signals = []
+        def killpg(pid, sig):
+            signals.append((pid, sig))
+            if sig == 0 or deny_stop:
+                raise PermissionError('mock signal denied')
+        result = subprocess.CompletedProcess(['ps'], 0, inventory_text, '')
+        samples = [(90, 0), (19 if memory_drop else 90, 0)]
+        transcript = io.StringIO()
+        original_print = print
+        def printing(*args, **kwargs):
+            if launch_notice_interrupt and args and str(args[0]).startswith('Running pid '):
+                raise KeyboardInterrupt()
+            return original_print(*args, **kwargs)
+        with self.isolated(), contextlib.redirect_stdout(transcript), \
+                mock.patch.object(sys, 'argv', ['serial_guard.py', str(self.project / 'owned.log'), 'mock-command']), \
+                mock.patch.object(guard, 'memory_sample', side_effect=samples) as memory, \
+                mock.patch.object(guard.subprocess, 'Popen', return_value=proc) as launch, \
+                mock.patch.object(guard.subprocess, 'run', return_value=result,
+                                  side_effect=inventory_error) as inventory, \
+                mock.patch.object(guard.os, 'killpg', side_effect=killpg), \
+                mock.patch.object(guard.os, 'kill') as individual_signal, \
+                mock.patch('builtins.print', side_effect=printing), \
+                mock.patch.object(guard.time, 'monotonic', return_value=0):
+            if existing_marker:
+                self.marker.write_text('{"pid": 12345, "reason": "prior unconfirmed shutdown"}\n')
+            with self.assertRaises(SystemExit) as stopped:
+                guard.main()
+            individual_signal.assert_not_called()
+        return dict(code=stopped.exception.code, launch=launch, memory=memory,
+                    inventory=inventory, signals=signals, waits=waits,
+                    transcript=transcript.getvalue())
+
+    def test_memory_stop_eperm_probe_absence_preserves_130_without_marker(self):
+        outcome = self.exercise()
+        self.assertEqual(outcome['code'], 130)
+        self.assertEqual([s for _, s in outcome['signals'] if s != 0], [signal.SIGINT])
+        self.assertFalse(self.marker.exists())
+        self.assertIn('confirmed stopped', outcome['transcript'])
+        self.assertNotIn('STOP UNCONFIRMED', outcome['transcript'])
+
+    def test_live_group_records_marker_once_and_never_signals_inventory_pids(self):
+        outcome = self.exercise(inventory_text='1 1 Ss\n99999 12345 S\n')
+        self.assertEqual(outcome['code'], 2)
+        self.assertEqual([s for _, s in outcome['signals'] if s != 0],
+                         [signal.SIGINT, signal.SIGTERM, signal.SIGKILL])
+        self.assertTrue(all(pid == 12345 for pid, _ in outcome['signals']))
+        record = json.loads(self.marker.read_text())
+        self.assertEqual((record['pid'], record['pgid']), (12345, 12345))
+        self.assertIn('not been confirmed stopped', record['reason'])
+        self.assertEqual(outcome['transcript'].count('STOP UNCONFIRMED:'), 1)
+        self.assertNotIn('Traceback', outcome['transcript'])
+
+    def test_denied_stop_is_attempted_once_and_does_not_double_cleanup(self):
+        outcome = self.exercise(deny_stop=True, inventory_text='12345 12345 S\n')
+        self.assertEqual(outcome['code'], 2)
+        self.assertEqual([s for _, s in outcome['signals'] if s != 0], [signal.SIGINT])
+        self.assertIn('Permission denied stopping', json.loads(self.marker.read_text())['reason'])
+        self.assertEqual(outcome['transcript'].count('STOP UNCONFIRMED:'), 1)
+        self.assertNotIn('Traceback', outcome['transcript'])
+
+    def test_unknown_inventory_records_persistent_marker(self):
+        outcome = self.exercise(inventory_error=subprocess.TimeoutExpired('ps', 5))
+        self.assertEqual(outcome['code'], 2)
+        self.assertTrue(self.marker.is_file())
+        self.assertEqual(outcome['transcript'].count('STOP UNCONFIRMED:'), 1)
+
+    def test_unreaped_child_cannot_be_confirmed_by_absent_group_and_waits_are_bounded(self):
+        outcome = self.exercise(timeout_all_waits=True)
+        self.assertEqual(outcome['code'], 2)
+        self.assertTrue(self.marker.exists())
+        self.assertEqual(len(outcome['waits']), 4)
+        self.assertTrue(all(kwargs.get('timeout') == 5 for _, kwargs in outcome['waits']))
+
+    def test_existing_marker_blocks_before_telemetry_or_command_launch(self):
+        outcome = self.exercise(existing_marker=True)
+        self.assertIn('previous shutdown was not confirmed', outcome['code'])
+        outcome['memory'].assert_not_called()
+        outcome['launch'].assert_not_called()
+        outcome['inventory'].assert_not_called()
+        self.assertEqual(outcome['signals'], [])
+        self.assertTrue(self.marker.exists())
+
+    def test_successful_child_exit_with_eperm_absent_group_remains_success(self):
+        outcome = self.exercise(completed=True)
+        self.assertEqual(outcome['code'], 0)
+        self.assertFalse(self.marker.exists())
+        self.assertEqual(outcome['signals'], [(12345, 0)])
+
+    def test_completed_child_with_remaining_group_is_not_silently_accepted(self):
+        outcome = self.exercise(completed=True, inventory_text='12346 12345 S\n')
+        self.assertEqual(outcome['code'], 2)
+        self.assertTrue(self.marker.exists())
+        self.assertEqual(outcome['transcript'].count('STOP UNCONFIRMED:'), 1)
+
+    def test_interrupt_immediately_after_launch_enters_owned_group_cleanup(self):
+        outcome = self.exercise(launch_notice_interrupt=True)
+        self.assertEqual(outcome['code'], 130)
+        self.assertIn((12345, signal.SIGINT), outcome['signals'])
+        self.assertFalse(self.marker.exists())
+        self.assertIn('confirmed stopped', outcome['transcript'])
 
 
 class SourceIntegrityTests(TemporaryProject):

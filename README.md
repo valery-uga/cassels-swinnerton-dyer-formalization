@@ -40,6 +40,10 @@ Some earlier compatibility theorems still expose external theorem or geometric-c
 
 ## Comparator status and trust boundary
 
+**The main Cassels–Swinnerton-Dyer Comparator challenge passed on October 17, 2026.** Comparator matched the challenge and solution statements, checked the permitted axioms, and replayed the exported solution in Lean's default kernel. It exited with code 0 after **2 hours 54 minutes 16 seconds**, reporting `Lean default kernel accepts the solution` and `Your solution is okay!`. See the [run record](verification/evidence/comparator-main-20261017.json), [result excerpt](verification/evidence/comparator-main-20261017.txt), and [reproduction instructions](verification/README.md#comparator).
+
+This was a native macOS ARM64 run using Lean v4.33.1, with Nanoda disabled and the `fake-landrun.sh` shim. It establishes the recorded statement, axiom, and Lean-kernel checks; it does not provide Linux sandbox isolation or a Nanoda verdict. It covers the main CSD challenge, not all manuscript challenge configurations.
+
 The original main-theorem challenge remains at [AllCharacteristics/ComparatorChallenge/Challenge.lean](AllCharacteristics/ComparatorChallenge/Challenge.lean), with its [solution](AllCharacteristics/ComparatorChallenge/Solution.lean) and [configuration](AllCharacteristics/ComparatorChallenge/config.json). Its challenge imports **only Mathlib** and states rational-point descent directly in polynomial coordinates. The solution uses this project's proof. Its [README](AllCharacteristics/ComparatorChallenge/README.md) describes the separate Comparator procedure.
 
 The broader manuscript configurations are [comparator-outside.json](verification/comparator-outside.json) (26 statement wrappers) and [comparator-sectionfour.json](verification/comparator-sectionfour.json) (9 statement wrappers). They have status **`not_run`**: no Comparator verdict is claimed. Their challenge and solution modules deliberately state the same names separately, so they must not be imported together. The challenge placeholders are intentional; the solution modules apply the linked project theorems.

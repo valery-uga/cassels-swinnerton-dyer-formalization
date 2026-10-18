@@ -1,0 +1,14 @@
+Building AllCharacteristics.ComparatorChallenge.Challenge
+Build completed successfully (1634 jobs).
+Building AllCharacteristics.ComparatorChallenge.Solution
+Build completed successfully (7484 jobs).
+STAGE: solution export complete
+STAGE: parsing challenge export
+STAGE: parsing solution export
+STAGE: exports parsed; solution has 110406 declarations
+STAGE: comparing challenge and solution statements
+STAGE: statements match; checking permitted axioms
+STAGE: permitted-axiom check passed
+Running Lean default kernel on solution.
+Lean default kernel accepts the solution
+Your solution is okay!

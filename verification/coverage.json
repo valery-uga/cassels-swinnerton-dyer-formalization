@@ -1004,5 +1004,12 @@
       "status": "not_formalized",
       "existing_coverage": "Original closed-point classifier smoothness and actual global-family lifting suffice for the named lifting conclusion."
     }
-  ]
+  ],
+  "main_comparator": {
+    "config": "AllCharacteristics/ComparatorChallenge/config.json",
+    "status": "pass",
+    "run_date": "2026-10-17",
+    "evidence": "verification/evidence/comparator-main-20261017.json",
+    "scope": "Main CSD challenge only; native macOS, Lean default kernel replay; Nanoda disabled; no Linux sandbox."
+  }
 }

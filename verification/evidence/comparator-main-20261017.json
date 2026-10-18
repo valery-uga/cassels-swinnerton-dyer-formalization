@@ -1,0 +1,87 @@
+{
+  "run_date": "2026-10-17",
+  "recorded_at_utc": "2026-10-18T06:40:33.526505+00:00",
+  "status": "pass",
+  "config": "AllCharacteristics/ComparatorChallenge/config.json",
+  "configuration": {
+    "challenge_module": "AllCharacteristics.ComparatorChallenge.Challenge",
+    "solution_module": "AllCharacteristics.ComparatorChallenge.Solution",
+    "theorem_names": [
+      "CasselsSwinnertonDyerChallenge.rational_point_descent"
+    ],
+    "permitted_axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ],
+    "enable_nanoda": false
+  },
+  "verified_theorem": "CasselsSwinnertonDyerChallenge.rational_point_descent",
+  "passed_stages": [
+    "statement comparison",
+    "permitted-axiom check",
+    "Lean default kernel replay"
+  ],
+  "exit_code": 0,
+  "elapsed_seconds": 10455.5,
+  "elapsed_display": "2 hours 54 minutes 15.5 seconds",
+  "solution_export_declarations": 110406,
+  "platform": "macOS ARM64; 24 GB RAM",
+  "lean": "v4.33.1",
+  "mathlib": "v4.33.1",
+  "comparator_revision": "3927ad383f208ae977c340a91c48ac9b497d2097",
+  "lean4export_revision": "15f6055e299ad5b89345e533cc2192f4cc00f659",
+  "modifications": {
+    "toolchain": "Comparator built for Lean v4.33.1",
+    "main_source": "Logging and flushing only; verified normalizing logging reproduces original Main.lean.",
+    "build_memory_limit": "weakLeanArgs = [\"-M14000\"]",
+    "logging_patch": "comparator-progress-20261017.patch",
+    "logging_patch_sha256": "3ab854f667f6443adfd2cd2a7834bd8577783b5c4ea269f7b9bcd6314fdffb3d",
+    "instrumented_main_sha256": "94fa9c2bf8a283489a6f21c4b98171fbf28dfac0c54b632b630b0cea4244d428",
+    "original_main_sha256": "0dfdb5139d097518619f5ea4bf9e01f063273497409e84c25fc69616bb98a458",
+    "local_binary_sha256": "fded454fabcdfb365ddc94cd018602146c162a3b6ac55f4b241e948dc52dfd0a"
+  },
+  "kernel": "Lean default kernel replay; passed",
+  "nanoda": false,
+  "sandbox": "Native fake-landrun.sh shim; no Linux sandbox isolation",
+  "build_context": "Existing compiled dependencies reused; not a clean-room rebuild",
+  "guard": {
+    "cutoff_available_percent": 20,
+    "swap_policy": "warn",
+    "lean_num_threads": 1,
+    "process_metrics": true,
+    "idle_sleep_prevention": "caffeinate -i",
+    "regression_tests_passed": 49
+  },
+  "command_template": "CSD_GUARD_PROCESS_METRICS=1 COMPARATOR_LANDRUN=\"$CSD_COMPARATOR/scripts/fake-landrun.sh\" COMPARATOR_LEAN4EXPORT=\"$CSD_COMPARATOR/.lake/packages/lean4export/.lake/build/bin/lean4export\" python3 verification/serial_guard.py \"$CSD_COMPARATOR_LOG\" caffeinate -i lake env \"$CSD_COMPARATOR/.lake/build/bin/comparator\" AllCharacteristics/ComparatorChallenge/config.json",
+  "command_note": "Run from the project root; CSD_COMPARATOR in the recorded run pointed to the separately built, instrumented Comparator copy.",
+  "log": {
+    "file": "comparator-main-20261017.log.gz",
+    "compression": "gzip",
+    "compressed_sha256": "aee53b129b921daab09f3b7f38830045f306c402e51f93331ed4e7542fe3d2cb",
+    "uncompressed_sha256": "2f2b562de7bb4dc81a862621adc0186ac9b94988fb42b10949397d7dfc2a5433",
+    "uncompressed_bytes": 3559077,
+    "normalization": "None: decompression yields the original Comparator stdout/stderr log, including local paths."
+  },
+  "excerpt": {
+    "file": "comparator-main-20261017.txt",
+    "sha256": "1d5d510e72ab8a73f1014c7d8a6fdb5d4273990134a1bb28e44f3daa091ed499",
+    "selection": "Original build summary, STAGE, kernel, and final verdict lines; no synthetic lines."
+  },
+  "guard_terminal_result": "Exit 0; elapsed 10455.5 seconds",
+  "guard_terminal_result_source": "Observed guard terminal output; guard heartbeats and exit summary are separate from the Comparator stdout/stderr log.",
+  "input_sha256": {
+    "verification/serial_guard.py": "6f3747983f75fefc60e064f1b9adcdc29ec13e5b41f7613ebb808d50a607b16b",
+    "verification/test_runner.py": "d37d2fd21e9f3fc2e22602c27a652407491d06e4d6f229c66a9fd9009d0dbaef",
+    "AllCharacteristics/ComparatorChallenge/config.json": "4b7682fcd3e765654bb3ac43ed700cf32c631c3deea74ec701d47225fde2a788"
+  },
+  "input_hashes_rechecked_after_run": true,
+  "shutdown_confirmed": true,
+  "shutdown_evidence": "Successful full ps inventory: no PID/PPID/PGID 62823 and no Comparator, lean4export, Lean or Lake processes. Exact log unheld (lsof exit 1); global compiler lock acquired and released; no unconfirmed marker.",
+  "scope": "Main CSD Comparator challenge only. Other paper challenge configurations were not run in this attempt.",
+  "broader_configs": {
+    "verification/comparator-outside.json": "not_run",
+    "verification/comparator-sectionfour.json": "not_run"
+  },
+  "interpretation": "Recorded native statement/axiom comparison and Lean kernel replay of the main CSD solution. No Nanoda verdict, Linux sandbox claim, or Comparator verdict for every selected manuscript conclusion."
+}

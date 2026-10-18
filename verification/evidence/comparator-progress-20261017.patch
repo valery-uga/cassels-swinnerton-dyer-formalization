@@ -1,0 +1,105 @@
+--- Main.lean
++++ Main.lean
+@@ -8,6 +8,11 @@
+ import Export.Parse
+ 
+ namespace Comparator
++
++-- Monitoring only: flush each milestone without changing verification.
++def progress (message : String) : IO Unit := do
++  IO.println message
++  (← IO.getStdout).flush
+ 
+ structure Context where
+   projectDir : System.FilePath
+@@ -113,7 +118,7 @@
+     throw <| .userError s!"Child exited with {ret}"
+ 
+ def safeLakeBuild (target : Lean.Name) : M Unit := do
+-  IO.println s!"Building {target}"
++  progress s!"Building {target}"
+   let leanPrefix ← getLeanPrefix
+   let projectDir ← getProjectDir
+   let dotLakeDir := projectDir / ".lake"
+@@ -133,7 +138,7 @@
+   }
+ 
+ def safeExport (module : Lean.Name) (decls : Array Lean.Name) : M String := do
+-  IO.println s!"Exporting {decls} from {module}"
++  progress s!"Exporting {decls} from {module}"
+   let baseArgs := #[module.toString, "--"]
+   let args := decls.foldl (·.push <| ·.toString) baseArgs
+ 
+@@ -151,7 +156,7 @@
+   }
+ 
+ def runNanoda (solutionExport : String) : M (Option String) := do
+-  IO.println "Running nanoda kernel on solution"
++  progress "Running nanoda kernel on solution"
+   IO.FS.withTempFile fun config configPath => do
+     let legalAxioms ← getLegalAxioms
+     config.putStr <| Lean.Json.compress <| Lean.Json.mkObj [
+@@ -186,15 +191,15 @@
+     nanodaStdin.flush
+     let ret ← proc.wait
+     if ret != 0 then
+-      IO.println "Nanoda kernel rejected the solution"
++      progress "Nanoda kernel rejected the solution"
+       return some s!"Child exited with {ret}"
+     else
+-      IO.println "Nanoda kernel accepts the solution"
++      progress "Nanoda kernel accepts the solution"
+       return none
+ 
+ 
+ def runKernel (solution : Export.ExportedEnv) : M (Option String) := do
+-  IO.println "Running Lean default kernel on solution."
++  progress "Running Lean default kernel on solution."
+   let mut env ← Lean.mkEmptyEnvironment
+   let mut constMap := solution.constMap
+   -- Lean's kernel interprets just the addition of `Quot as adding all of these so adding them
+@@ -202,10 +207,10 @@
+   constMap := constMap.erase `Quot.mk |>.erase `Quot.lift |>.erase `Quot.ind
+   try
+     discard <| env.replay constMap
+-    IO.println "Lean default kernel accepts the solution"
++    progress "Lean default kernel accepts the solution"
+     return none
+   catch e =>
+-    IO.println "Lean default kernel rejects the solution"
++    progress "Lean default kernel rejects the solution"
+     return some e.toString
+ 
+ def primitiveTargets : M (Array Lean.Name) := do
+@@ -253,13 +258,19 @@
+ 
+ def verifyMatch (challengeExport : String) (solutionExport : String) :
+     M Unit := do
++  progress "STAGE: parsing challenge export"
+   let challenge ← Export.parseStream (← stringStream challengeExport)
++  progress "STAGE: parsing solution export"
+   let solution ← Export.parseStream (← stringStream solutionExport)
++  progress s!"STAGE: exports parsed; solution has {solution.constOrder.size} declarations"
+   let theoremNames ← getTheoremNames
+   let definitionNames ← getDefinitionNames
+   let targets := (← getTheoremNames) ++ (← getLegalAxioms)
++  progress "STAGE: comparing challenge and solution statements"
+   IO.ofExcept <| Comparator.compareAt challenge solution targets definitionNames (← primitiveTargets)
++  progress "STAGE: statements match; checking permitted axioms"
+   IO.ofExcept <| Comparator.checkAxioms solution theoremNames definitionNames (← getLegalAxioms)
++  progress "STAGE: permitted-axiom check passed"
+   let mut result := none
+   if ← getNanodaEnabled then
+     result := result <|> (← runNanoda solutionExport)
+@@ -279,9 +290,10 @@
+   safeLakeBuild solutionModule
+   let solutionExport ← safeExport solutionModule exportTargets
+ 
++  progress "STAGE: solution export complete"
+   verifyMatch challengeExport solutionExport
+ 
+-  IO.println "Your solution is okay!"
++  progress "Your solution is okay!"
+ 
+ structure Config where
+   challenge_module : String

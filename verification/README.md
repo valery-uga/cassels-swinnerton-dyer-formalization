@@ -68,12 +68,37 @@ repository, not a sandbox for hostile submissions.
 
 The original, Mathlib-only statement is in
 [AllCharacteristics/ComparatorChallenge](../AllCharacteristics/ComparatorChallenge/README.md).
-Additional explicit statement pairs and configurations are:
+**Its Comparator run passed on October 17, 2026.** Statement comparison,
+the permitted-axiom check, and Lean default kernel replay all passed. The process
+exited with code 0 after **10,455.5 seconds** (2 hours 54 minutes 15.5 seconds),
+and the log ends with:
 
-| Configuration | Statements |
-|---|---:|
-| `verification/comparator-outside.json` | 26 endpoints supporting the 16 conclusions outside Section 4 |
-| `verification/comparator-sectionfour.json` | 9 Section 4 conclusions |
+```text
+Lean default kernel accepts the solution
+Your solution is okay!
+```
+
+The run exported 110,406 solution declarations. It used a 24 GB ARM64 Mac,
+Lean/Mathlib v4.33.1, and Comparator revision
+`3927ad383f208ae977c340a91c48ac9b497d2097` with
+[progress logging and output flushing](evidence/comparator-progress-20261017.patch).
+Those changes did not alter the verification operations. Nanoda was disabled;
+Lean's default kernel was enabled. The native `fake-landrun.sh` shim did not
+provide Linux sandbox isolation. This is a completed native Comparator check
+of the main CSD challenge, not a sandboxed evaluation of an untrusted submission.
+
+See the [run record](evidence/comparator-main-20261017.json),
+[result excerpt](evidence/comparator-main-20261017.txt), and
+[complete compressed log](evidence/comparator-main-20261017.log.gz).
+The record includes hashes, the exact configuration, the observed exit code,
+and the distinction between Comparator's log and the guard's terminal output.
+
+Additional explicit statement pairs and configurations remain unrun:
+
+| Configuration | Statements | Comparator status |
+|---|---|---|
+| `verification/comparator-outside.json` | 26 endpoints supporting the 16 conclusions outside Section 4 | `not_run` |
+| `verification/comparator-sectionfour.json` | 9 Section 4 conclusions | `not_run` |
 
 These additional challenges reuse project definitions by importing provider
 modules, which also contain proofs. Their trusted baseline therefore includes
@@ -82,24 +107,67 @@ reconstructions. Review that baseline before using them as a challenge for an
 untrusted submission. The original main challenge has the smaller Mathlib-only
 statement baseline.
 
-No Comparator verdict is included in this update. Use a Comparator installation
-compatible with this repository's Lean v4.33.1 and the upstream supported sandbox
-procedure. Do not assume the current Comparator release supports that toolchain.
-After establishing compatibility, pass one of the JSON configurations to
-Comparator from this repository root, following the installation's own invocation
-instructions. See the [upstream project](https://github.com/leanprover/comparator)
-for those instructions. A successful Comparator run and its logs would be
-additional evidence; merely compiling the pairs is not a Comparator check.
+### Repeat the main check on macOS
+
+Use an already built Comparator installation compatible with Lean v4.33.1;
+the revision above is the one used for the recorded run. Finish the guarded
+project build first, as described above. Keep the project and Comparator on
+their compatible pinned versions. The commands below assume Comparator is
+installed at `$HOME/lean-tools/comparator-csd`; change that path if necessary.
+Run them from this repository's root. This native procedure is for a trusted
+checkout. For sandboxed evaluation, use the supported Linux procedure in the
+[Comparator project](https://github.com/leanprover/comparator).
+
+```sh
+CSD_COMPARATOR="$HOME/lean-tools/comparator-csd"
+CSD_COMPARATOR_LOG="${TMPDIR:-/tmp}/csd-comparator-$(date +%Y%m%d-%H%M%S).log"
+export COMPARATOR_LANDRUN="$CSD_COMPARATOR/scripts/fake-landrun.sh"
+export COMPARATOR_LEAN4EXPORT="$CSD_COMPARATOR/.lake/packages/lean4export/.lake/build/bin/lean4export"
+
+CSD_GUARD_PROCESS_METRICS=1 python3 verification/serial_guard.py \
+  "$CSD_COMPARATOR_LOG" \
+  caffeinate -i lake env "$CSD_COMPARATOR/.lake/build/bin/comparator" \
+  AllCharacteristics/ComparatorChallenge/config.json
+```
+
+The configuration uses `"enable_nanoda": false`: use a JSON Boolean, not the
+string `"false"`. `caffeinate -i` prevents idle sleep while the command runs.
+The guard uses one Lean thread and prints elapsed time, available memory, swap
+activity, and optional CPU/RSS readings about every 15 seconds. In another
+terminal, use `tail -f /path/to/the/printed/log` to watch the Comparator log.
+The recorded run's extra `STAGE:` messages came from the logging patch; an
+unmodified Comparator may buffer its output. CPU activity confirms that the
+process is computing, but does not provide a completion percentage.
+
+Allow several hours: the measured 2 hours 54 minutes includes builds using
+existing compiled dependencies and is not a time guarantee for another machine
+or a clean build. Kernel replay accounted for most of that time. Success requires
+the acceptance messages above and a successful exit, not just a successful build
+or a `Still running` heartbeat. The guard refuses to overwrite a log; use a new
+log name for every attempt. An interrupted Comparator replay starts over on the
+next run, although completed project builds can be reused.
+
+For the monitored local Comparator run, `verification/serial_guard.py` stops
+below 20% available memory. Sustained system-wide swapping produces warnings
+and does not terminate the run. Set `CSD_GUARD_PROCESS_METRICS=1` to report
+process-group CPU usage and resident memory; this requires permission to run
+`ps`. A shutdown marker still blocks new runs until shutdown is confirmed.
+This policy is separate from the conservative serial build runner described
+above. A native macOS run using `fake-landrun.sh` does not provide the upstream
+Linux sandbox isolation.
 
 ## Recorded evidence
 
-[evidence/results.json](evidence/results.json) records the checks performed for
-this update, with the corresponding text logs. It distinguishes successful checks,
-intentional negative tests, and the unperformed Comparator run. Reproduce the
-checks yourself rather than treating a committed log as certification.
+[evidence/results.json](evidence/results.json) records the earlier Lean audits,
+wrapper checks, and intentional negative tests. Its `comparator: not_run` field
+describes that earlier audit session. The [v3 reconciliation record](evidence/arxiv-v3.json)
+likewise records no Comparator run in that step. Both records are preserved.
+The subsequent successful main CSD run is recorded separately in
+[evidence/comparator-main-20261017.json](evidence/comparator-main-20261017.json).
+Reproduce the checks yourself rather than treating a committed log as certification.
 
 ## arXiv v3 reconciliation
 
-[paper/VERSION.md](../paper/VERSION.md) records the source and PDF hashes and the changes to the coverage map. Existing successful Lean logs are retained as historical evidence for unchanged theorem declarations; they are not relabelled as a new clean-room build or Comparator run. The original main challenge, solution, and configuration are unchanged. The broader challenge types and proof bodies are also unchanged; only their manuscript-reference comments are updated.
+[paper/VERSION.md](../paper/VERSION.md) records the source and PDF hashes and the changes to the coverage map. Existing successful Lean logs are retained as historical evidence for unchanged theorem declarations; they are not relabelled as a new clean-room build or Comparator run. The original main challenge and solution are unchanged; its configuration now disables Nanoda for the native run. The broader challenge types and proof bodies are also unchanged; only their manuscript-reference comments were updated during v3 reconciliation.
 
 The v3 Fogarty global-smoothness assertion and the new del Pezzo Remark 1.5 are explicitly outside the formalized scope. Local smoothness at the original classifier and the named lifting conclusion remain covered.
