@@ -87,3 +87,14 @@ Formal verification establishes the Lean propositions. Reviewing that those prop
 The broader manuscript configurations are [comparator-outside.json](verification/comparator-outside.json) (26 statement wrappers) and [comparator-sectionfour.json](verification/comparator-sectionfour.json) (9 statement wrappers). They have status **`not_run`**: no Comparator verdict is claimed. Their challenge and solution modules deliberately state the same names separately, so they must not be imported together. The challenge placeholders are intentional; the solution modules apply the linked project theorems.
 
 These broader challenge modules import project definitions **and theorem providers**. They therefore trust that whole pinned project baseline, including providers already containing the results. Compiling the solution wrappers checks their explicit statement types against those providers; running Comparator on these configurations would not give them the Mathlib-only independence of the original main-theorem challenge. Source hashes and successful Lean checks are useful evidence, but neither changes this trust boundary or turns `not_run` into a Comparator success.
+
+## Coray's and Voisin's papers and companion notes
+
+The formalization also verifies the results from Coray and Voisin needed for the main proof: Coray's degree-1,4,10 reduction for smooth cubic surfaces in characteristic zero, and Voisin's elimination of the degree-ten case by constructing an effective degree-four cycle. These inputs are proved within the Lean development, rather than assumed as external theorems. This verification concerns those required results and constructions, not every statement in either paper.
+
+The original papers used by the project and respectful mathematical notes explaining the formalization are supplied in two directories:
+
+- **[coray-paper/](coray-paper/):** [Coray's original paper](coray-paper/coray_1976_algebraic_points.pdf), companion notes in [Markdown](coray-paper/README.md) and [PDF](coray-paper/coray-formalization-notes.pdf), and [source information](coray-paper/SOURCES.md).
+- **[voisin-paper/](voisin-paper/):** [Voisin's paper, arXiv v2](voisin-paper/voisin_2509.17996v2.pdf), companion notes in [Markdown](voisin-paper/README.md) and [PDF](voisin-paper/voisin-formalization-notes.pdf), and [source information](voisin-paper/SOURCES.md).
+
+The notes distinguish notation corrections, arguments requiring further justification, and details made explicit for formal verification. They explain how the relevant constructions are handled in Lean, give references to the original papers, and link to the corresponding proof files. They also identify observations outside the formalized scope.
