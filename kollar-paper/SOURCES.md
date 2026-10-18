@@ -12,4 +12,4 @@ This is the unmodified arXiv v1 PDF consulted for the mathematical comparison un
 - File: `kollar_math0005146v1.pdf`.
 - SHA-256: `e01b6f6f4f753c7feef65de4b3538d73f771db5390d6f6ef38822ff2325c82a1`.
 
-No changes were made to the original paper. The typographical observation in the notes concerns this specific arXiv edition.
+No changes were made to the original paper.

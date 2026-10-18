@@ -8,9 +8,9 @@ Mathematical companion to the Cassels-Swinnerton-Dyer formalization. Prepared Oc
 
 János Kollár's *Unirationality of cubic hypersurfaces* proves that a smooth cubic hypersurface of dimension at least two over any field is unirational if and only if it has a rational point. The construction extends the Segre-Manin method to finite fields and arbitrary characteristic. These notes concern **arXiv:math/0005146v1, May 15, 2000**, an eleven-page preprint. Page and result numbers refer to that edition, not the journal edition.
 
-The project formalizes the **smooth cubic-surface case over arbitrary fields**, as needed for Corollary 1.3 of *Two proofs of the Cassels-Swinnerton-Dyer conjecture for cubic surfaces*. No substantive mathematical error was identified in the part of Kollár's argument used here. The work required detailed constructions and some alternative algebraic arguments. Those implementation choices are not, by themselves, corrections to the paper. A small typographical omission is recorded below.
+The project formalizes the **smooth cubic-surface case over arbitrary fields**, as needed for Corollary 1.3 of *Two proofs of the Cassels-Swinnerton-Dyer conjecture for cubic surfaces*. This note records the choices made in the Lean formalization of Kollár's arguments, including the explicit constructions and alternative algebraic proofs used.
 
-This is not a formal verification of the entire paper. In particular, the project does not claim its higher-dimensional or singular-hypersurface results, or its separate statements about regular varieties over imperfect fields. These are project notes, not an author-issued erratum.
+This is not a formal verification of the entire paper. In particular, the project does not claim its higher-dimensional or singular-hypersurface results, or its separate statements about regular varieties over imperfect fields.
 
 ## 1. Characteristic two and smoothness
 
@@ -18,15 +18,7 @@ Lemma 18, p. 9, rules out inseparable projection centers on a smooth cubic in ch
 
 If the relevant partial derivative vanishes identically, the other three partial derivatives are homogeneous quadrics in four variables. Over an algebraic closure, Lean constructs a common nonzero zero using dimension and height arguments. Euler's identity places it on the cubic. This yields a point of the original Jacobian scheme and contradicts smoothness. The resulting separability proof supplies two distinct conjugate residual points on the generic line.
 
-**Typographical detail.** In the last line of the proof of Lemma 18, the arXiv PDF prints the sum of partial derivatives without the coordinate factors. Since the partial derivatives in the $x_j$ directions vanish, the intended Euler identity in characteristic two is
-
-$$
-f=3f=\sum_i y_i\frac{\partial f}{\partial y_i}.
-$$
-
-Restoring the factors $y_i$ leaves the argument and its conclusion unchanged. The omission was confirmed by inspecting the rendered page, rather than relying only on extracted text. No assertion is made here about the typeset journal version.
-
-**Lean entry points.** [Euler identity and the smoothness contradiction](../AllCharacteristics/KollarSmoothPartialNonzero.lean), [three homogeneous forms have a common geometric zero](../AllCharacteristics/KollarThreeFormsCommonZero.lean), and [separability of the actual residual quadratic](../AllCharacteristics/KollarCharacteristicTwoActualResidual.lean). The first file contains `cubic_eval_eq_zero_of_all_pderiv_eval_eq_zero`, which uses the coordinate-weighted Euler identity.
+**Lean entry points.** [Euler identity and the smoothness contradiction](../AllCharacteristics/KollarSmoothPartialNonzero.lean), [three homogeneous forms have a common geometric zero](../AllCharacteristics/KollarThreeFormsCommonZero.lean), and [separability of the actual residual quadratic](../AllCharacteristics/KollarCharacteristicTwoActualResidual.lean).
 
 ## 2. Parameters, finite fields, and descent
 
@@ -46,8 +38,6 @@ To exclude contained lines through the generic residual centers, Lean proves rig
 
 For dominance, the formalization constructs a secant preimage of a generic target. It uses a cubic and a polar quadric, proves the necessary nonvanishing and avoidance conditions, and recovers the target by explicit tangent and secant identities. Homogeneous-relation and function-field arguments then produce an actual dominant rational map. Its dominance is a proved conclusion, not a geometric premise supplied to the final theorem.
 
-These are alternative ways to make the required geometry explicit in Lean. They do not establish that the paper's geometric arguments are incorrect.
-
 **Lean entry points.** [Descent of a contained line's coordinate field](../AllCharacteristics/CubicLineCoordinateFieldDescent.lean), [exclusion of lines through generic points](../AllCharacteristics/SmoothCubicGenericNoContainedLine.lean), [the cubic and polar-quadric construction](../AllCharacteristics/SecantPolarQuadricLift.lean), and [existence of the generic secant preimage](../AllCharacteristics/SmoothCubicGenericSecantPreimage.lean).
 
 ## 4. The checked conclusion
@@ -64,7 +54,7 @@ The existing Comparator verification concerns the main Cassels-Swinnerton-Dyer c
 
 ## References
 
-- J. Kollár, *Unirationality of cubic hypersurfaces*, [arXiv:math/0005146v1](https://arxiv.org/abs/math/0005146v1), May 15, 2000. Published in *Journal of the Institute of Mathematics of Jussieu* **1** (2002), no. 3, pp. 467-476, [DOI: 10.1017/S1474748002000117](https://doi.org/10.1017/S1474748002000117). The observations above concern the arXiv edition.
+- J. Kollár, *Unirationality of cubic hypersurfaces*, [arXiv:math/0005146v1](https://arxiv.org/abs/math/0005146v1), May 15, 2000. Published in *Journal of the Institute of Mathematics of Jussieu* **1** (2002), no. 3, pp. 467-476, [DOI: 10.1017/S1474748002000117](https://doi.org/10.1017/S1474748002000117). These notes use the arXiv edition.
 - [Manuscript coverage](../paper/COVERAGE.md) and [verification instructions](../verification/README.md).
 
 The Markdown and PDF editions contain the same explanatory text. Source links in the PDF point to the project's GitHub repository; Markdown links resolve within the checkout.
