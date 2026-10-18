@@ -16,7 +16,7 @@ The completed Lean result constructs an **effective degree-four zero-cycle from 
 
 ## 1. The degree-ten calculation
 
-Write $H=\mathcal O_S(1)$ and $h=H^2\in\operatorname{CH}_0(S)$, so $\deg h=3$. Here an effective class means a class admitting an effective representative; subtraction of classes need not be subtraction of nested subschemes.
+Write $H=\mathcal O_S(1)$ and $h=H^2\in{\rm CH}_0(S)$, so $\deg h=3$. Here an effective class means a class admitting an effective representative; subtraction of classes need not be subtraction of nested subschemes.
 
 The proof of Proposition 4.3(a), p. 18, starts from an effective class $z$ of degree ten. Its intended sequence is:
 
