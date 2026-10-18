@@ -99,3 +99,5 @@ The original papers used by the project and mathematical notes explaining the fo
 - **[voisin-paper/](voisin-paper/):** [Voisin's paper, arXiv v2](voisin-paper/voisin_2509.17996v2.pdf), companion notes in [Markdown](voisin-paper/README.md) and [PDF](voisin-paper/voisin-formalization-notes.pdf), and [source information](voisin-paper/SOURCES.md).
 
 The notes distinguish notation corrections, arguments requiring further justification, and details made explicit for formal verification. They explain how the relevant constructions are handled in Lean, give references to the original papers, and link to the corresponding proof files. They also identify observations outside the formalized scope.
+
+[kollar-paper/](kollar-paper/) contains Kollár's unirationality paper and companion notes on the smooth cubic-surface argument used for Corollary 1.3, in Markdown and PDF, with source information.
