@@ -93,7 +93,7 @@ These broader challenge modules import project definitions **and theorem provide
 
 The formalization also verifies the results from Coray and Voisin needed for the main proof: Coray's degree-1,4,10 reduction for smooth cubic surfaces in characteristic zero, and Voisin's elimination of the degree-ten case by constructing an effective degree-four cycle. These inputs are proved within the Lean development, rather than assumed as external theorems. This verification concerns those required results and constructions, not every statement in either paper.
 
-The original papers used by the project and respectful mathematical notes explaining the formalization are supplied in two directories:
+The original papers used by the project and mathematical notes explaining the formalization are supplied in two directories:
 
 - **[coray-paper/](coray-paper/):** [Coray's original paper](coray-paper/coray_1976_algebraic_points.pdf), companion notes in [Markdown](coray-paper/README.md) and [PDF](coray-paper/coray-formalization-notes.pdf), and [source information](coray-paper/SOURCES.md).
 - **[voisin-paper/](voisin-paper/):** [Voisin's paper, arXiv v2](voisin-paper/voisin_2509.17996v2.pdf), companion notes in [Markdown](voisin-paper/README.md) and [PDF](voisin-paper/voisin-formalization-notes.pdf), and [source information](voisin-paper/SOURCES.md).
