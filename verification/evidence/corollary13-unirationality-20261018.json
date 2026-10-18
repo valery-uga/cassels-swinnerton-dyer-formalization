@@ -1,0 +1,761 @@
+{
+  "date": "2026-10-18",
+  "recorded_at": "2026-10-18T16:02:22.008631+00:00",
+  "status": "pass",
+  "scope": "Corollary 1.3 over arbitrary fields: a nonzero smooth homogeneous cubic surface is unirational over its ground field if and only if it admits a degree-one zero-cycle.",
+  "theorem": "AllCharacteristics.twoProofs_corollary13_unirational_iff_zeroCycle_degree_one",
+  "audit_module": "AllCharacteristics.ManuscriptVerification.Unirationality",
+  "roots": [
+    "AllCharacteristics.smoothCubic_unirational_of_rational_section",
+    "AllCharacteristics.twoProofs_corollary13_unirational_iff_zeroCycle_degree_one"
+  ],
+  "allowed_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "audit": {
+    "exit_code": 0,
+    "command": "lake build AllCharacteristics.ManuscriptVerification.Unirationality",
+    "log": "corollary13-unirationality-20261018.txt",
+    "sha256": "55b43c68e1c69c7ef19ae2b5ced7435ce500fc088afe335d7f64820e5ca2ecbc",
+    "raw_build_log": "corollary13-unirationality-20261018.log.gz",
+    "raw_build_log_sha256": "e73a4c6f890c2e6a4c029c4f34e0c4a94dfae599d3b73b8322a38088f411bc49",
+    "compressed_log_sha256": "fa82778ccdf3f2c16ab0a7f6915a923f8103e8fce0953ab934dfa629b426a28f",
+    "kind": "Imported-environment type/value/projection/recursor dependency traversal, not independent kernel replay",
+    "exclusive_legacy_lock_verified": true
+  },
+  "compilation": {
+    "proof_modules": 67,
+    "audit_modules": 1,
+    "all_separate_module_builds_passed": true,
+    "modules": [
+      {
+        "module": "AllCharacteristics.KollarGenericResidualAllFields",
+        "source": "AllCharacteristics/KollarGenericResidualAllFields.lean",
+        "compiled_source_sha256": "5cbf9905f53272b65242e1637ae3f9b2659d3ef0d8c874352d2562b6e70efbc7",
+        "published_source_sha256": "5cbf9905f53272b65242e1637ae3f9b2659d3ef0d8c874352d2562b6e70efbc7",
+        "comment_only_header_cleanup": false,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "c52198bb360dc0b564d5a958bff1198dcee44ba833c93730f2762f63381a5f91"
+      },
+      {
+        "module": "AllCharacteristics.KollarThreeFormsCommonZero",
+        "source": "AllCharacteristics/KollarThreeFormsCommonZero.lean",
+        "compiled_source_sha256": "856aaf82640fc33a0ebfe3614bb4a44112c423b93a6697af9815d4395fcd0974",
+        "published_source_sha256": "814f071c286719a089e5c708fe80f173dbfc5ef6bd4bf815ab6a5f1ccc6d72e4",
+        "comment_only_header_cleanup": true,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "3492c007e75e54f34a9e675cadb3de2e178033cad38e847c35876056f28c9afc"
+      },
+      {
+        "module": "AllCharacteristics.KollarSmoothPartialNonzero",
+        "source": "AllCharacteristics/KollarSmoothPartialNonzero.lean",
+        "compiled_source_sha256": "88a2305eb096983e3c194c7626475c61deccd569a3b7f207e3af5fbfbf520dfe",
+        "published_source_sha256": "00846ed6b0d7808e0db48a47093f7680671b5552f29acb488ae4fda1f1b50957",
+        "comment_only_header_cleanup": true,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "32584666a878a07822677dedaa63826578a62b3f255a2a82cd4110657a2c2df4"
+      },
+      {
+        "module": "AllCharacteristics.KollarCharacteristicTwoResidual",
+        "source": "AllCharacteristics/KollarCharacteristicTwoResidual.lean",
+        "compiled_source_sha256": "a1d016105e727c4e72acf8ee8e53799cc2701440940b30e0c5a9ece1d77f3a36",
+        "published_source_sha256": "7e0e769950bc7cab296ff294036575a33a9db7f89beba526d1671bca24e77d1f",
+        "comment_only_header_cleanup": true,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "6efb9da8da84ed8bfa37b74d70d922b2d6518f2368c8cf3ef21351f285be6de1"
+      },
+      {
+        "module": "AllCharacteristics.KollarCharacteristicTwoActualResidual",
+        "source": "AllCharacteristics/KollarCharacteristicTwoActualResidual.lean",
+        "compiled_source_sha256": "9884ddfd20b2eff5930f8fa166da5b2b20f4c494b4623d592238b5dbd5ebcdfb",
+        "published_source_sha256": "143d043d525469f408da7854579d3959e83cbe6e1737e31c6f6874a458775900",
+        "comment_only_header_cleanup": true,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "bff7a2e9e11bc9f65dda061ffa1853394a0ee80792ad1e4d1d5ac002369fcc8b"
+      },
+      {
+        "module": "AllCharacteristics.ResidualSeparabilityAllCharacteristics",
+        "source": "AllCharacteristics/ResidualSeparabilityAllCharacteristics.lean",
+        "compiled_source_sha256": "5d471ca923f08a76b2450f780d6a9d3a8cec4511abd3dcef0a5e004d86b9a0a8",
+        "published_source_sha256": "5d471ca923f08a76b2450f780d6a9d3a8cec4511abd3dcef0a5e004d86b9a0a8",
+        "comment_only_header_cleanup": false,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "49a98f59ed064604d5a30ddf568f36415e671b8317c09f0b6c77da1153f4b3be"
+      },
+      {
+        "module": "AllCharacteristics.KollarSmoothGenericResidual",
+        "source": "AllCharacteristics/KollarSmoothGenericResidual.lean",
+        "compiled_source_sha256": "c8ba90dcf07a7ee179b92dbdcaf6f381a197cce66fd26241a64bef529c9f1091",
+        "published_source_sha256": "c8ba90dcf07a7ee179b92dbdcaf6f381a197cce66fd26241a64bef529c9f1091",
+        "comment_only_header_cleanup": false,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "af520bf05f85eb6261450236f4c00b8c2885141b509e81e8db8c488178288bc1"
+      },
+      {
+        "module": "AllCharacteristics.ResidualPointSmoothness",
+        "source": "AllCharacteristics/ResidualPointSmoothness.lean",
+        "compiled_source_sha256": "4a34583801258c46b71059a864d464a31091c0b2bb1723c0e1a3d8e46801887b",
+        "published_source_sha256": "4a34583801258c46b71059a864d464a31091c0b2bb1723c0e1a3d8e46801887b",
+        "comment_only_header_cleanup": false,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "944e32ab75e1a959649e0314b3360a47749e0b134259f5bbd574c38f8c005a15"
+      },
+      {
+        "module": "AllCharacteristics.UniversalConjugateTangentPair",
+        "source": "AllCharacteristics/UniversalConjugateTangentPair.lean",
+        "compiled_source_sha256": "95c63a9d9ccecc50f72e9c19f5dd14b10d639909304a49fbab1f5f3ab2dbbdec",
+        "published_source_sha256": "95c63a9d9ccecc50f72e9c19f5dd14b10d639909304a49fbab1f5f3ab2dbbdec",
+        "comment_only_header_cleanup": false,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "360f9684b5811ea99f34d3d876253e55768718ac36a2f4b20be1114f9a694f12"
+      },
+      {
+        "module": "AllCharacteristics.UniversalSecantPolynomial",
+        "source": "AllCharacteristics/UniversalSecantPolynomial.lean",
+        "compiled_source_sha256": "e8948d5c44cf8c85db8cdc1578b004709ec161ff2d76f822e96c4947ff4cb423",
+        "published_source_sha256": "e8948d5c44cf8c85db8cdc1578b004709ec161ff2d76f822e96c4947ff4cb423",
+        "comment_only_header_cleanup": false,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "88101046502f2d23644939d9726a74109da99086ec8d830873f66f2e4d2d9540"
+      },
+      {
+        "module": "AllCharacteristics.UniversalSecantPolynomialDescent",
+        "source": "AllCharacteristics/UniversalSecantPolynomialDescent.lean",
+        "compiled_source_sha256": "1922d208bb16c5a5d0f6c0e2ccec9c7413918c48a57ff9678d54a95e1552ca81",
+        "published_source_sha256": "1922d208bb16c5a5d0f6c0e2ccec9c7413918c48a57ff9678d54a95e1552ca81",
+        "comment_only_header_cleanup": false,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "ae14e4e45bbdd3eb13bebd00ac4e757337c84a72b401c39f2b3443034587b189"
+      },
+      {
+        "module": "AllCharacteristics.UniversalSecantPolynomialCubic",
+        "source": "AllCharacteristics/UniversalSecantPolynomialCubic.lean",
+        "compiled_source_sha256": "340bfbc04f2293d1d4a00f4e746293fbb754828f4c7f432dce56ee63fa5b900b",
+        "published_source_sha256": "340bfbc04f2293d1d4a00f4e746293fbb754828f4c7f432dce56ee63fa5b900b",
+        "comment_only_header_cleanup": false,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "58f4340edd2b0a5b3c0e5c367bcdb50658dc8751c36c21df46821cf3b6e8cf72"
+      },
+      {
+        "module": "AllCharacteristics.PolynomialSecantDescentCubic",
+        "source": "AllCharacteristics/PolynomialSecantDescentCubic.lean",
+        "compiled_source_sha256": "addb165b44083e12c89cf97a1eb08039568072042f5ae197856723e2a94af00f",
+        "published_source_sha256": "addb165b44083e12c89cf97a1eb08039568072042f5ae197856723e2a94af00f",
+        "comment_only_header_cleanup": false,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "40fababa2026ce6dc080e86d0353f5413641dd210b52b31b7a3eb97660dcb411"
+      },
+      {
+        "module": "AllCharacteristics.ResidualTangentPolynomialData",
+        "source": "AllCharacteristics/ResidualTangentPolynomialData.lean",
+        "compiled_source_sha256": "30d952503c7a89481107590f76b63733c7618de0e83e132ee68e940e2207dacd",
+        "published_source_sha256": "30d952503c7a89481107590f76b63733c7618de0e83e132ee68e940e2207dacd",
+        "comment_only_header_cleanup": false,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "6c5985520d1c56028072727b1867d4472a21216ee2ee1d21bdb334cc5db8972d"
+      },
+      {
+        "module": "AllCharacteristics.KollarNormalizedPolynomialConstruction",
+        "source": "AllCharacteristics/KollarNormalizedPolynomialConstruction.lean",
+        "compiled_source_sha256": "2904d59a14ec0c926345aa6d3ccbd2108462da67c78042c3c6be8c11613e15b0",
+        "published_source_sha256": "2904d59a14ec0c926345aa6d3ccbd2108462da67c78042c3c6be8c11613e15b0",
+        "comment_only_header_cleanup": false,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "84e46b55f13aec8606100a33e25c08686eef00b06df178df51ff2f9669ed802c"
+      },
+      {
+        "module": "AllCharacteristics.KollarCoefficientFractionMap",
+        "source": "AllCharacteristics/KollarCoefficientFractionMap.lean",
+        "compiled_source_sha256": "ff40add1c3c9bea3ede5f7b3b200f037605470f4335efb24aeb19e792b870054",
+        "published_source_sha256": "0accaba152de6b474629c41efa75b690dda1e9292b90150840e3fbd29f90614a",
+        "comment_only_header_cleanup": true,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "0ad184a2c1d523d353b13404746574322558503d221afa0b576e0ecd0d709803"
+      },
+      {
+        "module": "AllCharacteristics.KollarAdjoinRootCoefficientMap",
+        "source": "AllCharacteristics/KollarAdjoinRootCoefficientMap.lean",
+        "compiled_source_sha256": "eabe9e038ed9a8797960d59bfec153a7eb7e94fe6dfeb88352c1f24b67a81b77",
+        "published_source_sha256": "a00401ad76c4097a9480832e277df00eb4d4f1be1be30ba7a9f4b2a3698a5e65",
+        "comment_only_header_cleanup": true,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "58708bc51b13b68ef44755b2a288ed36e70b60fbdf513e68bd88417bde6bd106"
+      },
+      {
+        "module": "AllCharacteristics.KollarResidualBaseChange",
+        "source": "AllCharacteristics/KollarResidualBaseChange.lean",
+        "compiled_source_sha256": "3e713ab33607a25a0fc9e9c775fa985f9bb7b5ae63ea6713c02353584bda67e3",
+        "published_source_sha256": "04b4a65347fd6d6b96cae57cbe4bfbda91af53b19f9e044d2e12c23d481cb8e3",
+        "comment_only_header_cleanup": true,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "6047b42ea43668f1387bc1b7e043c1ef9e61c806185424eff8eaef90d23570b3"
+      },
+      {
+        "module": "AllCharacteristics.KollarResidualBaseChangeRoots",
+        "source": "AllCharacteristics/KollarResidualBaseChangeRoots.lean",
+        "compiled_source_sha256": "c5dc269b5cb0584f8bcda8c30ba4429da41436022001ae2db32e5c73c4bfbcb4",
+        "published_source_sha256": "1cc9aef0fd540116690883a5e13ce7d52d7d3a694731c4e9b5a5f1ce71534d86",
+        "comment_only_header_cleanup": true,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "bede52431d0473e87310f61691023ee5f67eb3259c912732802d815f2e126792"
+      },
+      {
+        "module": "AllCharacteristics.TangentSecantInverseCoordinates",
+        "source": "AllCharacteristics/TangentSecantInverseCoordinates.lean",
+        "compiled_source_sha256": "5369792773b04fd5a3f412c08b42ffded48324fce25a2a87b785dd3c59920e3a",
+        "published_source_sha256": "138eebe10310a56675bc40e3e8f56b9da05d3250eb384ec233eff83f50d618e6",
+        "comment_only_header_cleanup": true,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "80021d0a1ca65428e31bc979f8cf4002d92be08ecdb80cfaff4ebcaee53cbf5f"
+      },
+      {
+        "module": "AllCharacteristics.SecantPolarQuadricLift",
+        "source": "AllCharacteristics/SecantPolarQuadricLift.lean",
+        "compiled_source_sha256": "8244a805d21e48f8cde4b495eeb3c026010d21ff4a8bec79b022b65205856994",
+        "published_source_sha256": "a2cdfa7ad05b37a460bc37f865d77a1d4bd118fcb7970aa7e7d2f7ccac1c237b",
+        "comment_only_header_cleanup": true,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "93c8858f59494eb5a4a9fc6f57937b6e900799a635c28568f35567fbebb58fce"
+      },
+      {
+        "module": "AllCharacteristics.TwoTangentSecantPreimage",
+        "source": "AllCharacteristics/TwoTangentSecantPreimage.lean",
+        "compiled_source_sha256": "8cee2722f9cf29e364eb78b03932f0e473d6e4090f5217f1999771f4ab926698",
+        "published_source_sha256": "7d8f15ce4771a9b30125bce675ffe10b75c349d11bceba3635e2104f46d0cc9a",
+        "comment_only_header_cleanup": true,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "1d795c35ea41ec4f7153363706f5265fc01e96943df569b1cc1287b7b9b458a2"
+      },
+      {
+        "module": "AllCharacteristics.GenericSecantPolarAvoidance",
+        "source": "AllCharacteristics/GenericSecantPolarAvoidance.lean",
+        "compiled_source_sha256": "6d4c90eaebafe93e99ef8a58b19d2cba4c94987725d7138d2c33d632e5588f58",
+        "published_source_sha256": "ca6ea7dbec66d9394569aa82367d89b467ee9365f4f49693772856bc3a14b5a1",
+        "comment_only_header_cleanup": true,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "6ff1f2e64618d5b2f117e8d7146babc6c7b664833ae7ae8ab4f11a7bc596fdfc"
+      },
+      {
+        "module": "AllCharacteristics.TangentPlaneLineFactor",
+        "source": "AllCharacteristics/TangentPlaneLineFactor.lean",
+        "compiled_source_sha256": "48cdc185306098d949d2ab926233c269d9311c8152d8252f4f1caa841449d6c1",
+        "published_source_sha256": "63db16c06913db67884732b70b55927677fcc5ab7ffd87741ce7ae49f7e6b0c6",
+        "comment_only_header_cleanup": true,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "eb71504aeb1fe6d3d3a7cc1337e96003dd164ee2a55f32a027540b509595cd84"
+      },
+      {
+        "module": "AllCharacteristics.CommonTangentKernelFrame",
+        "source": "AllCharacteristics/CommonTangentKernelFrame.lean",
+        "compiled_source_sha256": "aebec4aa1a9ba212f10f2cfc4f67f73f846a9d17d8208ac92c2ae9d30e62102b",
+        "published_source_sha256": "15c74a1cfcf77a832adbc7995c18939d5b6888c1f44ca7b6c0b0887af261e85a",
+        "comment_only_header_cleanup": true,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "d92aa19bfd43c13ac82d2cd2162502c48989a98c75bceb3d0d9f52e49fedd036"
+      },
+      {
+        "module": "AllCharacteristics.ReframeCommonTangentLine",
+        "source": "AllCharacteristics/ReframeCommonTangentLine.lean",
+        "compiled_source_sha256": "079b8f66268df91f69e8b5a6683bffa594d4049a36f2da084547dfd8618c0c45",
+        "published_source_sha256": "5ea980b2b9494ba4e3403bb053e86d931e860c34fedfe8519514afeadffec547",
+        "comment_only_header_cleanup": true,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "8556d52e0c65b323cbfcafb3d524e42a6be1fdf74e25d360049111711dd14c8d"
+      },
+      {
+        "module": "AllCharacteristics.CommonTangentLineNoncubicPoint",
+        "source": "AllCharacteristics/CommonTangentLineNoncubicPoint.lean",
+        "compiled_source_sha256": "9b2bf5ee8b9c19648d481457b413417709854281bda99a4b51d08f34afac3aa7",
+        "published_source_sha256": "9ea62ad5732e885162d7535ae8bd56f0781511a9923be283b80490ce740aa573",
+        "comment_only_header_cleanup": true,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "9dd557600f3e2d8f8c0bfc9d7f09217ee5d98df5374583c161e2744b93f40d59"
+      },
+      {
+        "module": "AllCharacteristics.TangentHyperplaneCoordinateSurjectivity",
+        "source": "AllCharacteristics/TangentHyperplaneCoordinateSurjectivity.lean",
+        "compiled_source_sha256": "c372496c28fb80147a8035b2bf70aa6dedd2708516b4e91e4939cb58ca5fb64b",
+        "published_source_sha256": "c372496c28fb80147a8035b2bf70aa6dedd2708516b4e91e4939cb58ca5fb64b",
+        "comment_only_header_cleanup": false,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "b63f6f77488bc3dfb109a7cd3fe7d8150be0635b009b7b1bffd5775551a9f127"
+      },
+      {
+        "module": "AllCharacteristics.TangentPlaneCommonLineNoncontainment",
+        "source": "AllCharacteristics/TangentPlaneCommonLineNoncontainment.lean",
+        "compiled_source_sha256": "e01e407d6f3ee33498df18d1f0f7450e7a6ec553ca52af67040dba274e6d96c9",
+        "published_source_sha256": "280effbbd4eb9cb8e53e34aef33e2c08183cf7f8381450487d23f27034381961",
+        "comment_only_header_cleanup": true,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "9bdf54300c5b14e527fd6e230be267ba6b81642ef76f8eb8f962d334c5f1b580"
+      },
+      {
+        "module": "AllCharacteristics.CubicContainedLineRigidity",
+        "source": "AllCharacteristics/CubicContainedLineRigidity.lean",
+        "compiled_source_sha256": "8aad61cafd9c129969fc23ebc6db822ab082f7f8776b8da6081f1d680c3aae67",
+        "published_source_sha256": "764ba01275ec5165e594d0f87824d334adc03b5cf9b0a37f73d2117776f0df24",
+        "comment_only_header_cleanup": true,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "7eba8f92f24824d86f545dfb5e29f83235f7a473c554a770086d273197ce31ec"
+      },
+      {
+        "module": "AllCharacteristics.CubicGraphLineDifferential",
+        "source": "AllCharacteristics/CubicGraphLineDifferential.lean",
+        "compiled_source_sha256": "b9313f5a54dd61f8f83ad8504fdb8de8d8af1df5b3d5c3c49e9fdb618969d973",
+        "published_source_sha256": "776e69bac9f7ffbc6ae48b34f83efa09b725a946d98b76e38d5b0b8d5a739ad2",
+        "comment_only_header_cleanup": true,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "97551cac70ef4a6d76dc1764004301eebbed6354c5e1d2d31e6422da1727ce02"
+      },
+      {
+        "module": "AllCharacteristics.CubicCoordinatePermutation",
+        "source": "AllCharacteristics/CubicCoordinatePermutation.lean",
+        "compiled_source_sha256": "1223601c1d389c611eb4fcee6daaea0f7b5ecff45f81460d525bb14e5296483c",
+        "published_source_sha256": "03cf1f1b7c03b02995e5a2431e0b73dfb7d7642c12bb6573f6c81bdf008ce2e7",
+        "comment_only_header_cleanup": true,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "62324ccffbac6046bb4cdd04e9aff686c84a2cc649a6163ddeaf87b1d0344133"
+      },
+      {
+        "module": "AllCharacteristics.CubicLineCoordinateFieldDescent",
+        "source": "AllCharacteristics/CubicLineCoordinateFieldDescent.lean",
+        "compiled_source_sha256": "dfb2f840270dc38f9944c7b5093340d4d7333984d59dc4b0584903a014bfd748",
+        "published_source_sha256": "fe6aa7473f60699497081769c9fc42fafbe12f82ab0ff42686abaa53dc07b467",
+        "comment_only_header_cleanup": true,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "d72b5bed240234a5a794edddadb12d9c596dd8d632588b0265f87feb36021ded"
+      },
+      {
+        "module": "AllCharacteristics.CubicGenericLineExclusion",
+        "source": "AllCharacteristics/CubicGenericLineExclusion.lean",
+        "compiled_source_sha256": "d7589d68ade6bbcbac0b11fc8038ed2b1889e271336b44dd9f5ba45532c4643c",
+        "published_source_sha256": "86f312979feb4c3bfbc232e137eca264e404fb1bcb5ec2fa5a02aa55523623ad",
+        "comment_only_header_cleanup": true,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "93595e46ff9c3d59fda3cfdaafccc2c4176ba71ec4adba802c4bea057d53dc59"
+      },
+      {
+        "module": "AllCharacteristics.CubicGraphLineDescentAssembly",
+        "source": "AllCharacteristics/CubicGraphLineDescentAssembly.lean",
+        "compiled_source_sha256": "e6af5309a6c8fc6ed02c5c26a1bb8343657389860667b17718552267e55ae4a2",
+        "published_source_sha256": "464accf396278d6d05977e0338de03f4d6e2f5415609a3ef5ffaac82a74f7365",
+        "comment_only_header_cleanup": true,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "275705bb8109dcab87511cd01129df0ae00a5e3fc39bb22bc05eb076455349b5"
+      },
+      {
+        "module": "AllCharacteristics.CubicLineGraphChart",
+        "source": "AllCharacteristics/CubicLineGraphChart.lean",
+        "compiled_source_sha256": "360c42d29b186ab67795b5444dff2dcef64c4e5562698eca4f7a87400de7b31e",
+        "published_source_sha256": "05461a8ff8f26f687c0a009e3ba235619b29ecb54049a7e6d9c8db3f553caa67",
+        "comment_only_header_cleanup": true,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "9b34b314a8110f7f94f4dab81f4f94319cf7df7e042466fa3ecfadc34399eadc"
+      },
+      {
+        "module": "AllCharacteristics.SmoothCubicGenericNoContainedLine",
+        "source": "AllCharacteristics/SmoothCubicGenericNoContainedLine.lean",
+        "compiled_source_sha256": "5e2a8f51ae8147b217ee5346447d9c01bb3fc90685f3f9889815006b06e68867",
+        "published_source_sha256": "8b8d91670dcc0513ebaaa1f9030df84adddd73661a7b05d36aa5eddf441ac6f2",
+        "comment_only_header_cleanup": true,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "92bce805ff820ded95921aa1f105087e6fcbf4c27a7937bc442d7502023eedca"
+      },
+      {
+        "module": "AllCharacteristics.SmoothCubicGenericSecantPreimage",
+        "source": "AllCharacteristics/SmoothCubicGenericSecantPreimage.lean",
+        "compiled_source_sha256": "6ada81c1cc141f271c3677de690724ec957166b470f9e3a5c941a05a42603b11",
+        "published_source_sha256": "a2500a01be26215df6ff9ae360c50a05b1bd93cfadaafe558447ce32032e4ad4",
+        "comment_only_header_cleanup": true,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "66d29cd76ce8006b423e2cde9485f3dfd457110245f7fc59e8b467fb5ef3003f"
+      },
+      {
+        "module": "AllCharacteristics.GenericDistinguishedRootKernel",
+        "source": "AllCharacteristics/GenericDistinguishedRootKernel.lean",
+        "compiled_source_sha256": "4619afde6fc12bb803e560d5bd1dd80f88c141498ceab680dc9600a2d0fe1e8e",
+        "published_source_sha256": "4619afde6fc12bb803e560d5bd1dd80f88c141498ceab680dc9600a2d0fe1e8e",
+        "comment_only_header_cleanup": false,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "6cb75687a97b5b155e74b1358465e3b0e5da345adbe1055a2218f5ef23f4082f"
+      },
+      {
+        "module": "AllCharacteristics.HomogeneousKernelLinearIndependence",
+        "source": "AllCharacteristics/HomogeneousKernelLinearIndependence.lean",
+        "compiled_source_sha256": "fd065863cd6ed7dd7dc473851467927bd1da0ef5f2353ce8855c45c1cf860880",
+        "published_source_sha256": "fd065863cd6ed7dd7dc473851467927bd1da0ef5f2353ce8855c45c1cf860880",
+        "comment_only_header_cleanup": false,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "9ed311694c3fb1c59b0cf55b631c9c8e8f7a0c1dd7885852ac9b7d35c06f2e74"
+      },
+      {
+        "module": "AllCharacteristics.KollarResidualCenterGenericity",
+        "source": "AllCharacteristics/KollarResidualCenterGenericity.lean",
+        "compiled_source_sha256": "fbc6737ebbb7dba96c1121ac876218cbac692e7891ae277a7519aa7b8eb4495d",
+        "published_source_sha256": "41b3ab6535261be623dc7c58fe1bbe35e7660f894a9fbeb8d719fa32521774ac",
+        "comment_only_header_cleanup": true,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "bd6db56f17f87d87256d7d3cafebc94e9de0a8b2147d09044e7705da470f43c3"
+      },
+      {
+        "module": "AllCharacteristics.KollarGeometricCenterTransport",
+        "source": "AllCharacteristics/KollarGeometricCenterTransport.lean",
+        "compiled_source_sha256": "6534fd6badacd3e47b06114b990f6581c045d2d2ebcc8c2f021c89044214be10",
+        "published_source_sha256": "e3120890351a57718ff0618ce4dcc9de5094af68daa523f13c015c818ae648b5",
+        "comment_only_header_cleanup": true,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "82d5c578528fc877021f7e8e484f75ca883b9c22c566ea40e946228474862b04"
+      },
+      {
+        "module": "AllCharacteristics.KollarBasechangedCenters",
+        "source": "AllCharacteristics/KollarBasechangedCenters.lean",
+        "compiled_source_sha256": "6bc402f5683f3d348ce7988287176f9f0da86058d1cd6a18e115753c4632ec5e",
+        "published_source_sha256": "6c8221b7727c0021224c1ea9f5ab3c305bf1279a7ff404334591a0285f144ec9",
+        "comment_only_header_cleanup": true,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "1692828e84256fa5c8e6fdf50c9d1e70327c3de3eb7252fa841a8d1222a34b10"
+      },
+      {
+        "module": "AllCharacteristics.KollarGenericTargetCone",
+        "source": "AllCharacteristics/KollarGenericTargetCone.lean",
+        "compiled_source_sha256": "633b646376574ec2f3d90398c0910d0098d358a9f59e1e8da0fa802cc015e706",
+        "published_source_sha256": "68af5eb48c5c9462b8074ab469893d31d9acb53a2633ec7d2d6a453f3db3b9db",
+        "comment_only_header_cleanup": true,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "f9b66d621a3d309ff9aee6aeb95515fd122a1a6c43ae91b326ade8cce9e6f65e"
+      },
+      {
+        "module": "AllCharacteristics.PolynomialFieldExtensionIdealContraction",
+        "source": "AllCharacteristics/PolynomialFieldExtensionIdealContraction.lean",
+        "compiled_source_sha256": "d4b938a2429754dbdcb517f5aae9bf2d8821d66fe16765a5a946a73211e42aec",
+        "published_source_sha256": "d4b938a2429754dbdcb517f5aae9bf2d8821d66fe16765a5a946a73211e42aec",
+        "comment_only_header_cleanup": false,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "1904dd6f7ec806c802bdd8a16e31fa063c54a40e6a295b9d09d2a131ab9a0727"
+      },
+      {
+        "module": "AllCharacteristics.KollarGenericTargetOriginalRelations",
+        "source": "AllCharacteristics/KollarGenericTargetOriginalRelations.lean",
+        "compiled_source_sha256": "e1ab5b3ec1e774184bd74838b1c51bb011260a054dea5476a11a7effd2c14c25",
+        "published_source_sha256": "9f75aac0545d1184ab5043e30b654cb82ceeb5b6e86ae4da4cb82c279b7ba611",
+        "comment_only_header_cleanup": true,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "a8f31ff3d8ab57ca755344c4d88db1f11d33e9f9211a70af515289d8700169d5"
+      },
+      {
+        "module": "AllCharacteristics.ConjugateParameterSplitting",
+        "source": "AllCharacteristics/ConjugateParameterSplitting.lean",
+        "compiled_source_sha256": "9efa2e5e5b6a612b2b2dc34611edeaedf04a99e3280511b0e6ef5e6b9222411e",
+        "published_source_sha256": "9efa2e5e5b6a612b2b2dc34611edeaedf04a99e3280511b0e6ef5e6b9222411e",
+        "comment_only_header_cleanup": false,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "64d2513338fe92325b5e15f868b541e3a605dfb68715f221b3f719f463bafc50"
+      },
+      {
+        "module": "AllCharacteristics.ConjugateUniversalTangentCoordinates",
+        "source": "AllCharacteristics/ConjugateUniversalTangentCoordinates.lean",
+        "compiled_source_sha256": "b1c976f880a42d669555d409aa770d5e4205b7b006d0904d12b8dbf584c3a949",
+        "published_source_sha256": "b1c976f880a42d669555d409aa770d5e4205b7b006d0904d12b8dbf584c3a949",
+        "comment_only_header_cleanup": false,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "59832f4d5f1708a0b93580a2e4058e3089966e5069a292b3cb5664d92276f42d"
+      },
+      {
+        "module": "AllCharacteristics.KollarUniversalSecantParameterPreimage",
+        "source": "AllCharacteristics/KollarUniversalSecantParameterPreimage.lean",
+        "compiled_source_sha256": "cc8efb755dbaa525f298655a0a92ecd70b18a37d64a34bf28ee4a115777e3157",
+        "published_source_sha256": "16674d91a01d6c1ba1183aee77d42ea5ac6038db23b521559a1b8be49d363ef8",
+        "comment_only_header_cleanup": true,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "d01fa449eb174052f121a6e66c1263c2bd6cb8b800ae861365fd8dbc6c095f47"
+      },
+      {
+        "module": "AllCharacteristics.HomogeneousRelationsFromPolynomialSpecialization",
+        "source": "AllCharacteristics/HomogeneousRelationsFromPolynomialSpecialization.lean",
+        "compiled_source_sha256": "20afffe6617619032317ecec55c12ffb407cac4e3e52b737114750e8aae2eaa3",
+        "published_source_sha256": "20afffe6617619032317ecec55c12ffb407cac4e3e52b737114750e8aae2eaa3",
+        "comment_only_header_cleanup": false,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "5bea8b60a4994fa02ef33d1e39a5d30c3d01672501cb5d782c373d3243570c54"
+      },
+      {
+        "module": "AllCharacteristics.KollarUniversalSecantHomogeneousDetection",
+        "source": "AllCharacteristics/KollarUniversalSecantHomogeneousDetection.lean",
+        "compiled_source_sha256": "667b490ea1dcf78148f3d2ea87ce1dd9c14060c11fa2f4a1c5cf696b0f343647",
+        "published_source_sha256": "a6d3b24d0b470e3f683331f7d3f6d44a8b88c148c32ae2547b926588eb19d309",
+        "comment_only_header_cleanup": true,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "82a0f850696e91fc8ce0cd8c829f7967b345470735d4f006772e81d85fdc9f79"
+      },
+      {
+        "module": "AllCharacteristics.KollarUniversalSecantGenericWitness",
+        "source": "AllCharacteristics/KollarUniversalSecantGenericWitness.lean",
+        "compiled_source_sha256": "f6313c7d8637961e0a03c647dc582faf509b7d77ad574bb9dad6d5a19b52b0ef",
+        "published_source_sha256": "2c935fa592429d68c17f0995c4b60f9ebcf4e621216fc12f0123b550b0e625b8",
+        "comment_only_header_cleanup": true,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "86faac32cd4e49ab5a7eb39e1c2976a37adc3a584320add9d5eb8db429f8642c"
+      },
+      {
+        "module": "AllCharacteristics.ConjugateGradientTangentMatrix",
+        "source": "AllCharacteristics/ConjugateGradientTangentMatrix.lean",
+        "compiled_source_sha256": "6d7aad3ac4da108597954b47fb50703552ca544f959d0c6a8bdf2ed16b2bc0c9",
+        "published_source_sha256": "6d7aad3ac4da108597954b47fb50703552ca544f959d0c6a8bdf2ed16b2bc0c9",
+        "comment_only_header_cleanup": false,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "531d14423faa7781d9591707758055210464407d0ffbcdfb350892729dd79860"
+      },
+      {
+        "module": "AllCharacteristics.KollarNormalizedRawDetector",
+        "source": "AllCharacteristics/KollarNormalizedRawDetector.lean",
+        "compiled_source_sha256": "d850bf8a930bed0509f9e0cc2df169ac99797a21ea984a81d86a5852e425e915",
+        "published_source_sha256": "bfd9ccd1c85d23cb72e54832acc9c98e91133bea5cfae52ce66e9dd6f57afdc2",
+        "comment_only_header_cleanup": true,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "ccc323235ac59c7ac30618fc5a305d8624d928f0ae574210fc5bf42f1d7843f5"
+      },
+      {
+        "module": "AllCharacteristics.UniversalAffineSourceField",
+        "source": "AllCharacteristics/UniversalAffineSourceField.lean",
+        "compiled_source_sha256": "34f6644acd68d9cb99cd0cab74003e3f8bfe452e217598e49db3f76b09cca9a6",
+        "published_source_sha256": "34f6644acd68d9cb99cd0cab74003e3f8bfe452e217598e49db3f76b09cca9a6",
+        "comment_only_header_cleanup": false,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "e63fc80cda95c790a33794d937ed88bccef4fe3090bca0f217e0777010bd939b"
+      },
+      {
+        "module": "AllCharacteristics.UniversalAffineSourceIso",
+        "source": "AllCharacteristics/UniversalAffineSourceIso.lean",
+        "compiled_source_sha256": "f42cb2706642eaf679cb0c41954779bcee773df0343912c09b5fd763e9930f51",
+        "published_source_sha256": "f42cb2706642eaf679cb0c41954779bcee773df0343912c09b5fd763e9930f51",
+        "comment_only_header_cleanup": false,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "6e4da04ccff9e8a969f52e6681793608707f498c5e1ff81e75646a07b2de8a92"
+      },
+      {
+        "module": "AllCharacteristics.ProjectiveDominanceOfHomogeneousRelations",
+        "source": "AllCharacteristics/ProjectiveDominanceOfHomogeneousRelations.lean",
+        "compiled_source_sha256": "5407f839c6fb54a15e2b9f6be2d117a364c5c32300dd54d124719cccdb171284",
+        "published_source_sha256": "5407f839c6fb54a15e2b9f6be2d117a364c5c32300dd54d124719cccdb171284",
+        "comment_only_header_cleanup": false,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "4d4caef7f51a2dd25bd7fed98ba71c90042ea6cf323ca5ae6f77556d7627730c"
+      },
+      {
+        "module": "AllCharacteristics.FunctionFieldChartDominance",
+        "source": "AllCharacteristics/FunctionFieldChartDominance.lean",
+        "compiled_source_sha256": "3a8e047570131a52c0cc135d4efaaa70f1488636b56244cdc2638e0599046752",
+        "published_source_sha256": "3a8e047570131a52c0cc135d4efaaa70f1488636b56244cdc2638e0599046752",
+        "comment_only_header_cleanup": false,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "d23f686d39ffa7de4c4ed35153e9d8737ba18c89b5e84719087e68d5aaa0c0c6"
+      },
+      {
+        "module": "AllCharacteristics.KollarUniversalSourceHomogeneousDominance",
+        "source": "AllCharacteristics/KollarUniversalSourceHomogeneousDominance.lean",
+        "compiled_source_sha256": "525a1a5fc13fed3cb326585c1fb518f5605e9f72f678881b502f8260cb15f0b3",
+        "published_source_sha256": "525a1a5fc13fed3cb326585c1fb518f5605e9f72f678881b502f8260cb15f0b3",
+        "comment_only_header_cleanup": false,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "1966006ab9725696cb7296061f48c332ec9e338f6134df4cccf82a39e773c23c"
+      },
+      {
+        "module": "AllCharacteristics.KollarUniversalSourceCubicEvaluation",
+        "source": "AllCharacteristics/KollarUniversalSourceCubicEvaluation.lean",
+        "compiled_source_sha256": "e29f24401dd76f6f5e8cb12f559b8810c39e4d1fad15ceec696220360df0525b",
+        "published_source_sha256": "e29f24401dd76f6f5e8cb12f559b8810c39e4d1fad15ceec696220360df0525b",
+        "comment_only_header_cleanup": false,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "6cea7a00713e52b9601cb6ef1eeae0d7738595b66838b25fe0d73a157c486d13"
+      },
+      {
+        "module": "AllCharacteristics.HomogeneousRelationDescentAlongScaling",
+        "source": "AllCharacteristics/HomogeneousRelationDescentAlongScaling.lean",
+        "compiled_source_sha256": "5b3072932fbd9fac1ddbbff98d00fb45525ea899279a596b233e0683913c4cc0",
+        "published_source_sha256": "5b3072932fbd9fac1ddbbff98d00fb45525ea899279a596b233e0683913c4cc0",
+        "comment_only_header_cleanup": false,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "82ccbf4328334d16bda7f0173a4aa82a93b8d190cacb74dc1689b59c83ba1896"
+      },
+      {
+        "module": "AllCharacteristics.KollarDescendedPolynomialUnirationality",
+        "source": "AllCharacteristics/KollarDescendedPolynomialUnirationality.lean",
+        "compiled_source_sha256": "d5e70244de9f34f9ea9cbd909d3e428776ed6dda1e8e53775a4addac57c6197e",
+        "published_source_sha256": "d5e70244de9f34f9ea9cbd909d3e428776ed6dda1e8e53775a4addac57c6197e",
+        "comment_only_header_cleanup": false,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "3c8360c9f203b11643ffcdf26a6f60b5f1c7d922c61131a92fb5cdc812885cd5"
+      },
+      {
+        "module": "AllCharacteristics.HomogeneousPrimeProjectiveIrreducibility",
+        "source": "AllCharacteristics/HomogeneousPrimeProjectiveIrreducibility.lean",
+        "compiled_source_sha256": "e074c37c555212e76d42eee997f833e3d6070bb158ce119542e0e32a22ae0be1",
+        "published_source_sha256": "e074c37c555212e76d42eee997f833e3d6070bb158ce119542e0e32a22ae0be1",
+        "comment_only_header_cleanup": false,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "41f0551455859df7a56af3693439d39fd8103b34f621b81b35c550245aee8b09"
+      },
+      {
+        "module": "AllCharacteristics.KollarNormalizedUnirationality",
+        "source": "AllCharacteristics/KollarNormalizedUnirationality.lean",
+        "compiled_source_sha256": "c0ebcf684799363ed6f7504b2cedaf4fc8280f639b11e39aa9ddd0d9bd991fcd",
+        "published_source_sha256": "c0ebcf684799363ed6f7504b2cedaf4fc8280f639b11e39aa9ddd0d9bd991fcd",
+        "comment_only_header_cleanup": false,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "542e4e49b81aebfa46448639a0e40358313e7f80e783989b2ee8b1e2fe0e13cb"
+      },
+      {
+        "module": "AllCharacteristics.KollarNormalizationAlgebra",
+        "source": "AllCharacteristics/KollarNormalizationAlgebra.lean",
+        "compiled_source_sha256": "1f2b74168f0cc91b218a2e346fa6f32eab891180a933e8b636f7182e51e8a322",
+        "published_source_sha256": "17eb1c4637feaab80a02a558eb030bc928a8ee3c674cf715a193a65ef4c4f491",
+        "comment_only_header_cleanup": true,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "6a39009a3e3ec3848803b396f78e597762a2960a657e1d5f752b6bfaac9afc6d"
+      },
+      {
+        "module": "AllCharacteristics.KollarNormalizationGeometry",
+        "source": "AllCharacteristics/KollarNormalizationGeometry.lean",
+        "compiled_source_sha256": "5cb4a60ab0b6976d11bad19c132a84a1c27318c479228ab89e996a29216cf93b",
+        "published_source_sha256": "d663f90becd55fd9a9607cdb6443410e542bfbd79b40ff88c0465852616c8c25",
+        "comment_only_header_cleanup": true,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "e5adee3d2ab8460d5a39445445aa1659f2c8daef56bc655c7554de6794dc4d26"
+      },
+      {
+        "module": "AllCharacteristics.Corollary13Unirationality",
+        "source": "AllCharacteristics/Corollary13Unirationality.lean",
+        "compiled_source_sha256": "3445a07a284701cb12f906d32394b576239dc2e295dc97e613bf0b47d121a3c7",
+        "published_source_sha256": "5853b6a127e32e1618df3a7792336ae34805025b4dd58ad7c0561c27f0c77a07",
+        "comment_only_header_cleanup": true,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "39a82f6ba9aae15221427c8235d52e00083f2da51a5165ed967c74ca45f112ef"
+      },
+      {
+        "module": "AllCharacteristics.ManuscriptVerification.Unirationality",
+        "source": "AllCharacteristics/ManuscriptVerification/Unirationality.lean",
+        "compiled_source_sha256": "00db5c3d718a71ef085c07e27e3c3d0777dd6c0caa783db0bd3aaecbbeed8722",
+        "published_source_sha256": "00db5c3d718a71ef085c07e27e3c3d0777dd6c0caa783db0bd3aaecbbeed8722",
+        "comment_only_header_cleanup": false,
+        "deps_exit_code": 0,
+        "build_exit_code": 0,
+        "build_log_sha256": "e73a4c6f890c2e6a4c029c4f34e0c4a94dfae599d3b73b8322a38088f411bc49"
+      }
+    ],
+    "existing_dependencies": "Existing pinned compiled dependencies were reused; not a clean-room rebuild.",
+    "execution": "Root-owned guarded dependency-ordered builds, at most three simultaneous checks; exclusive final audit. Accepted proofs used default 200000 heartbeats; an unsuccessful targeted 250000 trial was not retained."
+  },
+  "public_source_identity": "All proof code is identical to the checked development sources. Obsolete draft-status header comments were removed in the flagged files after checking; both compiled and published source hashes are recorded. All pre-existing pinned public sources were preserved.",
+  "existing_sources_newly_pinned": [
+    {
+      "source": "AllCharacteristics/TangentHyperplaneDirection.lean",
+      "sha256": "2709299df2afea67e97dd2662b2798d467ea781469b6f01554cfe7cab804906b"
+    },
+    {
+      "source": "AllCharacteristics/Unirationality.lean",
+      "sha256": "70bc406b6ef4caad0b83ec7f233aaaae201a2233c17c5984852d27a83ca6d1c7"
+    }
+  ],
+  "source_pins_sha256": "be6209d52ddca643f02e3e17f2196dbe6b6eafcdf011c1518546c9166c53860f",
+  "comparator": "not_run_for_this_addition",
+  "comparator_note": "The original main CSD challenge and solution, and the October 17 Comparator result, are unchanged.",
+  "metadata": {
+    "lean-toolchain": "3aac669c7a910ec2389f4e4f921b605adf6ebf2d1e0c9b9cd0be4d33f3f5db71",
+    "lakefile.toml": "4625015f1ce66b2f82aee2c6b0788e919ee013abc7476433c989fd20c75758ea",
+    "lake-manifest.json": "3374a9804ecbfe15dd43bb67053dd89774992996ed9fab1f9ca9fd69e9c47364"
+  },
+  "publication_validation": {
+    "recorded_at": "2026-10-18T16:03:17.263814+00:00",
+    "source_integrity": {
+      "command": "python3 verification/check.py",
+      "exit_code": 0,
+      "pinned_files": 4324,
+      "pinned_lean_sources": 4321,
+      "mapped_conclusions": 26,
+      "audit_groups": 14
+    },
+    "python_tests": {
+      "command": "python3 verification/test_runner.py",
+      "exit_code": 0,
+      "tests": 49
+    },
+    "whitespace_check": {
+      "command": "git diff --check",
+      "exit_code": 0
+    },
+    "dependency_closure": {
+      "local_modules": 3439,
+      "all_sources_present_pinned_and_hash_verified": true
+    },
+    "compiler_note": "No additional Lean or Comparator process was launched by these publication checks."
+  }
+}

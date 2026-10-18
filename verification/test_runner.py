@@ -472,7 +472,7 @@ class SourceIntegrityTests(TemporaryProject):
         self.here.mkdir()
         source = self.project / 'endpoint.lean'
         source.write_text('-- pinned\n')
-        labels = ['claim:'+str(i) for i in range(25)]
+        labels = ['claim:'+str(i) for i in range(26)]
         tex = self.project / '2-proofs.tex'
         tex.write_text('\n'.join('\\label{'+label+'}' for label in labels))
         self.manifest = dict(manuscript='2-proofs.tex', manuscript_sha256=check.digest(tex),
@@ -506,7 +506,7 @@ class SourceIntegrityTests(TemporaryProject):
     def test_duplicate_labels_and_unpinned_endpoint_rejected(self):
         self.manifest['included_conclusions'][1]['label'] = self.manifest['included_conclusions'][0]['label']
         self.save()
-        with self.assertRaisesRegex(ValueError, '25 distinct labels'):
+        with self.assertRaisesRegex(ValueError, '26 distinct labels'):
             self.verify()
         self.manifest['included_conclusions'][1]['label'] = 'claim:1'
         self.manifest['included_conclusions'][0]['endpoints'][0]['source'] = 'unlisted.lean'
@@ -603,7 +603,7 @@ class V3SourceIntegrityTests(TemporaryProject):
             statement(env, 'claim:' + str(index), '2.' + str(index))
         tex = self.project / 'v3.tex'
         tex.write_text('\n'.join(lines) + '\n')
-        excluded_labels = {'cor:unirational', 'rem:delPezzo'}
+        excluded_labels = {'rem:delPezzo'}
         included = [dict(row, endpoints=[{'source': 'endpoint.lean'}])
                     for row in inventory if row['label'] not in excluded_labels]
         self.manifest = dict(
@@ -632,13 +632,14 @@ class V3SourceIntegrityTests(TemporaryProject):
 
     def test_v3_accounts_for_included_and_explicitly_excluded_statements(self):
         self.assertEqual(self.verify(), self.manifest)
-        self.assertEqual(len(self.manifest['included_conclusions']), 25)
-        self.assertEqual(len(self.manifest['excluded']), 2)
+        self.assertEqual(len(self.manifest['included_conclusions']), 26)
+        self.assertEqual([r['label'] for r in self.manifest['excluded']], ['rem:delPezzo'])
+        self.assertIn('cor:unirational', [r['label'] for r in self.manifest['included_conclusions']])
         self.assertNotIn('rem:voisin', [row['label'] for row in self.manifest['statement_inventory']])
 
     def test_unaccounted_or_duplicate_exclusion_rejected(self):
         original = self.manifest['excluded'][:]
-        for replacement in (original[:1], original + [original[0]]):
+        for replacement in ([], original + [original[0]]):
             self.manifest['excluded'] = replacement
             self.save()
             with self.subTest(count=len(replacement)), self.assertRaisesRegex(

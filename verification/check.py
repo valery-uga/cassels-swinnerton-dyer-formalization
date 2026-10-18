@@ -51,7 +51,7 @@ def verify():
         if Path(rel).is_absolute() or '..' in Path(rel).parts: raise ValueError('Unsafe pin path')
         if not path.is_file() or digest(path)!=expected: raise ValueError('Missing or changed pinned source: '+rel)
     rows=manifest['included_conclusions']
-    if len(rows)!=25 or len({r['label'] for r in rows})!=25: raise ValueError('Coverage must contain 25 distinct labels')
+    if len(rows)!=26 or len({r['label'] for r in rows})!=26: raise ValueError('Coverage must contain 26 distinct labels')
     tex=active_tex((ROOT/manifest['manuscript']).read_text())
     if 'manuscript_version' in manifest:
         inventory=manuscript_inventory(tex)
@@ -67,7 +67,7 @@ def verify():
         if '\\label{'+row['label']+'}' not in tex: raise ValueError('Missing manuscript label: '+row['label'])
         for end in row['endpoints']:
             if end['source'] not in pins: raise ValueError('Unpinned endpoint source')
-    print(f'PASS source integrity: {source_count} pinned files and manuscript assets; 25 mapped conclusions.',flush=True)
+    print(f'PASS source integrity: {source_count} pinned files and manuscript assets; 26 mapped conclusions.',flush=True)
     return manifest
 
 def main():

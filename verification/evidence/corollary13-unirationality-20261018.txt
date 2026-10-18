@@ -1,0 +1,41 @@
+info: AllCharacteristics/ManuscriptVerification/Unirationality.lean:20:0: @AllCharacteristics.isUnirationalOver_normalized_smooth_cubic : ∀ {k : Type u_1} [inst : Field k]
+  (c : PfaffianDescent.Cubic k 4) (hhom : c.toMvPolynomial.IsHomogeneous 3),
+  c.eval (AllCharacteristics.kollarBasePoint k) = 0 →
+    c.mixed (AllCharacteristics.kollarBasePoint k) (AllCharacteristics.kollarAffineLineDirection k fun x => 0) ≠ 0 →
+      ∀ [AlgebraicGeometry.Smooth (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase c.toMvPolynomial hhom)],
+        AllCharacteristics.HomogeneousProjective.IsUnirationalOver k
+          (AllCharacteristics.HomogeneousProjective.hypersurface c.toMvPolynomial hhom)
+          (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase c.toMvPolynomial hhom)
+info: AllCharacteristics/ManuscriptVerification/Unirationality.lean:21:0: 'AllCharacteristics.isUnirationalOver_normalized_smooth_cubic' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: AllCharacteristics/ManuscriptVerification/Unirationality.lean:24:0: @AllCharacteristics.smoothCubic_unirational_of_rational_section : ∀ {k : Type u_1} [inst : Field k]
+  (F : MvPolynomial (Fin 4) k) (hF : F.IsHomogeneous 3),
+  F ≠ 0 →
+    ∀ [AlgebraicGeometry.Smooth (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase F hF)]
+      (s : AlgebraicGeometry.Spec (CommRingCat.of k) ⟶ AllCharacteristics.HomogeneousProjective.hypersurface F hF),
+      CategoryTheory.CategoryStruct.comp s (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase F hF) =
+          CategoryTheory.CategoryStruct.id (AlgebraicGeometry.Spec (CommRingCat.of k)) →
+        AllCharacteristics.HomogeneousProjective.IsUnirationalOver k
+          (AllCharacteristics.HomogeneousProjective.hypersurface F hF)
+          (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase F hF)
+info: AllCharacteristics/ManuscriptVerification/Unirationality.lean:25:0: 'AllCharacteristics.smoothCubic_unirational_of_rational_section' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: AllCharacteristics/ManuscriptVerification/Unirationality.lean:28:0: @AllCharacteristics.twoProofs_corollary13_unirational_iff_zeroCycle_degree_one : ∀ {k : Type u_1} [inst : Field k]
+  (F : MvPolynomial (Fin 4) k) (hF : F.IsHomogeneous 3),
+  F ≠ 0 →
+    ∀ [AlgebraicGeometry.Smooth (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase F hF)],
+      AllCharacteristics.HomogeneousProjective.IsUnirationalOver k
+          (AllCharacteristics.HomogeneousProjective.hypersurface F hF)
+          (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase F hF) ↔
+        ∃ z,
+          (AllCharacteristics.ZeroCycle.degree (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase F hF)) z = 1
+info: AllCharacteristics/ManuscriptVerification/Unirationality.lean:29:0: 'AllCharacteristics.twoProofs_corollary13_unirational_iff_zeroCycle_degree_one' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: AllCharacteristics/ManuscriptVerification/Unirationality.lean:32:0: PASS AllCharacteristics.smoothCubic_unirational_of_rational_section: declarations=56221; axioms=#[Quot.sound, Classical.choice, propext]
+AUDIT COMPLETE: 1 roots; type/value/projection/recursor traversal
+PASS AllCharacteristics.twoProofs_corollary13_unirational_iff_zeroCycle_degree_one: declarations=109995; axioms=#[Quot.sound, Classical.choice, propext]
+AUDIT COMPLETE: 1 roots; type/value/projection/recursor traversal
+Build completed successfully (7557 jobs).

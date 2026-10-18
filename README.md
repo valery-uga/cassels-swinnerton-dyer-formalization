@@ -1,8 +1,8 @@
 # Cassels–Swinnerton-Dyer for cubic surfaces in Lean
 
-**This project formalizes [*Two proofs of the Cassels–Swinnerton-Dyer conjecture for cubic surfaces*](paper/2-proofs.pdf) by Valery Alexeev and Stefan Schreieder, together with the foundational results it uses from the papers of Coray and Voisin.** It includes Lean proofs of the manuscript's mathematical statements, subject to the exceptions below, together with Coray's characteristic-zero degree-1,4,10 reduction and Voisin's degree-ten elimination. The required results from both foundational papers are proved within the project, not assumed as external theorems. The original papers and explanatory notes are in [coray-paper/](coray-paper/) and [voisin-paper/](voisin-paper/); their coverage is limited to the results and constructions needed here, rather than every statement in those papers.
+**This project formalizes [*Two proofs of the Cassels–Swinnerton-Dyer conjecture for cubic surfaces*](paper/2-proofs.pdf) by Valery Alexeev and Stefan Schreieder, together with the foundational results it uses from the papers of Coray and Voisin.** It includes Lean proofs of the manuscript's mathematical statements, subject to the exception below, together with Coray's characteristic-zero degree-1,4,10 reduction and Voisin's degree-ten elimination. The required results from both foundational papers are proved within the project, not assumed as external theorems. The original papers and explanatory notes are in [coray-paper/](coray-paper/) and [voisin-paper/](voisin-paper/); their coverage is limited to the results and constructions needed here, rather than every statement in those papers.
 
-**All numbered mathematical statements in _Two proofs of the Cassels–Swinnerton-Dyer conjecture for cubic surfaces_ have formally checked Lean counterparts, except Corollary 1.3 and Remark 1.5.** This refers to the [arXiv v3 manuscript](paper/2-proofs.tex) ([PDF](paper/2-proofs.pdf)): 25 of its 27 numbered statements are covered, across Sections 1–6. The exceptions are explained below; the [coverage table](paper/COVERAGE.md) records the precise hypotheses and proof-route details.
+**All numbered mathematical statements in _Two proofs of the Cassels–Swinnerton-Dyer conjecture for cubic surfaces_ have formally checked Lean counterparts, except Remark 1.5.** This refers to the [arXiv v3 manuscript](paper/2-proofs.tex) ([PDF](paper/2-proofs.pdf)): 26 of its 27 numbered statements are covered, across Sections 1–6. The exception is explained below; the [coverage table](paper/COVERAGE.md) records the precise hypotheses and proof-route details.
 
 **The two proofs in Sections 3 and 4 have been formalized and checked independently of one another, as explained below.** The Pfaffian argument of Section 3 and the quadratic-net argument of Section 4 are both present; Section 4 is not verified merely by invoking Section 3's conclusion.
 
@@ -10,14 +10,15 @@
 
 The main theorem says that a cubic surface over any field has a rational point if it has a point over a finite extension of degree coprime to three. Equivalently, it has a rational point if it has a zero-cycle of degree one. Singular and nonreduced cubic hypersurfaces are included. The main theorem requires no perfectness or separability assumption, and the final proofs do not assume Coray's or Voisin's results as unproved inputs: the needed reductions are supplied within the formalization.
 
-## What has been checked, and the exceptions
+## What has been checked, and the exception
 
 Lean is a proof assistant. A formal proof supplies an exact mathematical statement and a proof that Lean's small kernel checks against its logical rules. This is deductive verification, rather than testing examples or checking numerical evidence. The project uses Mathlib, Lean's mathematical library.
 
-The coverage includes the numbered theorems, propositions, lemmas, and the computational remark on the dimension of H⁰ in Section 4. The [coverage table](paper/COVERAGE.md) matches each covered statement to its Lean theorem, hypotheses, and any differences in formulation. The two excluded numbered statements are:
+The coverage includes the numbered theorems, propositions, lemmas, and the computational remark on the dimension of H⁰ in Section 4. The [coverage table](paper/COVERAGE.md) matches each covered statement to its Lean theorem, hypotheses, and any differences in formulation.
 
-- **Corollary 1.3:** the equivalence between unirationality of a smooth cubic surface and existence of a zero-cycle of degree one. The rational-point theorem is verified; the further implication from a rational point to unirationality is not included in this coverage.
-- **Remark 1.5:** the discussion of other del Pezzo surfaces and comparisons with quartics. These additional comparisons are outside the formalization's scope.
+[Corollary 1.3](AllCharacteristics/Corollary13Unirationality.lean) is included: over every field, a smooth cubic surface is unirational if and only if it has a zero-cycle of degree one. Its [Lean audit](AllCharacteristics/ManuscriptVerification/Unirationality.lean) is separate from the recorded Comparator run.
+
+The sole excluded numbered statement is **Remark 1.5**, the discussion of other del Pezzo surfaces and comparisons with quartics.
 
 Lemma 2.3 is covered over perfect fields, as stipulated by Section 2 of the paper. Several other Lean statements are stronger than their manuscript counterparts. The coverage claim concerns the mathematical conclusions under the recorded hypotheses, not a line-by-line transcription of every proof sentence, bibliographic assertion, or result in the cited literature. Where a formal proof takes a different route, the coverage table says so. For example, some preliminary point-existence alternatives follow from a stronger descent theorem rather than from the particular residual-point construction printed in the paper. The [version notes](paper/VERSION.md) record the reconciliation with v3.
 
@@ -37,7 +38,7 @@ Comparator is an additional verification tool around Lean, rather than a differe
 2. **Axiom check:** the proof was checked against the permitted axioms. An admitted proof or an additional axiom asserting a mathematical result would not pass this check.
 3. **Kernel replay:** the exported solution was checked again by Lean's default kernel, beyond the earlier project build and declaration audits.
 
-Comparator exited successfully with code 0 after **2 hours 54 minutes 16 seconds**, reporting `Lean default kernel accepts the solution` and `Your solution is okay!`. The [run record](verification/evidence/comparator-main-20261017.json), [result excerpt](verification/evidence/comparator-main-20261017.txt), and [complete compressed log](verification/evidence/comparator-main-20261017.log.gz) preserve the evidence. This additional check covers the main conjecture; it is not being claimed for each of the 25 manuscript conclusions separately.
+Comparator exited successfully with code 0 after **2 hours 54 minutes 16 seconds**, reporting `Lean default kernel accepts the solution` and `Your solution is okay!`. The [run record](verification/evidence/comparator-main-20261017.json), [result excerpt](verification/evidence/comparator-main-20261017.txt), and [complete compressed log](verification/evidence/comparator-main-20261017.log.gz) preserve the evidence. This additional check covers the main conjecture; it is not being claimed for each of the 26 manuscript conclusions separately.
 
 The run used Lean v4.33.1 on macOS ARM64. **The optional Nanoda checker was disabled, and the native run did not provide Linux sandbox isolation.** The safeguards actually exercised were statement comparison, the permitted-axiom check, and Lean default kernel replay. There is no claim of acceptance by a second kernel implementation or of a sandboxed evaluation of hostile code.
 

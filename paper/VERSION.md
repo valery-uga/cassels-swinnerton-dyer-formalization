@@ -13,10 +13,11 @@ The PDF identifies itself as v3 and has 16 pages. It was not regenerated from Te
 
 The previous manuscript had SHA-256
 `93aa0e1fdaa2bdee5a7dbc7fcd786bfdac856a692100da8f016d0dd3e696059e`.
-The [coverage table](COVERAGE.md) now uses v3 label locations. All 25 selected
-conclusions retain their numbers and labels. Of v3's 27 active numbered
-statements, Corollary 1.3 remains excluded and the new Remark 1.5 is outside the
-selected scope. The old bibliographic Remark 2.5 is commented out in v3 and is
+At the v3 reconciliation, the [coverage table](COVERAGE.md) selected 25 of the
+27 active numbered statements; Corollary 1.3 and Remark 1.5 were excluded.
+The subsequent Corollary 1.3 addition below brings current coverage to 26 of 27,
+with only Remark 1.5 excluded. The manuscript numbers and labels are unchanged.
+The old bibliographic Remark 2.5 is commented out in v3 and is
 not counted. Lemma 2.3 retains the perfect-field qualification.
 
 ## Changes reviewed
@@ -83,3 +84,18 @@ new result has not been replayed through Comparator and does not change the
 scope of the recorded Comparator run.
 
 The October 18, 2026 [verification record](../verification/evidence/global-hilbert-smoothness-20261018.json) records the 76 successful module builds and the three-root audit. The [audit output](../verification/evidence/global-hilbert-smoothness-20261018.txt) prints the precise exported types and their standard axioms.
+
+## Subsequent Corollary 1.3 verification
+
+[Corollary 1.3](../AllCharacteristics/Corollary13Unirationality.lean) is now
+included over every field, including characteristic two and finite fields.
+The proof constructs the rational-point-to-unirationality implication and uses
+the internal CSD theorem for the degree-one zero-cycle implication.
+Unirationality uses an actual dominant rational map from finite-dimensional
+affine space over the original field.
+
+The [Unirationality audit](../AllCharacteristics/ManuscriptVerification/Unirationality.lean)
+and [October 18 record](../verification/evidence/corollary13-unirationality-20261018.json)
+document this addition. This is separate Lean verification, with no new
+Comparator verdict or claim of replaying every imported dependency.
+Remark 1.5 remains excluded, and Lemma 2.3 retains its perfect-field scope.

@@ -11,7 +11,7 @@ python3 verification/check.py
 python3 verification/check.py --run
 ```
 
-The first Python command checks source hashes, the exact v3 TeX and PDF, statement numbering and line references, and accounting for all 27 active numbered statements (25 included and two excluded). TeX comments are ignored, so the old commented-out remark cannot count as an active statement. It
+The first Python command checks source hashes, the exact v3 TeX and PDF, statement numbering and line references, and accounting for all 27 active numbered statements (26 included and one excluded). TeX comments are ignored, so the old commented-out remark cannot count as an active statement. It
 starts no compiler. The second builds the required local modules in dependency
 order, one at a time, then runs the declaration audits again. It prints
 `[current/total]`, the active module, log paths, and a message every 15 seconds
@@ -30,13 +30,14 @@ To check a subset, for example:
 python3 verification/check.py --run --group SectionFour
 python3 verification/check.py --run --group Coray --group GlobalHilbertRoute
 python3 verification/check.py --run --group GlobalHilbertSmoothness
+python3 verification/check.py --run --group Unirationality
 ```
 
 The full run checks the mapped conclusions, the internally proved
 Coray result, six groups of Section 4 constructions, the selected global
-Hilbert scheme route, and global Hilbert smoothness in the original cubic
-setting. It also builds the original main challenge and the two
-additional challenge/solution pairs. Challenge files intentionally use `sorry`;
+Hilbert scheme route, global Hilbert smoothness in the original cubic
+setting, and Corollary 1.3 on unirationality. It also builds the original main
+challenge and the two additional challenge/solution pairs. Challenge files intentionally use `sorry`;
 solution files must not rely on it. Challenge and solution modules deliberately
 have identical declaration names and must never be imported together.
 
@@ -78,6 +79,17 @@ the dependency closure and rejects the two named point-only smoothness
 endpoints listed in the audit source. The [recorded output](evidence/global-hilbert-smoothness-20261018.txt)
 prints the actual types and confirms that all three roots use only the
 permitted standard axioms.
+
+The [Unirationality audit](../AllCharacteristics/ManuscriptVerification/Unirationality.lean)
+checks the internally constructed rational-point-to-unirationality theorem
+and [Corollary 1.3](../AllCharacteristics/Corollary13Unirationality.lean).
+It requires the actual geometric constructions in the proof dependencies and
+rejects the older conditional unirationality adapters. The theorem applies
+over every field, including characteristic two and finite fields. Its
+`IsUnirationalOver` conclusion supplies an actual dominant scheme rational map
+from finite-dimensional affine space over the original field, with the
+required equality of structure maps. The [October 18 record](evidence/corollary13-unirationality-20261018.json)
+is separate Lean evidence; no Comparator verdict is claimed for this addition.
 
 A successful Lean build checks new proofs with Lean's kernel. Dependencies loaded
 from `.olean` files are not all independently replayed by the audit. The recorded
