@@ -1,0 +1,41 @@
+info: AllCharacteristics/ManuscriptVerification/GlobalHilbertSmoothness.lean:10:0: @PfaffianDescent.originalLiftedCubicGlobalHilbert_smooth_flat001 : ∀ {R k : Type u_1} [inst : CommRing R]
+  [IsLocalRing R] [inst_2 : IsNoetherianRing R] [inst_3 : Field k] (b : R →+* k),
+  Function.Surjective ⇑b →
+    ∀ (q : MvPolynomial (Fin 4) R) (hq : q.IsHomogeneous 3) (p : MvPolynomial (Fin 4) k) (hp : p.IsHomogeneous 3),
+      p ≠ 0 →
+        (MvPolynomial.map b) q = p →
+          ∀ [AlgebraicGeometry.Smooth (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase p hp)] (n : ℕ)
+            (hn : 0 < n),
+            AlgebraicGeometry.Smooth
+                (PfaffianDescent.originalNormalizedPolynomialGlobalHilbertObject001 q hq n hn).hom ∧
+              AlgebraicGeometry.Flat (PfaffianDescent.originalNormalizedPolynomialGlobalHilbertObject001 q hq n hn).hom
+info: AllCharacteristics/ManuscriptVerification/GlobalHilbertSmoothness.lean:11:0: 'PfaffianDescent.originalLiftedCubicGlobalHilbert_smooth_flat001' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: AllCharacteristics/ManuscriptVerification/GlobalHilbertSmoothness.lean:14:0: @PfaffianDescent.originalNormalizedPolynomialGlobalHilbert_smooth_flat_primitive_smooth_cubic001 : ∀ {R : Type u_1}
+  [inst : CommRing R] [inst_1 : IsLocalRing R] [inst_2 : IsNoetherianRing R] (q : MvPolynomial (Fin 4) R)
+  (hq : q.IsHomogeneous 3)
+  [AlgebraicGeometry.Smooth (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase q hq)],
+  (MvPolynomial.map (IsLocalRing.residue R)) q ≠ 0 →
+    ∀ (n : ℕ) (hn : 0 < n),
+      AlgebraicGeometry.Smooth (PfaffianDescent.originalNormalizedPolynomialGlobalHilbertObject001 q hq n hn).hom ∧
+        AlgebraicGeometry.Flat (PfaffianDescent.originalNormalizedPolynomialGlobalHilbertObject001 q hq n hn).hom
+info: AllCharacteristics/ManuscriptVerification/GlobalHilbertSmoothness.lean:15:0: 'PfaffianDescent.originalNormalizedPolynomialGlobalHilbert_smooth_flat_primitive_smooth_cubic001' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: AllCharacteristics/ManuscriptVerification/GlobalHilbertSmoothness.lean:18:0: @PfaffianDescent.originalCubic_physicalArtinianSquareZeroLifts001 : ∀ {R : Type u_1} [inst : CommRing R]
+  [inst_1 : IsLocalRing R] (q : MvPolynomial (Fin 4) R) (hq : q.IsHomogeneous 3)
+  [AlgebraicGeometry.Smooth (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase q hq)],
+  (MvPolynomial.map (IsLocalRing.residue R)) q ≠ 0 →
+    ∀ (n : ℕ),
+      PfaffianDescent.PhysicalFunctorArtinianSquareZeroLifts001 R
+        (PfaffianDescent.relativeFiniteFlatHilbertFunctor197
+          (AllCharacteristics.HomogeneousProjective.hypersurfaceToBase q hq) n)
+info: AllCharacteristics/ManuscriptVerification/GlobalHilbertSmoothness.lean:19:0: 'PfaffianDescent.originalCubic_physicalArtinianSquareZeroLifts001' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: AllCharacteristics/ManuscriptVerification/GlobalHilbertSmoothness.lean:22:0: PASS PfaffianDescent.originalLiftedCubicGlobalHilbert_smooth_flat001: declarations=55512; axioms=#[Quot.sound, Classical.choice, propext]
+PASS PfaffianDescent.originalNormalizedPolynomialGlobalHilbert_smooth_flat_primitive_smooth_cubic001: declarations=54599; axioms=#[Quot.sound, Classical.choice, propext]
+PASS PfaffianDescent.originalCubic_physicalArtinianSquareZeroLifts001: declarations=52506; axioms=#[Quot.sound, Classical.choice, propext]
+AUDIT COMPLETE: 3 roots; type/value/projection/recursor traversal
+Build completed successfully (5314 jobs).

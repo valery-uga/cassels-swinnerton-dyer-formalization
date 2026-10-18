@@ -422,11 +422,18 @@
           "line": 106,
           "part": "fully expanded outer global-family lifting",
           "source": "AllCharacteristics/OriginalGlobalHilbertCubicSubschemeLifting.lean"
+        },
+        {
+          "module": "PfaffianDescent.OriginalLiftedCubicGlobalHilbertSmooth",
+          "name": "PfaffianDescent.originalLiftedCubicGlobalHilbert_smooth_flat001",
+          "line": 20,
+          "part": "global smoothness and flatness of the same Hilbert scheme, every positive length",
+          "source": "PfaffianDescent/OriginalLiftedCubicGlobalHilbertSmooth.lean"
         }
       ],
-      "hypotheses": "Positive-characteristic field with actual prime characteristic; nonzero homogeneous smooth cubic and original closed point x. Constructs complete CharZero DVR R, surjective R\u2192k, actual smooth lifted cubic equation, finite flat closed family of rank residueDegree(x) everywhere, and IsPullback square recovering same original closed subscheme P.",
+      "hypotheses": "Positive-characteristic field with actual prime characteristic; nonzero homogeneous smooth cubic and original closed point x. Constructs complete CharZero DVR R, surjective R\u2192k, actual smooth lifted cubic equation, finite flat closed family of rank residueDegree(x) everywhere, and IsPullback square recovering same original closed subscheme P. The additional global-smoothness endpoint starts with a local Noetherian base R, a surjective map R to a field k, and a homogeneous cubic q reducing to a nonzero smooth cubic p. It proves Smooth and Flat for the same Hilbert structure map at every positive length, with no characteristic restriction.",
       "difference": "Matches arbitrary imperfect-field manuscript scope; no supplied DVR, Cohen ring, family, smooth Hilbert point, field-finite-generation, perfectness or desired geometry premise on final natural roots. Outer prime-uniformizer variant is even stronger.",
-      "note": "The v3 proof cites global smoothness of the relative Hilbert scheme via Fogarty. The selected Lean route constructs the global family and proves smoothness at the original closed-point classifier, sufficient for this lifting conclusion; it does not prove Fogarty global smoothness."
+      "note": "Global smoothness and flatness of the same representing Hilbert scheme are now proved for every positive length over the original local Noetherian base with nonzero smooth special cubic, including the manuscript complete DVR. Arbitrary finite flat families are covered. The previous pointwise lifting proof remains valid and unchanged; the added global theorem has its own Lean dependency audit, not a new Comparator replay."
     },
     {
       "number": "Theorem 5.3",
@@ -698,8 +705,7 @@
     "Lemma 2.3 is over perfect fields, consistent with Section 2 standing assumption.",
     "Selected methods are audited; this is not a translation of every prose sentence or of the whole 1976 Coray paper.",
     "The former bibliographic Remark 2.5 (rem:voisin) is commented out in v3 and is not an active statement.",
-    "New Remark 1.5 (del Pezzo surfaces and quartic comparisons) is outside the selected scope.",
-    "Lemma 5.2 conclusion remains proved; the v3 Fogarty assertion of global Hilbert-scheme smoothness is not formalized by the selected local-smoothness lifting route."
+    "New Remark 1.5 (del Pezzo surfaces and quartic comparisons) is outside the selected scope."
   ],
   "audit_groups": [
     {
@@ -836,6 +842,15 @@
         "AllCharacteristics.twoProofs_chapterFive_smooth_by_selected_closedPoint_viaGlobalHilbert_internalCoray001"
       ],
       "route_check": true
+    },
+    {
+      "module": "AllCharacteristics.ManuscriptVerification.GlobalHilbertSmoothness",
+      "roots": [
+        "PfaffianDescent.originalLiftedCubicGlobalHilbert_smooth_flat001",
+        "PfaffianDescent.originalNormalizedPolynomialGlobalHilbert_smooth_flat_primitive_smooth_cubic001",
+        "PfaffianDescent.originalCubic_physicalArtinianSquareZeroLifts001"
+      ],
+      "allow_definitions": false
     }
   ],
   "comparator_groups": [
@@ -852,7 +867,7 @@
       "trusted_imports": "project definition/provider modules; not a Mathlib-only independent baseline"
     }
   ],
-  "local_lean_source_count": 4175,
+  "local_lean_source_count": 4254,
   "manuscript_version": "arXiv:2609.15930v3",
   "manuscript_pdf": "paper/2-proofs.pdf",
   "manuscript_pdf_sha256": "dd901a166391585ac9f2e7643dcf9ff4560d8e10df26c2d25125800ca0871f2e",
@@ -993,23 +1008,27 @@
       "tex_line": 1264
     }
   ],
-  "method_scope_limits": [
-    {
-      "manuscript_label": "lem:lift",
-      "tex_lines": [
-        1141,
-        1149
-      ],
-      "claim": "Global smoothness of Hilb^d(S/R) via Fogarty",
-      "status": "not_formalized",
-      "existing_coverage": "Original closed-point classifier smoothness and actual global-family lifting suffice for the named lifting conclusion."
-    }
-  ],
+  "method_scope_limits": [],
   "main_comparator": {
     "config": "AllCharacteristics/ComparatorChallenge/config.json",
     "status": "pass",
     "run_date": "2026-10-17",
     "evidence": "verification/evidence/comparator-main-20261017.json",
     "scope": "Main CSD challenge only; native macOS, Lean default kernel replay; Nanoda disabled; no Linux sandbox."
-  }
+  },
+  "additional_method_coverage": [
+    {
+      "manuscript_label": "lem:lift",
+      "claim": "Global smoothness and flatness of the relative Hilbert scheme in the manuscript cubic setting",
+      "status": "formalized",
+      "scope": "Every positive length; original local Noetherian base, surjective residue map, homogeneous cubic lifting a nonzero smooth special cubic. No reducedness, local-complete-intersection, separability, perfectness or supplied deformation-lift hypothesis on the final theorem. This is the cubic case needed here, not a claim to formalize Fogarty for arbitrary smooth surfaces.",
+      "endpoint": "PfaffianDescent.originalLiftedCubicGlobalHilbert_smooth_flat001",
+      "source": "PfaffianDescent/OriginalLiftedCubicGlobalHilbertSmooth.lean",
+      "audit_group": "GlobalHilbertSmoothness",
+      "comparator": "not_run_for_this_additional_theorem",
+      "verification_date": "2026-10-18",
+      "evidence": "verification/evidence/global-hilbert-smoothness-20261018.json",
+      "audit_output": "verification/evidence/global-hilbert-smoothness-20261018.txt"
+    }
+  ]
 }

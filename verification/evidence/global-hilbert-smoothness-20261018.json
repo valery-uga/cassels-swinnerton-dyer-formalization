@@ -1,0 +1,576 @@
+{
+  "date": "2026-10-18",
+  "recorded_at": "2026-10-18T14:22:38.648189+00:00",
+  "status": "pass",
+  "scope": "Global smoothness and flatness of the same representing Hilbert scheme for every positive length over the original local Noetherian base, for a homogeneous cubic whose special fibre is a nonzero smooth cubic. Includes the manuscript complete DVR and arbitrary finite flat subschemes.",
+  "theorem": "PfaffianDescent.originalLiftedCubicGlobalHilbert_smooth_flat001",
+  "audit_module": "AllCharacteristics.ManuscriptVerification.GlobalHilbertSmoothness",
+  "roots": [
+    "PfaffianDescent.originalLiftedCubicGlobalHilbert_smooth_flat001",
+    "PfaffianDescent.originalNormalizedPolynomialGlobalHilbert_smooth_flat_primitive_smooth_cubic001",
+    "PfaffianDescent.originalCubic_physicalArtinianSquareZeroLifts001"
+  ],
+  "allowed_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "audit": {
+    "exit_code": 0,
+    "log": "global-hilbert-smoothness-20261018.txt",
+    "sha256": "595085616ffa8f2b9753dbd7562a0d76f80c1ef0e3755b3bd98f34b84712d0d3",
+    "excerpt": "Exact build output beginning with the first info message from the new audit module; preceding dependency warnings omitted.",
+    "raw_build_log": "global-hilbert-smoothness-20261018.log.gz",
+    "raw_build_log_sha256": "72fe761b5f5a9d68d3d8dd8f60823ce4f8005bdb40d51d41fedcc253b3e05cd8",
+    "compressed_log_sha256": "1e51d90ec54d7a5eb5fc468263bbd5eb8d9b4aca3d65bc93882d903210875500",
+    "command": "lake build AllCharacteristics.ManuscriptVerification.GlobalHilbertSmoothness",
+    "kind": "Imported-environment type/value/projection/recursor dependency traversal, not independent kernel replay"
+  },
+  "compilation": {
+    "proof_modules": 75,
+    "audit_modules": 1,
+    "all_separate_module_builds_passed": true,
+    "existing_dependencies": "Existing pinned compiled dependencies were reused; not a clean-room rebuild.",
+    "execution": "Root-owned guarded dependency-ordered builds, at most two simultaneous Lean processes; heartbeat limits not raised.",
+    "modules": [
+      {
+        "module": "AllCharacteristics.ManuscriptVerification.GlobalHilbertSmoothness",
+        "source": "AllCharacteristics/ManuscriptVerification/GlobalHilbertSmoothness.lean",
+        "source_sha256": "b08badd95ef643d2d3467c8a556446ae7449353f8bfb4cd265dc11a8bc681958",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.ActualAffineTensorChartBaseChange",
+        "source": "PfaffianDescent/ActualAffineTensorChartBaseChange.lean",
+        "source_sha256": "590874fd58289c30c621b84489099e1dfdf5065a8123e10671495837588a3ee2",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.ActualArtinianQuotientLocalizationIso",
+        "source": "PfaffianDescent/ActualArtinianQuotientLocalizationIso.lean",
+        "source_sha256": "785b4ba1ba542e371ce5cf6eb8aed874d2726d3236ce150912e3840ae06629c4",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.ActualArtinianQuotientSupport",
+        "source": "PfaffianDescent/ActualArtinianQuotientSupport.lean",
+        "source_sha256": "545d21f13cc4d812e1d7f0fd5ad7ed22ac7cd1612c5bf6e6f8327c0ce28c9d68",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.ActualIdealReduction318",
+        "source": "PfaffianDescent/ActualIdealReduction318.lean",
+        "source_sha256": "9f9c8d7db401982a7d38467f72d11f18b91f212acff35c502fa695efe6d7c4b7",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.ActualSyzygyBasisLift318",
+        "source": "PfaffianDescent/ActualSyzygyBasisLift318.lean",
+        "source_sha256": "79d479167a86aad54d88647c57094c35ae258628cf6c760bd431a90fd4ed1dae",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.AffineHilbertBurchGlobalPhysicalLift",
+        "source": "PfaffianDescent/AffineHilbertBurchGlobalPhysicalLift.lean",
+        "source_sha256": "d84b0e101ff0b45a7904602f2d4563c70c49748f556ebbfc7cd59efa1247011d",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.ArbitraryCubicArtinPhysicalLift",
+        "source": "PfaffianDescent/ArbitraryCubicArtinPhysicalLift.lean",
+        "source_sha256": "0bf3d1f7e8c6bf8346c117200b1496d4b43ec7dca87df709791d5d16b437e2c3",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.ArbitraryFiniteFamilySurfaceStalkIntake",
+        "source": "PfaffianDescent/ArbitraryFiniteFamilySurfaceStalkIntake.lean",
+        "source_sha256": "de2b29d33d907abfc33811abaaa6f694f74ff210ea5478a4f81b90fa2ca58c84",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.ArbitraryWholeAffineFamilyQuotient",
+        "source": "PfaffianDescent/ArbitraryWholeAffineFamilyQuotient.lean",
+        "source_sha256": "61cb574715793f9ff79317cf391825f08d7f9344a5dc31b36bc36bc0be1a3a72",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.ArtinBaseRegularElement318",
+        "source": "PfaffianDescent/ArtinBaseRegularElement318.lean",
+        "source_sha256": "0e052035c59bf7907dab08e7c7d5a906058f3065ad7c0f014ad38d771f645d3e",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.ArtinBaseRegularPair318",
+        "source": "PfaffianDescent/ArtinBaseRegularPair318.lean",
+        "source_sha256": "84c06f5028fdffab7b1a3f6c6240541928928623d6de747ef2536f274584fcf3",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.ArtinBaseTensorInjection318",
+        "source": "PfaffianDescent/ArtinBaseTensorInjection318.lean",
+        "source_sha256": "0aed29b85fb17220834ecaf3bd7014b7a2209ae44884a158b9e8119b47dc1fae",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.ArtinSemilocalHilbertBurch318",
+        "source": "PfaffianDescent/ArtinSemilocalHilbertBurch318.lean",
+        "source_sha256": "a17914ab17f9605dc72b8d434b79a5bfc87c6869f0f23db6754261569ad5bdda",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.ArtinSemilocalSurfacePresentation318",
+        "source": "PfaffianDescent/ArtinSemilocalSurfacePresentation318.lean",
+        "source_sha256": "9badf767ed11d7d9245a7b4cd671f1de0bbbc4562ca314b203a3a3c82092d787",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.ArtinTensorSemilocalResidue318",
+        "source": "PfaffianDescent/ArtinTensorSemilocalResidue318.lean",
+        "source_sha256": "5383036b2a79a71d1eca1cf9478544b77f6d05a79a0a9f50e615b64495ebf69a",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.ChosenPresentationReduction318",
+        "source": "PfaffianDescent/ChosenPresentationReduction318.lean",
+        "source_sha256": "9e59daacf7048aef86fadb30bd1cf874967a0907a961720c2e14a627524fe537",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.CofactorExactnessOfIdealEquality318",
+        "source": "PfaffianDescent/CofactorExactnessOfIdealEquality318.lean",
+        "source_sha256": "88909833f50a93edc25a1ea6c9112e43b9aec9ba59e270d36692c4af8aa09787",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.CubicActualFiniteSupportLocalSurface",
+        "source": "PfaffianDescent/CubicActualFiniteSupportLocalSurface.lean",
+        "source_sha256": "47368be80307ffd9da86acbe373bd46782c3aefd14b889410bb34c9ab22b3551",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.CubicAffineQuotientSupportLocalSurface",
+        "source": "PfaffianDescent/CubicAffineQuotientSupportLocalSurface.lean",
+        "source_sha256": "c4c88000e4258e7ee17598da77edfb59d8100c2cd6d1fce5622c8c774170e7e3",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.CubicAffineTensorResidueSupport",
+        "source": "PfaffianDescent/CubicAffineTensorResidueSupport.lean",
+        "source_sha256": "b9d8eb958a3e32f1b6b6faa907fda8e6ee37956b9cd8e437f178265f1d9e9113",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.ExactReductionSquare318",
+        "source": "PfaffianDescent/ExactReductionSquare318.lean",
+        "source_sha256": "f54f12b04624f61d00ac8aa3b3f8c1a7ce60b6d1ab50fb4baa6177811a55d8c8",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.FiniteSupportIdealMatrixSpreading",
+        "source": "PfaffianDescent/FiniteSupportIdealMatrixSpreading.lean",
+        "source_sha256": "edd86a4e803fbe9efd11bc8e5e8163d0e9cb5e1e64d317fae38bdc4318ac744e",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.FiniteSupportSemilocalBasisSpreading",
+        "source": "PfaffianDescent/FiniteSupportSemilocalBasisSpreading.lean",
+        "source_sha256": "a0f3733e7315da0e1673d06e890315e0ae2e1f12b4fc550617fc87661c8265ad",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.FlatPrescribedIdealFamilyGeneration318",
+        "source": "PfaffianDescent/FlatPrescribedIdealFamilyGeneration318.lean",
+        "source_sha256": "bf99eb7021fef220b855e9c4ca55bff628e6d2afb57c87d1b989aee8a6948a52",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.GenericAffineHilbertBurchPhysicalLift",
+        "source": "PfaffianDescent/GenericAffineHilbertBurchPhysicalLift.lean",
+        "source_sha256": "25b13a8ddbf38d64d63bea8b298a9738d03cf48ef2d01b2a63d080e586058e42",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.HilbertBurchArtinianLowHeight318",
+        "source": "PfaffianDescent/HilbertBurchArtinianLowHeight318.lean",
+        "source_sha256": "643cc126d47c73a310b6264b1e50de178062e2e5f79924bb876f77665fa18e45",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.HilbertBurchCofactorFactorUnit318",
+        "source": "PfaffianDescent/HilbertBurchCofactorFactorUnit318.lean",
+        "source_sha256": "55479968a3179dbc22789d80422d7a92665cea86b627ef87f251274a788f5ead",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.HilbertBurchCofactorLift318",
+        "source": "PfaffianDescent/HilbertBurchCofactorLift318.lean",
+        "source_sha256": "1ee1f4b6916f5c634ba14c08eb18d797326720d5b59ec03aaef6b7c213cbf673",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.HilbertBurchCofactorScalarFactor318",
+        "source": "PfaffianDescent/HilbertBurchCofactorScalarFactor318.lean",
+        "source_sha256": "d87b1897cb793a0fd92de97dd67434792f26519332a9959899f98b089af4cb33",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.HilbertBurchCofactorSplitTop318",
+        "source": "PfaffianDescent/HilbertBurchCofactorSplitTop318.lean",
+        "source_sha256": "1c85d99dc786b235627f2c7e4018f1c331079185da9bbfcd5e79a1ad5f538054",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.HilbertBurchCofactorUnitScaling318",
+        "source": "PfaffianDescent/HilbertBurchCofactorUnitScaling318.lean",
+        "source_sha256": "15da8c21512296f0223bf345db8cc1f8f32339f5e4e7067c1db5483fc8bfaffc",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.HilbertBurchExactComplexSpreading318",
+        "source": "PfaffianDescent/HilbertBurchExactComplexSpreading318.lean",
+        "source_sha256": "01c09c913353c2fe8260be27012c8ca44c5e54a33c3522f797c61cdb97e4aba0",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.HilbertBurchExistence318",
+        "source": "PfaffianDescent/HilbertBurchExistence318.lean",
+        "source_sha256": "cf0fe1d61fdc96fd75cb549948a0f8f674c2de922ca7aaf97e542da666ffb6cd",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.HilbertBurchFactorAndLowHeight318",
+        "source": "PfaffianDescent/HilbertBurchFactorAndLowHeight318.lean",
+        "source_sha256": "b199621f28d75e088349711a27b75edd844fe16637fa8393c1a405d48abf0173",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.HilbertBurchFiniteFlatLift318",
+        "source": "PfaffianDescent/HilbertBurchFiniteFlatLift318.lean",
+        "source_sha256": "f490767f2e0f8d160622d80376179b25de877ded2b8664faf9de9e089d2b3f59",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.HilbertBurchFiniteSupportLocalSurfaceTransport318",
+        "source": "PfaffianDescent/HilbertBurchFiniteSupportLocalSurfaceTransport318.lean",
+        "source_sha256": "68f5f6346a362c0c84af30cc4f573870085de73aab11644509df0e90267c71f3",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.HilbertBurchLocalizationSurjection318",
+        "source": "PfaffianDescent/HilbertBurchLocalizationSurjection318.lean",
+        "source_sha256": "d9dface528f8da376d3b3211a494b4f0173f311b85afdebba1b8382d84dade98",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.HilbertBurchMatrixLocalization318",
+        "source": "PfaffianDescent/HilbertBurchMatrixLocalization318.lean",
+        "source_sha256": "07c2319f05f0ba75df867aaa1ff19d99ec67ac396cd5eb75dfc2c5a6043051a3",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.HilbertBurchRegularPairPowers318",
+        "source": "PfaffianDescent/HilbertBurchRegularPairPowers318.lean",
+        "source_sha256": "719fd6a4dce5f8954d1badc5559b60cd60213fd1578ad844a27bf4266d06a687",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.HilbertBurchResidueMaximalLocalization318",
+        "source": "PfaffianDescent/HilbertBurchResidueMaximalLocalization318.lean",
+        "source_sha256": "ddfed7c5e8fa682ec2fd216b0a3f335c5da1ec68f29b54020bd2683d7d7bca3f",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.HilbertBurchRowKernelFintypeRank318",
+        "source": "PfaffianDescent/HilbertBurchRowKernelFintypeRank318.lean",
+        "source_sha256": "3ebfd37cbfed39881bfdc878cbad4bb0311929371eadb2b023d4749762f4a2ad",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.HilbertBurchRowKernelLocalization318",
+        "source": "PfaffianDescent/HilbertBurchRowKernelLocalization318.lean",
+        "source_sha256": "d509a68a6974d4c104a72632466c5d6504c40587434785784574d83feef1e12c",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.HilbertBurchRowLocalization318",
+        "source": "PfaffianDescent/HilbertBurchRowLocalization318.lean",
+        "source_sha256": "94e0cce8c0116a08e8f4e273484d84f0893b2890747da36d3430ad715d56cdee",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.HilbertBurchSemilocalIdealPresentation318",
+        "source": "PfaffianDescent/HilbertBurchSemilocalIdealPresentation318.lean",
+        "source_sha256": "dfedcbdf82699c7f2bf5e19b830e4abb5c1d7ff727714d2d1afb6c8eaca638bd",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.HilbertBurchSemilocalOptionMatrix318",
+        "source": "PfaffianDescent/HilbertBurchSemilocalOptionMatrix318.lean",
+        "source_sha256": "37f712e1e5171a728f9f065213b5bb4a490cd6511ca2afb2b676b5bb8e297c77",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.HilbertBurchSemilocalResidueCofactor318",
+        "source": "PfaffianDescent/HilbertBurchSemilocalResidueCofactor318.lean",
+        "source_sha256": "89716437de2eb204877d8009859412f6816421e1a687b6d0fddc7d2fa06d2e70",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.HilbertBurchSurfaceResolution318",
+        "source": "PfaffianDescent/HilbertBurchSurfaceResolution318.lean",
+        "source_sha256": "350f2d33efa4fe406e0087dfc696813fe89981a0a8a33560d727acbecbfd0e96",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.LiftChosenResiduePresentation318",
+        "source": "PfaffianDescent/LiftChosenResiduePresentation318.lean",
+        "source_sha256": "6e587cd44e6a27fe5f78407da1755978f936791d5fc60fb8647ee4d78111290c",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.LiftedSyzygyFiniteFlat318",
+        "source": "PfaffianDescent/LiftedSyzygyFiniteFlat318.lean",
+        "source_sha256": "8c1ceb27a41b2eedd88d5aeb4b674c581dff765d0122f10b5b5e112339657ca1",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.LiftedSyzygyIdealIntersection318",
+        "source": "PfaffianDescent/LiftedSyzygyIdealIntersection318.lean",
+        "source_sha256": "b204a92e09b2f9e505f2f29bdefcfb2d9959fa9ae79ece4ae9c707f6060b3f8c",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.LocalizedQuotientBaseFlat318",
+        "source": "PfaffianDescent/LocalizedQuotientBaseFlat318.lean",
+        "source_sha256": "5d74908845a9813eb1806da9feed9f3265ff0be7d26177c34ace9c7b16542829",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.NilpotentFlatTensorComparison318",
+        "source": "PfaffianDescent/NilpotentFlatTensorComparison318.lean",
+        "source_sha256": "6951e64db012da0813cd3fa3e878f045dca5ced6a8a9a5fd8e8d43f16a9a9e08",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.NilpotentUnitReflection318",
+        "source": "PfaffianDescent/NilpotentUnitReflection318.lean",
+        "source_sha256": "0540972a77f0aa65dd7f0c68ac120c1cdb56744a3d86998e6ccebe09d63a7cb3",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.OriginalArtinIdealRegularPair318",
+        "source": "PfaffianDescent/OriginalArtinIdealRegularPair318.lean",
+        "source_sha256": "7772a7e16c47aa6f50221e60cc1f557efd27c3dfa16e3041babc42f33d5634f0",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.OriginalArtinPrincipalHilbertBurch318",
+        "source": "PfaffianDescent/OriginalArtinPrincipalHilbertBurch318.lean",
+        "source_sha256": "e249f7134224c8418cec1394fa83c8ce97b3f4edda6a365c45eadb5154ea693c",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.OriginalArtinSupportHilbertBurch318",
+        "source": "PfaffianDescent/OriginalArtinSupportHilbertBurch318.lean",
+        "source_sha256": "1c13e95f9254122d7a39cc501a063992fe618bfab448c1383005c2444c644409",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.OriginalCubicAllFieldFibersNonzero",
+        "source": "PfaffianDescent/OriginalCubicAllFieldFibersNonzero.lean",
+        "source_sha256": "d0049b72c59cb303c04fff86c4dfbdef0ac62613382003e82684862e663988e8",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.OriginalCubicPhysicalArtinianLifts",
+        "source": "PfaffianDescent/OriginalCubicPhysicalArtinianLifts.lean",
+        "source_sha256": "c5202fa14f3598d1021766eed2541d908eadf13e0f7321bd01e2b629c14d743a",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.OriginalCubicRelativeSurfaceDimension",
+        "source": "PfaffianDescent/OriginalCubicRelativeSurfaceDimension.lean",
+        "source_sha256": "e313f8eea684a1490337b50ac3596ba002e4242e1f75d8b7ac6a52ebafd8a461",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.OriginalGlobalHilbertArtinianSmoothCriterion",
+        "source": "PfaffianDescent/OriginalGlobalHilbertArtinianSmoothCriterion.lean",
+        "source_sha256": "9716bec4ca805ea760542e1e65fde78cdd719049fe1ee70ec50695f5e658d744",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.OriginalLiftedCubicGlobalHilbertSmooth",
+        "source": "PfaffianDescent/OriginalLiftedCubicGlobalHilbertSmooth.lean",
+        "source_sha256": "c04992994c0dea967f2713157ab5852d1e019c483d38eccdfacd952d9453bf2e",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.PrincipalAffineReductionChart",
+        "source": "PfaffianDescent/PrincipalAffineReductionChart.lean",
+        "source_sha256": "302634712837f7609cc7df2ab896806bc70c14401c03b7454f5567c9f5e31b70",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.RelativeChosenMatrixCofactorEquality318",
+        "source": "PfaffianDescent/RelativeChosenMatrixCofactorEquality318.lean",
+        "source_sha256": "69c72fb0c1a2cc6e7716da2886770d44bf3afcc1ac16c208bd181c175db275c2",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.RelativeSurfacePresentation318",
+        "source": "PfaffianDescent/RelativeSurfacePresentation318.lean",
+        "source_sha256": "28e7fe06751fb37623718b1a35785ed0d5c6b959087eac4b0b94996b089d80da",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.RepresentedFunctorArtinianSmoothCriterion",
+        "source": "PfaffianDescent/RepresentedFunctorArtinianSmoothCriterion.lean",
+        "source_sha256": "cb27af50a43f555ba96ae401e3956b10e258f6b4432819f698a75ea10b2c7d2a",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.ResidueTensorDevissage318",
+        "source": "PfaffianDescent/ResidueTensorDevissage318.lean",
+        "source_sha256": "1b1d9acfb13f378358b0efffd5ec3e3f46cc7860436045812576b2eb4c3127c8",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.ResidueTensorLocalizedRank",
+        "source": "PfaffianDescent/ResidueTensorLocalizedRank.lean",
+        "source_sha256": "5645c1d023637e087f06115609c8caa6ff8f0d27e0027226372f509ecbcd91cc",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.SemilocalChosenMatrixCofactorEquality318",
+        "source": "PfaffianDescent/SemilocalChosenMatrixCofactorEquality318.lean",
+        "source_sha256": "8443be14650898aef29f626f48b4205594c858b6d615735080c1aa83fe070292",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.SemilocalMatrixPrincipalPresentation",
+        "source": "PfaffianDescent/SemilocalMatrixPrincipalPresentation.lean",
+        "source_sha256": "b8f5e5bbf8cf766a5dffa377457faa8d2297733de4f564e81580929156a05ce3",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.SemilocalResidueReduction318",
+        "source": "PfaffianDescent/SemilocalResidueReduction318.lean",
+        "source_sha256": "53111a3663f83c9bedb6c0dac2886b045e524df4e670d2f06f68e47e6688744a",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.SemilocalResidueSupport318",
+        "source": "PfaffianDescent/SemilocalResidueSupport318.lean",
+        "source_sha256": "0dbb98b584718c0ece7541a17eaeed7bc8bb65bba6dbbc6ab401c091719e7f37",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.WholeAffineQuotientPrincipalShrinking",
+        "source": "PfaffianDescent/WholeAffineQuotientPrincipalShrinking.lean",
+        "source_sha256": "77ac1f32d511e30c6e80a8fbafb7355081087d0a1f1bdccfbd29fce27de7849b",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.WholeFamilyAffineTensorChart",
+        "source": "PfaffianDescent/WholeFamilyAffineTensorChart.lean",
+        "source_sha256": "4b4f41bff5edde2740a645fc8b229af4515581d5d834af0b67e2ec29c9ddb0d1",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.WholeFamilyAffineTensorQuotient",
+        "source": "PfaffianDescent/WholeFamilyAffineTensorQuotient.lean",
+        "source_sha256": "beb28c435e09a282235a7511a84f300a6c301e639b3b923b92d826aa53a213a0",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      },
+      {
+        "module": "PfaffianDescent.WholeFiniteSupportAffineNeighborhood",
+        "source": "PfaffianDescent/WholeFiniteSupportAffineNeighborhood.lean",
+        "source_sha256": "f4cebc90912ff7b2bb9e9a052d055f2e034f5de11369729840770d673e22e4bd",
+        "deps_exit_code": 0,
+        "build_exit_code": 0
+      }
+    ]
+  },
+  "public_source_identity": "All 76 new module sources copied byte-for-byte from the checked development tree; every pre-existing pinned public file preserved.",
+  "source_pins_sha256": "74c845b80afa4337418b4d56c3eede8b04a286462115b36ddeb9bbb9b9ac3ba1",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "lake_manifest_sha256": "3374a9804ecbfe15dd43bb67053dd89774992996ed9fab1f9ca9fd69e9c47364",
+  "manuscript_assets": "Unchanged TeX and PDF",
+  "comparator": "Not run for this additional theorem. The main CSD challenge, solution, proof providers, and October 17 Comparator evidence are unchanged."
+}

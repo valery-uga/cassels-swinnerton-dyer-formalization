@@ -29,11 +29,13 @@ To check a subset, for example:
 ```sh
 python3 verification/check.py --run --group SectionFour
 python3 verification/check.py --run --group Coray --group GlobalHilbertRoute
+python3 verification/check.py --run --group GlobalHilbertSmoothness
 ```
 
-The full run checks 12 groups: the mapped conclusions, the internally proved
-Coray result, six groups of Section 4 constructions, and the selected global
-Hilbert scheme route. It also builds the original main challenge and the two
+The full run checks the mapped conclusions, the internally proved
+Coray result, six groups of Section 4 constructions, the selected global
+Hilbert scheme route, and global Hilbert smoothness in the original cubic
+setting. It also builds the original main challenge and the two
 additional challenge/solution pairs. Challenge files intentionally use `sorry`;
 solution files must not rely on it. Challenge and solution modules deliberately
 have identical declaration names and must never be imported together.
@@ -52,11 +54,30 @@ values, projection structure references, recursor rules, and inductive families
 in the imported Lean environment. It rejects missing declarations and axioms
 outside `propext`, `Quot.sound`, and `Classical.choice` (including `sorryAx`).
 Additional checks reject the specified Chapter 3 dependencies for the selected
-Section 4/Coray routes. The global Hilbert check requires the actual global-family
-producers and excludes earlier local-family substitutes. Its terminal theorem
+Section 4/Coray routes. The [GlobalHilbertRoute audit](../AllCharacteristics/ManuscriptVerification/GlobalHilbertRoute.lean)
+requires the actual global-family producers and excludes the specified earlier
+local-family substitutes. Its terminal theorem
 may retain Chapter 3 dependencies; the intermediate lifting roots may not.
 These are precise named-dependency tests, not a general mathematical test of
 independence between proofs.
+
+The [GlobalHilbertSmoothness audit](../AllCharacteristics/ManuscriptVerification/GlobalHilbertSmoothness.lean)
+checks [originalLiftedCubicGlobalHilbert_smooth_flat001](../PfaffianDescent/OriginalLiftedCubicGlobalHilbertSmooth.lean).
+The theorem proves smoothness and flatness of the same global Hilbert structure map for
+every positive length over a local Noetherian ring, when the homogeneous cubic
+reduces to a nonzero smooth cubic over its residue field. The complete DVR used
+in the manuscript is a special case. The construction treats arbitrary finite
+flat families, including nonreduced families and families that are not local
+complete intersections, without a separability or perfectness assumption.
+
+This audit checks three theorem roots: global smoothness from the original
+special cubic, global smoothness from a primitive smooth lifted cubic, and
+the constructed Artinian square-zero lifting property. For each root it
+requires the specified arbitrary-family and Hilbert–Burch constructions in
+the dependency closure and rejects the two named point-only smoothness
+endpoints listed in the audit source. The [recorded output](evidence/global-hilbert-smoothness-20261018.txt)
+prints the actual types and confirms that all three roots use only the
+permitted standard axioms.
 
 A successful Lean build checks new proofs with Lean's kernel. Dependencies loaded
 from `.olean` files are not all independently replayed by the audit. The recorded
@@ -166,8 +187,28 @@ The subsequent successful main CSD run is recorded separately in
 [evidence/comparator-main-20261017.json](evidence/comparator-main-20261017.json).
 Reproduce the checks yourself rather than treating a committed log as certification.
 
+The subsequent **October 18 global Hilbert smoothness verification** is recorded
+in [its verification record](evidence/global-hilbert-smoothness-20261018.json),
+[audit output](evidence/global-hilbert-smoothness-20261018.txt), and
+[full compressed audit build log](evidence/global-hilbert-smoothness-20261018.log.gz).
+All 75 new proof modules and the audit module passed separate builds. The three
+audit roots passed the standard-axiom and required/forbidden-dependency checks.
+The builds ran in the development checkout using existing pinned dependencies;
+the published new sources match it byte for byte, and the Lean toolchain and
+external package revisions agree. This is additional Lean evidence, with no
+new Comparator run. Earlier evidence files retain their historical meaning:
+the `not_formalized` global-smoothness entry in `arxiv-v3.json` records the
+earlier checkpoint and is superseded by this October 18 verification.
+
 ## arXiv v3 reconciliation
 
 [paper/VERSION.md](../paper/VERSION.md) records the source and PDF hashes and the changes to the coverage map. Existing successful Lean logs are retained as historical evidence for unchanged theorem declarations; they are not relabelled as a new clean-room build or Comparator run. The original main challenge and solution are unchanged; its configuration now disables Nanoda for the native run. The broader challenge types and proof bodies are also unchanged; only their manuscript-reference comments were updated during v3 reconciliation.
 
-The v3 Fogarty global-smoothness assertion and the new del Pezzo Remark 1.5 are explicitly outside the formalized scope. Smoothness is proved uniformly at [P] for every closed point P of the surface under the lifting hypotheses, and the full named lifting conclusion remains covered. The arbitrary input is a closed point of the surface, not an arbitrary length-d subscheme represented by its Hilbert scheme; see the [technical coverage notes](../paper/COVERAGE.md#revision-and-method-boundary).
+The global Hilbert smoothness assertion used in Lemma 5.2 is now covered for the
+original cubic family, with the precise scope above and in the
+[coverage notes](../paper/COVERAGE.md#revision-and-method-boundary). It has a
+separate Lean audit; it has not been replayed through Comparator. The main CSD
+proof and its October 17 Comparator result are unchanged, and no new Comparator
+certification is claimed. The general Fogarty theorem for arbitrary smooth
+surfaces and the del Pezzo comparisons in Remark 1.5 remain outside the selected
+scope.

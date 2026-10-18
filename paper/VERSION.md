@@ -26,7 +26,7 @@ not counted. Lemma 2.3 retains the perfect-field qualification.
 | Theorem 1.4 now states that the Pfaffian of an alternating matrix of linear forms represents zero nontrivially, including an identically zero Pfaffian. | The existing [provider](../AllCharacteristics/TwoProofs.lean#L232) already allows the zero polynomial. Its coefficient matrices encode the linear forms, and its rational section is the projective-point formulation. |
 | Lemma 3.3 uses geometric reducedness and expands the Beauville/Buchsbaum–Eisenbud proof. | The existing [provider](../AllCharacteristics/TwoProofs.lean#L244) requires reducedness in the subsection's characteristic-zero setting. The displayed matrix also appears as `frameMatrix` in [FrameMatrix.lean](../PfaffianDescent/FrameMatrix.lean); the actual embedded five-point resolution and presentation are in [ReducedProjectiveFivePoints.lean](../PfaffianDescent/ReducedProjectiveFivePoints.lean). This is not a claim that every added explanatory sentence or the general Buchsbaum–Eisenbud theorem has a separate audited export. |
 | Lemma 4.7 expands the semilinear action on the relation space. | The existing [semilinear normalization](../PfaffianDescent/QuarticSemilinearNormalization.lean) and [actual geometric representation](../PfaffianDescent/LiteralArithmeticH0SkewGeometricRepresentation.lean) implement the needed covariance and nonzero-coordinate rescaling. All nine Section 4 conclusions remain applicable. |
-| Lemma 5.2 now cites Fogarty for smoothness of the entire relative Hilbert scheme. | The [global-family lifting theorem](../AllCharacteristics/OriginalGlobalHilbertCubicSubschemeLifting.lean) still proves the named conclusion. The existing [classifier lift](../PfaffianDescent/OriginalClosedPointGlobalHilbertSmoothClassifierLift.lean) establishes smoothness uniformly at [P] for every closed point P of the surface under the lifting hypotheses, rather than for every length-d subscheme parametrized by the Hilbert scheme. **Global Fogarty smoothness is not formalized by these results.** See the [quantifier distinction](COVERAGE.md#revision-and-method-boundary). |
+| Lemma 5.2 now cites Fogarty for smoothness of the entire relative Hilbert scheme. | In addition to the [global-family lifting theorem](../AllCharacteristics/OriginalGlobalHilbertCubicSubschemeLifting.lean), [originalLiftedCubicGlobalHilbert_smooth_flat001](../PfaffianDescent/OriginalLiftedCubicGlobalHilbertSmooth.lean) now proves smoothness and flatness of the same global Hilbert scheme for every positive length. Its base may be any local Noetherian ring, and the cubic must reduce to a nonzero smooth cubic over its residue field. This includes the manuscript's complete DVR and arbitrary finite flat families, not only closed points of the surface. See the [scope notes](COVERAGE.md#revision-and-method-boundary) and [separate Lean audit](../AllCharacteristics/ManuscriptVerification/GlobalHilbertSmoothness.lean). |
 | Proposition 6.3 expands the pushforward formula in `CH_0`. | The project constructs the needed degree-one zero-cycle representative and proves the same final implication. Its `ZeroCycle` objects are cycles before quotienting by rational equivalence; no separate general Chow-group formalization is claimed. |
 | New Remark 1.5 discusses del Pezzo surfaces, indices, and quartic counterexamples. | **Not included.** The main cubic theorem is relevant to degree three, but an abstract del Pezzo embedding/index bridge and all of the other cited assertions are not supplied by the selected endpoints. |
 
@@ -48,6 +48,12 @@ hashes, and regression tests for version checking. It is not a fresh kernel
 replay or a Comparator verdict. See the [v3 validation record](../verification/evidence/arxiv-v3.json)
 and [verification instructions](../verification/README.md).
 
+That historical v3 record retains the global Hilbert smoothness limitation that
+existed at the time. The October 18 proof and verification described below
+supersede that limitation; the current coverage is recorded in
+[COVERAGE.md](COVERAGE.md#revision-and-method-boundary) and
+[coverage.json](../verification/coverage.json).
+
 `python3 verification/check.py` now checks both manuscript assets, active
 statement numbering, exact label lines, and an explicit status for every
 numbered statement. `python3 verification/check.py --run` performs the full
@@ -66,3 +72,14 @@ This native macOS ARM64 run used Lean v4.33.1 and Comparator revision `3927ad3`
 with progress logging, Nanoda disabled, and `fake-landrun.sh` (no Linux sandbox).
 The broader manuscript Comparator configurations remain `not_run`, and all
 manuscript scope qualifications above remain in effect.
+
+## Subsequent global Hilbert smoothness verification
+
+The global Hilbert smoothness result is an additional Lean proof with its own
+[declaration audit](../AllCharacteristics/ManuscriptVerification/GlobalHilbertSmoothness.lean).
+It establishes the cubic case recorded above, without claiming Fogarty's theorem
+for arbitrary smooth surfaces. The original main CSD proof is unchanged. This
+new result has not been replayed through Comparator and does not change the
+scope of the recorded Comparator run.
+
+The October 18, 2026 [verification record](../verification/evidence/global-hilbert-smoothness-20261018.json) records the 76 successful module builds and the three-root audit. The [audit output](../verification/evidence/global-hilbert-smoothness-20261018.txt) prints the precise exported types and their standard axioms.
